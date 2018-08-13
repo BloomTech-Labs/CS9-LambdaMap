@@ -7,7 +7,7 @@ export default class signIn extends Component {
   render() {
     return (
       <div>
-        <div className='container'>
+        <div className='signIn-container'>
         <h1> Sign In</h1>
         <form>
           <label>
