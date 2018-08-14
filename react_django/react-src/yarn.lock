@@ -24,6 +24,7 @@ acorn-dynamic-import@^2.0.0:
     acorn "^4.0.3"
 
 acorn-globals@^3.1.0:
+
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/acorn-globals/-/acorn-globals-3.1.0.tgz#fd8270f71fbb4996b004fa880ee5d46573a731bf"
   dependencies:
