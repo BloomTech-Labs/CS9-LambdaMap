@@ -1,0 +1,21 @@
+{
+  "name": "react-src",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "cd react_django/react-src && react-scripts start",
+    "build": "cd react_django/react-src && react-scripts build",
+    "test": "cd react_django/react-src && react-scripts test --env=jsdom",
+    "eject": "cd react_django/react-src && react-scripts eject",
+    "postinstall": "cd react_django/react-src && npm run build"
+  },
+  "engines": {
+    "node": "9.8.0",
+    "npm": "5.6.0"
+  }
+}
