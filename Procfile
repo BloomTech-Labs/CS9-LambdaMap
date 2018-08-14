@@ -1,1 +1,2 @@
-web: gunicorn --pythonpath Lambda_Map Lambda_Map.wsgi
+release: python react_django/django-src/manage.py migrate
+web: gunicorn --pythonpath react_django/django-src django-src.wsgi
