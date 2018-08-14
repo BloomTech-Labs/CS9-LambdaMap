@@ -3,7 +3,25 @@ import React, { Component } from 'react'
 export default class signIn extends Component {
   constructor() {
     super()
+    this.state = {
+      loading: false,
+      loaded: false,
+      header: '',
+      
+    }
   }
+
+  componentDidMount(){
+
+  }
+
+  componentWillMount() {
+
+  }
+  handleSubmit = () =>{
+
+  }
+
   render() {
     return (
       <div>
