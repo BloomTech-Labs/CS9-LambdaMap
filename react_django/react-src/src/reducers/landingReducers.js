@@ -22,8 +22,17 @@ visibilityFilter:
 
 */ 
 
-export default (state=initialState, action) {
+export default (state=initialState, action) => {
   switch(action.type) {
-    case ERROR
+    case ERROR:
+    return(
+      somelongfuntion()
+      for (key in error) {
+
+      }
+
+    )
+    default:
+    return state;
   }
 }

@@ -9,3 +9,18 @@ export const SEEKER = 'SEEKER';
 export const LOADING = 'LOADING';
 export const LOADED = 'LOADED';
 
+error: {
+  LOADING -
+  return(
+    
+    loading = true)
+  ATTEMPTS
+  API CALLS
+  USER
+}
+
+
+
+export const action = () => {
+
+}
