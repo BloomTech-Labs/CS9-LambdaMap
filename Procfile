@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath="$PWD/Lambda_Map/Lambda_Map" Lambda_Map.wsgi
+web: gunicorn --pythonpath Lambda_Map Lambda_Map.wsgi
