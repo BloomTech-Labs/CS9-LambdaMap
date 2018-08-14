@@ -11,11 +11,6 @@
     "start": "cd react_django/react-src && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "postinstall": "npm run build"
-  },
-  "engines": {
-    "node": "9.8.0",
-    "npm": "5.6.0"
+    "eject": "react-scripts eject"
   }
 }
