@@ -1,2 +1,2 @@
-web: gunicorn Lambda_Map.wsgi
+web: gunicorn ./Lambda_Map/Lambda_Map.wsgi
 
