@@ -1,9 +1,18 @@
 {
   "name": "react-src",
   "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-scripts": "1.1.4"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "postinstall": "npm install --prefix server && npm install --prefix frontend-app"
+    "start": "cd react_django/react-src && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "postinstall": "cd react_django/react-src && npm run build"
   },
   "engines": {
     "node": "9.8.0",
