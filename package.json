@@ -1,12 +1,9 @@
 {
-  "dependencies": {
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-scripts": "1.1.4"
-  },
+  "name": "react-src",
+  "version": "0.1.0",
   "scripts": {
     "start": "react-scripts start",
-    "postinstall": "npm run build"
+    "postinstall": "npm install --prefix server && npm install --prefix frontend-app"
   },
   "engines": {
     "node": "9.8.0",
