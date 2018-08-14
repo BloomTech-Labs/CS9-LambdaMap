@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './Sidenav.css';
+import './JSnav.css';
 import maplogored from './maplogored.svg';
 import lambdalogo from './lambdalogo.png';
-import { FaHome, FaCopyright, FaAngleRight, FaMap, FaMapMarker, FaStar, FaEnvelope } from 'react-icons/fa';
+import { FaHome, FaCopyright, FaAngleRight, FaMap, FaBriefcase, FaStar, FaEnvelope } from 'react-icons/fa';
 import { MdSettings, MdAttachMoney } from 'react-icons/md';
 
-export default class CompanyNav extends Component {
+export default class JobSeekerNav extends Component {
   render() {
     return (
         <div className="companyNav-container">
@@ -13,12 +13,12 @@ export default class CompanyNav extends Component {
             <div className="lambdamap">
               <img src={maplogored} className="logo" alt="Lambda Maps" />
               <div className="lambda"><img src={lambdalogo} className="lambda-logo"/> Lambda Maps</div>
-              <div className="quote">"Connecting you with Lambda School's best"</div>
+              <div className="quote">"Connecting you with the best Hiring Partners"</div>
             </div>
               <hr className="hrLambda"></hr>
             <li><FaHome className="icons" />Home</li>
             <li><FaMap className="icons" />Map</li>
-            <li><FaMapMarker className="icons" />Job Seekers</li>
+            <li><FaBriefcase className="icons" />Jobs</li>
             <li><FaStar className="icons" />Favorites</li>
             <li><FaEnvelope className="icons" />Messages</li>
             <li><MdSettings className="icons" />Settings</li>
