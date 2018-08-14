@@ -15,15 +15,12 @@ export default class signIn extends Component {
     }
     this.startingState = Object.assign({}, this.state)
   }
-
-  componentDidMount(){
-    this.setState({loading: false})
-  }
-
-  componentWillMount() {
-
-  }
-  
+  /*
+  TODO: 
+  loading and error messges
+  submission
+  testing
+  */
   resetForm = () => {
     this.setState(this.startingState)
   }

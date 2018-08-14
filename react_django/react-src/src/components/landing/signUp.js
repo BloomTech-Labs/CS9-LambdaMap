@@ -26,25 +26,4 @@ export default class signUp extends Component {
             </select>
           </label>
           {/*
-          conditional render if either one is selected here
-          */}
-          <label>
-            Email:
-            <input type="email" name="email" placeholder="Enter your email address"/>
-          </label>
-          <label>
-            Password:
-            <input type="password" name="password" placeholder="Enter your password"
-            />
-          </label>
-          <h1> Or... Sign Up with</h1> <button> Google </button>
-          <br/>
-          <br/>
-          <button>Sign Up!</button>
-          <button>Cancel</button>
-        </form>
-        </div>
-      </div>
-    )
-  }
-}
+          conditional render if either one is selected hereimport React, { Component } from 'react'
