@@ -1,7 +1,7 @@
-import React, { Component } from '../../../../../AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MapView from './components/map/map';
+import MapView from './components/map';
 
 class App extends Component {
   render() {
