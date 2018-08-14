@@ -74,6 +74,18 @@
     font-size: 2em;
   }
 
+  .footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.2vh;
+    margin-top: 50px;
+  }
+  
+  .footerIcon {
+    margin-right: 2px
+  }
+
   .skew {
     display: flex;
     position: absolute;

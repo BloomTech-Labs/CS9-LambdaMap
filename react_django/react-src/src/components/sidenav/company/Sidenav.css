@@ -40,6 +40,14 @@
     width: 10%;
     transition: all 1s;
     font-size: 2em; }
+  .companyNav-container .footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.2vh;
+    margin-top: 50px; }
+  .companyNav-container .footerIcon {
+    margin-right: 2px; }
   .companyNav-container .skew {
     display: flex;
     position: absolute;
