@@ -1,6 +1,4 @@
 /venv
-<<<<<<< HEAD
 yarn.lock
-=======
 Pipfile
->>>>>>> 18eaa3e08b693b2689140c05794de9a210813eaf
+node_modules/
