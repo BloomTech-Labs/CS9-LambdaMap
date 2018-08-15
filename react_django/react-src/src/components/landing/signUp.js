@@ -2,7 +2,20 @@ import React, { Component } from 'react'
 
 export default class signUp extends Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      firstname: '',
+      lastname: '',
+      username: '',
+      email: '',
+      password: '',
+      passwordCheck: '',
+      accountTypeValue: {
+        seeker: false,
+        company: true
+      }
+    }
+    this.startingState = Object.assign({}, state)
   }
   render() {
     return (
@@ -20,10 +33,11 @@ export default class signUp extends Component {
           </label>
           <label>
             Account Type:
-            <select>
+            <input type="radio">
+              <option value="select">Select One</option>
               <option value="job seeker">Job Seeker</option>
               <option value="employer">Employer</option>
-            </select>
+            </input>
           </label>
           {/*
           conditional render if either one is selected hereimport React, { Component } from 'react'

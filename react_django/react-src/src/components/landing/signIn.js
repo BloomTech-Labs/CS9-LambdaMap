@@ -11,9 +11,11 @@ export default class signIn extends Component {
       signedIn: false,
       loading: false,
       loaded: true,
-      error: false
+      error: false,
+      attempts: 0,
+      reset: false,
     }
-    this.startingState = Object.assign({}, this.state)
+    this.startState = JSON.parse(JSON.stringify(this.state))
   }
   /*
   TODO: 
@@ -21,13 +23,28 @@ export default class signIn extends Component {
   submission
   testing
   */
+
+  componentWillMount() {
+  }
   resetForm = () => {
     this.setState(this.startingState)
   }
+
+  handleGoogleSignIn = () => {
+    console.log('Signing in with Google')
+    axios.get('https://google/signin/api/placeholder/:userId')
+    .then(res => {
+      console.log('Signed in with Google successfully!')
+      this.props.history.push(`https:herokuapp.com/api/:localStorange.getItem('userId')`)
+    })
+    .catch( err => {
+      console.log('Sign in with Google unsuccessful!')
+      this.props.history.push('/signin')
+    })
+  }
   handleSubmit = event => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
+    const { username, password } = this.state;
     axios
     .post('http://database/api/placeholder/login', {username, password})
     .then(res => {
