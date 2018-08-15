@@ -65,7 +65,26 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
+      justify-content: center;
+
       font: 1em $lambdafont;
+
+      .contactIcons {
+        font-size: 1em;
+        color: $specialblue;
+        margin-right: 5px;
+      }
+
+      .emailcontact {
+        display: flex;
+        align-items: center;
+      }
+      
+      .phonecontact {
+        display: flex;
+        align-items: center;
+      }
     }
 
     .JSinfo {
@@ -97,13 +116,14 @@
     width: 8%;
     
     .optionbox {
-      color: green;
+      color: $specialblue;
+      opacity: .8;
       display: flex;
       margin-right: 7.5px;
     }
 
     .optionbox2 {
-      color: red;
+      color: $specialgray;
       display: flex;
       margin-right: 7.5px;
     }
@@ -118,6 +138,12 @@
 
     .remote {
       margin-bottom: 5px;
+      color: $specialgray;
+      opacity: .5;
+    }
+
+    .relocate {
+      font-weight: bolder;
     }
   }
 
