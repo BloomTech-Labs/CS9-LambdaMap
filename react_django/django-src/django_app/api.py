@@ -28,12 +28,22 @@ def create_user(request):
 def log_in(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
-        user = UserProfile.objects.filter(username=request_body['username'])[0]
-        return JsonResponse({"logged in": str(verify_password(request_body['password'], user.pwd))})
+        if(len(UserProfile.objects.filter(username=request_body['username'])) > 0):
+          user = UserProfile.objects.filter(username=request_body['username'])[0]
+          return JsonResponse({"logged in": str(verify_password(request_body['password'], user.pwd)),status:202})
+        else:
+          return JsonResponse({"Delete failed": 0}, status=400)
+
 
 
 def delete_user(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
+        print('\ntest\n')
         request_body = json.loads(request.body.decode('ascii'))
-        user = UserProfile.objects.filter(username=request_body['username'])[0].delete()
-        return JsonResponse({"deleted": request_body}, status=204)
+        if(len(UserProfile.objects.filter(username=request_body['username'])) > 0):
+          user = UserProfile.objects.filter(username=request_body['username'])[0].delete()
+          print(JsonResponse({"deleted": request_body}, status=204))
+          return JsonResponse({"deleted": request_body}, status=204)
+        else:
+          return JsonResponse({"Delete failed": 0}, status=400)
+
