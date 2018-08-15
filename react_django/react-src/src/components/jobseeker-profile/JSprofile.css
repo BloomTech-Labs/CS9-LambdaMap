@@ -43,7 +43,18 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      justify-content: center;
       font: 1em "Roboto Condensed", sans-serif; }
+      .main .jsprofile-container .contact .contactIcons {
+        font-size: 1em;
+        color: #125172;
+        margin-right: 5px; }
+      .main .jsprofile-container .contact .emailcontact {
+        display: flex;
+        align-items: center; }
+      .main .jsprofile-container .contact .phonecontact {
+        display: flex;
+        align-items: center; }
     .main .jsprofile-container .JSinfo p {
       margin: 0; }
     .main .jsprofile-container .JSinfo .JSname {
@@ -61,11 +72,12 @@
     padding-left: 12px;
     width: 8%; }
     .main .JSoptions .optionbox {
-      color: green;
+      color: #125172;
+      opacity: .8;
       display: flex;
       margin-right: 7.5px; }
     .main .JSoptions .optionbox2 {
-      color: red;
+      color: #919191;
       display: flex;
       margin-right: 7.5px; }
     .main .JSoptions p {
@@ -75,7 +87,11 @@
       margin: 0;
       font-family: "Open Sans", sans-serif; }
     .main .JSoptions .remote {
-      margin-bottom: 5px; }
+      margin-bottom: 5px;
+      color: #919191;
+      opacity: .5; }
+    .main .JSoptions .relocate {
+      font-weight: bolder; }
   .main .JSbio {
     width: 25%;
     display: flex;
