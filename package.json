@@ -14,12 +14,12 @@
     "redux": "^4.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cd react_django/react-src && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build",
-    "postbuild": "mv build ../django-src"
+    "postinstall": "cd react_django/react-src && npm run build",
+    "postbuild": "mv build ../django-src/"
   },
   "engines": {
     "node": "9.8.0",
