@@ -49,7 +49,7 @@ def update_user(request):
         try:
           user.save()
         except IntegrityError as e:
-          return JsonResponse({"error":"cannot create user"},status=400)
+          return JsonResponse({"Error":0},status=400)
         return JsonResponse({"Password changed": str(verify_password(request_body['password'], user.pwd))}, status=202)
       else:
         return JsonResponse({"Error": 0}, status=400)
