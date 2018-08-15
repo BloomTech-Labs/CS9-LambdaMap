@@ -3,3 +3,4 @@
 .env
 /node_modules
 node_modules
+react_django/django-src/django_app/__pycache__/
