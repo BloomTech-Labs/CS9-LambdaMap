@@ -41,51 +41,16 @@
     justify-content: center;
     width: 10%;
     transition: all 1s;
-    font-size: 2em; }
+    font-size: 2em;
+    color: #A0011E; }
   .companyNav-container .footer {
     display: flex;
     justify-content: center;
-    color: white;
+    color: #919191;
     font-size: 1.2vh;
     margin-top: 50px; }
   .companyNav-container .footerIcon {
     margin-right: 2px; }
-  .companyNav-container .skew {
-    display: flex;
-    position: absolute;
-    top: -10%;
-    width: 100%;
-    height: 20%;
-    z-index: -1;
-    -webkit-transform: skew(0deg, -15deg);
-    -ms-transform: skew(0deg, -15deg);
-    transform: skew(0deg, -15deg);
-    background: -moz-linear-gradient(top, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80A0011E', endColorstr='#80A0011E',GradientType=0 );
-    /* IE6-9 */ }
-  .companyNav-container .skew2 {
-    display: flex;
-    position: absolute;
-    top: 90%;
-    width: 100%;
-    height: 20%;
-    z-index: -1;
-    -webkit-transform: skew(0deg, -15deg);
-    -ms-transform: skew(0deg, -15deg);
-    transform: skew(0deg, -15deg);
-    background: -moz-linear-gradient(top, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(160, 1, 30, 0.5) 0%, rgba(160, 1, 30, 0.5) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80A0011E', endColorstr='#80A0011E',GradientType=0 );
-    /* IE6-9 */ }
 
 .companyNav-container:hover {
   transform: none; }
@@ -93,4 +58,4 @@
 .companyNav-container:hover .arrow {
   transform: rotate(180deg); }
 
-/*# sourceMappingURL=Sidenav.css.map */
+/*# sourceMappingURL=HPnav.css.map */
