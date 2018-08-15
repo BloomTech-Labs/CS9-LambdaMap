@@ -21,5 +21,5 @@ document.getElementById('root'));
 registerServiceWorker();
 
 if(module.hot) {
-
+//add code to accept hot modules
 }

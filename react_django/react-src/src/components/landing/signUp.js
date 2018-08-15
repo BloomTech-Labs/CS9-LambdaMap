@@ -8,21 +8,37 @@ export default class signUp extends Component {
       lastname: '',
       username: '',
       email: '',
+      password1: '',
+      password2:'',
       password: '',
-      passwordCheck: '',
-      accountTypeValue: {
+      accountType: {
         seeker: false,
-        company: true
-      }
+        company: false
+      },
+      companyName: '',
+      submitAttempts: 0
     }
-    this.startingState = Object.assign({}, state)
+    this.startingState = Object.assign({}, state);
   }
-  render() {
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.setState({attempts: this.state.submitAttempts + 1});
+    const { firstname, lastname, username, email, password, acountType } = this.state;
+    this.setState({loading: true})
+    
+    axios.post('https://herokuapp.com/api/users/${this}')
+    .then(
+
+    )
+    this.props.history.push('/login')
+  }
+  }  render() {
     return (
       <div>
         <div className='signUp-container'>
         <h1> Sign Up</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
         <label>
             First Name:
             <input type="text" name="firstname" placeholder="Enter your first name"/>
