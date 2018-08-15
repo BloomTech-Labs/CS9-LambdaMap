@@ -39,6 +39,20 @@ def log_in(request):
         else:
           return JsonResponse({"Login failed": 0}, status=400)
 
+def update_user(request):
+    if request.META['REQUEST_METHOD'] == 'PUT':
+      request_body = json.loads(request.body.decode('ascii'))
+      user = UserProfile.objects.filter(username=request_body['username'])
+      if(len(user) > 0):
+        user = user[0]
+        user.pwd = encrypt_password(request_body['password'])
+        return JsonResponse({"Password changed": str(verify_password(request_body['password'], user.pwd))}, status=202)
+      else:
+        return JsonResponse({"Error": 0}, status=400)
+
+
+
+
 
 
 def delete_user(request):
