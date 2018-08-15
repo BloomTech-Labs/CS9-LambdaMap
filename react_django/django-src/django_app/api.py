@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from .models import UserProfile
 from .security import encrypt_password, verify_password
+from django.db import IntegrityError
 import json
 
 
@@ -18,7 +19,10 @@ def create_user(request):
             email=request_body['email'],
             pwd=encrypt_password(request_body['password'])
         )
-        user.save()
+        try:
+          user.save()
+        except IntegrityError as e:
+          return JsonResponse({"error":"cannot create user"},status=400)
         return JsonResponse(request_body, status=201)
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
