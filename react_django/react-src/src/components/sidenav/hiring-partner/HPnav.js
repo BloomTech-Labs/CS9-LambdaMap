@@ -8,11 +8,11 @@ import { MdSettings, MdAttachMoney } from 'react-icons/md';
 export default class HPnav extends Component {
   render() {
     return (
-        <div className="HPNav-container">
+        <div className="companyNav-container">
           <div className="secondary-container">
             <div className="lambdamap">
               <img src={maplogored} className="logo" alt="Lambda Maps" />
-              <div className="lambda"><img src={lambdalogo} className="lambda-logo"/> Lambda Maps</div>
+              <div className="lambda"><img src={lambdalogo} className="lambda-logo" alt="Lambda Logo"/> Lambda Maps</div>
               <div className="quote">"Connecting you with Lambda School's best"</div>
             </div>
               <hr className="hrLambda"></hr>
@@ -30,8 +30,6 @@ export default class HPnav extends Component {
           <div className="arrow">
             <FaAngleRight />
           </div>
-          <div className="skew"></div>
-          <div className="skew2"></div>
         </div>
     )
   }
