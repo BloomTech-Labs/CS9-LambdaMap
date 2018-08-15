@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
 
+const keyReplacer = (key, value) => {
+  keyException.forEach(exeption => {
+    if(key === `${exception}`) return undefined;
+    else return key;
+  })
+  return key;
+}
 
-const replacer = (key, value) => {
-  if(key === 'submitAttempts') return undefined;
-  else return key;
+const valueReplacer = (key, value) => {
+  valueException.forEach(exception => {
+    if(value === `${exception}`) return undefined;
+    else return value;
+  })
+  return value;
 }
 
 export default class signUp extends Component {
@@ -39,14 +49,8 @@ export default class signUp extends Component {
   }
 
   handleSubmit = event => {
-   
-
-    //TODO SET UP LOCKED OUT ACCOUNT PAGE
-    // const timeStart = new Date.now()
-    // const timeCheck = new Date.now()
-    // localStorage.setItem('loginTimer', timeStart)
-
     event.preventDefault();
+    // SETTING UP VARIABLES
     const {
       firstname,
       lastname,
@@ -55,28 +59,51 @@ export default class signUp extends Component {
       password2,
       pwd,
       acountType,
+      error,
       attempts,
       businessName,
       passwordMatched,
     } = this.state;
-   const pwdRequirements = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/
-    this.setState({attempts: attempts + 1});
-    if(attempts > 3  - timeCheck){
-     this.setState({!error: attempts})
-      this.props.history.push('https://herokuapp.com/api/lockedOut')
-    if (password1.test(password2) && password1.match(pwdRequirements) !== null) {
-        this.setState({passwordMatched: true, pwd: password1})
-      if(accountType.student && accountType.business === false) {
-        axios
-        .post('https://herokuapp.com/api/users/${this}',
-        { firstname,
-        lastname,
-        username,
-        pwd,
-      })
-      }
-      else if(accountType.business && accountType.  === false) {
+   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
 
+    this.setState({attempts: attempts + 1});
+    if(attempts > 3) {
+      this.setState({error: !attempts})
+      return this.props.history.push('https://herokuapp.com/api/lockedOut')
+    }
+    else if(password1.test(password2) && password1.match(pwdRequirements) !== null) {
+        this.setState({passwordMatched: true, pwd: password1});
+      
+        if(accountType.student) {
+        //
+        localStorage.setItem('AccountType', "student")
+        const keyExeption = [accountType.business, businessName, error]
+        const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
+        axios
+        .post('https://lambda-map.herokuapp.com/register', studentData)
+        .then(res => {
+          console.log(res.data);
+          console.log('Account Successfully Created!');
+          return this.props.history.push('https://herokuapp.com/api/login')
+        })
+        .catch()
+      }
+      else if(accountType.business) {
+        
+        localStorage.setItem('AccountType', "business")
+        const keyExeption = [accountType.student, error]
+        const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
+        axios
+        .post('https://lambda-map.herokuapp.com/register', businessData )
+        .then(res => {
+          console.log(res.data);
+          console.log('Account Successfully Created!');
+          return this.props.history.push('https://herokuapp.com/api/login')
+        })
+        .catch(err => {
+          this.setState(error.login = true)
+          this.props.history.push('https://lambda-map.herokuapp.com/register')
+        })
       }
       // TODO:
       /*
@@ -89,14 +116,15 @@ export default class signUp extends Component {
      username,
      pwd,
    })
-      else if (password.test(password2) && password1.match(passwordMatched) === null) {
-        this.setState({passwordMatched: true})
+  }
+    else if(password.test(password2) && password1.match(passwordMatched) === null) {
         alert(`You must enter a password that has the following requirements: 
         at least 8 characters
         1 capital letter
         1 symbol ie. (?=.*?[#?!@$%^&*-])
         1 lowercase letter
-`)
+        ')
+`   }
       }
       if(accountType.s
      
@@ -113,12 +141,13 @@ export default class signUp extends Component {
     
     
   }
-  }  render() {
+
+ render() {
     return (
       <label>
       Account Type:
-      <input type="radio" value="Student" onSubmit={this.handleSubmit}>Student</input>
-      <input type="radio" value="Business" onSubmit={this.handleSubmit}>Business</input>
+      <input type="radio" name="accountType" value={this.state.accountType.student} onSubmit={this.handleSubmit}>Student</input>
+      <input type="radio" name="accountType" value={this.state.accountType.business} onSubmit={this.handleSubmit}>Business</input>
       </label>
       <div>
         <div className='signUp-container'>
@@ -132,6 +161,7 @@ export default class signUp extends Component {
             Last Name:
             <input type="text" name="lastname" placeholder="Enter your last name"/>
           </label>
-         
+    }
+  }
           {/*
           conditional render if either one is selected hereimport React, { Component } from 'react'
