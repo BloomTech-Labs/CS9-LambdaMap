@@ -1,9 +1,5 @@
 @import 'imports';
 
-body {
-  background-color: $lighterred;
-}
-
 .main-settings {
   width: 100%;
 
@@ -36,7 +32,9 @@ body {
 
   .info-update {
     width: 50%;
-    // display: flex;
+    background-color: $lighterred;
+    border-left: 1px solid white;
+    border-radius: 10px 0 0 10px;
 
     .save-button {
       cursor: pointer;
@@ -194,6 +192,9 @@ body {
 
     .new-joblisting {
       width: 50%;
+      background-color: $lighterred;
+      border-left: 1px solid white;
+      border-radius: 0px 10px 10px 0px;
 
       .post-button {
         cursor: pointer;
@@ -208,6 +209,7 @@ body {
         padding: 5px 15px;
         background-color: white;
         box-shadow: inset 2.5px 0px 10px #00000093;
+        margin-bottom: 20px;
       }
 
       input {
