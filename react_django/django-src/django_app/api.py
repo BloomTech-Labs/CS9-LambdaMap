@@ -68,7 +68,7 @@ def update_user(request):
       except KeyError as e:
         return JsonResponse({"Invalid request": 0}, status=400)
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
+      return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"},
                               status=400)
 
 
