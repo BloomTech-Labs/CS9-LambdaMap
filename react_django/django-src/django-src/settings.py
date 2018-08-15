@@ -31,11 +31,11 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 # Application definition
 
 INSTALLED_APPS = [
-    'django_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django_app',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]

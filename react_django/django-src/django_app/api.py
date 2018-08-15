@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from .models import UserProfile
 from .security import encrypt_password, verify_password
+from django.db import IntegrityError
 import json
 
 
@@ -18,7 +19,10 @@ def create_user(request):
             email=request_body['email'],
             pwd=encrypt_password(request_body['password'])
         )
-        user.save()
+        try:
+          user.save()
+        except IntegrityError as e:
+          return JsonResponse({"error":"cannot create user"},status=400)
         return JsonResponse(request_body, status=201)
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
@@ -28,12 +32,40 @@ def create_user(request):
 def log_in(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
-        user = UserProfile.objects.filter(username=request_body['username'])[0]
-        return JsonResponse({"logged in": str(verify_password(request_body['password'], user.pwd))})
+        user = UserProfile.objects.filter(username=request_body['username'])
+        if(len(user) > 0):
+          user = user[0]
+          return JsonResponse({"logged in": str(verify_password(request_body['password'], user.pwd))}, status=202)
+        else:
+          return JsonResponse({"Login failed": 0}, status=400)
+
+def update_user(request):
+    if request.META['REQUEST_METHOD'] == 'PUT':
+      request_body = json.loads(request.body.decode('ascii'))
+      user = UserProfile.objects.filter(username=request_body['username'])
+      if(len(user) > 0):
+        user = user[0]
+        user.pwd = encrypt_password(request_body['password'])
+        try:
+          user.save()
+        except IntegrityError as e:
+          return JsonResponse({"Error":0},status=400)
+        return JsonResponse({"Password changed": str(verify_password(request_body['password'], user.pwd))}, status=202)
+      else:
+        return JsonResponse({"Error": 0}, status=400)
+
+
+
+
 
 
 def delete_user(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
         request_body = json.loads(request.body.decode('ascii'))
-        user = UserProfile.objects.filter(username=request_body['username'])[0].delete()
-        return JsonResponse({"deleted": request_body}, status=204)
+        user = UserProfile.objects.filter(username=request_body['username'])
+        if(len(user) > 0):
+          user = user[0].delete()
+          return JsonResponse({"deleted": request_body}, status=204)
+        else:
+          return JsonResponse({"Delete failed": 0}, status=400)
+
