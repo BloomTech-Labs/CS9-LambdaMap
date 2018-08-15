@@ -7,5 +7,7 @@
 ###source [virtual env name]/bin/activate <-- for linux not sure about other OS's 
  
 ###now pip install the following: 
-    * pip install django 
-    * pip install python-decouple 
+    * django 
+    * python-decouple
+    * passlib
+    * whitenoise
