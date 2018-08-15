@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 import SignIn from './components/landing/signIn';
 import { Provider } from 'react-redux';
 require('dotenv').config()
@@ -11,6 +12,7 @@ class App extends Component {
         <SignIn />
 {/* ======= */}
 {/* // import HPnav from './components/nav/company/HPnav'
+
 import HPsettings from './components/settings/HP-settings/HPsettings';
 import JSprofile from './components/jobseeker-profile/JSprofile'
 import { Route } from 'react-router-dom'; */}
