@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 
+
+const replacer = (key, value) => {
+  if(key === 'submitAttempts') return undefined;
+  else return key;
+}
+
 export default class signUp extends Component {
   constructor() {
     super();
@@ -10,31 +16,110 @@ export default class signUp extends Component {
       email: '',
       password1: '',
       password2:'',
-      password: '',
+      passwordMatched: false,
+      pwd: '',
       accountType: {
-        seeker: false,
-        company: false
+        student: false,
+        business: false
       },
-      companyName: '',
-      submitAttempts: 0
+      businessName: '',
+      submitAttempts: 0,
+      error: {
+        login: false,
+        password: false,
+        email: false,
+        attempts: false
+      }
     }
-    this.startingState = Object.assign({}, state);
+    this.startingState = JSON.parse(JSON.stringify(this.state, replacer));
+  }
+
+  handleTextChange = event => {
+    this.setState({[target.event.name]: target.event.value})
   }
 
   handleSubmit = event => {
-    event.preventDefault();
-    this.setState({attempts: this.state.submitAttempts + 1});
-    const { firstname, lastname, username, email, password, acountType } = this.state;
-    this.setState({loading: true})
-    
-    axios.post('https://herokuapp.com/api/users/${this}')
-    .then(
+   
 
+    //TODO SET UP LOCKED OUT ACCOUNT PAGE
+    // const timeStart = new Date.now()
+    // const timeCheck = new Date.now()
+    // localStorage.setItem('loginTimer', timeStart)
+
+    event.preventDefault();
+    const {
+      firstname,
+      lastname,
+      username,
+      password1,
+      password2,
+      pwd,
+      acountType,
+      attempts,
+      businessName,
+      passwordMatched,
+    } = this.state;
+   const pwdRequirements = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/
+    this.setState({attempts: attempts + 1});
+    if(attempts > 3  - timeCheck){
+     this.setState({!error: attempts})
+      this.props.history.push('https://herokuapp.com/api/lockedOut')
+    if (password1.test(password2) && password1.match(pwdRequirements) !== null) {
+        this.setState({passwordMatched: true, pwd: password1})
+      if(accountType.student && accountType.business === false) {
+        axios
+        .post('https://herokuapp.com/api/users/${this}',
+        { firstname,
+        lastname,
+        username,
+        pwd,
+      })
+      }
+      else if(accountType.business && accountType.  === false) {
+
+      }
+      // TODO:
+      /*
+      add the user
+      */
+     axios
+     .post('https://herokuapp.com/api/users/${this}', 
+     { firstname,
+     lastname,
+     username,
+     pwd,
+   })
+      else if (password.test(password2) && password1.match(passwordMatched) === null) {
+        this.setState({passwordMatched: true})
+        alert(`You must enter a password that has the following requirements: 
+        at least 8 characters
+        1 capital letter
+        1 symbol ie. (?=.*?[#?!@$%^&*-])
+        1 lowercase letter
+`)
+      }
+      if(accountType.s
+     
+      .then(res => 
+        this.props.history.push('/login')
     )
-    this.props.history.push('/login')
+      .catch(err => console.log(error.message))
+    }
+    else {
+
+    }
+   
+    }
+    
+    
   }
   }  render() {
     return (
+      <label>
+      Account Type:
+      <input type="radio" value="Student" onSubmit={this.handleSubmit}>Student</input>
+      <input type="radio" value="Business" onSubmit={this.handleSubmit}>Business</input>
+      </label>
       <div>
         <div className='signUp-container'>
         <h1> Sign Up</h1>
@@ -47,13 +132,6 @@ export default class signUp extends Component {
             Last Name:
             <input type="text" name="lastname" placeholder="Enter your last name"/>
           </label>
-          <label>
-            Account Type:
-            <input type="radio">
-              <option value="select">Select One</option>
-              <option value="job seeker">Job Seeker</option>
-              <option value="employer">Employer</option>
-            </input>
-          </label>
+         
           {/*
           conditional render if either one is selected hereimport React, { Component } from 'react'

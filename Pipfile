@@ -12,6 +12,8 @@ dj-database-url = "*"
 gunicorn = "*"
 "psycopg2-binary" = "*"
 django-heroku = "*"
+passlib = "*"
+whitenoise = "*"
 
 [requires]
-python_version = "3.6.2"
+python_version = "3.7"

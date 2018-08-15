@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+
+const replacer = (key, value) => {
+  if(key === 'attempts') return undefined;
+  else return key;
+}
 export default class signIn extends Component {
   constructor() {
     super()
     this.state = {
       username: '',
-      password: '',
+      pwd: '',
       submitting: false,
       submitted: true,
-      signedIn: false,
-      loading: false,
-      loaded: true,
       error: false,
       attempts: 0,
       reset: false,
     }
-    this.startState = JSON.parse(JSON.stringify(this.state))
+    this.startState = JSON.parse(JSON.stringify(this.state, replacer))
   }
   /*
   TODO: 
@@ -23,44 +25,45 @@ export default class signIn extends Component {
   submission
   testing
   */
-
-  componentWillMount() {
-  }
+componentWillMount() {
+  
+}
   resetForm = () => {
-    this.setState(this.startingState)
+    this.setState(this.startState)
   }
 
-  handleGoogleSignIn = () => {
-    console.log('Signing in with Google')
-    axios.get('https://google/signin/api/placeholder/:userId')
-    .then(res => {
-      console.log('Signed in with Google successfully!')
-      this.props.history.push(`https:herokuapp.com/api/:localStorange.getItem('userId')`)
-    })
-    .catch( err => {
-      console.log('Sign in with Google unsuccessful!')
-      this.props.history.push('/signin')
-    })
+  // handleGoogleSignIn = () => {
+  //   console.log('Signing in with Google')
+  //   axios.get('https://google/signin/api/placeholder/:userId')
+  //   .then(res => {
+  //     console.log('Signed in with Google successfully!')
+  //     this.props.history.push(`https:herokuapp.com/api/:localStorange.getItem('userId')`)
+  //   })
+  //   .catch( err => {
+  //     console.log('Sign in with Google unsuccessful!')
+  //     this.props.history.push('/signin')
+  //   })
   }
   handleSubmit = event => {
     event.preventDefault();
-    const { username, password } = this.state;
+    const { username, pwd } = this.state;
+    const token = localStorage.getItem('jwt')
     axios
-    .post('http://database/api/placeholder/login', {username, password})
+    .post('https://lambda-map.herokuapp.com/login', { username, pwd })
     .then(res => {
       this.setState({submitting: true})
       console.log(res);
-      console.log(res.data)
+      console.log(res.data.username)
+      console.log(res.data.pwd)
       console.log('User Successfully Logged In!')
-      this.props.history.push('/home')
+      this.props.history.push('/')
     })
     .catch(err => console.log(err.message))
     this.setState({submitted: false, submitting: false, error: true})
+    this.history.push(`'https://lambda-map.herokuapp.com/company/${localStorage.getItem('userId')}`)
   }
   handleTextChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+    this.setState({[event.target.name]: event.target.value})
   }
   render() {
     return (
