@@ -1,5 +1,5 @@
 // Hiring Partner View of individual job seeker profile
-
+import HPnav from '../nav/company/HPnav';
 import React, { Component } from 'react';
 import './JSprofile.css';
 import defaultuser from "./defaultuser.svg";
@@ -9,6 +9,7 @@ export default class JSprofile extends Component {
   render() {
     return (
       <div className="main">
+          <HPnav />
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>

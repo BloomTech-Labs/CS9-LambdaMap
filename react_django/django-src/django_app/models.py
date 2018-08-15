@@ -1,13 +1,31 @@
 from django.db import models
 
 
-class UserProfile(models.Model):
-    username = models.CharField(max_length=50, default='', unique=True)
-    student = models.BooleanField(default=True)
+class StudentProfile(models.Model):
+    class StudentProfile(models.Model):
+        username = models.CharField(max_length=50, default='', unique=True)
+        student = models.BooleanField(default=True)
+        email = models.EmailField(unique=True)
+        pwd = models.CharField(max_length=50, default='')
+        linkedin = models.CharField(max_length=50, default='')
+        github = models.CharField(max_length=50, default='')
+        first_name = models.CharField(max_length=50, default='')
+        last_name = models.CharField(max_length=50, default='')
+
+        def __repr__(self):
+            return self.username
+
+        def __str__(self):
+            return self.username
+
+
+class HirePartner(models.Model):
+    company_name = models.CharField(max_length=50, default='', unique=True)
     email = models.EmailField(unique=True)
     pwd = models.CharField(max_length=50, default='')
 
     def __repr__(self):
+<<<<<<< HEAD
         return self.username
 
     def __str__(self):
@@ -66,3 +84,6 @@ class Job_Listings(models.Model):
     post_time = models.CharField(max_length=400,unique=True)
     remote = models.BooleanField(default=False)
 
+=======
+        return self.username
+>>>>>>> cf0a6572e1db3d099f95e8915a74172aa9be933d

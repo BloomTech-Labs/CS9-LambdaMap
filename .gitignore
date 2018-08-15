@@ -83,6 +83,7 @@ celerybeat-schedule
 
 # dotenv
 .env
+<<<<<<< HEAD
 
 # virtualenv
 .venv
@@ -101,3 +102,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+=======
+/node_modules
+node_modules
+react_django/django-src/django_app/__pycache__/
+
+react_django/django-src/django-src/__pycache__/
+>>>>>>> cf0a6572e1db3d099f95e8915a74172aa9be933d
