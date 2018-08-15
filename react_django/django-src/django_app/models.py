@@ -39,11 +39,11 @@ class Employers(models.Model):
     currentlySubscribed = models.BooleanField(default=False)
 
 class Student_Phones(models.Model):
-    userID = models.ForeignKey(Students,on_delete=models.CASCADE)
+    studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
     number = models.CharField(max_length=20,unique=True)
 
 class Employer_Phones(models.Model):
-    userID = models.ForeignKey(Employers,on_delete=models.CASCADE)
+    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
     number = models.CharField(max_length=20,unique=True)
 
 class Student_Favorites(models.Model):
