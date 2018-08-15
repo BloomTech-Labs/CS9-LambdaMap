@@ -30,8 +30,6 @@ export default class HPnav extends Component {
           <div className="arrow">
             <FaAngleRight />
           </div>
-          <div className="skew"></div>
-          <div className="skew2"></div>
         </div>
     )
   }
