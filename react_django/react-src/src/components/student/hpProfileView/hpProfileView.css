@@ -1,0 +1,216 @@
+/* STUDENT SETTING CSS */
+.hp{
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Raleway';
+    align-items: center;
+  }
+  .hp-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* border: 2px solid rgba(82, 82, 82, 0.7); */
+    background-color:rgba(160, 1, 30, .8);
+    box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+    border-radius: 5px;
+    width: 40%;
+    height: 75vh;
+    margin-left: 20px;
+    max-height: 650px;
+    max-width: 500px;
+  }
+  .hp-header{
+  position: fixed;
+  top:0;
+  right:0;
+  height: 8vh;
+  margin-right: 50px;
+  }
+  
+  .hp-info .hp-title-div{
+    margin: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    border-top: 3px solid rgba(214, 214, 214, 0.7);
+    border-bottom: 3px solid rgba(214, 214, 214, 0.7);
+    background-color: rgba(255, 255, 255, 0.959);
+    width: 100%;
+    margin-top: 0px;
+    min-height: 120px;
+    margin-bottom: 20px;
+  }
+  
+  .hp-title{
+    font-weight: bold;
+    color: rgb(56, 56, 56);
+    margin-bottom: -15px;
+  }
+  .hp-info .hp-photo{
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px 1px rgba(156, 156, 156, 0.671);
+    /* margin-right: 10px;
+    margin-top: 45px; */
+    width: 30%;
+    height: 100px;
+  }
+  .hp-location{
+    color: rgb(131, 131, 131);
+  }
+  .hp-info-tag {
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+    color: rgba(44, 44, 44, 0.973);
+  }
+  .hp-info-text{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 2px solid rgb(161, 161, 161);
+    border-bottom: 2px solid rgb(161, 161, 161);
+    color: rgba(124, 124, 124, 0.795);
+    width: 90%;
+    margin: auto;
+    font-size: 1.1rem;
+  }
+  .hp-remote{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+  }
+  .hp-info-div{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgba(214, 214, 214, 0.7);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 1px rgb(92, 92, 92);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    height: 65%;
+    width: 85%;
+    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+  .remote-check{
+    color: #125172;
+    margin: 10px;
+    margin-top: 20px;
+    background: none;
+    height: 25px;
+  }
+  .hp-email-div{
+    display: flex;
+    justify-content: center;
+    border: 3px solid rgba(214, 214, 214, 0.7);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+    width: 87%;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .hp-email-div:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  .hp-email{
+    color: rgba(44, 44, 44, 0.973);
+    font-size: 1.2rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .mail-logo{
+    color: #125172;
+    margin: 13px 10px 0px 10px;
+    height: 40px;
+    width: 40px;
+  }
+  
+  /* job card CSS */
+  .hp-job-card-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color:rgba(160, 1, 30, .8);
+    box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+    border-radius: 5px;
+    width: 40%;
+    height: 75vh;
+    margin-right: 20px;
+    max-height: 650px;
+    max-width: 500px;
+    overflow: auto;
+  }
+  .link-icon{
+    color: #125172;
+  }
+  .link-icon:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .hp-card-location{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  .hp-listing-div{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 3px solid rgba(214, 214, 214, 0.7);
+    border-bottom: 3px solid rgba(214, 214, 214, 0.7);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+    width: 100%;
+    margin-top: 20px;
+    min-height: 60px;
+    max-height: 80px;
+    z-index: 1;
+  }
+  .hp-job-cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(214, 214, 214, 0.7);
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+    width: 87%;
+    min-height: 220px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .hp-listing-title{
+    font-size: 2.5rem;
+    color: rgba(59, 59, 59, 0.973);
+    font-weight: bold;
+  }
+  .hp-card-title{
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 5px 0px 0px 0px;
+    color: rgba(44, 44, 44, 0.973);
+  }
+  .hp-card-text{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-top: 2px solid rgb(161, 161, 161);
+    border-bottom: 2px solid rgb(161, 161, 161);
+    color: rgba(124, 124, 124, 0.795);
+    width: 90%;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
