@@ -8,7 +8,7 @@ import HPnav from '../../nav/company/HPnav';
 export default class HPsettings extends Component {
   render() {
     return (
-      <div>
+      <div className="settings-nav">
       <HPnav />
       <div className="main-settings">
         <div className="signout">

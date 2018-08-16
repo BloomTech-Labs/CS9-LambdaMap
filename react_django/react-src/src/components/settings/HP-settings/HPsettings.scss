@@ -18,7 +18,7 @@
       outline: none;
       border: none;
       background: none;
-      font: 1em $lambdafont;
+      font: .8em $lambdafont;
       font-weight: bolder;
       color: $specialred;
       letter-spacing: 2.5px;
@@ -32,12 +32,13 @@
   .settings-container {
     width: 80%;
     display: flex;
+    justify-content: space-around;
     margin: 75px auto 0;
 
   .info-update {
-    width: 50%;
-    background-color: rgba(255, 255, 255, .8);
-    border-radius: 10px 0 0 10px;
+    width: 35%;
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: 10px;;
 
     .save-button {
       cursor: pointer;
@@ -46,12 +47,17 @@
       background: none;
       font: 1em $lambdafont;
       font-weight: bolder;
-      color: black;
+      color: white;
       letter-spacing: 2.5px; 
-      border-radius: 10px;
+      border-radius: 5px;
       padding: 5px 15px;
-      background-color: white;
-      box-shadow: inset 2.5px 0px 10px #00000093;
+      background-color: $specialblue;
+      margin-bottom: 20px;
+    }
+
+    .save-button:active {
+      background-color: $specialgray;
+      color: $specialblue
     }
 
   h2 {
@@ -59,11 +65,11 @@
   }
 
   hr {
-    width: 30%;
+    width: 75%;
   }
 
   .update-contact {
-    width: 35%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -124,7 +130,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: red;
+      background-color: $specialgray;
       -webkit-transition: .4s;
       transition: .4s;
     }
@@ -142,11 +148,12 @@
     }
 
     input:checked + .slider {
-      background-color: green;
+      background-color: $specialblue;
+      opacity: .8;
     }
 
     input:focus + .slider {
-      box-shadow: 0 0 1px green;
+      box-shadow: 0 0 1px $specialblue;
     }
 
     input:checked + .slider:before {
@@ -168,8 +175,8 @@
     .update-password {
 
       .update-pswd {
-        width: 45%;
-        margin: 0 auto;
+        width: 70%;
+        margin-left: 70px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -194,9 +201,9 @@
     }
 
     .new-joblisting {
-      width: 50%;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 0px 10px 10px 0px;
+      width: 35%;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
 
       .post-button {
         cursor: pointer;
@@ -205,25 +212,35 @@
         background: none;
         font: 1em $lambdafont;
         font-weight: bolder;
-        color: black;
+        color: white;
         letter-spacing: 2.5px; 
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 5px 15px;
-        background-color: white;
-        box-shadow: inset 2.5px 0px 10px #00000093;
+        background-color: $specialblue;
         margin-bottom: 20px;
+      }
+
+      .post-button:active {
+        background-color: $specialgray;
+        color: $specialblue
       }
 
       input {
         border: none;
         outline: none;
+        background: none;
         margin-left: 35px;
-        border: 2px solid $specialblue;
-        border-radius: 5px;
+        border-bottom: 2px solid $specialblue;
+      }
+
+      input::-webkit-input-placeholder {
+        font-family: $HPtext;
+        padding: 1px;
+        color: black
       }
 
       hr {
-        width: 30%;
+        width: 75%;
       }
 
       h2 {
@@ -272,7 +289,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: red;
+          background-color: $specialgray;
           -webkit-transition: .4s;
           transition: .4s;
         }
@@ -290,11 +307,12 @@
         }
 
         input:checked + .slider {
-          background-color: green;
+          background-color: $specialblue;
+          opacity: .8;
         }
         
         input:focus + .slider {
-          box-shadow: 0 0 1px green;
+          box-shadow: 0 0 1px $specialblue;
         }
 
         input:checked + .slider:before {
