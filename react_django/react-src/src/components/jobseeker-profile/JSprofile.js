@@ -1,23 +1,24 @@
 // Hiring Partner View of individual job seeker profile
-import HPnav from '../nav/company/HPnav';
+
 import React, { Component } from 'react';
 import './JSprofile.css';
 import defaultuser from "./defaultuser.svg";
-import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop } from 'react-icons/fa';
+import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
+import HPnav from '../nav/company/HPnav';
 
 export default class JSprofile extends Component {
   render() {
     return (
       <div className="main">
-          <HPnav />
+      <HPnav />
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>
       </div>
       <div className="jsprofile-container">
         <div className="contact">
-          <a>robert.smith@gmail.com</a>
-          <a>(909) 234-5678</a>
+          <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
+          <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
         </div>
         <div className="JSinfo">
           <p className="JSname">Robert Smith</p>

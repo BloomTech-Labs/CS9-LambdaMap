@@ -13,7 +13,7 @@
       outline: none;
       border: none;
       background: none;
-      font: 1em "Roboto Condensed", sans-serif;
+      font: 0.8em "Roboto Condensed", sans-serif;
       font-weight: bolder;
       color: #A0011E;
       letter-spacing: 2.5px; }
@@ -22,11 +22,12 @@
   .main-settings .settings-container {
     width: 80%;
     display: flex;
+    justify-content: space-around;
     margin: 75px auto 0; }
     .main-settings .settings-container .info-update {
-      width: 50%;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 10px 0 0 10px; }
+      width: 35%;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px; }
       .main-settings .settings-container .info-update .save-button {
         cursor: pointer;
         outline: none;
@@ -34,37 +35,44 @@
         background: none;
         font: 1em "Roboto Condensed", sans-serif;
         font-weight: bolder;
-        color: black;
+        color: white;
         letter-spacing: 2.5px;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 5px 15px;
-        background-color: white;
-        box-shadow: inset 2.5px 0px 10px #00000093; }
+        background-color: #125172;
+        margin-bottom: 20px; }
+      .main-settings .settings-container .info-update .save-button:active {
+        background-color: #919191;
+        color: #125172; }
       .main-settings .settings-container .info-update h2 {
         font-family: "Roboto Condensed", sans-serif; }
       .main-settings .settings-container .info-update hr {
-        width: 30%; }
+        width: 75%; }
       .main-settings .settings-container .info-update .update-contact {
-        width: 35%;
+        width: 50%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        align-content: flex-end;
-        align-items: flex-end; }
+        justify-content: center;
+        align-content: center;
+        align-items: center; }
         .main-settings .settings-container .info-update .update-contact h3 {
-          font-family: "Open Sans", sans-serif;
-          display: flex; }
+          font: 1em "Open Sans", sans-serif;
+          font-weight: bold; }
+        .main-settings .settings-container .info-update .update-contact .phone-input {
+          margin-bottom: 30px; }
         .main-settings .settings-container .info-update .update-contact input {
           border: none;
           outline: none;
           margin-left: 35px;
           background: none;
-          border-bottom: 2px solid #125172; }
+          border-bottom: 2px solid #125172;
+          width: 40%; }
     .main-settings .settings-container .opt-in {
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      margin-bottom: 30px; }
       .main-settings .settings-container .opt-in a {
         font-family: "Open Sans", sans-serif; }
       .main-settings .settings-container .opt-in .opt-email {
@@ -86,7 +94,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: red;
+        background-color: #919191;
         -webkit-transition: .4s;
         transition: .4s; }
       .main-settings .settings-container .opt-in .slider:before {
@@ -100,9 +108,10 @@
         -webkit-transition: .4s;
         transition: .4s; }
       .main-settings .settings-container .opt-in input:checked + .slider {
-        background-color: green; }
+        background-color: #125172;
+        opacity: .8; }
       .main-settings .settings-container .opt-in input:focus + .slider {
-        box-shadow: 0 0 1px green; }
+        box-shadow: 0 0 1px #125172; }
       .main-settings .settings-container .opt-in input:checked + .slider:before {
         -webkit-transform: translateX(15px);
         -ms-transform: translateX(15px);
@@ -112,27 +121,31 @@
       .main-settings .settings-container .opt-in .slider.round:before {
         border-radius: 50%; }
     .main-settings .settings-container .update-password .update-pswd {
-      width: 45%;
+      width: 70%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-content: flex-end;
-      align-items: flex-end; }
+      justify-content: center;
+      align-content: center;
+      align-items: center; }
     .main-settings .settings-container .update-password input {
       border: none;
       outline: none;
       margin-left: 35px;
       background: none;
-      border-bottom: 2px solid #125172; }
+      border-bottom: 2px solid #125172;
+      width: 40%; }
     .main-settings .settings-container .update-password h2 {
       font-family: "Roboto Condensed", sans-serif; }
     .main-settings .settings-container .update-password h3 {
-      font-family: "Open Sans", sans-serif; }
+      font: 1em "Open Sans", sans-serif;
+      font-weight: bold; }
+    .main-settings .settings-container .update-password .new-pswd {
+      margin-bottom: 30px; }
     .main-settings .settings-container .new-joblisting {
-      width: 50%;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 0px 10px 10px 0px; }
+      width: 35%;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px; }
       .main-settings .settings-container .new-joblisting .post-button {
         cursor: pointer;
         outline: none;
@@ -140,21 +153,27 @@
         background: none;
         font: 1em "Roboto Condensed", sans-serif;
         font-weight: bolder;
-        color: black;
+        color: white;
         letter-spacing: 2.5px;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 5px 15px;
-        background-color: white;
-        box-shadow: inset 2.5px 0px 10px #00000093;
+        background-color: #125172;
         margin-bottom: 20px; }
+      .main-settings .settings-container .new-joblisting .post-button:active {
+        background-color: #919191;
+        color: #125172; }
       .main-settings .settings-container .new-joblisting input {
         border: none;
         outline: none;
+        background: none;
         margin-left: 35px;
-        border: 2px solid #125172;
-        border-radius: 5px; }
+        border-bottom: 2px solid #125172; }
+      .main-settings .settings-container .new-joblisting input::-webkit-input-placeholder {
+        font-family: "Open Sans", sans-serif;
+        padding: 1px;
+        color: black; }
       .main-settings .settings-container .new-joblisting hr {
-        width: 30%; }
+        width: 75%; }
       .main-settings .settings-container .new-joblisting h2 {
         font-family: "Roboto Condensed", sans-serif; }
       .main-settings .settings-container .new-joblisting .listing-input {
@@ -164,7 +183,7 @@
         margin: 0 auto; }
         .main-settings .settings-container .new-joblisting .listing-input .remote-switch {
           display: flex;
-          margin-bottom: 10px; }
+          margin: 8px 0 22px 0; }
         .main-settings .settings-container .new-joblisting .listing-input .remote-pos {
           margin-left: 10px; }
         .main-settings .settings-container .new-joblisting .listing-input a {
@@ -185,7 +204,7 @@
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: red;
+          background-color: #919191;
           -webkit-transition: .4s;
           transition: .4s; }
         .main-settings .settings-container .new-joblisting .listing-input .slider:before {
@@ -199,9 +218,10 @@
           -webkit-transition: .4s;
           transition: .4s; }
         .main-settings .settings-container .new-joblisting .listing-input input:checked + .slider {
-          background-color: green; }
+          background-color: #125172;
+          opacity: .8; }
         .main-settings .settings-container .new-joblisting .listing-input input:focus + .slider {
-          box-shadow: 0 0 1px green; }
+          box-shadow: 0 0 1px #125172; }
         .main-settings .settings-container .new-joblisting .listing-input input:checked + .slider:before {
           -webkit-transform: translateX(15px);
           -ms-transform: translateX(15px);

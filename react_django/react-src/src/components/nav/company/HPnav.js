@@ -4,6 +4,7 @@ import maplogored from './maplogored.svg';
 import lambdalogo from './lambdalogo.png';
 import { FaHome, FaCopyright, FaAngleRight, FaMap, FaMapMarker, FaStar, FaEnvelope } from 'react-icons/fa';
 import { MdSettings, MdAttachMoney } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 export default class HPnav extends Component {
   render() {
@@ -21,7 +22,8 @@ export default class HPnav extends Component {
             <li><FaMapMarker className="icons" />Job Seekers</li>
             <li><FaStar className="icons" />Favorites</li>
             <li><FaEnvelope className="icons" />Messages</li>
-            <li><MdSettings className="icons" />Settings</li>
+            <Link to='/settings/' style={{ textDecoration: 'none' }}><li><MdSettings className="icons" />Settings</li>
+            </Link>
             <li><MdAttachMoney className="icons" />Billing</li>
             <footer>
                 <h5 className="footer"><FaCopyright className="footerIcon"/>DreamTeam</h5>
