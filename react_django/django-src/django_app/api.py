@@ -25,7 +25,7 @@ def create_user(request):
               return JsonResponse({"error":"cannot create user"},status=400)
             return JsonResponse(request_body, status=201)
         else:
-            user = HireProfile(
+            user = HirePartner(
                 company_name=request_body['username'],
                 email=request_body['email'],
                 pwd=encrypt_password(request_body['password'])

@@ -28,10 +28,8 @@ export default class signUp extends Component {
       password2:'',
       passwordMatched: false,
       pwd: '',
-      accountType: {
-        student: false,
-        business: false
-      },
+      student: false,
+      business: false,
       businessName: '',
       submitAttempts: 0,
       error: {
@@ -64,7 +62,7 @@ export default class signUp extends Component {
       businessName,
       passwordMatched,
     } = this.state;
-   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
+   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{16,}$')
 
     this.setState({attempts: attempts + 1});
     if(attempts > 3) {
@@ -74,10 +72,10 @@ export default class signUp extends Component {
     else if(password1.test(password2) && password1.match(pwdRequirements) !== null) {
         this.setState({passwordMatched: true, pwd: password1});
       
-        if(accountType.student) {
+        if(student) {
         //
         localStorage.setItem('AccountType', "student")
-        const keyExeption = [accountType.business, businessName, error]
+        const keyExeption = [business, businessName, error]
         const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
         .post('https://lambda-map.herokuapp.com/register', studentData)
@@ -88,17 +86,17 @@ export default class signUp extends Component {
         })
         .catch()
       }
-      else if(accountType.business) {
+      else if(business) {
         
         localStorage.setItem('AccountType', "business")
-        const keyExeption = [accountType.student, error]
+        const keyExeption = [student, error]
         const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
-        .post('https://lambda-map.herokuapp.com/register', businessData )
+        .post(`https://lambda-map.herokuapp.com/register/}`, businessData )
         .then(res => {
           console.log(res.data);
           console.log('Account Successfully Created!');
-          return this.props.history.push('https://herokuapp.com/api/login')
+          return this.props.history.push('https://herokuapp.com/api/login/business/')
         })
         .catch(err => {
           this.setState(error.login = true)
@@ -117,16 +115,19 @@ export default class signUp extends Component {
      pwd,
    })
   }
-    else if(password.test(password2) && password1.match(passwordMatched) === null) {
+    else if(password1.test(password2) && password1.match(pwdRequirements) === null) {
         alert(`You must enter a password that has the following requirements: 
-        at least 8 characters
+        at least 16 characters
         1 capital letter
         1 symbol ie. (?=.*?[#?!@$%^&*-])
         1 lowercase letter
         ')
+        this.props.history
 `   }
       }
-      if(accountType.s
+      if(s){
+        next()
+      }
      
       .then(res => 
         this.props.history.push('/login')
