@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { FaEnvelope, FaCheck, FaLink, FaHeart } from 'react-icons/fa'
+import { FaEnvelope, FaCheck, FaLink, FaStar } from 'react-icons/fa'
+import './HpProfileView.css'
 
-export default class StudentSettings extends Component{
+export default class HpProfileView  extends Component{
     render() {
         return(
             <div className="hp">
@@ -24,7 +25,6 @@ export default class StudentSettings extends Component{
                 <p className="hp-email">Open to remote employees</p>
                 </div>
              </div>
-           
             </div>
              <div className="hp-email-div">
              <FaEnvelope className="mail-logo" /><p className="hp-email">amazon.recruiter@gmail.com</p>
@@ -36,7 +36,7 @@ export default class StudentSettings extends Component{
              <p className="hp-listing-title">Job Listings</p>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaHeart className="link-icon"/></h5>
+            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="link-icon"/></h5>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -45,7 +45,7 @@ export default class StudentSettings extends Component{
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaHeart className="link-icon"/></h5>
+            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="link-icon"/></h5>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -54,7 +54,7 @@ export default class StudentSettings extends Component{
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaHeart className="link-icon"/></h5>
+            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="link-icon"/></h5>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -63,7 +63,7 @@ export default class StudentSettings extends Component{
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaHeart className="link-icon"/></h5>
+            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="link-icon"/></h5>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
