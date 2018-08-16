@@ -1,3 +1,5 @@
+// Hiring Partner's side nav
+
 import React, { Component } from 'react';
 import './HPnav.css';
 import maplogored from './maplogored.svg';
@@ -19,7 +21,8 @@ export default class HPnav extends Component {
               <hr className="hrLambda"></hr>
             <li><FaHome className="icons" />Home</li>
             <li><FaMap className="icons" />Map</li>
-            <li><FaMapMarker className="icons" />Job Seekers</li>
+            <Link to='/jobseekers/' style={{ textDecoration: 'none' }}><li><FaMapMarker className="icons" />Job Seekers</li>
+            </Link>
             <li><FaStar className="icons" />Favorites</li>
             <li><FaEnvelope className="icons" />Messages</li>
             <Link to='/settings/' style={{ textDecoration: 'none' }}><li><MdSettings className="icons" />Settings</li>

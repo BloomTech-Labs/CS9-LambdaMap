@@ -6,6 +6,7 @@ import './HPsettings.css';
 import HPnav from '../../nav/company/HPnav';
 
 export default class HPsettings extends Component {
+  
   render() {
     return (
       <div className="settings-nav">
@@ -14,7 +15,7 @@ export default class HPsettings extends Component {
         <div className="signout">
           <button className="signoutbutton">Sign Out</button>
         </div>
-        <h1>Settings</h1>
+        <header>Settings</header>
           <div className="settings-container">
             <div className="info-update">
             <h2>Update Contact Information</h2>
