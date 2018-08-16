@@ -16,7 +16,6 @@ def create_user(request):
         request_body = json.loads(request.body.decode('ascii'))
         user = Users(
             username=request_body['username'],
-            student=str_to_bool(request_body['student']),
             email=request_body['email'],
             pwd=encrypt_password(request_body['password'])
         )
