@@ -53,22 +53,26 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-        align-content: flex-end;
-        align-items: flex-end; }
+        justify-content: center;
+        align-content: center;
+        align-items: center; }
         .main-settings .settings-container .info-update .update-contact h3 {
-          font-family: "Open Sans", sans-serif;
-          display: flex; }
+          font: 1em "Open Sans", sans-serif;
+          font-weight: bold; }
+        .main-settings .settings-container .info-update .update-contact .phone-input {
+          margin-bottom: 30px; }
         .main-settings .settings-container .info-update .update-contact input {
           border: none;
           outline: none;
           margin-left: 35px;
           background: none;
-          border-bottom: 2px solid #125172; }
+          border-bottom: 2px solid #125172;
+          width: 40%; }
     .main-settings .settings-container .opt-in {
       display: flex;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      margin-bottom: 30px; }
       .main-settings .settings-container .opt-in a {
         font-family: "Open Sans", sans-serif; }
       .main-settings .settings-container .opt-in .opt-email {
@@ -118,22 +122,26 @@
         border-radius: 50%; }
     .main-settings .settings-container .update-password .update-pswd {
       width: 70%;
-      margin-left: 70px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-content: flex-end;
-      align-items: flex-end; }
+      justify-content: center;
+      align-content: center;
+      align-items: center; }
     .main-settings .settings-container .update-password input {
       border: none;
       outline: none;
       margin-left: 35px;
       background: none;
-      border-bottom: 2px solid #125172; }
+      border-bottom: 2px solid #125172;
+      width: 40%; }
     .main-settings .settings-container .update-password h2 {
       font-family: "Roboto Condensed", sans-serif; }
     .main-settings .settings-container .update-password h3 {
-      font-family: "Open Sans", sans-serif; }
+      font: 1em "Open Sans", sans-serif;
+      font-weight: bold; }
+    .main-settings .settings-container .update-password .new-pswd {
+      margin-bottom: 30px; }
     .main-settings .settings-container .new-joblisting {
       width: 35%;
       background-color: rgba(255, 255, 255, 0.9);
@@ -175,7 +183,7 @@
         margin: 0 auto; }
         .main-settings .settings-container .new-joblisting .listing-input .remote-switch {
           display: flex;
-          margin-bottom: 10px; }
+          margin: 8px 0 22px 0; }
         .main-settings .settings-container .new-joblisting .listing-input .remote-pos {
           margin-left: 10px; }
         .main-settings .settings-container .new-joblisting .listing-input a {

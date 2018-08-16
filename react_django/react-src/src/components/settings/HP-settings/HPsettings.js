@@ -21,7 +21,7 @@ export default class HPsettings extends Component {
             <hr></hr>
               <div className="update-contact">
                 <h3>E-mail: <input></input></h3>
-                <h3>Phone: <input></input></h3>
+                <h3 className="phone-input">Phone: <input></input></h3>
                 </div>
                   <div className="opt-in">
 
@@ -43,7 +43,7 @@ export default class HPsettings extends Component {
                 <hr></hr>
                 <div className="update-pswd">
                 <h3>Old Password: <input></input></h3>
-                <h3>New Password: <input></input></h3>
+                <h3 className="new-pswd">New Password: <input></input></h3>
                 </div>
               </div>
               <button className="save-button">Save</button>
