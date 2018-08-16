@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import './App.css';
 import SignUp from './components/landing/signUp';
+import SignIn from './components/landing/signIn';
 require('dotenv').config();
 // import SignIn from './components/landing/signIn';
 
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/" component={JSprofile} />
           <Route path="/settings" component={HPsettings} />
           <Route path="/register" component={SignUp} />
+          <Route path="/login" component={SignIn}/>
       </div>
     );
   }

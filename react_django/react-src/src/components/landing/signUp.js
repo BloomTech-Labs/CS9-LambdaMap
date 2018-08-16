@@ -64,6 +64,7 @@ export default class signUp extends Component {
       password,
       acountType,
       error,
+      email,
       attempts,
       businessName,
       student,
@@ -71,85 +72,86 @@ export default class signUp extends Component {
       passwordMatched,
     } = this.state;
 
-   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,}$')
+  //  const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,}$')
     // TODO INCREASE MIN CHARS
-    this.setState({attempts: attempts + 1});
-    if(attempts > 3) {
-      this.setState({error: !attempts})
-      alert('You are locked out!')
-      return this.props.history.push('/lockedOut')
-    }
-    else if(password1 === password2 && password1.match(pwdRequirements) !== null) {
+    // this.setState({attempts: attempts + 1});
+    // if(attempts > 3) {
+    //   this.setState({error: !attempts})
+    //   alert('You are locked out!')
+    //   return this.props.history.push('/lockedOut/')
+    // }
+    // else// && password1.match(pwdRequirements) !== null
+     if(password1 === password2) {
         this.setState({passwordMatched: true, password: password1});
         if(student) {
           localStorage.setItem('AccountType', 'student');
-          const keyException = ['business', 'businessName', 'error', 'password1', 'password2']
-          const keyReplacer = (key, value) => {
-            keyException.forEach(exception => {
-              if(key === exception) return undefined;
-              else return key;
-            })
-            return key;
-          }
-          const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
+          // const keyException = ['business', 'businessName', 'error', 'password1', 'password2']
+          // const keyReplacer = (key, value) => {
+          //   keyException.forEach(exception => {
+          //     if(key === exception) return undefined;
+          //     else return key;
+          //   })
+          //   return key;
+          // }
+          // const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
           axios
-          .post('http://127.0.0.1:8000/api/register/', studentData)
+          .post('http://127.0.0.1:8000/api/register/', { username, password, email })
           .then(res => {
-            console.log(res.data);
+            console.log('from server', res.data);
             console.log('Account Successfully Created!');
-            return this.props.history.push('/login')
+            return this.props.history.push('/login/')
           })
           .catch(err => {
-            console.log(err.message);
+            console.log('from server', err.message);
             alert('Please try again!')
             this.setState(this.startingState)
-            this.props.history.push('/api/register/')
+            this.props.history.push('/register/')
           })
         }
       else {
         localStorage.setItem('AccountType', "business")
-        const keyException = [ 'student', 'error', 'password1', 'password2' ]
-        const keyReplacer = (key, value) => {
-          keyException.forEach(exception => {
-            if(key === exception) return undefined;
-            else return key;
-          })
-          return key;
-        }
-        const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
+        // const keyException = [ 'student', 'error', 'password1', 'password2' ]
+        // const keyReplacer = (key, value) => {
+        //   keyException.forEach(exception => {
+        //     if(key === exception) return undefined;
+        //     else return key;
+        //   })
+        //   return key;
+        // }
+        // const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
-        .post('http://127.0.0.1:8000/api/register/', businessData )
+        .post('http://127.0.0.1:8000/api/register/', {username, email, password} )
         .then(res => {
-          console.log(res.data);
+          console.log('from server', res.data);
           console.log('Account Successfully Created!');
           return this.props.history.push('/login/')
         })
         .catch(err => {
-          console.log(err.message);
+          console.log('from server', err.message);
           alert('Please try again!')
           this.setState(this.startingState)
           this.props.history.push('/register/')
         });
       }
     }
-    else {
-      if(password1 === password2 && password1.match(pwdRequirements) === null) {
-        alert(`You must enter a password that has the following requirements:
-        at least 16 characters
-        1 capital letter
-        1 symbol ie. (?=.*?[#?!@$%^&*-])
-        1 lowercase letter
-        `);
-        this.setState(this.startingState);
-        this.props.history.push('/api/register/');
-    }
+    // else {
+    //   if(password1 === password2 && password1.match(pwdRequirements) === null) {
+    //     alert(`You must enter a password that has the following requirements:
+    //     at least 16 characters
+    //     1 capital letter
+    //     1 symbol ie. (?=.*?[#?!@$%^&*-])
+    //     1 lowercase letter
+    //     `);
+    //     this.setState(this.startingState);
+    //     this.props.history.push('/register/');
+    //
   }
-}
   render() {
     console.log(this.state);
     console.log(this.state.student);
     console.log(this.state.business);
-    return (
+    console.log('from render', Error.message)
+    return(
       <div>
       <form onSubmit={this.handleSubmit}>
       <label>
@@ -188,6 +190,6 @@ export default class signUp extends Component {
           <button type="button" onClick={this.resetForm}>Cancel</button>
           </form>
           </div>
-    )
+      )
+    }
   }
-}

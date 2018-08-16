@@ -14,7 +14,6 @@ def create_user(request):
       try:
         # parse the request object and pull the json object
         request_body = json.loads(request.body.decode('ascii'))
-<<<<<<< HEAD
         if str_to_bool(request_body['student']):
             user = StudentProfile(
                 username=request_body['username'],
@@ -38,10 +37,9 @@ def create_user(request):
                 return JsonResponse({"error": "cannot create user"}, status=400)
             return JsonResponse(request_body, status=201)
 
-        user = UserProfile(
-=======
+        # user = UserProfile(
+
         user = Users(
->>>>>>> a2aee3e50aa4ee737c2c86c3ff760266b3d42e24
             username=request_body['username'],
             email=request_body['email'],
             password=encrypt_password(request_body['password'])
@@ -74,7 +72,6 @@ def log_in(request):
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
                             status=400)
 
-        
 
 def update_user(request):
     if request.META['REQUEST_METHOD'] == 'PUT':
