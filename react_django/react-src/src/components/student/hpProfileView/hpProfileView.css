@@ -1,4 +1,4 @@
-/* STUDENT SETTING CSS */
+/* Hiring Partner Profile View Student Perspective */
 .hp{
   background: url("./redmap.svg") no-repeat;
   background-size: 100% 100%;
@@ -129,7 +129,7 @@ margin-right: 50px;
   width: 40px;
 }
 
-/* job card CSS */
+/* Hiring Partner job card CSS */
 .hp-job-card-div{
   transform: scale(.85);
   display: flex;
