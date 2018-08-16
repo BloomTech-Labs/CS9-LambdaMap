@@ -17,7 +17,7 @@ def create_user(request):
         user = Users(
             username=request_body['username'],
             email=request_body['email'],
-            pwd=encrypt_password(request_body['password'])
+            password=encrypt_password(request_body['password'])
         )
         try:
           user.save()
@@ -38,7 +38,7 @@ def log_in(request):
         user = Users.objects.filter(username=request_body['username'])
         if(len(user) > 0):
           user = user[0]
-          return JsonResponse({"logged in": str(verify_password(request_body['password'], user.pwd))}, status=202)
+          return JsonResponse({"logged in": str(verify_password(request_body['password'], user.password))}, status=202)
         else:
           return JsonResponse({"Login failed": 0}, status=400)
       except KeyError as e:
@@ -56,12 +56,12 @@ def update_user(request):
         user = Users.objects.filter(username=request_body['username'])
         if(len(user) > 0):
           user = user[0]
-          user.pwd = encrypt_password(request_body['password'])
+          user.password = encrypt_password(request_body['password'])
           try:
             user.save()
           except IntegrityError as e:
             return JsonResponse({"Error":0},status=400)
-          return JsonResponse({"Password changed": str(verify_password(request_body['password'], user.pwd))}, status=202)
+          return JsonResponse({"Password changed": str(verify_password(request_body['password'], user.password))}, status=202)
         else:
           return JsonResponse({"Error": 0}, status=400)
       except KeyError as e:
