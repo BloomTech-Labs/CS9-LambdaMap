@@ -1,20 +1,8 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
-const keyReplacer = (key, value) => {
-  keyException.forEach(exeption => {
-    if(key === `${exception}`) return undefined;
-    else return key;
-  })
-  return key;
-}
 
-const valueReplacer = (key, value) => {
-  valueException.forEach(exception => {
-    if(value === `${exception}`) return undefined;
-    else return value;
-  })
-  return value;
-}
+
 
 export default class signUp extends Component {
   constructor() {
@@ -31,21 +19,29 @@ export default class signUp extends Component {
       student: false,
       business: false,
       businessName: '',
-      submitAttempts: 0,
       error: {
         login: false,
         password: false,
         email: false,
         attempts: false
-      }
+      },
+      submitAttempts: 0,
     }
-    this.startingState = JSON.parse(JSON.stringify(this.state, replacer));
+
+    this.startingState = {...this.state};
   }
 
   handleTextChange = event => {
-    this.setState({[target.event.name]: target.event.value})
+    this.setState({[event.target.name]: event.target.value});
   }
 
+  handleRadioSubmit = event => {
+    event.preventDefault();
+    this.setState({[event.target.name]: !event.target.value})
+  }
+  resetForm = event => {
+    this.setState(this.startingState)
+  }
   handleSubmit = event => {
     event.preventDefault();
     // SETTING UP VARIABLES
@@ -60,109 +56,124 @@ export default class signUp extends Component {
       error,
       attempts,
       businessName,
+      student,
+      business,
       passwordMatched,
     } = this.state;
-   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{16,}$')
 
+   const pwdRequirements = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{4,}$')
+    // TODO INCREASE MIN CHARS
     this.setState({attempts: attempts + 1});
     if(attempts > 3) {
       this.setState({error: !attempts})
-      return this.props.history.push('https://herokuapp.com/api/lockedOut')
+      return this.props.history.push('/lockedOut')
     }
-    else if(password1.test(password2) && password1.match(pwdRequirements) !== null) {
+    else if(password1 === password2 && password1.match(pwdRequirements) !== null) {
         this.setState({passwordMatched: true, pwd: password1});
-      
         if(student) {
-        //
-        localStorage.setItem('AccountType', "student")
-        const keyExeption = [business, businessName, error]
-        const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
-        axios
-        .post('https://lambda-map.herokuapp.com/register', studentData)
-        .then(res => {
-          console.log(res.data);
-          console.log('Account Successfully Created!');
-          return this.props.history.push('https://herokuapp.com/api/login')
-        })
-        .catch()
-      }
-      else if(business) {
-        
+          localStorage.setItem('AccountType', 'student');
+          const keyException = ['business', 'businessName', 'error', 'password1', 'password2']
+          const keyReplacer = (key, value) => {
+            keyException.forEach(exception => {
+              if(key === exception) return undefined;
+              else return key;
+            })
+            return key;
+          }
+          const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
+          axios
+          .post('/register', studentData)
+          .then(res => {
+            console.log(res.data);
+            console.log('Account Successfully Created!');
+            return this.props.history.push('/login')
+          })
+          .catch(err => {
+            console.log(err.message);
+            alert('Please try again!')
+            this.setState(this.startingState)
+            this.props.history.push('/register')
+          })
+        }
+      else {
         localStorage.setItem('AccountType', "business")
-        const keyExeption = [student, error]
+        const keyException = [ 'student', 'error', 'password1', 'password2' ]
+        const keyReplacer = (key, value) => {
+          keyException.forEach(exception => {
+            if(key === exception) return undefined;
+            else return key;
+          })
+          return key;
+        }
         const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
-        .post(`https://lambda-map.herokuapp.com/register/}`, businessData )
+        .post(`/register}`, businessData )
         .then(res => {
           console.log(res.data);
           console.log('Account Successfully Created!');
-          return this.props.history.push('https://herokuapp.com/api/login/business/')
+          return this.props.history.push('/login')
         })
         .catch(err => {
           this.setState(error.login = true)
-          this.props.history.push('https://lambda-map.herokuapp.com/register')
-        })
+          alert('Please try again!')
+          this.setState(this.startingState)
+          this.props.history.push('register')
+        });
       }
-      // TODO:
-      /*
-      add the user
-      */
-     axios
-     .post('https://herokuapp.com/api/users/${this}', 
-     { firstname,
-     lastname,
-     username,
-     pwd,
-   })
-  }
-    else if(password1.test(password2) && password1.match(pwdRequirements) === null) {
-        alert(`You must enter a password that has the following requirements: 
+    }
+    else {
+      if(password1 === password2 && password1.match(pwdRequirements) === null) {
+        alert(`You must enter a password that has the following requirements:
         at least 16 characters
         1 capital letter
         1 symbol ie. (?=.*?[#?!@$%^&*-])
         1 lowercase letter
-        ')
-        this.props.history
-`   }
-      }
-      if(s){
-        next()
-      }
-     
-      .then(res => 
-        this.props.history.push('/login')
-    )
-      .catch(err => console.log(error.message))
+        `);
+        this.setState(this.startingState);
+        this.props.history.push('/register');
     }
-    else {
-
-    }
-   
-    }
-    
-    
   }
-
- render() {
+}
+  render() {
     return (
+      <div>
+      <form onSubmit={this.handleSubmit}>
       <label>
       Account Type:
-      <input type="radio" name="accountType" value={this.state.accountType.student} onSubmit={this.handleSubmit}>Student</input>
-      <input type="radio" name="accountType" value={this.state.accountType.business} onSubmit={this.handleSubmit}>Business</input>
+      <input type="radio" name="student" value={this.state.student} onClick={this.handleRadioClick} />
+      Student
+      <input type="radio" name="business" value={this.state.business} onClick={this.handleRadioClick} />
+      Business
       </label>
-      <div>
-        <div className='signUp-container'>
-        <h1> Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
+      <h1> Sign Up</h1>
         <label>
             First Name:
-            <input type="text" name="firstname" placeholder="Enter your first name"/>
+            <input type="text" name="firstname" onChange={this.handleTextChange}placeholder="Enter your first name" value={this.state.firstname}/>
           </label>
           <label>
             Last Name:
-            <input type="text" name="lastname" placeholder="Enter your last name"/>
+            <input type="text" name="lastname" placeholder="Enter your last name" onChange={this.handleTextChange} value={this.state.lastname}/>
           </label>
-    }
+          <label>
+            Username:
+            <input type="text" name="username" placeholder="Enter your username" onChange={this.handleTextChange} value={this.state.username}/>
+          </label>
+          <label>
+            Password:
+            <input type="password" name="password1" placeholder="Enter your password" onChange={this.handleTextChange} value={this.state.password1}/>
+          </label>
+          <label>
+            Confirm Password:
+            <input type="password" name="password2" placeholder="Enter your password again" onChange={this.handleTextChange} value={this.state.password2}/>
+          </label>
+          <label>
+            Email:
+            <input type="email" name="email" placeholder="Enter your email address" onChange={this.handleTextChange} value={this.state.email}/>
+          </label>
+          <button type="submit">Submit</button> 
+          <button type="button" onClick={this.resetForm}>Cancel</button>
+          </form>
+          </div>
+    )
   }
-          {/*
-          conditional render if either one is selected hereimport React, { Component } from 'react'
+}
