@@ -1,3 +1,5 @@
+// Hiring Partner's setting page styling
+
 @import 'imports';
 
 .main-settings {
@@ -5,6 +7,13 @@
   height: 100vh;
   background: url('./redmap.svg') no-repeat;
   background-size: cover;
+
+  header {
+    display: flex;
+    justify-content: center;
+    font: 2em $lambdafont;
+    margin-top: 20px;
+  }
 
 
   .signout {
