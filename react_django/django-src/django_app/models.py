@@ -5,8 +5,6 @@ class Users(models.Model):
     username = models.CharField(max_length=50, default='', unique=True)
     email = models.EmailField(unique=True)
     pwd = models.CharField(max_length=50, default='')
-    firstName = models.CharField(max_length=50, default='', unique=False)
-    lastName = models.CharField(max_length=50, default='', unique=False)
     city = models.CharField(max_length=50, default='', unique=False)
     state = models.CharField(max_length=50, default='', unique=False)
 
@@ -18,6 +16,8 @@ class Users(models.Model):
 
 class Students(models.Model):
     userID = models.ForeignKey(Users,on_delete=models.CASCADE)
+    firstName = models.CharField(max_length=50, default='', unique=False)
+    lastName = models.CharField(max_length=50, default='', unique=False)
     linkedIn = models.CharField(max_length=50, default='', unique=True)
     twitter = models.CharField(max_length=50, default='', unique=True)
     github = models.CharField(max_length=50, default='', unique=True)
@@ -26,7 +26,7 @@ class Students(models.Model):
 
 class Employers(models.Model):
     userID = models.ForeignKey(Users,on_delete=models.CASCADE)
-    companyName = models.CharField(max_length=50, default='', unique=True)
+    employerName = models.CharField(max_length=50, default='', unique=True)
     currentlySubscribed = models.BooleanField(default=False)
 
 class Student_Phones(models.Model):
