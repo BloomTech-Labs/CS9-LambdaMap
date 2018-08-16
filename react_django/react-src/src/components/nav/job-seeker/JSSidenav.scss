@@ -13,7 +13,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 ); /* IE6-9 */
 }
 
-.companyNav-container {
+.jobseekerNav-container {
   display: flex;
   flex-direction: row;
   width: 20%;
@@ -113,10 +113,10 @@
   }
 }
 
-.companyNav-container:hover {
+.jobseekerNav-container:hover {
   transform: none;
 }
 
-.companyNav-container:hover .arrow {
+.jobseekerNav-container:hover .arrow {
   transform: rotate(180deg);
 }
