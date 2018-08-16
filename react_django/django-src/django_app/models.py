@@ -54,6 +54,6 @@ class Messages(models.Model):
 class Job_Listings(models.Model):
     employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
     positionTitle = models.CharField(max_length=400,unique=False)
-    post_time = models.CharField(max_length=400,unique=False)
+    postTime = models.CharField(max_length=400,unique=False)
     remote = models.BooleanField(default=False)
 
