@@ -35,12 +35,22 @@ export default class signUp extends Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
-  handleRadioSubmit = event => {
+  handleRadioClick = event => {
     event.preventDefault();
-    this.setState({[event.target.name]: !event.target.value})
+
+    if(event.target.name === "student")
+      this.setState({student:true, business: false});
+    else {
+      this.setState({business: true, student: false})
+    }
   }
+
   resetForm = event => {
     this.setState(this.startingState)
+  }
+  
+  componentDidMount() {
+    console.log(this.state);
   }
   handleSubmit = event => {
     event.preventDefault();
@@ -51,7 +61,7 @@ export default class signUp extends Component {
       username,
       password1,
       password2,
-      pwd,
+      password,
       acountType,
       error,
       attempts,
@@ -66,10 +76,11 @@ export default class signUp extends Component {
     this.setState({attempts: attempts + 1});
     if(attempts > 3) {
       this.setState({error: !attempts})
+      alert('You are locked out!')
       return this.props.history.push('/lockedOut')
     }
     else if(password1 === password2 && password1.match(pwdRequirements) !== null) {
-        this.setState({passwordMatched: true, pwd: password1});
+        this.setState({passwordMatched: true, password: password1});
         if(student) {
           localStorage.setItem('AccountType', 'student');
           const keyException = ['business', 'businessName', 'error', 'password1', 'password2']
@@ -82,7 +93,7 @@ export default class signUp extends Component {
           }
           const studentData = JSON.parse(JSON.stringify(this.state, keyReplacer))
           axios
-          .post('/register', studentData)
+          .post('http://127.0.0.1:8000/api/register/', studentData)
           .then(res => {
             console.log(res.data);
             console.log('Account Successfully Created!');
@@ -92,7 +103,7 @@ export default class signUp extends Component {
             console.log(err.message);
             alert('Please try again!')
             this.setState(this.startingState)
-            this.props.history.push('/register')
+            this.props.history.push('/api/register/')
           })
         }
       else {
@@ -107,17 +118,17 @@ export default class signUp extends Component {
         }
         const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
-        .post(`/register}`, businessData )
+        .post('http://127.0.0.1:8000/api/register/', businessData )
         .then(res => {
           console.log(res.data);
           console.log('Account Successfully Created!');
-          return this.props.history.push('/login')
+          return this.props.history.push('/login/')
         })
         .catch(err => {
-          this.setState(error.login = true)
+          console.log(err.message);
           alert('Please try again!')
           this.setState(this.startingState)
-          this.props.history.push('register')
+          this.props.history.push('/register/')
         });
       }
     }
@@ -130,19 +141,22 @@ export default class signUp extends Component {
         1 lowercase letter
         `);
         this.setState(this.startingState);
-        this.props.history.push('/register');
+        this.props.history.push('/api/register/');
     }
   }
 }
   render() {
+    console.log(this.state);
+    console.log(this.state.student);
+    console.log(this.state.business);
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
       <label>
       Account Type:
-      <input type="radio" name="student" value={this.state.student} onClick={this.handleRadioClick} />
+      <input type="radio" name="student" onClick={this.handleRadioClick} checked={this.state.student === true}/>
       Student
-      <input type="radio" name="business" value={this.state.business} onClick={this.handleRadioClick} />
+      <input type="radio" name="business" onClick={this.handleRadioClick} checked={this.state.business === true}/>
       Business
       </label>
       <h1> Sign Up</h1>

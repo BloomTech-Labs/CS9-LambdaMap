@@ -1,6 +1,7 @@
 // Hiring Partner View of individual job seeker profile
 
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './JSprofile.css';
 import defaultuser from "./defaultuser.svg";
 import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
@@ -11,6 +12,7 @@ export default class JSprofile extends Component {
     return (
       <div className="main">
       <HPnav />
+      <Link to='/register'> Sign Up!</Link>
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>

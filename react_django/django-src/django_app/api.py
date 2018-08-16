@@ -27,7 +27,7 @@ def create_user(request):
             return JsonResponse(request_body, status=201)
         else:
             user = HirePartner(
-                company_name=request_body['username'],
+                company_name=request_body['businessName'],
                 email=request_body['email'],
                 pwd=encrypt_password(request_body['password'])
             )
