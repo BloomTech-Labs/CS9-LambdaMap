@@ -4,7 +4,7 @@ from django.db import models
 class Users(models.Model):
     username = models.CharField(max_length=50, default='', unique=True)
     email = models.EmailField(unique=True)
-    pwd = models.CharField(max_length=50, default='')
+    password = models.CharField(max_length=50, default='')
     city = models.CharField(max_length=50, default='', unique=False)
     state = models.CharField(max_length=50, default='', unique=False)
 
