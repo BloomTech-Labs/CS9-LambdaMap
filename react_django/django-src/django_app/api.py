@@ -72,10 +72,6 @@ def update_user(request):
                               status=400)
 
 
-
-
-
-
 def delete_user(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
       try:
