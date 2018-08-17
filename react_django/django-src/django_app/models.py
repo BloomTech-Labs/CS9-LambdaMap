@@ -22,7 +22,11 @@ class Users(models.Model):
         return self.username
 
 class Students(models.Model):
-    userID = models.ForeignKey(Users,on_delete=models.CASCADE)
+    username = models.CharField(max_length=50, default='', unique=True)
+    email = models.EmailField(unique=True, default=None)
+    password = models.CharField(max_length=50, default='')
+    city = models.CharField(max_length=50, default='', unique=False)
+    state = models.CharField(max_length=50, default='', unique=False)
     firstName = models.CharField(max_length=50, default='', unique=False)
     lastName = models.CharField(max_length=50, default='', unique=False)
     linkedIn = models.CharField(max_length=50, default='', unique=True)
@@ -32,7 +36,11 @@ class Students(models.Model):
     remote = models.BooleanField(default=False)
 
 class Employers(models.Model):
-    userID = models.ForeignKey(Users,on_delete=models.CASCADE)
+    username = models.CharField(max_length=50, default='', unique=True)
+    email = models.EmailField(unique=True, default=None)
+    password = models.CharField(max_length=50, default='')
+    city = models.CharField(max_length=50, default='', unique=False)
+    state = models.CharField(max_length=50, default='', unique=False)
     employerName = models.CharField(max_length=50, default='', unique=True)
     currentlySubscribed = models.BooleanField(default=False)
 
