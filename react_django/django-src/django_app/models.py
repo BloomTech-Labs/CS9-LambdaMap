@@ -7,6 +7,13 @@ class Users(models.Model):
     password = models.CharField(max_length=50, default='')
     city = models.CharField(max_length=50, default='', unique=False)
     state = models.CharField(max_length=50, default='', unique=False)
+    def as_dict(self):
+      return {
+        "id":self.id,
+        "username":self.username,
+        "email":self.email,
+        "password":self.password
+      }
 
     def __repr__(self):
         return self.username
