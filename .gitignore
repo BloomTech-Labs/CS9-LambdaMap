@@ -6,3 +6,5 @@ node_modules
 react_django/django-src/django_app/__pycache__/
 
 react_django/django-src/django-src/__pycache__/
+
+react_django/django-src/django_app/migrations/__pycache__/
