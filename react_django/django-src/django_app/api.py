@@ -38,7 +38,7 @@ def get_users(request):
         except Users.DoesNotExist:
           return JsonResponse({"Error":"No users"})
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
+      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"},
                             status=400)
 
 def log_in(request):
