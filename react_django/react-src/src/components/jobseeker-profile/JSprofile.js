@@ -5,12 +5,14 @@ import './JSprofile.css';
 import defaultuser from "./defaultuser.svg";
 import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
 import HPnav from '../nav/company/HPnav';
-
+import Register from '../landing/Register';
+import { Link } from 'react-router-dom';
 export default class JSprofile extends Component {
   render() {
     return (
       <div className="main">
       <HPnav />
+      <Link to="Register"> Register </Link>
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>
