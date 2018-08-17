@@ -3,6 +3,9 @@
 .env
 /node_modules
 node_modules
+Pipfile
+Pipfile.lock
+.vscode
 react_django/django-src/django_app/__pycache__/
 
 react_django/django-src/django-src/__pycache__/
