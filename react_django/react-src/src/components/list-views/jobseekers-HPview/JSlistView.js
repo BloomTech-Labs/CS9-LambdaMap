@@ -11,9 +11,11 @@ export default class JSlistView extends Component {
 
   render() {
     return (
-      <div className="main">
+      <div className="main-JSlist">
         <HPnav />
         <div className="signout">
+        <div className="backgroundskew"></div>
+        <div className="backgroundskew2"></div>
           <button className="signoutbutton">Sign Out</button>
         </div>
         <div className="jslist-container">
@@ -26,30 +28,51 @@ export default class JSlistView extends Component {
                 <label className="switch">
                   <input type="checkbox"></input>
                   <span className="slider round"></span>
-                </label><h4>Web Developer</h4>
+                </label><h4>Software Engineer</h4>
               
                 <label className="switch">
                   <input type="checkbox"></input>
                   <span className="slider round"></span>
-                </label><h4>UX Developer</h4>
+                </label><h4>Full Stack Developer</h4>
+              
+                <label className="switch">
+                  <input type="checkbox"></input>
+                  <span className="slider round"></span>
+                </label><h4>Front-end Developer</h4>
+              
+                <label className="switch">
+                  <input type="checkbox"></input>
+                  <span className="slider round"></span>
+                </label><h4>Back-end Developer</h4>
+
+                <label className="switch">
+                  <input type="checkbox"></input>
+                  <span className="slider round"></span>
+                </label><h4>UI/UX Developer</h4>
               
                 <label className="switch">
                   <input type="checkbox"></input>
                   <span className="slider round"></span>
                 </label><h4>iOS Developer</h4>
               
+                <label className="switch">
+                  <input type="checkbox"></input>
+                  <span className="slider round"></span>
+                </label><h4>Android Developer</h4>
+              
               </div>
             </div>
           </div>
           <hr className="cards-hr"></hr>
           <div className="jobseekercards-container">
+          <div className="cards-main">
             <div className="jobseeker-cards">
             <Link to={'/'} className="profile-link">
               <div className="card-header">
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -75,7 +98,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -100,7 +123,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -125,7 +148,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -150,7 +173,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -175,7 +198,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -200,7 +223,7 @@ export default class JSlistView extends Component {
               <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
               <div className="jscard-name">
               <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, Ca</h5>
+              <h5>Anaheim Hills, CA</h5>
               </div>
               <FaStar className="card-favIcon"/>
               </div>
@@ -218,6 +241,7 @@ export default class JSlistView extends Component {
                 <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
               </div>
             </Link>
+            </div>
             </div>
           </div>
         </div>
