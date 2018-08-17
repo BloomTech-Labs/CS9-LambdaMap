@@ -120,14 +120,14 @@ export default class Register extends Component {
         // }
         // const businessData = JSON.parse(JSON.stringify(this.state, keyReplacer))
         axios
-        .post('http://127.0.0.1:8000/api/register/', {username, email, password, business} )
+        .post('http://127.0.0.1:8000/api/register/', { username, email, password, business } )
         .then(res => {
           console.log('from server', res.data);
           console.log('Account Successfully Created!');
           return this.props.history.push('/login/')
         })
         .catch(err => {
-          console.log('from server', err.message);
+          console.log(err.message)
           alert('Please try again!')
           this.setState(this.startingState)
           this.props.history.push('/register/')

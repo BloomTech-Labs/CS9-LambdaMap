@@ -150,13 +150,13 @@ export default class Login extends Component {
 
  axios
 
- .post('https://lambda-map.herokuapp.com/login', { username, password })
+ .post(`http://127.0.0.1:8000/api/user/${localStorage.getItem('User','_id')}`, { username, password })
 
  .then(res => {
 
  console.log('User Successfully Logged In!')
 
- this.props.history.push('/')
+ this.props.history.push('/profile')
 
  })
 

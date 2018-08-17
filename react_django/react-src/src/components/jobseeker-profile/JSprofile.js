@@ -12,7 +12,7 @@ export default class JSprofile extends Component {
     return (
       <div className="main">
       <HPnav />
-      <Link to={Register}> Register </Link>
+      <Link to="Register"> Register </Link>
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>
