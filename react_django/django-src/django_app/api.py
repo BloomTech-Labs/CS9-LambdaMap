@@ -29,7 +29,17 @@ def create_user(request):
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
                             status=400)
-
+def get_users(request):
+    if request.META['REQUEST_METHOD'] == 'GET':
+        try:
+          print(Users.objects.all())
+          users = [obj.as_dict() for obj in Users.objects.all()]
+          return JsonResponse({"Users":users})
+        except Users.DoesNotExist:
+          return JsonResponse({"Error":"No users"})
+    else:
+      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"},
+                            status=400)
 
 def log_in(request):
     if request.META['REQUEST_METHOD'] == 'POST':
