@@ -38,6 +38,7 @@ export default class FeaturedCompaniesPage extends Component {
 
   componentWillMount() {
     axios.get(`http://127.0.0.1:8000/companies/featuredcompany/:id'`, {
+      // `${this.props.match.params.id}`
       businessname,
       picture,
       bio,
@@ -98,6 +99,7 @@ export default class FeaturedCompaniesPage extends Component {
       </div>
     <div className="featured_perks--container">
         <h1 className="featured--header"> Perks!</h1>
+
         <h2 className="featured--subheader">Philosophy</h2>
         <p></p>
         <h2 className="featured--subheader">Stats</h2>
@@ -108,8 +110,8 @@ export default class FeaturedCompaniesPage extends Component {
     <h1 className="featured--header">Hot Gigs!</h1>
     <div className="featured_company--openings_container">
         {this.state.featuredOpenings.map(item => {
-          <div className="featured_company--openings">
-            <a src={this.props.history.push(`/jobs/${this.state.jobPostings.id}`)}>
+          <div className="featured_company--openings" key={item._id}>
+            <a src={this.props.history.push(`/company/jobs/${this.state.jobPostings.id}`)}>
           <h2>{item.role}</h2>
           <h3>{item.location}</h3>
           <h3>{item.description}</h3>
@@ -129,3 +131,4 @@ export default class FeaturedCompaniesPage extends Component {
       //   description: '',
       //   datePosted: ''
       // }
+
