@@ -19,7 +19,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "cd react_django/react-src && npm run build",
-    "postbuild": "rm -rf ../django-src/build && mv build ../django-src/"
+    "postbuild": ""
   },
   "engines": {
     "node": "9.8.0",
