@@ -5,23 +5,6 @@
 //  const initialState = {
 //    users: [],
 //    user: {},
-//    firstName: '',
-//    lastName: '',
-//    state: '',
-//    city: '',
-//    bio: '',
-//    email: '',
-//    number: '',
-//    remote: false,
-//    relocate: false,
-//    linkedin: '',
-//    github: '',
-//    twitter: '',
-//    codepen: '',
-//    employerName: '',
-//    fetchingUsers: false,
-//    fetchUser: false,
-//    error: null
 //  }
 
 // export const rootReducer = (state = initialState, action) => {
