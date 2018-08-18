@@ -2,3 +2,6 @@
 yarn.lock
 Pipfile
 node_modules/
+.env
+Pipfile.lock
+.vscode
