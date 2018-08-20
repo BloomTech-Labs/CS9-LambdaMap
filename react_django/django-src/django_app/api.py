@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from .models import Users 
 from .security import encrypt_password, verify_password
 from django.db import IntegrityError
+from django.core import serializers
 import json
 
 def str_to_bool(str):
@@ -92,4 +93,10 @@ def delete_user(request):
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
                               status=400)
 
+# get_users for students
+def get_users(request):
+
+   if request.META['REQUEST_METHOD'] == 'GET':
+    filtered_users = Users.objects.filter(student=True)
+    return JsonResponse({"users": json.loads(serializers.serialize('json', list(filtered_users)))}, status=200)
 

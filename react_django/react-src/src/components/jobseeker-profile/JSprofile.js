@@ -21,18 +21,14 @@ class JSprofile extends Component {
     this.props.getUsers();
   }
 
-
-
   render() {
     console.log(this.users)
     return (
       <div className="main">
-
-      {this.props.users.map(user => 
+      {/* {this.props.users.map(user => 
           <div key={user.fields.id}>{user.fields.first_name}{user.fields.last_name}</div>)
-      }
-   
-       {/* <HPnav />
+      } */}
+       <HPnav />
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>
@@ -72,7 +68,7 @@ class JSprofile extends Component {
 				<a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="smIcons"/></a>
 				<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="smIcons"/></a>
 				<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="smIcons"/></a>
-      </div>  */}
+      </div> 
       </div>
     )
   }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { FaEnvelope, FaCheck, FaLink, FaStar } from 'react-icons/fa'
 import './hpProfileView.css';
-import JobSeekerNav from '../nav/job-seeker/JobSeekerNav';
+import JSNav from '../nav/job-seeker/JSNav';
 
 export default class HpProfileView  extends Component{
     render() {
         return(
             <div>
-            <JobSeekerNav />
+            <JSNav />
             <div className="hp">
             <div className="hp-div">
             <div className="hp-info">
