@@ -4,10 +4,8 @@ from .security import encrypt_password, verify_password
 from django.db import IntegrityError
 import json
 
-
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
-
 
 def create_user(request):
     if request.META['REQUEST_METHOD'] == 'POST':
@@ -57,8 +55,6 @@ def log_in(request):
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
                             status=400)
 
-        
-
 def update_user(request):
     if request.META['REQUEST_METHOD'] == 'PUT':
       request_body = json.loads(request.body.decode('ascii'))
@@ -79,11 +75,6 @@ def update_user(request):
     else:
       return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"},
                               status=400)
-
-
-
-
-
 
 def delete_user(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':

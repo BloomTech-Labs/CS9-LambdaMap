@@ -21,11 +21,11 @@ export default class HPnav extends Component {
               <hr className="hrLambda"></hr>
             <li><FaHome className="icons" />Home</li>
             <li><FaMap className="icons" />Map</li>
-            <Link to='/jobseekers/' style={{ textDecoration: 'none' }}><li><FaMapMarker className="icons" />Job Seekers</li>
+            <Link to='/jobseekers/' className="nav-links" style={{ textDecoration: 'none' }}><li><FaMapMarker className="icons" />Job Seekers</li>
             </Link>
             <li><FaStar className="icons" />Favorites</li>
             <li><FaEnvelope className="icons" />Messages</li>
-            <Link to='/settings/' style={{ textDecoration: 'none' }}><li><MdSettings className="icons" />Settings</li>
+            <Link to='/settings/' className="nav-links" style={{ textDecoration: 'none' }}><li><MdSettings className="icons" />Settings</li>
             </Link>
             <li><MdAttachMoney className="icons" />Billing</li>
             <footer>

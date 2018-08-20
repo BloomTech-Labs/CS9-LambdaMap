@@ -1,48 +1,42 @@
 from django.db import models
 
+class State(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20, default='')
+
+class City(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20, default='')
+    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
 
 class Users(models.Model):
-    username = models.CharField(max_length=50, default='', unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=50, default='')
-    city = models.CharField(max_length=50, default='', unique=False)
-    state = models.CharField(max_length=50, default='', unique=False)
-    def as_dict(self):
-      return {
-        "id":self.id,
-        "username":self.username,
-        "email":self.email,
-        "password":self.password
-      }
+    # fields for both student and hiring partner
+    id = models.AutoField(primary_key=True)
+    email = models.EmailField()
+    password = models.CharField(max_length=20, default='')
+    student = models.BooleanField(default=True)
+    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
+    bio = models.TextField(null=True, blank=True)
+    personal_website = models.URLField(blank=True, null=True)
+    # student fields
+    first_name = models.CharField(max_length=20, default='')
+    last_name = models.CharField(max_length=20, default='')
+    remote = models.BooleanField(default=False)
+    relocate = models.BooleanField(default=False)
+    linkedin = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    codepen = models.URLField(blank=True, null=True)
+    portfolio_picture = models.URLField(blank=True, null=True)
+    # hire partner fields
+    company_name = models.CharField(max_length=50, blank=True, null=True)
+    phone_number = models.CharField(max_length=10, null=True, blank=True)
 
     def __repr__(self):
-        return self.username
+        return self.first_name
 
-    def __str__(self):
-        return self.username
-
-class Students(models.Model):
-    userID = models.ForeignKey(Users,on_delete=models.CASCADE)
-    firstName = models.CharField(max_length=50, default='', unique=False)
-    lastName = models.CharField(max_length=50, default='', unique=False)
-    linkedIn = models.CharField(max_length=50, default='', unique=True)
-    twitter = models.CharField(max_length=50, default='', unique=True)
-    github = models.CharField(max_length=50, default='', unique=True)
-    relocate = models.BooleanField(default=False)
-    remote = models.BooleanField(default=False)
-
-class Employers(models.Model):
-    userID = models.ForeignKey(Users,on_delete=models.CASCADE)
-    employerName = models.CharField(max_length=50, default='', unique=True)
-    currentlySubscribed = models.BooleanField(default=False)
-
-class Student_Phones(models.Model):
-    studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
-    number = models.CharField(max_length=20,unique=True)
-
-class Employer_Phones(models.Model):
-    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
-    number = models.CharField(max_length=20,unique=True)
+# Below are the fields from the original schema that we can still use
 
 class Student_Favorites(models.Model):
     studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
@@ -59,8 +53,8 @@ class Messages(models.Model):
     postTime = models.CharField(max_length=400,unique=False)
 
 class Job_Listings(models.Model):
-    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
+    employerID = models.ForeignKey(Users,on_delete=models.CASCADE)
     positionTitle = models.CharField(max_length=400,unique=False)
+    description = models.TextField(null=True, blank=True)
     postTime = models.CharField(max_length=400,unique=False)
     remote = models.BooleanField(default=False)
-

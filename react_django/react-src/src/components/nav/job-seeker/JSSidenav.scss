@@ -1,3 +1,5 @@
+// Job seekers' side nav styling
+
 @import 'imports';
 
 @mixin transform($property) {
@@ -13,7 +15,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 ); /* IE6-9 */
 }
 
-.jobseekerNav-container {
+.companyNav-container {
   display: flex;
   flex-direction: row;
   width: 20%;
@@ -113,10 +115,10 @@
   }
 }
 
-.jobseekerNav-container:hover {
+.companyNav-container:hover {
   transform: none;
 }
 
-.jobseekerNav-container:hover .arrow {
+.companyNav-container:hover .arrow {
   transform: rotate(180deg);
 }

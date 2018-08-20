@@ -109,12 +109,12 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        // margin: 5px 0px;
+        margin: 8px 0px;
 
         h4 {
           margin: 0;
           font: .8em $HPtext;
-          // font-weight: bold;
+          font-weight: bold;
           z-index: 5;
         }
       
@@ -126,7 +126,7 @@
         height: 15px;
         margin-right: 5px;
         margin-left: 10px;
-        border: 1px solid $specialblue;
+        border: 1px solid #125072a4;
         border-radius: 34px;
       }
         
@@ -152,7 +152,7 @@
         height: 10px;
         width: 10px;
         left: 4px;
-        bottom: 2.5px;
+        bottom: 2.6px;
         background-color: white;
         -webkit-transition: .4s;
         transition: .4s;
@@ -267,7 +267,7 @@
         width: 28.5%;
         display: flex;
         font-family: $HPtext;
-        border: .5px solid rgba(128, 128, 128, 0.466);
+        // border: .5px solid rgba(128, 128, 128, 0.466);
         background-color: rgba(255, 255, 255, .9);
         box-shadow: 3px 3px 3px 1px rgba(128, 128, 128, 0.616);
         border-radius: 10px;

@@ -1,4 +1,4 @@
-.jobseekerNav-container {
+.companyNav-container {
   display: flex;
   flex-direction: row;
   width: 20%;
@@ -9,48 +9,48 @@
   transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1);
   z-index: 10;
   background-color: white; }
-  .jobseekerNav-container .lambdamap {
+  .companyNav-container .lambdamap {
     padding: 6%; }
-  .jobseekerNav-container .lambda {
+  .companyNav-container .lambda {
     font: 24px "Roboto Condensed", sans-serif;
     font-weight: bolder; }
-  .jobseekerNav-container .logo {
+  .companyNav-container .logo {
     width: 90%; }
-  .jobseekerNav-container .lambda-logo {
+  .companyNav-container .lambda-logo {
     width: 6%; }
-  .jobseekerNav-container .quote {
+  .companyNav-container .quote {
     margin: 5px 0px;
     font: 15px "Roboto Condensed", sans-serif;
     color: #919191; }
-  .jobseekerNav-container li {
+  .companyNav-container li {
     display: flex;
     align-items: center;
     margin-left: 50px;
     font: 1.4em "Roboto Condensed", sans-serif;
     padding: 6% 0%; }
-    .jobseekerNav-container li .icons {
+    .companyNav-container li .icons {
       margin-right: 10px;
       color: #125172; }
-  .jobseekerNav-container .secondary-container {
+  .companyNav-container .secondary-container {
     width: 90%; }
-  .jobseekerNav-container hr {
+  .companyNav-container hr {
     width: 80%; }
-  .jobseekerNav-container .arrow {
+  .companyNav-container .arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 10%;
     transition: all 1s;
     font-size: 2em; }
-  .jobseekerNav-container .footer {
+  .companyNav-container .footer {
     display: flex;
     justify-content: center;
     color: white;
     font-size: 1.2vh;
     margin-top: 50px; }
-  .jobseekerNav-container .footerIcon {
+  .companyNav-container .footerIcon {
     margin-right: 2px; }
-  .jobseekerNav-container .skew {
+  .companyNav-container .skew {
     display: flex;
     position: absolute;
     top: -10%;
@@ -68,7 +68,7 @@
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80A0011E', endColorstr='#80A0011E',GradientType=0 );
     /* IE6-9 */ }
-  .jobseekerNav-container .skew2 {
+  .companyNav-container .skew2 {
     display: flex;
     position: absolute;
     top: 90%;
@@ -87,10 +87,10 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80A0011E', endColorstr='#80A0011E',GradientType=0 );
     /* IE6-9 */ }
 
-.jobseekerNav-container:hover {
+.companyNav-container:hover {
   transform: none; }
 
-.jobseekerNav-container:hover .arrow {
+.companyNav-container:hover .arrow {
   transform: rotate(180deg); }
 
 /*# sourceMappingURL=Sidenav.css.map */
