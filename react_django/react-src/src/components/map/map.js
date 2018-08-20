@@ -1,7 +1,7 @@
 /*global google*/
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-
+import HPnav from '../nav/company/HPnav';
 export class MapView extends Component {
     state = {
       showingInfoWindow: false,
@@ -27,6 +27,8 @@ export class MapView extends Component {
 
     render() {
       return (
+        <div>
+          <HPnav />
         <Map google={this.props.google}
             //MAP INITIAL VIEW SETTINGS
             initialCenter={{
@@ -83,6 +85,7 @@ export class MapView extends Component {
               </div>
           </InfoWindow>
         </Map>
+        </div>
       )
     }
   }

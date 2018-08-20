@@ -6,6 +6,7 @@ import JSprofile from './components/jobseeker-profile/JSprofile'
 import JSlistView from './components/list-views/jobseekers-HPview/JSlistView';
 import HpProfileView from './components/hpProfileView/hpProfileView';
 import StudentSettings from './components/settings/studentSettings/studentSettings';
+import MapView from './components/map/map';
 // Currently only routing through the Hiring Partners view
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route path="/jobseekers" component={JSlistView} />
           <Route path="/settings" component={HPsettings} />
           <Route path="/hpprofile"  component={HpProfileView} />
+          <Route path='/map' component={MapView} />
           <Route path="/studentsettings" component={StudentSettings} />
       </div>
     );
