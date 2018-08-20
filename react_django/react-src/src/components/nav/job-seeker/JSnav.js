@@ -1,12 +1,13 @@
+// Job Seekers' side nav
 import React, { Component } from 'react';
 import './JSnav.css';
 import maplogored from './maplogored.svg';
 import lambdalogo from './lambdalogo.png';
 import { FaHome, FaCopyright, FaAngleRight, FaMap, FaBriefcase, FaStar, FaEnvelope } from 'react-icons/fa';
 import { MdSettings, MdAttachMoney } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-export default class JobSeekerNav extends Component {
+export default class JSNav extends Component {
   render() {
     return (
         <div className="jobseekerNav-container">
@@ -22,8 +23,7 @@ export default class JobSeekerNav extends Component {
             <li><FaBriefcase className="icons" />Jobs</li>
             <li><FaStar className="icons" />Favorites</li>
             <li><FaEnvelope className="icons" />Messages</li>
-            <Link to='/' style={{ textDecoration: 'none' }}><li><MdSettings className="icons" />Settings</li>
-            </Link>
+            <li><MdSettings className="icons" />Settings</li>
             <li><MdAttachMoney className="icons" />Billing</li>
             <footer>
                 <h5 className="footer"><FaCopyright className="footerIcon"/>DreamTeam</h5>

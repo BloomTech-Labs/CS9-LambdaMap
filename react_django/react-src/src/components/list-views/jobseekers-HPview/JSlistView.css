@@ -76,10 +76,12 @@
         opacity: 1;
         display: flex;
         align-items: center;
-        justify-content: space-around; }
+        justify-content: space-around;
+        margin: 8px 0px; }
         .main-JSlist .jslist-container .filter-main .filter-options h4 {
           margin: 0;
           font: 0.8em "Open Sans", sans-serif;
+          font-weight: bold;
           z-index: 5; }
         .main-JSlist .jslist-container .filter-main .filter-options .switch {
           position: relative;
@@ -88,7 +90,7 @@
           height: 15px;
           margin-right: 5px;
           margin-left: 10px;
-          border: 1px solid #125172;
+          border: 1px solid #125072a4;
           border-radius: 34px; }
         .main-JSlist .jslist-container .filter-main .filter-options .switch input {
           display: none; }
@@ -108,7 +110,7 @@
           height: 10px;
           width: 10px;
           left: 4px;
-          bottom: 2.5px;
+          bottom: 2.6px;
           background-color: white;
           -webkit-transition: .4s;
           transition: .4s; }
@@ -187,7 +189,6 @@
           width: 28.5%;
           display: flex;
           font-family: "Open Sans", sans-serif;
-          border: 0.5px solid rgba(128, 128, 128, 0.466);
           background-color: rgba(255, 255, 255, 0.9);
           box-shadow: 3px 3px 3px 1px rgba(128, 128, 128, 0.616);
           border-radius: 10px;

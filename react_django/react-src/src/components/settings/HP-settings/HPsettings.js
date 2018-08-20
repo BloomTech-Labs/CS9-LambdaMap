@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import './HPsettings.css';
-// import {  } from 'react-icons/fa';
 import HPnav from '../../nav/company/HPnav';
 
 export default class HPsettings extends Component {
