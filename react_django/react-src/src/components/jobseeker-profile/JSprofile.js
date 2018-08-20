@@ -2,15 +2,33 @@
 
 import React, { Component } from 'react';
 import './JSprofile.css';
-import defaultuser from "./defaultuser.svg";
-import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
-import HPnav from '../nav/company/HPnav';
+// import defaultuser from "./defaultuser.svg";
+// import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
+// import HPnav from '../nav/company/HPnav';
+import { getUsers } from '../../actions';
+import { connect } from 'react-redux';
 
-export default class JSprofile extends Component {
+class JSprofile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [],
+      // user: {},
+    }
+  }
+
+  componentDidMount = () => {
+    this.props.getUsers();
+  }
+
   render() {
+    console.log(this.users)
     return (
       <div className="main">
-      <HPnav />
+      {/* {this.props.users.map(user => 
+          <div key={user.fields.id}>{user.fields.first_name}{user.fields.last_name}</div>)
+      } */}
+       <HPnav />
       <div className="signout">
       <div className="backgroundskew"></div>
       <button className="signoutbutton">Sign Out</button>
@@ -50,8 +68,20 @@ export default class JSprofile extends Component {
 				<a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="smIcons"/></a>
 				<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="smIcons"/></a>
 				<a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="smIcons"/></a>
-      </div>
+      </div> 
       </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    // user: state.user,
+    users: state.users,
+    fetchingUsers: state.fetchingUsers,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { getUsers })(JSprofile);

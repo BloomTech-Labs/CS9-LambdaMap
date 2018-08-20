@@ -24,5 +24,6 @@ urlpatterns = [
     path('api/register/', create_user),
     path('api/login/', log_in),
     path('api/delete-user/', delete_user),
-    path('api/update-user/', update_user)
+    path('api/update-user/', update_user),
+    path('api/users/', get_users)
 ]

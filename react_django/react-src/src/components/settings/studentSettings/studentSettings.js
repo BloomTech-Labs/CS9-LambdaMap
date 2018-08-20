@@ -2,15 +2,14 @@
 
 import React, { Component } from 'react';
 import './studentSettings.css';
-// import {  } from 'react-icons/fa';
-import JobSeekerNav from '../../nav/job-seeker/JobSeekerNav';
+import JSnav from '../../nav/job-seeker/JSnav';
 
 export default class StudentSettings extends Component {
   
   render() {
     return (
       <div className="settings-nav">
-      <JobSeekerNav />
+      <JSnav />
       <div className="main-settings">
         <div className="signout">
           <button className="signoutbutton">Sign Out</button>
