@@ -4,6 +4,8 @@ from .security import encrypt_password, verify_password
 from django.db import IntegrityError
 from django.core import serializers
 import json
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
@@ -100,3 +102,8 @@ def get_users(request):
     filtered_users = Users.objects.filter(student=True)
     return JsonResponse({"users": json.loads(serializers.serialize('json', list(filtered_users)))}, status=200)
 
+def populate_states(request):
+    f = open(os.path.join(BASE_DIR, '/django_app/states.txt', 'rt')) # f == file
+    for x in f:
+        print(x.read())
+    return JsonResponse({"helllo": "world"})
