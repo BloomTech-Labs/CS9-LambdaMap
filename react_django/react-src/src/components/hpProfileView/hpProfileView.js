@@ -39,6 +39,7 @@ export default class HpProfileView  extends Component{
              </div>
              <div className='hp-job-cards'>
             <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+            <p className="posted-title"> Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -48,6 +49,7 @@ export default class HpProfileView  extends Component{
              </div>
              <div className='hp-job-cards'>
             <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+            <p className="posted-title"> Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -57,6 +59,7 @@ export default class HpProfileView  extends Component{
              </div>
              <div className='hp-job-cards'>
             <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+            <p className="posted-title"> Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
@@ -66,6 +69,7 @@ export default class HpProfileView  extends Component{
              </div>
              <div className='hp-job-cards'>
             <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+            <p className="posted-title"> Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>

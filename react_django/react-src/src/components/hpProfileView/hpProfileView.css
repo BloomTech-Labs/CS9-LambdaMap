@@ -55,7 +55,7 @@ margin-right: 50px;
   align-items: center;
   border-top: 2px solid rgba(214, 214, 214, 0.7);
   border-bottom: 2px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(160, 1, 30, 0.9);
+  background-color: rgba(12, 76, 119, 0.9);
   width: 100%;
   margin-top: 20px;
   min-height: 120px;
@@ -79,19 +79,21 @@ margin-right: 50px;
   font-size: 1.5rem;
 }
 .hp-info-tag {
+  background-color: rgb(32, 97, 139);
+  width: 100%;
   margin-bottom: 15px;
   font-size: 1.6rem;
-  color: rgba(255, 255, 255, 0.973);
+  color: rgb(255, 255, 255);
 }
 .hp-info-text{
   padding-top: 15px;
   padding-bottom: 15px;
-  border-top: 2px solid rgb(161, 161, 161);
-  border-bottom: 2px solid rgb(161, 161, 161);
-  color: rgba(214, 214, 214, 0.795);
+  border-top: 2px solid rgb(26, 100, 150);
+  border-bottom: 2px solid rgb(22, 74, 109);
+  color: rgb(39, 39, 39);
   width: 90%;
   margin: auto;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 .hp-remote{
   justify-content: center;
@@ -103,7 +105,7 @@ margin-right: 50px;
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.89);
-  background-color: rgba(160, 1, 30, 0.9);
+  background-color: rgba(255, 255, 255, 0.911);
   box-shadow: 0px 0px 5px 1px rgb(92, 92, 92);
   border-radius: 5px;
   align-items: center;
@@ -129,9 +131,9 @@ margin-right: 50px;
 .hp-email-div{
   display: flex;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, .9);
-  background-color: rgba(160, 1, 30, 0.9);
-  box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+  border: 1px solid rgba(224, 224, 224, 0.9);
+  background-color: rgba(255, 255, 255, 0.87);
+  box-shadow: 0px 0px 5px 0px rgb(92, 92, 92);
   width: 87%;
   border-radius: 5px;
   margin-top: 10px;
@@ -141,13 +143,13 @@ margin-right: 50px;
   cursor: pointer;
 }
 .hp-email{
-  color: rgb(243, 243, 243);
-  font-size: 1.3rem;
+  color: rgb(34, 34, 34);
+  font-size: 1.4rem;
   text-decoration: none;
 }
 .mail-logo{
   color: #125172;
-  margin: 13px 10px 0px 10px;
+  margin: 17px 10px 0px 10px;
   height: 40px;
   width: 40px;
 }
@@ -170,31 +172,33 @@ margin-right: 50px;
   overflow: auto;
 }
 .link-icon{
-  color: #125172;
+  color: #9c9c9c;
+  margin-top: 0px;
+  margin-bottom: -2px;
 }
 
 .link-icon:hover{
   transform: scale(1.1);
   cursor: pointer;
+  color: rgb(131, 131, 131);
 }
 .star-icon{
-  color: rgba(255, 255, 255, 0.623);
+  color: #a1a1a1;
 }
 .star-icon:hover{
   transform: scale(1.1);
   cursor: pointer;
-}
-.star-icon:hover{
-  color: yellow;
+  color: rgb(255, 251, 0);
+
 }
 .star-icon:focus{
-  color: yellow;
+  color: rgb(255, 238, 0);
 }
 .hp-card-location{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 101%;
 }
 .hp-listing-div{
   position: sticky;
@@ -204,7 +208,7 @@ margin-right: 50px;
   align-items: center;
   border-top: 1px solid rgba(214, 214, 214, 0.7);
   border-bottom: 1px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(160, 1, 30, 0.9);
+  background-color: rgba(14, 85, 126, 0.9);
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
   width: 100%;
   margin-top: 0px;
@@ -218,10 +222,10 @@ margin-right: 50px;
   justify-content: center;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.753);
-  background-color: rgba(160, 1, 30, 0.9);
+  background-color: rgba(255, 255, 255, 0.952);
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
   width: 87%;
-  min-height: 220px;
+  min-height: 235px;
   border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -232,19 +236,26 @@ margin-right: 50px;
   font-weight: bold;
 }
 .hp-card-title{
+  background-color: rgb(37, 96, 145);
+  width: 101%;
   position: relative;
   font-size: 1.5rem;
   font-weight: bold;
   margin: 5px 0px 0px 0px;
   color: rgba(255, 255, 255, 0.973);
 }
+.posted-title{
+  text-decoration: underline;
+  margin-bottom: 0px;
+  color: rgba(88, 88, 88, 0.795);
+}
 .hp-card-text{
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 2px solid rgb(161, 161, 161);
   border-bottom: 2px solid rgb(161, 161, 161);
-  color: rgba(219, 219, 219, 0.795);
+  color: rgb(39, 39, 39);
   width: 90%;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 5px;
 }
