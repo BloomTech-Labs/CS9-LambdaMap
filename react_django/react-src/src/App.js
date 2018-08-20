@@ -4,8 +4,8 @@ import { Route } from 'react-router-dom';
 import HPsettings from './components/settings/HP-settings/HPsettings';
 import JSprofile from './components/jobseeker-profile/JSprofile'
 import JSlistView from './components/list-views/jobseekers-HPview/JSlistView';
-import HpProfileView from './components/student/hpProfileView/hpProfileView';
-import StudentSettings from './components/student/studentSettings/studentSettings';
+import HpProfileView from './components/hpProfileView/hpProfileView';
+import StudentSettings from './components/settings/studentSettings/studentSettings';
 // Currently only routing through the Hiring Partners view
 
 class App extends Component {
