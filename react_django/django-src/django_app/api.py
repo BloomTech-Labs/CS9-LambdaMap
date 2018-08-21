@@ -18,16 +18,16 @@ def create_client(request):
             password=encrypt_password(request_body['password']),
             city=request_body['city'],
             state=request_body['state'],
-            personal_website=request_body['personalWebsite'],
-            first_name=request_body['firstName'],
-            last_name=request_body['lastName'],
+            personal_website=request_body['personal_website'],
+            first_name=request_body['first_name'],
+            last_name=request_body['last_name'],
             remote=request_body['remote'],
             relocate=request_body['relocate'],
             linkedin=request_body['linkedin'],
             github=request_body['github'],
             twitter=request_body['twitter'],
             codepen=request_body['codepen'],
-            portfolio_picture=request_body['portfolioPicture'],
+            portfolio_picture=request_body['portfolio_picture'],
             phone=request_body['phone'],
             about=request_body['about']
         )
@@ -118,9 +118,9 @@ def create_hire_partner(request):
             password=encrypt_password(request_body['password']),
             city=request_body['city'],
             state=request_body['state'],
-            personal_website=request_body['personalWebsite'],
+            personal_website=request_body['personal_website'],
             phone=request_body['phone'],
-            company_name = request_body['companyName'],
+            company_name = request_body['company_name'],
             about=request_body['about']
         )
         try:
