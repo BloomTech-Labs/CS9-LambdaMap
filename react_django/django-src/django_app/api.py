@@ -15,7 +15,19 @@ def create_client(request):
         request_body = json.loads(request.body.decode('ascii'))
         client = Clients(
             email=request_body['email'],
-            password=encrypt_password(request_body['password'])
+            password=encrypt_password(request_body['password']),
+            city=request_body['city'],
+            state=request_body['state'],
+            personal_website=request_body['personalWebsite'],
+            first_name=request_body['firstName'],
+            last_name=request_body['lastName'],
+            remote=request_body['remote'],
+            relocate=request_body['relocate'],
+            linkedin=request_body['linkedin'],
+            github=request_body['github'],
+            twitter=request_body['twitter'],
+            codepen=request_body['codepen'],
+            portfolio_picture=request_body['portfolioPicture'],
         )
         try:
           client.save()
@@ -62,19 +74,21 @@ def update_client(request):
         client = Clients.objects.filter(email=request_body['email'])
         if(len(client) > 0):
           client = client[0]
-          client.password = encrypt_password(request_body['password'])
           try:
+            for key in request_body:
+              setattr(client,key,request_body[key])
             client.save()
+            return JsonResponse({"Updated Client":model_to_dict(client)})
           except IntegrityError as e:
-            return JsonResponse({"Error":e},status=400)
-          return JsonResponse({"Password changed": str(verify_password(request_body['password'], client.password))}, status=202)
+              return JsonResponse({"Error":e},status=400)
         else:
-          return JsonResponse({"Error": "incorrect email or password"}, status=400)
+          return JsonResponse({"Error": "incorrect email"}, status=400)
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
       return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"},
                               status=400)
+
 
 def delete_client(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
@@ -89,8 +103,10 @@ def delete_client(request):
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
+      return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"},
                               status=400)
+
+
 def create_hire_partner(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
@@ -155,7 +171,7 @@ def delete_hire_partner(request):
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
+      return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"},
                               status=400)
 
 

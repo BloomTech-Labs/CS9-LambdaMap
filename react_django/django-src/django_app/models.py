@@ -1,7 +1,7 @@
 from django.db import models
 
 class Users(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=20, default='')
     city = models.CharField(max_length=50, blank=True, null=True)
     state = models.CharField(max_length=50, blank=True, null=True)
@@ -28,6 +28,3 @@ class Hire_Partners(Users):
     phone_number = models.CharField(max_length=10, null=True, blank=True)
     def to_dict(self):
       return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"companyName":self.company_name,"phoneNumber":self.phone_number}
-
-
-
