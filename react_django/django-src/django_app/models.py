@@ -7,6 +7,7 @@ class Users(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     personal_website = models.URLField(blank=True, null=True)
     phone = models.CharField(max_length=50, blank=True, null=True)
+    about = models.CharField(max_length=400, blank=True, null=True)
 
 
 class Clients(Users):
@@ -21,9 +22,9 @@ class Clients(Users):
     portfolio_picture = models.URLField(blank=True, null=True)
 
     def to_dict(self):
-      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"firstName":self.first_name,"lastName":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolioPicture":self.portfolio_picture,"phone":self.phone}
+      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"firstName":self.first_name,"lastName":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolioPicture":self.portfolio_picture,"phone":self.phone,"about":self.about}
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, null=True)
     def to_dict(self):
-      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"companyName":self.company_name,"phone":self.phone}
+      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"companyName":self.company_name,"phone":self.phone,"about":self.about}
