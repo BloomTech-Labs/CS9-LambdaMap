@@ -5,8 +5,7 @@ from django.db import IntegrityError
 from django.core import serializers
 from django.forms.models import model_to_dict
 import json
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
