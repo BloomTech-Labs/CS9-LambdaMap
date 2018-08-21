@@ -28,6 +28,7 @@ def create_client(request):
             twitter=request_body['twitter'],
             codepen=request_body['codepen'],
             portfolio_picture=request_body['portfolioPicture'],
+            phone=request_body['phone']
         )
         try:
           client.save()
@@ -114,6 +115,10 @@ def create_hire_partner(request):
         hirePartner = Hire_Partners(
             email=request_body['email'],
             password=encrypt_password(request_body['password']),
+            city=request_body['city'],
+            state=request_body['state'],
+            personal_website=request_body['personalWebsite'],
+            phone=request_body['phone'],
             company_name = request_body['company_name']
         )
         try:
