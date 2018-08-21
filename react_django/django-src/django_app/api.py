@@ -97,7 +97,8 @@ def create_hire_partner(request):
         request_body = json.loads(request.body.decode('ascii'))
         hirePartner = Hire_Partners(
             email=request_body['email'],
-            password=encrypt_password(request_body['password'])
+            password=encrypt_password(request_body['password']),
+            company_name = request_body['company_name']
         )
         try:
           hirePartner.save()
@@ -165,7 +166,7 @@ def log_in_hire_partner(request):
         hirePartner = Hire_Partners.objects.filter(email=request_body['email'])
         if(len(hirePartner) > 0):
           hirePartner= hirePartner[0]
-          if(str(verify_password(request_body['password'],client.password))):
+          if(str(verify_password(request_body['password'],hirePartner.password))):
             return JsonResponse({"hirePartner":model_to_dict(hirePartner)})
         else:
           return JsonResponse({"Login failed": "incorrect email or password"}, status=400)
