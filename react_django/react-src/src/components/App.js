@@ -4,10 +4,11 @@ import { Route } from 'react-router-dom';
 import HPsettings from './settings/HP-settings/HPsettings';
 import JSprofile from './jobseeker-profile/JSprofile';
 import JSlistView from './list-views/jobseekers-HPview/JSlistView';
-import HpProfileView from './components/hpProfileView/hpProfileView';
-import StudentSettings from './components/student/studentSettings/studentSettings';	
-import StudentSettings from './components/settings/studentSettings/studentSettings';
-
+import HpProfileView from './HpProfileView/hpProfileView';
+import StudentSettings from './settings/studentSettings/studentSettings';	
+import MapView from './map/map';
+import compass from './compass.png'
+import { Link } from 'react-router-dom';
 
 class App extends Component {
  
@@ -19,6 +20,8 @@ class App extends Component {
           <Route path="/settings" component={HPsettings} />
           <Route path="/hpprofile"  component={HpProfileView} />
            <Route path="/studentsettings" component={StudentSettings} />
+           <Route path="/map" component={MapView} />
+           <Link to='/map'><img src={compass} alt='compass' className='compass' /> </Link>
       </div>
     );
   }

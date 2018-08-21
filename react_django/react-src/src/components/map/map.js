@@ -1,6 +1,7 @@
 /*global google*/
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import JSNav from '../nav/job-seeker/JSnav';
 
 export class MapView extends Component {
     state = {
@@ -27,6 +28,8 @@ export class MapView extends Component {
 
     render() {
       return (
+        <div>
+          <JSNav />
         <Map google={this.props.google}
             //MAP INITIAL VIEW SETTINGS
             initialCenter={{
@@ -45,7 +48,6 @@ export class MapView extends Component {
             maxWidth: '750px',
             maxHeight: '750px',}}
             onClick={this.onMapClicked}>
-
           <Marker 
             //HARD CODED MARKER FOR VIEW TEST
                   onClick={this.onMarkerClick}
@@ -83,6 +85,7 @@ export class MapView extends Component {
               </div>
           </InfoWindow>
         </Map>
+        </div>
       )
     }
   }

@@ -1,24 +1,41 @@
+/* Hiring Partner Profile View Student Perspective */
 .hp{
+  background: url('./redmap.svg') no-repeat;
+  background-size: 100% 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   height: 100vh;
   width: 100%;
   font-family: 'Raleway';
   align-items: center;
 }
+.hp .signout {
+  display: flex;
+  justify-content: flex-end; }
+  .hp .signout button {
+    margin-right: 100px;
+    margin-top: 50px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    font: 0.8em "Roboto Condensed", sans-serif;
+    font-weight: bolder;
+    color: #A0011E;
+    letter-spacing: 2.5px; }
+  .hp .signout button:active {
+    color: black; }
 .hp-div{
+  transform: scale(.9);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  align-content: center;
-  /* border: 2px solid rgba(82, 82, 82, 0.7); */
-  background-color:rgba(160, 1, 30, .8);
+  background-color:rgba(247, 247, 247, 0.8);
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
-  border-radius: 5px;
-  width: 40%;
-  height: 75vh;
-  margin-left: 20px;
+  border-radius: 25px;
+  width: 50%;
+  height: 85vh;
+  margin-right: 20px;
   max-height: 650px;
   max-width: 500px;
 }
@@ -36,45 +53,50 @@ margin-right: 50px;
   flex-direction: row-reverse;
   justify-content: space-evenly;
   align-items: center;
-  border-top: 3px solid rgba(214, 214, 214, 0.7);
-  border-bottom: 3px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(255, 255, 255, 0.959);
+  border-top: 2px solid rgba(214, 214, 214, 0.7);
+  border-bottom: 2px solid rgba(214, 214, 214, 0.7);
+  background-color: #125172;
   width: 100%;
-  margin-top: 0px;
+  margin-top: 20px;
   min-height: 120px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .hp-title{
   font-weight: bold;
-  color: rgb(56, 56, 56);
+  color: rgb(255, 255, 255);
   margin-bottom: -15px;
+  font-size: 2.5rem;
 }
 .hp-info .hp-photo{
   border-radius: 30px;
   box-shadow: 0px 0px 5px 1px rgba(156, 156, 156, 0.671);
-  /* margin-right: 10px;
-  margin-top: 45px; */
   width: 30%;
   height: 100px;
 }
 .hp-location{
-  color: rgb(131, 131, 131);
+  color: rgb(202, 202, 202);
+  font-size: 1.5rem;
 }
 .hp-info-tag {
+  background-color: #125172;
+  width: 103%;
+  height: 5vh;
+  margin-top: 10px;
   margin-bottom: 15px;
-  font-size: 1.6rem;
-  color: rgba(44, 44, 44, 0.973);
+  font-size: 2.5rem;
+  color: rgb(255, 255, 255);
+  padding-top:10px;
 }
 .hp-info-text{
   padding-top: 15px;
   padding-bottom: 15px;
-  border-top: 2px solid rgb(161, 161, 161);
-  border-bottom: 2px solid rgb(161, 161, 161);
-  color: rgba(124, 124, 124, 0.795);
+  border-top: 2px solid #125172;
+  border-bottom: 2px solid #125172;
+  color: rgb(39, 39, 39);
   width: 90%;
   margin: auto;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 .hp-remote{
   justify-content: center;
@@ -85,32 +107,36 @@ margin-right: 50px;
 .hp-info-div{
   display: flex;
   flex-direction: column;
-  border: 3px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.89);
+  background-color: rgba(255, 255, 255, 0.911);
   box-shadow: 0px 0px 5px 1px rgb(92, 92, 92);
   border-radius: 5px;
   align-items: center;
-  justify-content: center;
   margin: auto;
-  height: 65%;
   width: 85%;
   padding: 5px;
   margin-top: 0px;
   margin-bottom: 20px;
 }
 .remote-check{
-  color: #125172;
   margin: 10px;
   margin-top: 20px;
-  background: none;
+  background: white;
   height: 25px;
+  border: none;
+}
+.check-icon{
+  height: 20px;
+  size: 1.3em;
+  color:green;
+  transform: scale(2.5)
 }
 .hp-email-div{
   display: flex;
   justify-content: center;
-  border: 3px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+  border: 1px solid rgba(224, 224, 224, 0.9);
+  background-color: rgba(255, 255, 255, 0.87);
+  box-shadow: 0px 0px 5px 0px rgb(92, 92, 92);
   width: 87%;
   border-radius: 5px;
   margin-top: 10px;
@@ -120,46 +146,63 @@ margin-right: 50px;
   cursor: pointer;
 }
 .hp-email{
-  color: rgba(44, 44, 44, 0.973);
-  font-size: 1.2rem;
+  color: rgb(34, 34, 34);
+  font-size: 1.4rem;
   text-decoration: none;
-  font-weight: bold;
 }
 .mail-logo{
   color: #125172;
-  margin: 13px 10px 0px 10px;
+  margin: 17px 10px 0px 10px;
   height: 40px;
   width: 40px;
 }
 
-/* job card CSS */
+/* Hiring Partner job card CSS */
 .hp-job-card-div{
+  transform: scale(.9);
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
-  background-color:rgba(160, 1, 30, .8);
+  background-color:rgba(255, 255, 255, 0.8);
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
-  border-radius: 5px;
-  width: 40%;
-  height: 75vh;
+  border-radius: 25px;
+  width: 50%;
+  height: 85vh;
   margin-right: 20px;
   max-height: 650px;
   max-width: 500px;
   overflow: auto;
 }
 .link-icon{
-  color: #125172;
+  margin: 5px 15px 0px 80px;
+  color: #a1a1a1;
+  font-size:2rem;
 }
+
 .link-icon:hover{
   transform: scale(1.1);
   cursor: pointer;
+  color: rgb(131, 131, 131);
+}
+.star-icon{
+  margin: 5px 15px 0px 50px;
+  color: #a1a1a1;
+  font-size:2rem;
+}
+.star-icon:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  color: rgb(255, 251, 0);
+}
+.star-icon:focus{
+  color: rgb(255, 238, 0);
 }
 .hp-card-location{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 101%;
 }
 .hp-listing-div{
   position: sticky;
@@ -167,12 +210,12 @@ margin-right: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 3px solid rgba(214, 214, 214, 0.7);
-  border-bottom: 3px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(255, 255, 255, 1);
+  border-top: 1px solid rgba(214, 214, 214, 0.7);
+  border-bottom: 1px solid rgba(214, 214, 214, 0.7);
+  background-color: #125172;
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0px;
   min-height: 60px;
   max-height: 80px;
   z-index: 1;
@@ -182,18 +225,28 @@ margin-right: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid rgba(214, 214, 214, 0.7);
-  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.753);
+  background-color: rgba(255, 255, 255, 0.952);
   box-shadow: 0px 0px 10px 1px rgb(92, 92, 92);
+  border-radius: 10px;
   width: 87%;
-  min-height: 220px;
-  border-radius: 5px;
+  min-height: 310px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.hp-card-title-div{
+  display: flex;
+  background-color: #125172;
+  width: 101%;
+  justify-content:flex-end;
+  align-items: center;
+  height: 5vh;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .hp-listing-title{
   font-size: 2.5rem;
-  color: rgba(59, 59, 59, 0.973);
+  color: rgba(255, 255, 255, 0.973);
   font-weight: bold;
 }
 .hp-card-title{
@@ -201,15 +254,22 @@ margin-right: 50px;
   font-size: 1.5rem;
   font-weight: bold;
   margin: 5px 0px 0px 0px;
-  color: rgba(44, 44, 44, 0.973);
+  color: rgba(255, 255, 255, 0.973);
+}
+.posted-title{
+  text-decoration: underline;
+  font-size: 1.2rem;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: rgba(88, 88, 88, 0.795);
 }
 .hp-card-text{
   padding-top: 15px;
   padding-bottom: 15px;
   border-top: 2px solid rgb(161, 161, 161);
   border-bottom: 2px solid rgb(161, 161, 161);
-  color: rgba(124, 124, 124, 0.795);
+  color: rgb(39, 39, 39);
   width: 90%;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
 }
