@@ -33,13 +33,13 @@
   height: 15vh;
   bottom: 0;
   right: 0;
-  
 }
 .compass:hover{
   transform: scale(1.1);
-  animation: App-logo-spin 2s linear;
+  /* animation: App-logo-spin 1.5s; */
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
