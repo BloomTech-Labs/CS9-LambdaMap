@@ -1,44 +1,58 @@
 // still in progress
 
-import { FETCH_USERS, FETCHED_USERS, ERROR_FETCHING } from '../actions';
+import { FETCH_HPS, FETCHED_HPS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING } from '../actions';
 
  const initialState = {
-   users: [],
-   fetchingUsers: false,
+   clients: [],
+   hiring_partners: [],
+   fetchingClients: false,
+   fetchingHPs: false,
    error: null
-  //  user: {},
  }
 
 export const rootReducer = (state = initialState, action) => {
 
   switch(action.type) {
+    
+    case FETCH_CLIENTS:
+      return Object.assign({}, state, { 
+        fetchingClients: true 
+    });
 
-      case FETCH_USERS:
-        return Object.assign({}, state, { 
-          fetchingUsers: true 
-      });
+    case FETCHED_CLIENTS:
+      console.log(...action.payload)      
+      return Object.assign({}, state, {
+        clients: [ ...action.payload ],
+        fetchingClients: false,
+        error: null
+    });
 
-      case FETCHED_USERS:
-      console.log(action.payload)      
-        return Object.assign({}, state, {
-          users: [ ...action.payload.users ],
-          fetchingUsers: false,
-          error: null
-      });
-      
-      // case FETCH_USER:
-      //   return Object.assign({}, state, {
-      //     user: action.payload , 
-      //     fetchuser: true });
+    case FETCH_HPS:
+      return Object.assign({}, state, { 
+        fetchingHPs: true 
+    });
 
-      case ERROR_FETCHING:
-        return Object.assign({}, state, {
-          error: action.payload,
-      });
+    case FETCHED_HPS:
+      console.log(...action.payload)      
+      return Object.assign({}, state, {
+        hiring_partners: [ ...action.payload ],
+        fetchingHPs: false,
+        error: null
+    });
 
-      default:
-        return state;
-    }
+    // case FETCH_USER:
+    //   return Object.assign({}, state, {
+    //     user: action.payload , 
+    //     fetchuser: true });
+
+    case ERROR_FETCHING:
+      return Object.assign({}, state, {
+        error: action.payload,
+    });
+
+    default:
+      return state;
+  }
 };
 
 export default rootReducer;

@@ -6,8 +6,20 @@ import { FaCaretDown, FaStar, FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodep
 import HPnav from '../../nav/company/HPnav';
 import defaultuser from "./defaultuser.svg";
 import { Link } from 'react-router-dom';
+import { get_clients } from '../../../actions';
+import { connect } from 'react-redux';
 
-export default class JSlistView extends Component {
+class JSlistView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clients: [],
+    }
+  }
+
+  componentDidMount = () => {
+    this.props.get_clients();
+  }
 
   render() {
     return (
@@ -66,186 +78,47 @@ export default class JSlistView extends Component {
           <hr className="cards-hr"></hr>
           <div className="jobseekercards-container">
           <div className="cards-main">
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
+            {this.props.clients.map(clients =>
+                <div key={clients.id} className="jobseeker-cards">
+                  <Link to={'/'} className="profile-link">
+                    <div className="card-header">
+                    <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
+                    <div className="jscard-name">
+                    <h3>{clients.firstName}{clients.lastName}</h3>
+                    <h5>{clients.city}{clients.state}</h5>
+                    </div>
+                    <FaStar className="card-favIcon"/>
+                    </div>
+                    <div className="card-info">
+                      <p className="card-bio">{clients.about}</p>
+                      <a className="emailcontact"><FaEnvelope className="contactIcons"/>{clients.email}}</a>
+                      <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>{clients.phone}</a>
+                    </div>
+                    <div className="card-socialmedia">
+                      <a target="_blank" rel="noopener noreferrer" href={clients.twitter}><FaTwitter className="card-smIcons"/></a>
+                      <a target="_blank" rel="noopener noreferrer" href={clients.linkedin}><FaLinkedin className="card-smIcons"/></a>
+                      <a target="_blank" rel="noopener noreferrer" href={clients.github}><FaGithub className="card-smIcons"/></a>
+                      <a target="_blank" rel="noopener noreferrer" href={clients.codepen}><FaCodepen className="card-smIcons"/></a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.google.com"><FaFile className="card-smIcons"/></a>
+                      <a target="_blank" rel="noopener noreferrer" href={clients.personalWebsite}><FaDesktop className="card-smIcons"/></a>
+                    </div>
+                  </Link>
+                </div>)}
               </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
-            <div className="jobseeker-cards">
-            <Link to={'/'} className="profile-link">
-              <div className="card-header">
-              <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
-              <div className="jscard-name">
-              <h3>Robert Smith</h3>
-              <h5>Anaheim Hills, CA</h5>
-              </div>
-              <FaStar className="card-favIcon"/>
-              </div>
-              <div className="card-info">
-                <p className="card-bio">Lucas ipsum dolor sit amet droid bothan antilles baba antilles moff hutt gonk lando windu.</p>
-                <a className="emailcontact"><FaEnvelope className="contactIcons"/>robert.smith@gmail.com</a>
-                <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>(909) 234-5678</a>
-              </div>
-              <div className="card-socialmedia">
-                <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/"><FaTwitter className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><FaLinkedin className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://github.com/"><FaGithub className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://codepen.io/"><FaCodepen className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaFile className="card-smIcons"/></a>
-                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/"><FaDesktop className="card-smIcons"/></a>
-              </div>
-            </Link>
-            </div>
             </div>
           </div>
         </div>
-      </div>
     )
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    clients: state.clients,
+    fetchingClients: state.fetchingClients,
+    error: state.error
+  };
+};
+
+export default connect(mapStateToProps, { get_clients })(JSlistView);
