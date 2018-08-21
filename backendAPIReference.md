@@ -67,7 +67,7 @@ Example POST request:
 
 ##Delete a client (POST)
 ###http://localhost:8000/api/delete-client/
-__Deletes a registered client
+__Deletes a registered client__
 ###requires: an email of the current client 
 Example POST request:
 {
