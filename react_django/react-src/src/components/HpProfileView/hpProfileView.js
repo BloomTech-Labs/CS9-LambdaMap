@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FaEnvelope, FaCheck, FaLink, FaStar } from 'react-icons/fa'
 import './hpProfileView.css';
-import JSNav from '../nav/job-seeker/JSNav';
+import JSNav from '../nav/job-seeker/JSnav';
 
 export default class HpProfileView  extends Component{
     render() {
@@ -39,39 +39,59 @@ export default class HpProfileView  extends Component{
              <p className="hp-listing-title">Job Listings</p>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
              <div className="hp-card-location">
-             <p className="hp-card-title">Seattle, WA <FaLink className="link-icon" /></p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
              <div className="hp-card-location">
-             <p className="hp-card-title">Seattle, WA <FaLink className="link-icon" /></p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
              <div className="hp-card-location">
-             <p className="hp-card-title">Seattle, WA <FaLink className="link-icon" /></p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
              </div>
              </div>
              <div className='hp-job-cards'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER <FaStar className="star-icon"/></h5>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
              <div className="hp-card-location">
-             <p className="hp-card-title">Seattle, WA <FaLink className="link-icon" /></p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
              </div>
              </div>
              </div>

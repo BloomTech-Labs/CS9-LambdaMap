@@ -2,9 +2,9 @@
 
 import React, { Component } from 'react';
 import './JSprofile.css';
-// import defaultuser from "./defaultuser.svg";
-// import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
-// import HPnav from '../nav/company/HPnav';
+import defaultuser from "./defaultuser.svg";
+import { FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
+import HPnav from '../nav/company/HPnav';
 import { getUsers } from '../../actions';
 import { connect } from 'react-redux';
 
