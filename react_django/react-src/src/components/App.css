@@ -23,15 +23,13 @@
   font-size: large;
 }
 .compass{
-  margin: 0px 0px 0px 0px;
+  margin: 0px 10px 10px 0px;
   position: fixed;
-  /* width: 250px;
-  height: 250px; */
-  width: 30vh;
-  height: 30vh;
+  width: 20vh;
+  height: 20vh;
   bottom: 0;
   right: 0;
-  transform: scale(.7);
+  animation: App-logo-spin infinite 20s linear;
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
