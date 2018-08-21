@@ -142,7 +142,7 @@ Example POST request:
   "email":"client@maps",
 }
 
-##Delete a client (POST)
+##Delete a hiring partner (POST)
 ###http://localhost:8000/api/delete-hire-partner/
 __Deletes a registered hiring partner__ 
 ###requires: an email of the current hiring partner 
