@@ -41,7 +41,7 @@ export class MapView extends Component {
             borderRadius: '400px',
             boxShadow: "0px 0px 5px 0px white",
             margin: 'auto',
-            marginTop: '40px',
+            // marginTop: '40px',
             width: '80%',
             height: '80%',
             zIndex: '0',
