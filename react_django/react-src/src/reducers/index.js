@@ -8,8 +8,6 @@ import { FETCH_HPS, FETCHED_HPS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING 
    fetchingClients: false,
    fetchingHPs: false,
    error: null
-  //  fetchingHPs: false,
-  //  user: {},
  }
 
 export const rootReducer = (state = initialState, action) => {
