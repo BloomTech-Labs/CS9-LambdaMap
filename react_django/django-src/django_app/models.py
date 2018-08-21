@@ -1,25 +1,15 @@
 from django.db import models
 
-class State(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20, default='')
-
-class City(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20, default='')
-    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
-
 class Users(models.Model):
-    # fields for both student and hiring partner
-    id = models.AutoField(primary_key=True)
     email = models.EmailField()
     password = models.CharField(max_length=20, default='')
-    student = models.BooleanField(default=True)
-    state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
-    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
-    bio = models.TextField(null=True, blank=True)
+    city = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
     personal_website = models.URLField(blank=True, null=True)
-    # student fields
+    def __repr__(self):
+        return self.first_name
+
+class Clients(Users):
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
     remote = models.BooleanField(default=False)
@@ -29,32 +19,15 @@ class Users(models.Model):
     twitter = models.URLField(blank=True, null=True)
     codepen = models.URLField(blank=True, null=True)
     portfolio_picture = models.URLField(blank=True, null=True)
-    # hire partner fields
+
+    def to_dict(self):
+      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"firstName":self.first_name,"lastName":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolioPicture":self.portfolio_picture}
+
+class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, null=True)
     phone_number = models.CharField(max_length=10, null=True, blank=True)
+    def to_dict(self):
+      return {"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personalWebsite":self.personal_website,"companyName":self.company_name,"phoneNumber":self.phone_number}
 
-    def __repr__(self):
-        return self.first_name
 
-# Below are the fields from the original schema that we can still use
 
-class Student_Favorites(models.Model):
-    studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
-    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
-
-class Employer_Favorites(models.Model):
-    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
-    studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
-
-class Messages(models.Model):
-    employerID = models.ForeignKey(Employers,on_delete=models.CASCADE)
-    studentID = models.ForeignKey(Students,on_delete=models.CASCADE)
-    content = models.CharField(max_length=400,unique=False)
-    postTime = models.CharField(max_length=400,unique=False)
-
-class Job_Listings(models.Model):
-    employerID = models.ForeignKey(Users,on_delete=models.CASCADE)
-    positionTitle = models.CharField(max_length=400,unique=False)
-    description = models.TextField(null=True, blank=True)
-    postTime = models.CharField(max_length=400,unique=False)
-    remote = models.BooleanField(default=False)
