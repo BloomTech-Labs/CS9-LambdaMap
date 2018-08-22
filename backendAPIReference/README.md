@@ -4,7 +4,7 @@
 ### http://localhost:8000/api/clients/
 __retrieves all of the current clients in the system and all of their attributes__
 
-##U pdate a client (PUT)
+## Update a client (PUT)
 ### http://localhost:8000/api/update-client/
 __Update an attribute, or attributes, of a current client__
 
@@ -12,17 +12,17 @@ __Update an attribute, or attributes, of a current client__
 
 example PUT request:
 
-{
-  "email":"client@maps",
-  "linkedin":"linkedin updated"
+{\
+  "email":"client@maps",\
+  "linkedin":"linkedin updated"\
 }
 
 This updates the linkedin attribute of a user
 
-{
-  "email":"client@maps",
-  "linkedin":"linkedin updated"
-  "about":"about updated",
+{\
+  "email":"client@maps",\
+  "linkedin":"linkedin updated",\
+  "about":"about updated",\
 }
 
 This updates the linkedin attribute and about attribute of a user 
@@ -36,23 +36,23 @@ __Create a new client__
 
 example POST request:
 
-{
-  "password":"new client",
-  "email":"client@maps",
-  "first_name":"first",
-  "last_name":"last",
-  "remote":"False",
-  "relocate":"True",
-  "linkedin":"linkedin",
-  "github":"github",
-  "twitter":"twitter",
-  "codepen":"codepen",
-  "portfolio_picture":"portfolioPicture",
-  "city":"city",
-  "state":"state",
-  "personal_website":"personalWebsite",
-  "phone":"111-111-1111",
-  "about":"about"
+{\
+  "password":"new client",\
+  "email":"client@maps",\
+  "first_name":"first",\
+  "last_name":"last",\
+  "remote":"False",\
+  "relocate":"True",\
+  "linkedin":"linkedin",\
+  "github":"github",\
+  "twitter":"twitter",\
+  "codepen":"codepen",\
+  "portfolio_picture":"portfolioPicture",\
+  "city":"city",\
+  "state":"state",\
+  "personal_website":"personalWebsite",\
+  "phone":"111-111-1111",\
+  "about":"about"\
 }
 
 ## Login a client (POST)
@@ -60,9 +60,11 @@ example POST request:
 __Retrieve a client's current state__
 ### requires: an email of the current client -and the clients current password
 Example POST request:
-{
-  "password":"new client",
-  "email":"client@maps",
+
+
+{\
+  "password":"new client",\
+  "email":"client@maps",\
 }
 
 ## Delete a client (POST)
@@ -70,8 +72,10 @@ Example POST request:
 __Deletes a registered client__
 ### requires: an email of the current client 
 Example POST request:
-{
-  "email":"client@maps",
+
+
+{\
+  "email":"client@maps",\
 }
 
 
@@ -89,17 +93,17 @@ __Update an attribute, or attributes, of a current hiring partner__
 
 example PUT request:
 
-{
-  "email":"hiringPartner@maps",
-  "company_name":"updated company name"
+{\
+  "email":"hiringPartner@maps",\
+  "company_name":"updated company name"\
 }
 
 This updates the company name attribute of a hiring partner
 
-{
-  "email":"hiringPartner@maps",
-  "company_name":"updated company name"
-  "about":"about updated",
+{\
+  "email":"hiringPartner@maps",\
+  "company_name":"updated company name"\
+  "about":"about updated",\
 }
 
 This updates the company name attribute and about attribute of a hiring partner 
@@ -113,23 +117,23 @@ __Create a new hiring partner__
 
 example POST request:
 
-{
-  "password":"new client",
-  "email":"client@maps",
-  "firstName":"first",
-  "lastName":"last",
-  "remote":"False",
-  "relocate":"True",
-  "linkedin":"linkedin",
-  "github":"github",
-  "twitter":"twitter",
-  "codepen":"codepen",
-  "portfolio_picture":"portfolioPicture",
-  "city":"city",
-  "state":"state",
-  "personal_website":"personalWebsite",
-  "phone":"111-111-1111",
-  "about":"about"
+{\
+  "password":"new client",\
+  "email":"client@maps",\
+  "firstName":"first",\
+  "lastName":"last",\
+  "remote":"False",\
+  "relocate":"True",\
+  "linkedin":"linkedin",\
+  "github":"github",\
+  "twitter":"twitter",\
+  "codepen":"codepen",\
+  "portfolio_picture":"portfolioPicture",\
+  "city":"city",\
+  "state":"state",\
+  "personal_website":"personalWebsite",\
+  "phone":"111-111-1111",\
+  "about":"about"\
 }
 
 ## Login a hiring partner (POST)
@@ -137,9 +141,11 @@ example POST request:
 __Retrieve a hiring partner's current state__
 ### requires: an email of the current hiring partner - and the hiring partner's current password
 Example POST request:
-{
-  "password":"new client",
-  "email":"client@maps",
+
+
+{\
+  "password":"new client",\
+  "email":"client@maps",\
 }
 
 ## Delete a hiring partner (POST)
@@ -147,8 +153,10 @@ Example POST request:
 __Deletes a registered hiring partner__ 
 ### requires: an email of the current hiring partner 
 Example POST request:
-{
-  "email":"client@maps",
+
+
+{\
+  "email":"client@maps",\
 }
 
 
