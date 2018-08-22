@@ -94,14 +94,14 @@ __Update an attribute, or attributes, of a current hiring partner__
 example PUT request:
 
 {\
-  "email":"hiringPartner@maps",\
+  "email":"partner@maps",\
   "company_name":"updated company name"\
 }
 
 This updates the company name attribute of a hiring partner
 
 {\
-  "email":"hiringPartner@maps",\
+  "email":"partner@maps",\
   "company_name":"updated company name"\
   "about":"about updated",\
 }
@@ -118,8 +118,8 @@ __Create a new hiring partner__
 example POST request:
 
 {\
-  "password":"new client",\
-  "email":"client@maps",\
+  "password":"new partner",\
+  "email":"partner@maps",\
   "firstName":"first",\
   "lastName":"last",\
   "remote":"False",\
@@ -144,8 +144,8 @@ Example POST request:
 
 
 {\
-  "password":"new client",\
-  "email":"client@maps",\
+  "password":"new partner",\
+  "email":"partner@maps",\
 }
 
 ## Delete a hiring partner (POST)
@@ -156,7 +156,7 @@ Example POST request:
 
 
 {\
-  "email":"client@maps",\
+  "email":"partner@maps",\
 }
 
 
