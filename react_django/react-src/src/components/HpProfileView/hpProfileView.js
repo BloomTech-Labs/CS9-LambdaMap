@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FaEnvelope, FaCheck, FaLink, FaStar } from 'react-icons/fa'
 import './hpProfileView.css';
 import JSNav from '../nav/job-seeker/JSnav';
+import amazon from './amazon.png';
 
 export default class HpProfileView  extends Component{
     render() {
@@ -9,35 +10,37 @@ export default class HpProfileView  extends Component{
             <div>
             <JSNav />
             <div className="hp">
+            <div className="backgroundskew"></div>
             <div className="hp-div">
-            <div className="hp-info">
             <div className="hp-title-div">
+            <img className="hp-photo" src={amazon} alt='amazon logo' />
             <div className="hp-location-div">
             <h1 className="hp-title">Amazon</h1>
             <h3 className="hp-location">Seattle, WA</h3>
             </div>
-            <img className="hp-photo" src='http://www.vmastoryboard.com/wp-content/uploads/2014/08/Amazon-A-Logo.jpg' alt='amazon logo' />
             </div>
             <div className='hp-info-div'>
-            <h5 className="hp-info-tag">Company Info</h5>
+            <h5 className="hp-info-tag">About Us</h5>
             <p className="hp-info-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
-             incididunt ut labore et dolore magna aliqua.</p>
+             incididunt ut labore et dolore magna aliqua.
+           </p>
              <div className='hp-remote'>
             <button className="remote-check"><FaCheck className="check-icon" /></button>
                 <p className="hp-email">Open to remote employees</p>
                 </div>
              </div>
-            </div>
+            
              <div className="hp-email-div">
              <FaEnvelope className="mail-logo" /><p className="hp-email">amazon.recruiter@gmail.com</p>
              </div>
              </div>
              {/* JOB LISTING*/}
-             <div className="hp-job-card-div">
              <div className="hp-listing-div">
-             <p className="hp-listing-title">Job Listings</p>
+             <p className="hp-listing-title">Recently Posted Jobs</p>
              </div>
+             <div className="hp-job-card-div">
+
              <div className='hp-job-cards'>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
@@ -46,24 +49,8 @@ export default class HpProfileView  extends Component{
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
-             <div className="hp-card-location">
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
-             </div>
-             </div>
-             </div>
-             <div className='hp-job-cards'>
-             <div className='hp-card-title-div'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
-            <p className="hp-card-text">Lorem ipsum dolor sit amet,
-             consectetur adipiscing elit, sed do eiusmod tempor
-             incididunt ut labore et dolore magna aliqua.</p>
-             <div className="hp-card-location">
-             <div className='hp-card-title-div'>
-             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
-             </div>
              </div>
              </div>
              <div className='hp-job-cards'>
@@ -74,10 +61,8 @@ export default class HpProfileView  extends Component{
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
-             <div className="hp-card-location">
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
-             </div>
              </div>
              </div>
              <div className='hp-job-cards'>
@@ -88,10 +73,56 @@ export default class HpProfileView  extends Component{
             <p className="hp-card-text">Lorem ipsum dolor sit amet,
              consectetur adipiscing elit, sed do eiusmod tempor
              incididunt ut labore et dolore magna aliqua.</p>
-             <div className="hp-card-location">
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
+             </div>
+             <div className='hp-job-cards'>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
+             </div>
+             <div className='hp-job-cards'>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
+             </div>
+             <div className='hp-job-cards'>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
+             </div>
+             <div className='hp-job-cards'>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
              </div>
