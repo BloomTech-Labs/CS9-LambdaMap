@@ -32,7 +32,7 @@ This updates the linkedin attribute and about attribute of a user
 ### http://localhost:8000/api/create-client/
 __Create a new client__
 
-###requires: an email of the current client - throws an error if email is already registered
+### requires: an email of the current client - throws an error if email is already registered
 
 example POST request:
 
