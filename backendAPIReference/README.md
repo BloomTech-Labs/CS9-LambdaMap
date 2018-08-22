@@ -79,7 +79,7 @@ Example POST request:
 }
 
 
-#H iring Partner Endpoints
+# Hiring Partner Endpoints
 
 ## Retrieve all hiring partners(GET)
 ### http://localhost:8000/api/hire-partners/
