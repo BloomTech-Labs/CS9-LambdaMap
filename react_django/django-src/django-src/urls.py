@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from django_app.api import create_client, log_in_client, delete_client, update_client, get_clients,create_hire_partner,log_in_hire_partner,delete_hire_partner,update_hire_partner,get_hire_partners
+from django_app.api import create_listing, get_listings, create_client, log_in_client, delete_client, update_client, get_clients,create_hire_partner,log_in_hire_partner,delete_hire_partner,update_hire_partner,get_hire_partners
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +31,6 @@ urlpatterns = [
     path('api/delete-hire-partner/', delete_hire_partner),
     path('api/update-hire-partner/', update_hire_partner),
     path('api/hire-partners/', get_hire_partners),
-
+    path('api/create-job-listings/', create_listing),
+    path('api/job-listings/', get_listings)
 ]
