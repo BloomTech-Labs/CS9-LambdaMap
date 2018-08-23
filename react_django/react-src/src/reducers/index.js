@@ -1,12 +1,14 @@
 // still in progress
 
-import { FETCH_HPS, FETCHED_HPS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING } from '../actions';
+import { FETCH_HPS, FETCHED_HPS, FETCH_LISTINGS, FETCHED_LISTINGS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING } from '../actions';
 
  const initialState = {
    clients: [],
    hiring_partners: [],
+   job_listings: [],
    fetchingClients: false,
    fetchingHPs: false,
+   fetchingListings: false,
    error: null
  }
 
@@ -19,8 +21,7 @@ export const rootReducer = (state = initialState, action) => {
         fetchingClients: true 
     });
 
-    case FETCHED_CLIENTS:
-      console.log(...action.payload)      
+    case FETCHED_CLIENTS:    
       return Object.assign({}, state, {
         clients: [ ...action.payload ],
         fetchingClients: false,
@@ -32,11 +33,23 @@ export const rootReducer = (state = initialState, action) => {
         fetchingHPs: true 
     });
 
-    case FETCHED_HPS:
-      console.log(...action.payload)      
+    case FETCHED_HPS:   
       return Object.assign({}, state, {
         hiring_partners: [ ...action.payload ],
         fetchingHPs: false,
+        error: null
+    });
+
+    case FETCH_LISTINGS:
+      return Object.assign({}, state, { 
+        fetchingListings: true 
+    });
+
+    case FETCHED_LISTINGS:
+      console.log(...action.payload)      
+      return Object.assign({}, state, {
+        job_listings: [ ...action.payload ],
+        fetchingListings: false,
         error: null
     });
 
