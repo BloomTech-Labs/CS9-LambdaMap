@@ -84,14 +84,14 @@ class JSlistView extends Component {
                     <div className="card-header">
                     <img src={defaultuser} className="JScardpic" alt="Job Seeker" />
                     <div className="jscard-name">
-                    <h3>{clients.firstName}{clients.lastName}</h3>
+                    <h3>{clients.first_name}{clients.last_name}</h3>
                     <h5>{clients.city}{clients.state}</h5>
                     </div>
                     <FaStar className="card-favIcon"/>
                     </div>
                     <div className="card-info">
                       <p className="card-bio">{clients.about}</p>
-                      <a className="emailcontact"><FaEnvelope className="contactIcons"/>{clients.email}}</a>
+                      <a className="emailcontact"><FaEnvelope className="contactIcons"/>{clients.email}</a>
                       <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>{clients.phone}</a>
                     </div>
                     <div className="card-socialmedia">
