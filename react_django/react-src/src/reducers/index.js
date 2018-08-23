@@ -1,6 +1,6 @@
 // still in progress
 
-import { FETCH_HPS, FETCHED_HPS, FETCH_LISTINGS, FETCHED_LISTINGS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING } from '../actions';
+import { FETCH_HPFAVORITES,FETCHED_HPFAVORITES,FETCH_HPS, FETCHED_HPS, FETCH_LISTINGS, FETCHED_LISTINGS, FETCH_CLIENTS, FETCHED_CLIENTS, ERROR_FETCHING } from '../actions';
 
  const initialState = {
    clients: [],
@@ -27,6 +27,19 @@ export const rootReducer = (state = initialState, action) => {
         fetchingClients: false,
         error: null
     });
+
+    case FETCH_HPFAVORITES:
+      return Object.assign({}, state, { 
+        fetchingHPFavorites: true 
+    });
+
+    case FETCHED_HPFAVORITES:
+      return Object.assign({}, state, {
+        clients: [ ...action.payload ],
+        fetchingHPFavorites: false,
+        error: null
+    });
+
 
     case FETCH_HPS:
       return Object.assign({}, state, { 

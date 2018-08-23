@@ -6,7 +6,7 @@ import { FaCaretDown, FaStar, FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodep
 import HPnav from '../../nav/company/HPnav';
 import defaultuser from "./defaultuser.svg";
 import { Link } from 'react-router-dom';
-import { get_clients } from '../../../actions';
+import { get_hiring_partner_favorites } from '../../../actions';
 import { connect } from 'react-redux';
 
 class JSlistView extends Component {
@@ -18,7 +18,7 @@ class JSlistView extends Component {
   }
 
   componentDidMount = () => {
-    this.props.get_clients();
+    this.props.get_hiring_partner_favorites();
   }
 
   render() {
@@ -121,4 +121,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, { get_clients })(JSlistView);
+export default connect(mapStateToProps, { get_hiring_partner_favorites})(JSlistView);

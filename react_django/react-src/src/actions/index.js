@@ -8,6 +8,9 @@ export const FETCHED_LISTINGS = 'FETCHED_LISTINGS';
 export const FETCH_LISTINGS = 'FETCH_LISTINGS';
 // export const FETCH_USER = 'FETCH_USER';
 export const ERROR_FETCHING = 'ERROR_FETCHING';
+export const FETCH_HPFAVORITES = "FETCH_HIRING_PARTNER_FAVORITES";
+export const FETCHED_HPFAVORITES = "FETCHED_HIRING_PARTNER_FAVORITES";
+
 
 export const get_clients = () => {
   const clients = axios.get(`http://127.0.0.1:8000/api/clients/`);
@@ -28,6 +31,28 @@ export const get_clients = () => {
       });
   };
 };
+
+export const get_hiring_partner_favorites= () => {
+  const clients = axios.get(`http://127.0.0.1:8000/api/hire-partner-favorites/`);
+  return dispatch => {
+    dispatch({ type: FETCH_HPFAVORITES});
+    clients
+      .then(response => {
+        dispatch({
+          type: FETCHED_HPFAVORITES,
+          payload: response.data.Clients
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR_FETCHING,
+          payload: 'ERROR fetching clients'
+        });
+      });
+  };
+};
+
+
 
 export const get_hiring_partners = () => {
     const hiring_partners = axios.get(`http://127.0.0.1:8000/api/hire-partners/`);
