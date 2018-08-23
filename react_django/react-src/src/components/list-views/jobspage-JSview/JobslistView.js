@@ -84,16 +84,15 @@ class JobslistView extends Component {
                     <div className="card-header">
                       <img src={defaultuser} className="Joblistcardpic" alt="Job Seeker" />
                         <div className="jobscard-name">
-                          <h3>{job_listing.companyName}</h3>
+                          <h3>{job_listing.company_name}</h3>
                           <h5>{job_listing.city}{job_listing.state}</h5>
                         </div>
                           <FaStar className="card-favIcon"/>
                     </div>
                     {job_listing.jobListings.map(jls =>
                       <div className="card-info">
+                        <p className="card-bio">{jls.job_title}</p>
                         <p className="card-bio">{jls.job_desc}</p>
-                        <a className="emailcontact"><FaEnvelope className="contactIcons"/>{jls.email}</a>
-                        <a className="phonecontact"><FaPhoneSquare className="contactIcons"/>{jls.phone}</a>
                       </div>)}
                   </Link>
                 </div>)}

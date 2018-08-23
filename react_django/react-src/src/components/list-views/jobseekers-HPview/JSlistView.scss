@@ -238,8 +238,6 @@
     }
 
     .jobseekercards-container {
-      display: flex;
-      flex-wrap: wrap;
       background-color: rgb(230, 230, 230);
       justify-content: flex-start;
       align-content: flex-start;
@@ -259,15 +257,13 @@
 
       .cards-main {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-wrap: wrap;
         margin: 10px;
 
       .jobseeker-cards {
         width: 28.5%;
-        display: flex;
         font-family: $HPtext;
-        // border: .5px solid rgba(128, 128, 128, 0.466);
         background-color: rgba(255, 255, 255, .9);
         box-shadow: 3px 3px 3px 1px rgba(128, 128, 128, 0.616);
         border-radius: 10px;
