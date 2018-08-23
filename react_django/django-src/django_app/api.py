@@ -19,7 +19,6 @@ def create_client(request):
         client = Clients(
             email=request_body['email'],
             password=encrypt_password(request_body['password']),
-            city=request_body['city'],
             state=request_body['state'],
             personal_website=request_body['personal_website'],
             first_name=request_body['first_name'],
@@ -35,10 +34,11 @@ def create_client(request):
             about=request_body['about']
         )
         try:
-          client.save()
+            client.save()
         except IntegrityError as e:
-          return JsonResponse({"error":e},status=400)
-        return JsonResponse(request_body, status=201)
+          return JsonResponse({"error": e}, status=400)
+        client = json.loads(serializers.serialize('json', Clients.objects.filter(id=client.id)))[0]
+        return JsonResponse(client, status=201)
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
@@ -61,11 +61,14 @@ def log_in_client(request):
       try:
         request_body = json.loads(request.body.decode('ascii'))
         client = Clients.objects.filter(email=request_body['email'])
-        if(len(client) > 0):
-          client = client[0]
-          if(str(verify_password(request_body['password'],client.password))):
-                print(create_token())
-                return JsonResponse({"Client":model_to_dict(client)})
+        if len(client) > 0:
+            client = client[0]
+            if verify_password(request_body['password'], client.password):
+                del client._state
+                del client.password
+                response = JsonResponse(client.__dict__, status=200)
+                response.__setitem__(header='jwt', value=create_token())
+                return response
         else:
           return JsonResponse({"Login failed": "incorrect email or password"}, status=400)
       except KeyError as e:
@@ -205,36 +208,35 @@ def create_listing(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
         request_body = json.loads(request.body.decode('ascii'))
-        jobListing = Job_Listing(
+        job_listing = Job_Listing(
           hp_id =request_body['hpId'],
-          job_title =request_body['jobTitle'],
-          job_desc =request_body['jobDesc'],
-          job_link =request_body['jobLink'],
-          posted_time =request_body['postedOn']
+          job_title =request_body['job_title'],
+          job_desc =request_body['job_desc'],
+          job_link =request_body['job_link'],
+          posted_time =request_body['posted_on']
         )
         try:
-          jobListing.save()
+          job_listing.save()
         except IntegrityError as e:
           return JsonResponse({"error":e},status=400)
         return JsonResponse(request_body, status=201)
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"},
-                            status=400)
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 def get_listings(request):
     if request.META['REQUEST_METHOD'] == 'GET':
         try:
-          hirePartners = [obj.to_dict() for obj in Hire_Partners.objects.all()]
-          for HPs in hirePartners:
-            jobListings = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=HPs['id'])))
-            for x in range(len(jobListings)):
-              jobListings[x] = jobListings[x]['fields']
-            HPs['jobListings']=jobListings
-          return JsonResponse({"HPjobListings":hirePartners})
+          hire_partners = [obj.to_dict() for obj in Hire_Partners.objects.all()]
+          for HPs in hire_partners:
+            job_listings = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=HPs['ID'])))
+            for x in range(len(job_listings)):
+                job_listings[x] = job_listings[x]['fields']
+                del job_listings[x].password
+            HPs['jobListings']=job_listings
+          return JsonResponse({"HPjobListings":hire_partners})
         except Job_Listing.DoesNotExist as e:
           return JsonResponse({"Error":e})
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"},
-                            status=400)
+      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)

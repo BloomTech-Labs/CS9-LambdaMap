@@ -5,7 +5,7 @@ secret = config('SECRET')
 
 
 def create_token():
-    return jwt.encode({'exp': datetime.utcnow()}, secret, algorithms='HS256')
+    return jwt.encode({'exp': datetime.datetime.utcnow()}, secret)
 
 
 def verify_token(jwt_key):
