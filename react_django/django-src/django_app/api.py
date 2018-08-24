@@ -5,12 +5,10 @@ from .authentication import create_token, verify_token
 from django.db import IntegrityError
 from django.core import serializers
 from django.forms.models import model_to_dict
-import json
-
+import json, re
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
-
 
 def create_client(request):
     if request.META['REQUEST_METHOD'] == 'POST':
@@ -19,6 +17,7 @@ def create_client(request):
         client = Clients(
             email=request_body['email'],
             password=encrypt_password(request_body['password']),
+            city=request_body['city']
             state=request_body['state'],
             personal_website=request_body['personal_website'],
             first_name=request_body['first_name'],
@@ -203,7 +202,7 @@ def log_in_hire_partner(request):
     else:
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
-# endpoints for Job Listings
+# create Job Listings
 def create_listing(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
@@ -225,6 +224,7 @@ def create_listing(request):
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
+# get Job Listings that belong to a hiring partner, gets all hiring partner info with job listings
 def get_listings(request):
     if request.META['REQUEST_METHOD'] == 'GET':
         try:
@@ -240,3 +240,15 @@ def get_listings(request):
           return JsonResponse({"Error":e})
     else:
       return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
+
+# Get an individual Client
+def get_client(request):
+    if request.META['REQUEST_METHOD'] == 'GET':
+      try:
+        regex = re.compile('/api/clients/(\d)+/', re.MULTILINE)
+        client = Clients.objects.get(id=regex.search(request.META['PATH_INFO']).group(1))
+        return JsonResponse({"Client": client.to_dict()})
+      except Clients.DoesNotExist as e:
+          return JsonResponse({"Error":e})
+    else:
+      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)

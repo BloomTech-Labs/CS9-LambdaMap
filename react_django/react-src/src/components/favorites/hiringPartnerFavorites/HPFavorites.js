@@ -1,4 +1,4 @@
-// Hiring Partner View for list of job seekers with filter
+// Hiring Partner View of favorites
 
 import React, { Component } from 'react';
 import './hiringPartnerFavorites.css';
@@ -6,19 +6,19 @@ import { FaCaretDown, FaStar, FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodep
 import HPnav from '../../nav/company/HPnav';
 import defaultuser from "./defaultuser.svg";
 import { Link } from 'react-router-dom';
-import { get_hiring_partner_favorites } from '../../../actions';
+import { get_hpFavs } from '../../../actions';
 import { connect } from 'react-redux';
 
-class JSlistView extends Component {
+class HPFavorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clients: [],
+      hp_favorites: [],
     }
   }
 
   componentDidMount = () => {
-    this.props.get_hiring_partner_favorites();
+    this.props.get_hpFavs();
   }
 
   render() {
@@ -78,7 +78,7 @@ class JSlistView extends Component {
           <hr className="cards-hr"></hr>
           <div className="jobseekercards-container">
           <div className="cards-main">
-            {this.props.clients.map(clients =>
+            {/* {this.props.clients.map(clients =>
                 <div key={clients.id} className="jobseeker-cards">
                   <Link to={'/'} className="profile-link">
                     <div className="card-header">
@@ -103,7 +103,7 @@ class JSlistView extends Component {
                       <a target="_blank" rel="noopener noreferrer" href={clients.personalWebsite}><FaDesktop className="card-smIcons"/></a>
                     </div>
                   </Link>
-                </div>)}
+                </div>)} */}
               </div>
             </div>
           </div>
@@ -115,10 +115,10 @@ class JSlistView extends Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-    clients: state.clients,
-    fetchingClients: state.fetchingClients,
+    hp_favorites: state.hp_favorites,
+    fetchingHPFavs: state.fetchingHPFavs,
     error: state.error
   };
 };
 
-export default connect(mapStateToProps, { get_hiring_partner_favorites})(JSlistView);
+export default connect(mapStateToProps, { get_hpFavs })( HPFavorites );
