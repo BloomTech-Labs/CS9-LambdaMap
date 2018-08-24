@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { isError } from 'util';
 
+// import LogIn from './landing/LogIn/LogIn';
+// import Register from './landing/Register/Register'
 
 const apiUrl = "http://127.0.0.1:8000/api/";
 export default class ForgotPassword extends Component {
@@ -11,7 +13,11 @@ export default class ForgotPassword extends Component {
       hire_partners: [],
       client: false,
       hire_partner: false,
-      answer_attempt: ''
+      answer_attempt: '',
+      password1: '',
+      password2: '',
+      password: '',
+      email: ''
     }
   }
   componentDidMount() {
@@ -22,7 +28,6 @@ export default class ForgotPassword extends Component {
     })
     .catch(err => {
       console.log('Whoops, there was an error', err)
-      
     })
     axios.get(`${apiUrl}`/hire-partners)
     .then(res => {
@@ -56,7 +61,7 @@ export default class ForgotPassword extends Component {
       business
     } = this.state
     if(client){
-      axios.post(`${apiUrl}`/)
+      if(this.state.client)
     }
     else if(hire_partner){
 
@@ -83,6 +88,22 @@ export default class ForgotPassword extends Component {
        <h1>{this.state.clients._id.security_question}</h1>
        <form onSubmit={this.handleSubmit}>
        <input type="text" value={this.state.answer_attempt} onChange={this.handleTextChange} name={this.state.answer_attempt} placeholder="Please enter you security question's answer"/>
+       <label>
+       <label>
+            Email:
+            <input type="email" 
+            name="email" placeholder="Please enter your email" 
+            value={this.state.email}
+            onChange={this.handleTextChange}
+            />
+          </label>
+            New Password:
+            <input type="password" name="password1" placeholder="Enter your password" onChange={this.handleTextChange} value={this.state.password1}/>
+          </label>
+          <label>
+            Confirm New Password:
+            <input type="password" name="password2" placeholder="Enter your password again" onChange={this.handleTextChange} value={this.state.password2}/>
+          </label>
        <button type="submit">Submit</button>
         <button type="button" onClick={this.handleReset}>Cancel</button>
         </form>
@@ -99,6 +120,23 @@ export default class ForgotPassword extends Component {
         </h1>
         <form>
         <input type="text" value={this.state.answer_attempt} onChange={this.handleTextChange} placeholder="Please enter you security question's answer"/>
+        <label>
+            Email:
+            <input type="email" 
+            name="email" placeholder="Please enter your email"
+            value={this.state.email}
+            onChange={this.handleTextChange}
+            />
+          </label>
+        <label>
+            New Password:
+            <input type="password" name="password1" placeholder="Enter your password" onChange={this.handleTextChange} value={this.state.password1}/>
+          </label>
+          <label>
+            Confirm New Password:
+            <input type="password" name="password2" placeholder="Enter your password again" onChange={this.handleTextChange} value={this.state.password2}/>
+          </label>
+
         <button type="submit">Submit</button>
         <button type="button" onClick={this.handleReset}> Cancel </button>
         </form>
@@ -106,6 +144,8 @@ export default class ForgotPassword extends Component {
         :
         null
       }
+      <div>
+      
       </div>
     )
   }

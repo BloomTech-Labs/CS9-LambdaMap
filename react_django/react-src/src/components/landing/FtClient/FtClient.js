@@ -5,34 +5,35 @@ export default class FtClient extends Component {
     super();
     this.state = {
       header: '',
-      first_name: '',
-      last_name: '',
-      clients:[]
+      subHeader: '',
+      clients: []
     }
   }
 
   componentDidMount() {
-    axios.get(`http://127.0.0.1:8000/students/featuredstudent/:id'`, { username, firstname, lastname, bio, picture, avatar})
+    axios.get(`http://127.0.0.1:8000/client/featuredclients/:id'`, { username, firstname, lastname, bio, picture, avatar})
     .then(res => {
         const {firstname, lastname, bio, picture, avatar} = res.data
-        this.setState(res.data)
+        this.setState({clients: res.data})
     })
     .catch(err => {
       console.log(err.message)
-      this.props.history.push('/featuredstudents/')
+      alert('Sorry your request was not made! Try again')
+      this.props.history.push('/featuredclient/')
     })
   }
 
   handleAvatarClick = event => {
     console.log('redirecting to the user page')
-    this.props.history.push(`/api/user/${localStorage.getItem('featuredUser', '_id')}`);
+    id = localStorage.getItem('featuredUser', '_id')
+    this.props.history.push(`/get-client/${id}`);
   }
   render() {
     return (
       <div>
         <h1>Featured Student</h1>
         <hr/>
-        <h1>{this.props.firstname} {this.props.lastname}</h1>
+        <h1>{this.props.first_name} {this.props.last_name}</h1>
         <div className="bio--container">
         <h1>About</h1>
         <img src={this.state.picture} href={`${this.state.firstname}' Picture`} onclick={this.handleAvatarClick}/>
@@ -45,15 +46,15 @@ export default class FtClient extends Component {
         </div>
         <div>
         <h1>Contact Me!</h1>
-        <img name="linkedin" src={} href="contact icon"/>
-        <img name="github" src={} href="contact icon"/>
-        <img name="website" src={} href="contact icon"/>
-        <a>{this.state.resume}</a>
+        <img name="linkedin" src={this.props.clients.linkedin} href="contact icon"/>
+        <img name="github" src={this.props.clients.github} href="contact icon"/>
+        <img name="website" src={this.props.clients.personal_website} href="contact icon"/>
+        <a>{this.props.clients.resume}</a>
         </div>
         <div className="projects--container">
-        <h1 translate >{this.state.firstname + "'s"} Projects!</h1>
+        <h1 translate >{this.props.clients.first_name + "'s"} Projects!</h1>
           <div className="projects--mapped">
-          {this.state.projects.map(item => {
+          {this.props.clients.projects.map(item => {
             <div>
             <iframe src={this.state.item.link} frameBorder="2" width="400" height="300" name="projects" allowfullscreen translate sandbox>{}
             </iframe>

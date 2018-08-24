@@ -14,33 +14,12 @@ def create_client(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
         request_body = json.loads(request.body.decode('ascii'))
-<<<<<<< HEAD
-        client = Clients(
-            email=request_body['email'],
-            password=encrypt_password(request_body['password']),
-            city=request_body['city'],
-            state=request_body['state'],
-            personal_website=request_body['personal_website'],
-            first_name=request_body['first_name'],
-            last_name=request_body['last_name'],
-            remote=request_body['remote'],
-            relocate=request_body['relocate'],
-            linkedin=request_body['linkedin'],
-            github=request_body['github'],
-            twitter=request_body['twitter'],
-            codepen=request_body['codepen'],
-            portfolio_picture=request_body['portfolio_picture'],
-            phone=request_body['phone'],
-            about=request_body['about']
-        )
-=======
         client = Clients()
         for x in request_body:
             if x == 'password':
                 client.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 client.__setattr__(x, request_body[x])
->>>>>>> 08eef87f6a140f987d34127af29dfdb369eafda9
         try:
             client.save()
         except IntegrityError as e:

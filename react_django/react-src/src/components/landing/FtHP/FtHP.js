@@ -37,18 +37,7 @@ export default class FeaturedCompaniesPage extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://127.0.0.1:8000/companies/featuredcompany/:id'`, {
-      // `${this.props.match.params.id}`
-      businessname,
-      picture,
-      bio,
-      contact,
-      media,
-      philosophy,
-      benefits,
-      // featuredOpenings,
-      jobPosting,
-    })
+    axios.get(`http://127.0.0.1:8000/api/get-hire-partners`)
     .then(res => {
       const {
         businessname,
@@ -61,12 +50,12 @@ export default class FeaturedCompaniesPage extends Component {
         // featuredOpenings,
         jobPosting,
       } = res.data
-      this.setState(res.data)
+      this.setState({hire_partner: res.data})
       console.log('data successfully fetched from featuredbusiness')
     })
     .catch(err => {
       console.log(err.message)
-      this.props.history.push('/landing/')
+      this.props.history.push('/featured/')
     })
   }
   render() {
@@ -83,13 +72,13 @@ export default class FeaturedCompaniesPage extends Component {
         <div className="featured--media--container">
         <h1 className="featured--text">Media & Press</h1>
         {
-        this.state.media.type.picture
+        this.props.hire_partner.media.type.picture
         ? this.state.media.picture.map(item => {
           <div className="featured--pics">
             <img src={this.state.media.link} alt={this.state.media.description} />
           </div>
         })
-        : this.state.media.video.map(item => {
+        : this.props.hire_partner.media.typevideo.map(item => {
           <div>
           <iframe src={this.state.item.link} frameBorder="2" width="400" height="300" name="projects" allowfullscreen translate sandbox>{}
         </iframe>
@@ -109,9 +98,9 @@ export default class FeaturedCompaniesPage extends Component {
     </div>
     <h1 className="featured--header">Hot Gigs!</h1>
     <div className="featured_company--openings_container">
-        {this.state.featuredOpenings.map(item => {
+        {this.props.hire_partner.featuredOpenings.map(item => {
           <div className="featured_company--openings" key={item._id}>
-            <a src={this.props.history.push(`/company/jobs/${this.state.jobPostings._id}`)}>
+            <a src={this.props.history.push(`/company/jobs/${this.props.hire_partner.jobPostings._id}`)}>
           <h2>{item.role}</h2>
           <h3>{item.location}</h3>
           <h3>{item.description}</h3>
