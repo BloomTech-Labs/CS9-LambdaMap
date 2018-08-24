@@ -5,7 +5,7 @@ from .security import encrypt_password, verify_password
 from .authentication import create_token, verify_token
 from django.db import IntegrityError
 from django.core import serializers
-import json
+import json, re
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
