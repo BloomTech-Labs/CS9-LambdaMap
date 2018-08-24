@@ -1,4 +1,7 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
+
 
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
@@ -9,7 +12,6 @@ class Users(models.Model):
     personal_website = models.URLField(blank=True, default='')
     phone = models.CharField(max_length=50, blank=True, default='')
     about = models.CharField(max_length=400, blank=True, default='')
-
 
 
 class Clients(Users):
@@ -42,3 +44,11 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
+
+
+class Session(models.Model):
+    key = models.CharField(max_length=100, default='')
+    content_type = models.ForeignKey(ContentType, on_delete=models.DO_NOTHING)
+    object_id = models.PositiveIntegerField(default='')
+    content_object = GenericForeignKey('content_type', 'object_id')
+
