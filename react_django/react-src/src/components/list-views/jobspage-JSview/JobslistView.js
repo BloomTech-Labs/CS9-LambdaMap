@@ -13,16 +13,18 @@ class JobslistView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      job_listings: [],
+      jobListing: [],
     }
   }
 
   componentDidMount = () => {
+    console.log(this.props.get_listings)
     this.props.get_listings();
   }
 
   render() {
-    console.log(this.job_listings)
+    console.log(this.props)
+    console.log(this.state.job_listings)
     return (
       <div className="main-jobslist">
         <HPnav />
@@ -78,8 +80,8 @@ class JobslistView extends Component {
           <hr className="cards-hr"></hr>
           <div className="joblistingcards-container">
           <div className="cards-main">
-            {this.props.job_listings.map(job_listing =>
-                <div key={job_listing.id} className="joblisting-cards">
+            {this.props.jobListing.job_listings.map(job_listing =>
+                <div key={job_listing.ID} className="joblisting-cards">
                   <Link to={'/'} className="profile-link">
                     <div className="card-header">
                       <img src={defaultuser} className="Joblistcardpic" alt="Job Seeker" />
@@ -107,8 +109,8 @@ class JobslistView extends Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-    job_listings: state.job_listings,
-    fetchingHPs: state.fetchingHPs,
+    jobListing: state.jobListing,
+    fetchingListings: state.fetchingListings,
     error: state.error
   };
 };

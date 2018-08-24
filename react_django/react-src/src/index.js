@@ -7,10 +7,10 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
-import { rootReducer } from './reducers';
+import reducers from './reducers';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 
-const store = createStore( rootReducer, applyMiddleware(thunk, logger))
+const store = createStore( reducers, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
     <Provider store={store}>
