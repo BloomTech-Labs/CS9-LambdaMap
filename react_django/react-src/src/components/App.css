@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   overflow-x: hidden;
-  background: url('./redmap.svg') no-repeat;
+  /* background: url('./redmap.svg') no-repeat; */
   background-size: 100% 100%;
   height: 100vh;
   width: 100%;
