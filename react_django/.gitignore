@@ -1,4 +1,5 @@
 /venv
-yarn.lock
-Pipfile
+/yarn.lock
+/Pipfile
+/Pipfile.lock
 node_modules/
