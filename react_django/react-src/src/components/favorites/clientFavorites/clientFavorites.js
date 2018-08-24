@@ -1,30 +1,30 @@
-// Hiring Partner View for list of job seekers with filter
+// Clients view of favorites
 
 import React, { Component } from 'react';
-import './hiringPartnerFavorites.css';
+import './ClientFavorites.css';
 import { FaCaretDown, FaStar, FaSquare, FaTwitter, FaLinkedin, FaGithub, FaCodepen, FaFile, FaDesktop, FaEnvelope, FaPhoneSquare } from 'react-icons/fa';
-import HPnav from '../../nav/company/HPnav';
+import JSnav from '../../nav/company/JSnav';
 import defaultuser from "./defaultuser.svg";
 import { Link } from 'react-router-dom';
-import { get_client_favorites} from '../../../actions';
+import { get_clientFavs} from '../../../actions';
 import { connect } from 'react-redux';
 
-class JSlistView extends Component {
+class ClientFavorites extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clients: [],
+      client_favorites: [],
     }
   }
 
   componentDidMount = () => {
-    this.props.get_client_favorites();
+    this.props.get_clientFavs();
   }
 
   render() {
     return (
       <div className="main-JSlist">
-        <HPnav />
+        <JSnav />
         <div className="signout">
         <div className="backgroundskew"></div>
         <div className="backgroundskew2"></div>
@@ -78,7 +78,7 @@ class JSlistView extends Component {
           <hr className="cards-hr"></hr>
           <div className="jobseekercards-container">
           <div className="cards-main">
-            {this.props.clients.map(clients =>
+            {/* {this.props.clients.map(clients =>
                 <div key={clients.id} className="jobseeker-cards">
                   <Link to={'/'} className="profile-link">
                     <div className="card-header">
@@ -103,7 +103,7 @@ class JSlistView extends Component {
                       <a target="_blank" rel="noopener noreferrer" href={clients.personalWebsite}><FaDesktop className="card-smIcons"/></a>
                     </div>
                   </Link>
-                </div>)}
+                </div>)} */}
               </div>
             </div>
           </div>
@@ -115,10 +115,10 @@ class JSlistView extends Component {
 const mapStateToProps = state => {
   console.log(state)
   return {
-    clients: state.clients,
-    fetchingClients: state.fetchingClients,
+    client_favorites: state.clients_favorites,
+    fetchingClientFavs: state.fetchingClientFavs,
     error: state.error
   };
 };
 
-export default connect(mapStateToProps, { get_client_favorites})(JSlistView);
+export default connect(mapStateToProps, { get_clientFavs })( ClientFavorites );
