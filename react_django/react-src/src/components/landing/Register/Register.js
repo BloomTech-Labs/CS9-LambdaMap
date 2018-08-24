@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-
+import { withRouter } from 'react-router-dom';
 const apiUrl = "http://127.0.0.1:8000/api/";
 export default class Register extends Component {
   constructor() {
@@ -34,7 +34,7 @@ export default class Register extends Component {
 
   handleTextChange = event => {
     this.setState({[event.target.name]: event.target.value});
-    if (this.state.password1 === this.state.statepassword2) {
+    if (this.state.password1 === this.state.password2) {
       this.setState({password: this.state.password2})
     }
   }
@@ -101,12 +101,12 @@ export default class Register extends Component {
         .then(res => {
           console.log('Client being created', res.data.first_name);
           console.log('Account Successfully Created!');
-          return this.props.history.push('/login/')
+          this.props.history.push('/login');
         })
         .catch(err => {
-          console.log('from server', err);
+          console.log('The error from server', err);
           alert('Please try again!')
-          this.setState({password1: ''}, {password2: ''});
+          this.setState({password1:'', password2:''});
         })
       }
       else {
@@ -121,7 +121,7 @@ export default class Register extends Component {
         .catch(err => {
           console.log(err.message)
           alert('Please try again!')
-          this.setState({password1: ''}, {password2: ''})
+          this.setState({password1:'', password2:''})
         });
       }
     }
@@ -132,7 +132,7 @@ export default class Register extends Component {
         1 symbol ie. (?=.*?[#?!@$%^&*-])
         1 lowercase letter
         `);
-        this.setState({ password1: ''}, {password2: ''});
+        this.setState({password1:'', password2:''});
         this.props.history.push('/register/');
       }
   }
@@ -146,10 +146,10 @@ export default class Register extends Component {
       <form onSubmit={this.handleSubmit}>
       <label>
       I am a
-      <input type="radio" name="client" onChange={this.handleRadioChange} checked={this.state.client === true ? true : false}/>
-      Student
-      <input type="radio" name="hire_partner" onChange={this.handleRadioChange} checked={this.state.hire_partner === true ? true : false}/>
-      Business
+      <input type="radio" name="client" onChange={this.handleRadioChange} checked={this.state.client === true}/>
+      Client
+      <input type="radio" name="hire_partner" onChange={this.handleRadioChange} checked={this.state.hire_partner === true}/>
+      Hire Partner
       </label>
       <h1> Register </h1>
         <label>
@@ -197,7 +197,7 @@ export default class Register extends Component {
             <input type="text" name="personal_website" placeholder="Enter your personal website url" onChange={this.handleTextChange} value={this.state.personal_website}/>
           </label>
           <label>
-            Phone:
+            Phone Number:
             <input type="text" name="phone" placeholder="Enter your phone number" onChange={this.handleTextChange} value={this.state.phone}/>
           </label>
           <label>
@@ -225,3 +225,4 @@ export default class Register extends Component {
       )
     }
   }
+

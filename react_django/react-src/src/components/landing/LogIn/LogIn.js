@@ -42,31 +42,31 @@ export default class LogIn extends Component {
           axios.post(`${apiUrl}/login-hire-partner/`, {email, password})
           .then(res => {
             console.log('Hire Partner successfully logged in!');
-            console.log(res.data)
+            console.log(res.data);
             this.props.history.push(`/`);
           })
           .catch(err => {
-            console.log('Sorry there was an error', err.message);
-            this.props.history.push('/login')
+            console.log('Sorry there was an error', err);
             this.setState(this.startingState);
+            this.props.history.push('/login');
           })
         }
         else if(email && password && client) {
           axios.post(`${apiUrl}/login-client/`, {email, password})
           .then(res => {
             console.log('Client successfully logged in!');
-            console.log(res.data)
+            console.log(res.data);
             this.props.history.push(`/`);
           })
           .catch(err => {
-            console.log('Sorry there was an error', err.message);
-            this.props.history.push('/login')
+            console.log('Sorry there was an error', err);
             this.setState(this.startingState);
+            this.props.history.push('/login')
           })
         }
         else alert(" No password and/or email entered!");
-          this.props.history.push('/login')
-          this.setState(this.startingState);
+        this.setState(this.startingState);
+        this.props.history.push('/login')
           }
         
   render() {
@@ -75,12 +75,14 @@ export default class LogIn extends Component {
         <div className='signIn-container'>
         <h1> Log In</h1>
         <form onSubmit={this.handleSubmit}>
-        <input type="radio" onChange={this.handleRadioChange} checked={this.state.client === true}>Client</input>
-        <input type="radio" onChange={this.handleRadioChange} checked={this.state.hire_partner === true}>Hire Partner</input>
+        <input type="radio" onChange={this.handleRadioChange} checked={this.state.client === true} />
+        Client
+        <input type="radio" onChange={this.handleRadioChange} checked={this.state.hire_partner === true}/>>
+        Hire Partner
           <label>
             Email:
-            <input type="text" 
-            name="email" placeholder="Enter your email" 
+            <input type="email" 
+            name="email" placeholder="Please enter your email" 
             value={this.state.email}
             onChange={this.handleTextChange}
             />
@@ -93,7 +95,7 @@ export default class LogIn extends Component {
             onChange={this.handleTextChange}
             />
           </label>
-            <h1> Or... Sign in with</h1> <button> Google </button>
+            <h1> Or... Sign in with</h1> <a href="www.google.com"> Google </a>
             <br/>
             <br/>
           <button type="submit">
@@ -103,7 +105,7 @@ export default class LogIn extends Component {
           Cancel
           </button>
         </form>
-    </div>
+        </div>
   </div>
   )}
 } 
