@@ -17,7 +17,7 @@ def create_client(request):
         client = Clients(
             email=request_body['email'],
             password=encrypt_password(request_body['password']),
-            city=request_body['city']
+            city=request_body['city'],
             state=request_body['state'],
             personal_website=request_body['personal_website'],
             first_name=request_body['first_name'],
