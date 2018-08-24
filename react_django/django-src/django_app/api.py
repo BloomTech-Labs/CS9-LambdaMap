@@ -262,8 +262,8 @@ def get_listings(request):
             job_listings = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=HPs['ID'])))
             for x in range(len(job_listings)):
                 job_listings[x] = job_listings[x]['fields']
-                del job_listings[x].password
             HPs['jobListings']=job_listings
+            del HPs['password']
           return JsonResponse({"HPjobListings": hire_partners})
         except Job_Listing.DoesNotExist as e:
           return JsonResponse({"Error":e})
