@@ -8,8 +8,11 @@ import HpProfileView from './HpProfileView/hpProfileView';
 import StudentSettings from './settings/studentSettings/studentSettings';	
 import MapView from './map/map';
 import Billing from './billing/billing';
+import LogIn from './landing/LogIn';
+import Register from './landing/Register'
 import compass from './compass.png'
 import { Link } from 'react-router-dom';
+
 import hiringPartnerFavorites from './favorites/hiringPartnerFavorites/hiringPartnerFavorites';	
 
 class App extends Component {
@@ -26,6 +29,8 @@ class App extends Component {
           <Route path="/map" component={MapView} />
           <Route path="/hiringPartnerFavorites" component={hiringPartnerFavorites} />
           <Link to='/map'><img src={compass} alt='compass' className='compass' /> </Link>
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={LogIn} />
       </div>
     );
   }
