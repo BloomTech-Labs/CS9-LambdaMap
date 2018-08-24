@@ -24,7 +24,7 @@ class Clients(Users):
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
     portfolio_picture = models.URLField(default='', blank=True)
-    account_type = BooleanField(default=False)
+    account_type = models.BooleanField(default=False)
 
     def to_dict(self):
       return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolio_picture":self.portfolio_picture,"phone":self.phone,"about":self.about,"account_type":self.account_type}
