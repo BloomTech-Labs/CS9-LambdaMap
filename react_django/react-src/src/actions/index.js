@@ -2,6 +2,8 @@
 import axios from 'axios';
 export const FETCHED_CLIENTS = 'FETCHED_CLIENTS';
 export const FETCH_CLIENTS = 'FETCH_CLIENTS';
+export const FETCHED_CLIENT = 'FETCHED_CLIENT';
+export const FETCH_CLIENT = 'FETCH_CLIENT';
 export const FETCHED_HPS = 'FETCHED_HPS';
 export const FETCH_HPS = 'FETCH_HPS';
 export const FETCHED_LISTINGS = 'FETCHED_LISTINGS';
@@ -117,3 +119,24 @@ export const get_listings = () => {
         });
     };
   };
+
+  export const get_client = ID => {
+    const client = axios.get(`http://127.0.0.1:8000/api/clients/${ID}/`);
+    return dispatch => {
+      dispatch({ type: FETCH_CLIENT });
+      client
+        .then(response => {
+          dispatch({
+            type: FETCHED_CLIENT,
+            payload: response.data.Client
+          });
+        })
+        .catch(err => {
+          dispatch({
+            type: ERROR_FETCHING,
+            payload: "ERROR fetching clients"
+          });
+        });
+    };
+  };
+  
