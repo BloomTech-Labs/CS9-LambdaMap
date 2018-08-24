@@ -32,7 +32,7 @@ class Clients(Users):
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
-    account_type = BooleanField(default=True)
+    account_type = models.BooleanField(default=True)
 
     def to_dict(self):
       return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type}
