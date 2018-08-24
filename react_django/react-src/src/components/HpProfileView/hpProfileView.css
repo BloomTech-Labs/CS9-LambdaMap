@@ -1,7 +1,6 @@
 /* Hiring Partner Profile View Student Perspective */
 .hp{
   display: flex;
-  background-color: rgba(204, 204, 204, 0);
   justify-content: center;
   height: 100vh;
   width: 100%;
@@ -45,8 +44,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-image: linear-gradient(100deg, #12507249, #8dc7e76c); */
-  background-color:rgba(68, 92, 114, 0.411);
+  background-color:rgba(214, 214, 214, 0.589);
   box-shadow: 0px 0px 5px 1px rgba(54, 54, 54, 0.801);
   border-left: 2px solid rgba(131, 131, 131, 0.856);
   width: 39vh;
@@ -74,14 +72,14 @@ z-index: 3;
   background-image: linear-gradient(-90deg, #125172, #8dc8e7);
   width: 100%;
   height: 11vh;
-  margin: 16vh 0px 10px 0px;
+  margin: 10vh 0px 10px 0px;
 }
 .hp-title{
   font-weight: bold;
   color: rgb(255, 255, 255);
   margin-bottom: -15px;
-  margin-right: 50px;
-  font-size: 2.1rem;
+  margin-right: 10px;
+  font-size: 2.5rem;
 }
 .hp-photo{
   border-radius: 500px;
@@ -91,7 +89,7 @@ z-index: 3;
 }
 .hp-location{
   color: rgb(202, 202, 202);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-top: 10px;
   margin-right: 10px;
 }
@@ -101,21 +99,21 @@ z-index: 3;
   align-items: center;
   background-color: #125172;
   width: 101%;
-  height: 8vh;
-  margin-top: 0px;
+  height: 6vh;
+  margin-top: 10px;
   margin-bottom: 5px;
   letter-spacing: 1px;
-  font-size: 2rem;
+  font-size: 2.3rem;
   color: rgb(255, 255, 255);
 }
 .hp-info-text{
   display: flex;
   align-items: center;
-  border-top: 2px solid #;
+  border-top: 2px solid #125172;
   border-bottom: 2px solid #125172;
-  color: rgb(78, 78, 78);
+  color: rgb(39, 39, 39);
   width: 95%;
-  font-size: 1.1em;
+  font-size: 1.3rem;
   height: 18vh;
 }
 .hp-remote{
@@ -139,7 +137,7 @@ z-index: 3;
 }
 .remote-check{
   margin: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   background: rgba(255, 255, 255, 0.445);
   height: 25px;
   border: none;
@@ -165,12 +163,12 @@ z-index: 3;
 }
 .hp-email{
   color: rgb(34, 34, 34);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-decoration: none;
 }
 .mail-logo{
   color: #125172;
-  margin: 14px 10px 0px 0px;
+  margin: 18px 10px 0px 0px;
   height: 30px;
   width: 30px;
 }
@@ -186,7 +184,7 @@ z-index: 3;
   border-radius: 5px;
   background-color:rgba(245, 243, 243, 0);
   width: 65%;
-  height: 35vh;
+  height: 45vh;
   overflow-x: auto;
   z-index: 0;
 }
@@ -201,7 +199,7 @@ z-index: 3;
   box-shadow: inset -15px -10px 15px -13px rgba(0, 0, 0, 0.616); }
 .link-icon{
   margin: 5px 15px 0px 35px;
-  color: #125172;
+  color: #ffffff;
   font-size: 1.3rem;
 }
 .link-icon:hover{
@@ -211,7 +209,7 @@ z-index: 3;
 }
 .star-icon{
   margin: 5px 15px 5px 10px;
-  color: #125172;
+  color: #ffffff;
   font-size: 1.3rem;
 }
 .star-icon:hover{
@@ -223,11 +221,17 @@ z-index: 3;
   color: wheat;
 }
 .hp-listing-div{
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: linear-gradient(100deg, #125172, #8dc8e7); */
+  background-color: #125172;
+  /* background-image: linear-gradient(-90deg, #125172, #8dc8e7); */
+  width: 100%;
+  margin-top: 0px;
   height: 10vh;
+  z-index: 0;
 }
 .hp-job-cards{
   display: flex;
@@ -238,13 +242,17 @@ z-index: 3;
   box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.671);
   border-radius: 0px;
   min-width: 230px;
-  height: 35vh;
-  max-height: 195px;
+  height: 45vh;
+  max-height: 275px;
   margin: 10px 5px 10px 20px;
 }
 
 .hp-card-title-div{
   display: flex;
+  /* background: rgba(104, 24, 44, 0.829); */
+  background-image: linear-gradient(-90deg, rgb(184, 184, 184), #d1d1d179);
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
   width: 100%;
   justify-content:flex-end;
   align-items: center;
@@ -253,7 +261,7 @@ z-index: 3;
 
 .hp-listing-title{
   font-size: 2.5rem;
-  color: rgba(34, 34, 34, 0.973);
+  color: rgba(255, 255, 255, 0.973);
   font-weight: bold;
 }
 .hp-card-title{
@@ -261,7 +269,7 @@ z-index: 3;
   font-size: 1.0rem;
   font-weight: bold;
   margin: 5px 0px 0px 0px;
-  color: rgb(44, 44, 44);
+  color: rgb(85, 85, 85);
 }
 .posted-title{
   text-decoration: underline;
@@ -280,22 +288,4 @@ z-index: 3;
   font-size: 1.0rem;
   margin-bottom: 10px;
   margin-top: 10px;
-}
-.hp-title-div-2{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  background-image: linear-gradient(-90deg, #125172, #8dc8e7);
-  width: 100%;
-  height: 8vh;
-  margin: 0px 0px 0px 0px;
-}
-.hp-photo-2{
-  width: 55px;
-  height: 55px;
-  border-radius: 400px;
-  border:2px solid gray;
-  margin-left:30px;
-  margin-right: 5px;
 }

@@ -9,7 +9,6 @@ import HPnav from '../nav/company/HPnav';
 export default class JSprofile extends Component {
 
   render() {
-    console.log(this.users)
     return (
       <div className="main">
        <HPnav />

@@ -22,6 +22,7 @@ class JSlistView extends Component {
   }
 
   render() {
+    console.log(this.state.clients)
     return (
       <div className="main-JSlist">
         <HPnav />
@@ -78,7 +79,7 @@ class JSlistView extends Component {
           <hr className="cards-hr"></hr>
           <div className="jobseekercards-container">
           <div className="cards-main">
-            {this.props.clients.map(clients =>
+            {this.props.clients.clients.map(clients =>
                 <div key={clients.id} className="jobseeker-cards">
                   <Link to={'/'} className="profile-link">
                     <div className="card-header">

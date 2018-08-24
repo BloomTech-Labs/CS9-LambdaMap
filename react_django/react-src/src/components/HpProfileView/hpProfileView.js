@@ -36,119 +36,91 @@ export default class HpProfileView  extends Component{
              </div>
              </div>
              {/* JOB LISTING*/}
-            <div className="hp-listing-div">
+             <div className="hp-listing-div">
              <p className="hp-listing-title">Recently Posted Jobs</p>
              </div>
              <div className="hp-job-card-div">
-             <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
-             <div className='hp-card-title-div'>
-            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
-            </div>  
-             <div className='hp-card-title-div'>
-             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
-             </div>
-             </div>
 
              <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
              <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
              <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
              <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
              <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
              </div>
-                          <div className='hp-job-cards'>
-             <div className="hp-title-div-2">
-            <img className="hp-photo-2" src={amazon} alt='amazon logo' />
-            <div className="hp-location-div">
-            <h1 className="hp-title">Amazon</h1>
-            <h3 className="hp-location">Seattle, WA</h3>
-            </div>
-            </div>
-            <p className='posted-title'>Posted 2 days ago.</p>
+             <div className='hp-job-cards'>
              <div className='hp-card-title-div'>
             <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
             </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
+             <div className='hp-card-title-div'>
+             <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
+             </div>
+             </div>
+             <div className='hp-job-cards'>
+             <div className='hp-card-title-div'>
+            <h5 className="hp-card-title">JR WEB DEVELOPER</h5> <FaStar className="star-icon"/>
+            </div>
+            <p className='posted-title'>Posted 2 days ago.</p>
+            <p className="hp-card-text">Lorem ipsum dolor sit amet,
+             consectetur adipiscing elit, sed do eiusmod tempor
+             incididunt ut labore et dolore magna aliqua.</p>
              <div className='hp-card-title-div'>
              <h5 className="hp-card-title">SEATTLE, WA</h5> <FaLink className="link-icon" />
              </div>
