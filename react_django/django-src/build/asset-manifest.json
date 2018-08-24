@@ -1,8 +1,15 @@
 {
+<<<<<<< HEAD
   "main.css": "static/css/main.777d3867.css",
   "main.css.map": "static/css/main.777d3867.css.map",
   "main.js": "static/js/main.78e7820a.js",
   "main.js.map": "static/js/main.78e7820a.js.map",
+=======
+  "main.css": "static/css/main.429b02fb.css",
+  "main.css.map": "static/css/main.429b02fb.css.map",
+  "main.js": "static/js/main.2eb0f316.js",
+  "main.js.map": "static/js/main.2eb0f316.js.map",
+>>>>>>> 08eef87f6a140f987d34127af29dfdb369eafda9
   "static/media/compass.png": "static/media/compass.2ea2bfd8.png",
   "static/media/defaultuser.svg": "static/media/defaultuser.7a1bfcbf.svg",
   "static/media/maplogored.svg": "static/media/maplogored.9a90f391.svg",
