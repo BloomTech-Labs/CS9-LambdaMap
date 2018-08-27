@@ -28,7 +28,7 @@ export const ERROR_ATLOGIN = "ERROR_ATLOGIN ";
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.post(`http://127.0.0.1:8000/api/login/`, data, config);
+  const user = axios.post(`http://lambda-map.herokuapp/api/login/`, data, config);
   return dispatch => {
     dispatch({
       type: LOGIN
@@ -60,7 +60,7 @@ export const login = data => {
 
 
 export const get_hpFavs= () => {
-  const clients = axios.get(`http://127.0.0.1:8000/api/hire-partner-favorites/`);
+  const clients = axios.get(`http://lambda-map.herokuapp/api/hire-partner-favorites/`);
   return dispatch => {
     dispatch({ type: FETCH_HPFAVORITES});
     clients
@@ -80,7 +80,7 @@ export const get_hpFavs= () => {
 };
 
 export const get_clientFavs = () => {
-  const clientFavs = axios.get(`http://127.0.0.1:8000/api/client-favorites/`);
+  const clientFavs = axios.get(`http://lambda-map.herokuapp/api/client-favorites/`);
   return dispatch => {
     dispatch({ type: FETCH_CLIENTFAVORITES});
     clientFavs
@@ -101,7 +101,7 @@ export const get_clientFavs = () => {
 
 
 export const get_hiring_partners = () => {
-    const hiring_partners = axios.get(`http://127.0.0.1:8000/api/hire-partners/`);
+    const hiring_partners = axios.get(`http://lambda-map.herokuapp/api/hire-partners/`);
     return dispatch => {
       dispatch({ type: FETCH_HPS });
       hiring_partners
@@ -121,7 +121,7 @@ export const get_hiring_partners = () => {
   };
 
 export const get_listings = () => {
-    const job_listing = axios.get(`http://127.0.0.1:8000/api/job-listings/`);
+    const job_listing = axios.get(`http://lambda-map.herokuapp/api/job-listings/`);
     return dispatch => {
       dispatch({ type: FETCH_LISTINGS });
       job_listing
@@ -141,7 +141,7 @@ export const get_listings = () => {
   };
 
   export const get_client = ID => {
-    const client = axios.get(`http://127.0.0.1:8000/api/clients/${ID}/`);
+    const client = axios.get(`http://lambda-map.herokuapp/api/clients/${ID}/`);
     return dispatch => {
       dispatch({ type: FETCH_CLIENT });
       client
