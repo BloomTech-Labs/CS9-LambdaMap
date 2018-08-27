@@ -235,8 +235,9 @@ def create_listing(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
         request_body = json.loads(request.body.decode('ascii'))
+        hp = Hire_Partners.objects.get(pk=request_body['hpId'])
         job_listing = Job_Listing(
-          hp_id =request_body['hpId'],
+          hp_id=hp,
           job_title =request_body['job_title'],
           job_desc =request_body['job_desc'],
           job_link =request_body['job_link'],
@@ -282,3 +283,4 @@ def get_client(request):
           return JsonResponse({"Error":e})
     else:
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+
