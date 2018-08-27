@@ -10,9 +10,7 @@ import clientFavs from './clientFavReducers';
 const reducers = combineReducers({
   jobListing,
   hirePartner,
-  clients,
-  hpFavs,
-  clientFavs
+  clients
 });
 
 export default reducers;

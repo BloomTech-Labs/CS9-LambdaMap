@@ -16,21 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
-from django_app.api import create_listing, get_listings, create_client, get_client, log_in_client, delete_client, update_client, \
-    get_clients,create_hire_partner,log_in_hire_partner,delete_hire_partner,update_hire_partner,get_hire_partners, \
-    log_out_client, add_favorite_listing, client_favorites
+from django_app.api import login, logout, create_listing, get_listings, create_client, get_client, delete_client, update_client, \
+    get_clients, create_hire_partner, delete_hire_partner, update_hire_partner, get_hire_partners, \
+    add_favorite_listing, client_favorites
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('api/create-client/', create_client),
-    path('api/login-client/', log_in_client),
+    path('api/login/', login),
     path('api/delete-client/', delete_client),
     path('api/update-client/', update_client),
-    path('api/log-out-client/', log_out_client),
     path('api/clients/', get_clients),
     path('api/create-hire-partner/', create_hire_partner),
-    path('api/login-hire-partner/', log_in_hire_partner),
     path('api/delete-hire-partner/', delete_hire_partner),
     path('api/update-hire-partner/', update_hire_partner),
     path('api/hire-partners/', get_hire_partners),
