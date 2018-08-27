@@ -1,18 +1,29 @@
-// The reducer for clients
+// Clients Reducers
 
 import {
   FETCH_CLIENTS,
   FETCHED_CLIENTS,
   FETCH_CLIENT,
   FETCHED_CLIENT,
-  ERROR_FETCHING
+  UPDATE_CLIENT,
+  UPDATED_CLIENT,
+  LOGGEDIN_CLIENT,
+  LOGIN,
+  ERROR_FETCHING,
+  FETCH_CLIENTFAVORITES,
+  FETCHED_CLIENTFAVORITES,
+  ERROR_ATLOGIN
 } from "../actions";
 
 const initialState = {
   clients: [],
-  fetchingClients: false,
   client: {},
+  client_favorites: [],
+  fetchingClientFavs: false,
+  fetchingClients: false,
   fetchingClient: false,
+  updatingClient: false,
+  loggingIn: false,
   error: null
 };
 
@@ -34,13 +45,55 @@ const clients = (state = initialState, action) => {
     // Fetching individual client profile
     case FETCH_CLIENT:
       return Object.assign({}, state, {
-        fetchingClient: false
+        fetchingClient: true
       });
 
     case FETCHED_CLIENT:
       return Object.assign({}, state, {
         client: action.payload,
         fetchingClient: false,
+        error: null
+      });
+
+    // Logging in Clients
+    case LOGIN:
+      return Object.assign({}, state, {
+        loggingIn: true
+      });
+
+    case LOGGEDIN_CLIENT:
+      return Object.assign({}, state, {
+        user: action.payload,
+        loggingIn: false,
+        error: null
+      });
+
+    case ERROR_ATLOGIN:
+      return Object.assign({}, state, {
+        error: action.payload
+      });
+
+    case UPDATE_CLIENT:
+      return Object.assign({}, state, {
+        updatingClient: true
+      });
+
+    case UPDATED_CLIENT:
+      return Object.assign({}, state, {
+        client: action.payload,
+        updatingClient: false,
+        error: null
+      });
+
+    case FETCH_CLIENTFAVORITES:
+      return Object.assign({}, state, {
+        fetchingClientFavs: true
+      });
+
+    case FETCHED_CLIENTFAVORITES:
+      return Object.assign({}, state, {
+        client_favorites: [...action.payload],
+        fetchingClientFavs: false,
         error: null
       });
 
