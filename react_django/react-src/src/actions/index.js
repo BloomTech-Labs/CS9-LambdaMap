@@ -58,6 +58,25 @@ export const login = data => {
   };
 };
 
+export const get_clients = () => {
+  const clients = axios.get(`http://127.0.0.1:8000/api/clients/`);
+  return dispatch => {
+    dispatch({ type: FETCH_CLIENTS });
+    clients
+      .then(response => {
+        dispatch({
+          type: FETCHED_CLIENTS,
+          payload: response.data.Clients
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: ERROR_FETCHING,
+          payload: ("ERROR fetching clients", err)
+        });
+      });
+  };
+};
 
 export const get_hpFavs= () => {
   const clients = axios.get(`http://lambda-map.herokuapp/api/hire-partner-favorites/`);
