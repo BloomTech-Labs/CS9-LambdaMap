@@ -124,6 +124,24 @@ def delete_client(request):
       return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"}, status=400)
 
 
+def client_favorites(request):
+    if request.META['REQUEST_METHOD'] == 'POST':
+        try:
+          request_body = json.loads(request.body.decode('ascii'))
+          client = Clients.objects.get(pk=request_body['client_id'])
+          favorites = []
+          response = {}
+          for e in client.job_listing_set.all():
+            favorites.append(e.id)
+          response['favorites'] = favorites
+          return JsonResponse(response,status=200)
+        except Clients.DoesNotExist as e:
+          return JsonResponse({"Error":e})
+    else:
+      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
+
+
+
 def create_hire_partner(request):
     if request.META['REQUEST_METHOD'] == 'POST':
       try:
@@ -283,4 +301,22 @@ def get_client(request):
           return JsonResponse({"Error":e})
     else:
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+
+
+def add_favorite_listing(request):
+    if request.META['REQUEST_METHOD'] == 'POST':
+      try:
+        request_body = json.loads(request.body.decode('ascii'))
+        client = Clients.objects.get(pk=request_body['client_id'])
+        listing = Job_Listing.objects.get(pk=request_body['listing_id'])
+        listing.clients.add(client)
+        try:
+          listing.save()
+        except IntegrityError as e:
+          return JsonResponse({"error":e},status=400)
+        return JsonResponse(request_body, status=201)
+      except KeyError as e:
+        return JsonResponse({"Invalid request": e}, status=400)
+    else:
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
