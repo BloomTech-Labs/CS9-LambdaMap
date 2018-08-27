@@ -46,7 +46,7 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-
+    clients = models.ManyToManyField(Clients)
 
 
 class Session(models.Model):

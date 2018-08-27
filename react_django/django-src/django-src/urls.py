@@ -18,7 +18,7 @@ from django.urls import path, re_path
 from django.views.generic import TemplateView
 from django_app.api import create_listing, get_listings, create_client, get_client, log_in_client, delete_client, update_client, \
     get_clients,create_hire_partner,log_in_hire_partner,delete_hire_partner,update_hire_partner,get_hire_partners, \
-    log_out_client
+    log_out_client, add_favorite_listing, client_favorites
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,5 +36,7 @@ urlpatterns = [
     path('api/hire-partners/', get_hire_partners),
     path('api/create-job-listings/', create_listing),
     path('api/job-listings/', get_listings),
+    path('api/add-favorite-listing/', add_favorite_listing),
+    path('api/client-favorites/', client_favorites),
     re_path('api/clients/\d+/', get_client)
 ]
