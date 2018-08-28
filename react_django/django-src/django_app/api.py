@@ -14,17 +14,19 @@ def register(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
         user = None
-        if request_body.account_type:
+        if str_to_bool(request_body["account_type"]):
             user = Hire_Partners()
         else:
             user = Clients()
         for x in request_body:
-            if x == 'password':
+            if x == 'account_type':
+                user.__setattr__(x, str_to_bool(request_body[x]))
+            elif x == 'password':
                 user.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 user.__setattr__(x, request_body[x])
         user.save()
-        return JsonResponse(None, status=201)
+        return JsonResponse({}, status=201)
 
 def get_clients(request):
     if request.META['REQUEST_METHOD'] == 'GET':
