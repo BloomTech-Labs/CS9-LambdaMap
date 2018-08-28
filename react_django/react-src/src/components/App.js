@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import HPFavorites from "./favorites/hiringPartnerFavorites/HPFavorites";
 import HpProfileView from "./HpProfileView/hpProfileView";
 import MapView from "./map/map";
-import MainLanding from "./landing-page/MainLanding";
+import MainLanding from "./landing-page/main-landing/MainLanding";
 
 class App extends Component {
   render() {

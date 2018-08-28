@@ -27,6 +27,7 @@ export const FETCH_CLIENTFAVORITES = "FETCH_HIRING_PARTNER_FAVORITES";
 export const FETCHED_CLIENTFAVORITES = "FETCHED_HIRING_PARTNER_FAVORITES";
 export const ERROR_FETCHING = "ERROR_FETCHING";
 export const ERROR_ATLOGIN = "ERROR_ATLOGIN ";
+export const REGISRATION_ERROR = "REGISRATION_ERROR";
 
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;

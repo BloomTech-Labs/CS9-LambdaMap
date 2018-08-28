@@ -1,8 +1,8 @@
 // Main landing page for signing in and registering, will redirect to landing page of respective account
 
 import React, { Component } from "react";
-import HPnav from "../nav/company/HPnav";
-import { login } from "../../actions";
+import HPnav from "../../nav/company/HPnav";
+import { login } from "../../../actions/index";
 import { connect } from "react-redux";
 
 class MainLanding extends Component {
