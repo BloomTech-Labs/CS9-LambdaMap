@@ -9,10 +9,13 @@ import {
   UPDATED_CLIENT,
   LOGGEDIN_CLIENT,
   LOGIN,
+  REGISTERED_CLIENT,
+  REGISTER,
   ERROR_FETCHING,
   FETCH_CLIENTFAVORITES,
   FETCHED_CLIENTFAVORITES,
-  ERROR_ATLOGIN
+  ERROR_ATLOGIN,
+  REGISRATION_ERROR
 } from "../actions";
 
 const initialState = {
@@ -68,6 +71,19 @@ const clients = (state = initialState, action) => {
         error: null
       });
 
+    // Registering Clients
+    case REGISTER:
+      return Object.assign({}, state, {
+        registering: true
+      });
+
+    case REGISTERED_CLIENT:
+      return Object.assign({}, state, {
+        user: action.payload,
+        registering: false,
+        error: null
+      });
+
     case ERROR_ATLOGIN:
       return Object.assign({}, state, {
         error: action.payload
@@ -98,6 +114,11 @@ const clients = (state = initialState, action) => {
       });
 
     case ERROR_FETCHING:
+      return Object.assign({}, state, {
+        error: action.payload
+      });
+
+    case REGISRATION_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });

@@ -10,27 +10,23 @@ import json, re
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
 
-def create_client(request):
+def register(request):
     if request.META['REQUEST_METHOD'] == 'POST':
-      try:
         request_body = json.loads(request.body.decode('ascii'))
-        client = Clients()
+        user = None
+        if str_to_bool(request_body["account_type"]):
+            user = Hire_Partners()
+        else:
+            user = Clients()
         for x in request_body:
-            if x == 'password':
-                client.__setattr__(x, encrypt_password(request_body[x]))
+            if x == 'account_type':
+                user.__setattr__(x, str_to_bool(request_body[x]))
+            elif x == 'password':
+                user.__setattr__(x, encrypt_password(request_body[x]))
             else:
-                client.__setattr__(x, request_body[x])
-        try:
-            client.save()
-        except IntegrityError as e:
-          return JsonResponse({"error": e}, status=400)
-        client = json.loads(serializers.serialize('json', Clients.objects.filter(id=client.id)))[0]
-        return JsonResponse(client, status=201)
-      except KeyError as e:
-        return JsonResponse({"Invalid request": e}, status=400)
-    else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
-
+                user.__setattr__(x, request_body[x])
+        user.save()
+        return JsonResponse({}, status=201)
 
 def get_clients(request):
     if request.META['REQUEST_METHOD'] == 'GET':
@@ -144,28 +140,6 @@ def client_favorites(request):
           return JsonResponse({"Error":e})
     else:
       return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
-
-
-
-def create_hire_partner(request):
-    if request.META['REQUEST_METHOD'] == 'POST':
-      try:
-        request_body = json.loads(request.body.decode('ascii'))
-        hire_partner = Hire_Partners()
-        for x in request_body:
-            if x == 'password':
-                hire_partner.__setattr__(x, encrypt_password(request_body[x]))
-            else:
-                hire_partner.__setattr__(x, request_body[x])
-        try:
-          hire_partner.save()
-        except IntegrityError as e:
-          return JsonResponse({"error":e},status=400)
-        return JsonResponse(request_body, status=201)
-      except KeyError as e:
-        return JsonResponse({"Invalid request": e}, status=400)
-    else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 
 def get_hire_partners(request):
