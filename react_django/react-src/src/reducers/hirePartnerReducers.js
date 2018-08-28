@@ -5,10 +5,13 @@ import {
   FETCHED_HPS,
   LOGGEDIN_HPS,
   LOGIN,
-  ERROR_ATLOGIN,
+  REGISTERED_HPS,
+  REGISTER,
   FETCH_HPFAVORITES,
   FETCHED_HPFAVORITES,
-  ERROR_FETCHING
+  ERROR_FETCHING,
+  ERROR_ATLOGIN,
+  REGISRATION_ERROR
 } from "../actions";
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   hp_favorites: [],
   fetchingHPfavs: false,
   fetchingHPs: false,
+  registering: false,
   loggingIn: false,
   error: null
 };
@@ -60,12 +64,29 @@ const hirePartner = (state = initialState, action) => {
         error: null
       });
 
+    case REGISTER:
+      return Object.assign({}, state, {
+        registering: true
+      });
+
+    case REGISTERED_HPS:
+      return Object.assign({}, state, {
+        user: action.payload,
+        registering: false,
+        error: null
+      });
+
     case ERROR_ATLOGIN:
       return Object.assign({}, state, {
         error: action.payload
       });
 
     case ERROR_FETCHING:
+      return Object.assign({}, state, {
+        error: action.payload
+      });
+
+    case REGISRATION_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });
