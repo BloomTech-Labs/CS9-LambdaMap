@@ -11,6 +11,8 @@ import {
   LOGIN,
   REGISTERED_CLIENT,
   REGISTER,
+  SIGNOUT,
+  SIGNOUT_ERROR,
   ERROR_FETCHING,
   FETCH_CLIENTFAVORITES,
   FETCHED_CLIENTFAVORITES,
@@ -82,6 +84,18 @@ const clients = (state = initialState, action) => {
         user: action.payload,
         registering: false,
         error: null
+      });
+
+    case SIGNOUT:
+      return Object.assign({}, state, {
+        user: action.payload,
+        signout: true,
+        error: null
+      });
+
+    case SIGNOUT_ERROR:
+      return Object.assign({}, state, {
+        error: action.payload
       });
 
     case ERROR_ATLOGIN:
