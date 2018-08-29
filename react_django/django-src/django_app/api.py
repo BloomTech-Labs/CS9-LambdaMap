@@ -199,16 +199,6 @@ def get_listings(request):
     else:
       return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
-# Get all clients
-def get_clients(request):
-    if request.META['REQUEST_METHOD'] == 'GET':
-        try:
-          clients = [obj.to_dict() for obj in Clients.objects.all()]
-          return JsonResponse({"Clients":clients})
-        except Clients.DoesNotExist as e:
-          return JsonResponse({"Error":e})
-    else:
-      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
 # Get an individual Client
 def get_client(request):
@@ -266,7 +256,6 @@ def get_users(request):
                     query['clients'] = list(filter(lambda x: x['profession'] == 'web designer', query['clients']))
                 else:
                     query['clients'] = list(filter(lambda x: x['profession'] == 'ios developer', query['clients']))
-
         else:
             query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
             query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
