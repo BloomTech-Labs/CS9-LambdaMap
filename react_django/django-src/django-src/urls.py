@@ -12,11 +12,12 @@ urlpatterns = [
     path('api/delete/', delete),
     path('api/update/', update),
     path('api/clients/', get_clients),
+    path('api/logout/', logout),
     path('api/hire-partners/', get_hire_partners),
     path('api/create-job-listings/', create_listing),
     path('api/job-listings/', get_listings),
     path('api/add-favorite-listing/', add_favorite_listing),
     path('api/client-favorites/', client_favorites),
-    path('api/get_users/', get_users),
+    path('api/users/', get_users),
     re_path('api/clients/\d+/', get_client)
 ]
