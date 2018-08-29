@@ -28,6 +28,7 @@ export const FETCHED_CLIENTFAVORITES = "FETCHED_HIRING_PARTNER_FAVORITES";
 export const ERROR_FETCHING = "ERROR_FETCHING";
 export const ERROR_ATLOGIN = "ERROR_ATLOGIN ";
 export const REGISRATION_ERROR = "REGISRATION_ERROR";
+export const SIGNOUT_ERROR = "SIGNOUT_ERROR";
 
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;
@@ -90,6 +91,31 @@ export const register = data => {
         dispatch({
           type: REGISRATION_ERROR,
           payload: ("ERROR creating account", err)
+        });
+      });
+  };
+};
+
+export const signout = () => {
+  const token = window.sessionStorage.getItem("token") || null;
+  const config = { headers: { jwt: `${token}` } };
+  const user = axios.get(`http://127.0.0.1:8000/api/log-out/`, config);
+  return dispatch => {
+    dispatch({
+      type: SIGNOUT
+    });
+    user
+      .then(response => {
+        window.sessionStorage.removeItem("token")
+        dispatch({
+          type: SIGNOUT,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: SIGNOUT_ERROR,
+          payload: ("ERROR signout", err)
         });
       });
   };
