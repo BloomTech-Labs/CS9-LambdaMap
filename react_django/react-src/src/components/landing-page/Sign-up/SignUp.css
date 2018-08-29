@@ -9,6 +9,9 @@
   .main-signup .client-reg {
     display: flex;
     flex-direction: column; }
+  .main-signup .company-reg {
+    display: flex;
+    flex-direction: column; }
   .main-signup .employer-switch {
     display: flex;
     align-items: center; }

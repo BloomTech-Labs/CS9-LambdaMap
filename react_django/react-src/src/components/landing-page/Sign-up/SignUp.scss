@@ -12,7 +12,7 @@
   width: 30%;
   align-items: center;
   margin: 0 auto;
-  
+
   input {
     margin: 5px 0;
   }
@@ -22,11 +22,16 @@
     flex-direction: column;
   }
 
+  .company-reg {
+    display: flex;
+    flex-direction: column;
+  }
+
   .employer-switch {
     display: flex;
     align-items: center;
-    
-      .switch {
+
+    .switch {
       position: relative;
       display: inline-block;
       width: 32px;

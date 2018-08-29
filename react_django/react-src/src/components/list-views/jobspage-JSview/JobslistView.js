@@ -21,6 +21,7 @@ class JobslistView extends Component {
   }
 
   componentDidMount = () => {
+    console.log(this.props.get_listings)
     this.props.get_listings();
   };
 

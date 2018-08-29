@@ -12,12 +12,14 @@ import HPFavorites from "./favorites/hiringPartnerFavorites/HPFavorites";
 import HpProfileView from "./HpProfileView/hpProfileView";
 import MapView from "./map/map";
 import MainLanding from "./landing-page/main-landing/MainLanding";
+import SignUp from "./landing-page/Sign-up/SignUp";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={MainLanding} />
+        {/* <Route exact path="/" component={MainLanding} /> */}
+        <Route exact path="/" component={SignUp} />
         <Route path="/jobseekers" component={JSlistView} />
         <Route path="/billing" component={Billing} />
         <Route path="/settings" component={HPsettings} />
