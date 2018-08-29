@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import "./JobslistView.css";
 import { FaCaretDown, FaStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
-import HPnav from "../../nav/company/HPnav";
+import JSnav from "../../nav/job-seeker/JSnav";
 import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_listings } from "../../../actions";
@@ -28,7 +28,7 @@ class JobslistView extends Component {
   render() {
     return (
       <div className="main-jobslist">
-        <HPnav />
+        <JSnav />
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />
