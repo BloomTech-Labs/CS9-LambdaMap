@@ -14,7 +14,9 @@ class SignUp extends Component {
       account_type: false,
       first_name: "",
       last_name: "",
-      company_name: ""
+      company_name: "",
+      city: "",
+      state: ""
     };
   }
 
@@ -26,7 +28,7 @@ class SignUp extends Component {
         <div className="client-reg">
           <input
             type="text"
-            placeholder="First Name"
+            placeholder="First Name *"
             name="first_name"
             className="input"
             value={this.state.first_name}
@@ -35,10 +37,28 @@ class SignUp extends Component {
 
           <input
             type="text"
-            placeholder="Last Name"
+            placeholder="Last Name *"
             name="last_name"
             className="input"
             value={this.state.last_name}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+
+          <input
+            type="text"
+            placeholder="City *"
+            name="city"
+            className="input"
+            value={this.state.city}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+
+          <input
+            type="text"
+            placeholder="State *"
+            name="state"
+            className="input"
+            value={this.state.state}
             onChange={e => this.setState({ [e.target.name]: e.target.value })}
           />
         </div>
@@ -48,10 +68,28 @@ class SignUp extends Component {
         <div className="company-reg">
           <input
             type="text"
-            placeholder="Company Name"
+            placeholder="Company Name *"
             name="company_name"
             className="input"
             value={this.state.company_name}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+
+          <input
+            type="text"
+            placeholder="City *"
+            name="city"
+            className="input"
+            value={this.state.city}
+            onChange={e => this.setState({ [e.target.name]: e.target.value })}
+          />
+
+          <input
+            type="text"
+            placeholder="State *"
+            name="state"
+            className="input"
+            value={this.state.state}
             onChange={e => this.setState({ [e.target.name]: e.target.value })}
           />
         </div>
@@ -72,19 +110,21 @@ class SignUp extends Component {
             />
             <span className="slider round" />
           </label>
-        <h2>* Are you an Employer?</h2>
+          <h2>* Are you an Employer?</h2>
         </div>
+
         <input
           type="text"
-          placeholder="E-mail"
+          placeholder="E-mail *"
           name="email"
           className="input"
           value={this.state.email}
           onChange={e => this.setState({ [e.target.name]: e.target.value })}
         />
+
         <input
           type="text"
-          placeholder="Password"
+          placeholder="Password *"
           name="password"
           className="input"
           value={this.state.password}
@@ -102,7 +142,9 @@ class SignUp extends Component {
               account_type: this.state.account_type.toString(),
               first_name: this.state.first_name,
               last_name: this.state.last_name,
-              company_name: this.state.company_name
+              company_name: this.state.company_name,
+              city: this.state.city,
+              state: this.state.state
             });
             this.setState({
               email: "",
@@ -110,6 +152,8 @@ class SignUp extends Component {
               first_name: "",
               last_name: "",
               company_name: "",
+              city: "",
+              state: "",
               account_type: false
             });
           }}

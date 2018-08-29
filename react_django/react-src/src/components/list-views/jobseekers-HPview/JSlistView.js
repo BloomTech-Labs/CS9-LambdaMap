@@ -34,6 +34,7 @@ class JSlistView extends Component {
   };
 
   render() {
+    console.log(this.state.clients)
     return (
       <div className="main-JSlist">
         <HPnav />
