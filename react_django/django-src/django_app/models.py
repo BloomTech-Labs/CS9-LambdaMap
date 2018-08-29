@@ -14,19 +14,21 @@ class Users(models.Model):
     about = models.CharField(max_length=400, blank=True, default='')
     account_type = models.BooleanField(default=False)
 
+
 class Clients(Users):
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
+    profession = models.CharField(max_length=100, default='web developer')
     remote = models.BooleanField(default=False, blank=True)
     relocate = models.BooleanField(default=False, blank=True)
     linkedin = models.URLField(default='', blank=True)
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-    portfolio_picture = models.URLField(default='', blank=True)
+
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolio_picture":self.portfolio_picture,"phone":self.phone,"about":self.about,"account_type":self.account_type}
+      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name, "profession": self.profession, "remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"phone":self.phone,"about":self.about,"account_type":self.account_type}
 
 
 class Hire_Partners(Users):
