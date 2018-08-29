@@ -5,7 +5,6 @@ import "./JSlistView.css";
 import {
   FaCaretDown,
   FaStar,
-  FaSquare,
   FaTwitter,
   FaLinkedin,
   FaGithub,

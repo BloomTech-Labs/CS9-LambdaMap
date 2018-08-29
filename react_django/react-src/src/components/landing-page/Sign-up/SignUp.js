@@ -1,8 +1,9 @@
-// SignUp page
+// Register Page
 
 import React, { Component } from "react";
 import { register } from "../../../actions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 class SignUp extends Component {
@@ -134,7 +135,7 @@ class SignUp extends Component {
         {employer}
         {client}
 
-        <button
+        <Link to="/"><button
           onClick={() => {
             this.props.register({
               email: this.state.email,
@@ -159,7 +160,7 @@ class SignUp extends Component {
           }}
         >
           Punch it
-        </button>
+        </button></Link>
         <h5>* required field</h5>
       </div>
     );

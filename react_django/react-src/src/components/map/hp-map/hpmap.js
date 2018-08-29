@@ -1,13 +1,13 @@
 /*global google*/
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import JSNav from "../nav/job-seeker/JSnav";
+import HPNav from "../nav/company/HPnav";
 import "./map.css";
 import { get_clients, get_client } from "../../actions";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 
-class MapView extends Component {
+class HPMapView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,7 @@ class MapView extends Component {
     console.log(this.state.client);
     return (
       <div>
-        <JSNav />
+        <HPNav />
         <div className="main-container">
         <div className="map">
           <Map
@@ -125,6 +125,6 @@ export default connect(
   { get_clients, get_client }
 )(
   GoogleApiWrapper({ apiKey: "AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4" })(
-    MapView
+    HPMapView
   )
 );
