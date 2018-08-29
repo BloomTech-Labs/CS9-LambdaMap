@@ -12,10 +12,6 @@ def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
 
 
-"""
-START OF CRUD END-POINTS
-<<<<<<
-"""
 def register(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
@@ -147,12 +143,6 @@ def create_listing(request):
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 
-"""
-===========
- END OF CRUD ENDPOINTS
-"""
-
-
 def client_favorites(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         try:
@@ -241,15 +231,6 @@ def add_favorite_listing(request):
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 
-"""
-           get_users QUERY TIPS:
-you can get all clients and hiring partners by query-ing like so:
-query=clients+hp
-or you can remove one or the other to filter one table or the other.
-you can also filter by profession like so:
-query=clients+hp&profession=web+developer
-so you can also filter clients by profession
-"""
 def get_users(request):
     regex = re.compile(
         'table=(?P<table>(client\+hp|client|hp))'
@@ -260,7 +241,6 @@ def get_users(request):
     if request.META['REQUEST_METHOD'] == 'GET':
         if len(request.META['QUERY_STRING']) > 0:
             parsed_query = regex.search(request.META['QUERY_STRING']).groupdict()
-            print(parsed_query['profession'])
             if len(parsed_query['table'].split('+')) > 1:
                 query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
                 query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
