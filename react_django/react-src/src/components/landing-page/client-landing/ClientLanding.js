@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import JSnav from "../../nav/company/JSnav";
+import JSnav from "../../nav/job-seeker/JSnav";
 
 class ClientLanding extends Component {
   render() {

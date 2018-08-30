@@ -1,7 +1,7 @@
 // Main landing page for signing in and registering, will redirect to landing page of respective account
 
 import React, { Component } from "react";
-
+import { Redirect } from "react-router";
 import { login } from "../../../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
