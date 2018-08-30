@@ -1,9 +1,16 @@
 {
+<<<<<<< master
 <<<<<<< HEAD
   "main.css": "static/css/main.95c4ddb2.css",
   "main.css.map": "static/css/main.95c4ddb2.css.map",
   "main.js": "static/js/main.a73a81fa.js",
   "main.js.map": "static/js/main.a73a81fa.js.map",
+=======
+  "main.css": "static/css/main.95c4ddb2.css",
+  "main.css.map": "static/css/main.95c4ddb2.css.map",
+  "main.js": "static/js/main.4248a8cb.js",
+  "main.js.map": "static/js/main.4248a8cb.js.map",
+>>>>>>> added a fix to the post build instructions and a few other fixes
   "static/media/compass.png": "static/media/compass.2ea2bfd8.png",
   "static/media/defaultuser.svg": "static/media/defaultuser.7a1bfcbf.svg",
   "static/media/maplogored.svg": "static/media/maplogored.9a90f391.svg",
