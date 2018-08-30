@@ -5,7 +5,7 @@ import * as actions from "./actionTypes";
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.post(`https://localhost:8000/api/login/`, data, config);
+  const user = axios.post(`https://lambda-map.herokuapp.com/api/login/`, data, config);
   return dispatch => {
     dispatch({
       type: actions.LOGIN
@@ -36,7 +36,7 @@ export const login = data => {
 };
 
 export const register = data => {
-  const user = axios.post(`https://localhost:8000.com/api/register/`, data);
+  const user = axios.post(`https://lambda-map.herokuapp.com/api/register/`, data);
   return dispatch => {
     dispatch({
       type: actions.REGISTER
