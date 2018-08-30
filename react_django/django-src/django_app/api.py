@@ -7,7 +7,6 @@ from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
 import random
-import json
 import json, re
 
 def str_to_bool(str):
@@ -43,6 +42,22 @@ def register(request):
         return JsonResponse({}, status=201)
 
 def login(request):
+    request_body = json.loads(request.body.decode('ascii'))
+
+    def send_user(user):
+        if verify_password(request_body['password'], user.password):
+            token = create_token()
+            session = Session(
+                content_type=ContentType.objects.get_for_model(user.__class__),
+                object_id=user.id,
+                key=token
+            )
+            session.save()
+            del user._state
+            del user.password
+            response = JsonResponse(user.__dict__, status=200)
+            response.__setitem__(header='jwt', value=token)
+            return response
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
         def send_user(user):
@@ -282,3 +297,33 @@ def add_favorite_listing(request):
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
+
+def get_users(request):
+    regex = re.compile(
+        'table=(?P<table>(client\+hp|client|hp))'
+        '(&profession=(?P<profession>(web\+developer|web\+designer|ios\+developer)))?',
+        re.MULTILINE+re.IGNORECASE
+    )
+    query = {}
+    if request.META['REQUEST_METHOD'] == 'GET':
+        if len(request.META['QUERY_STRING']) > 0:
+            parsed_query = regex.search(request.META['QUERY_STRING']).groupdict()
+            if len(parsed_query['table'].split('+')) > 1:
+                query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
+                query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
+            else:
+                if parsed_query['table'] == 'client':
+                    query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
+                else:
+                    query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
+            if parsed_query['profession']:
+                if parsed_query['profession'].replace('+', ' ') == 'web developer':
+                    query['clients'] = list(filter(lambda x: x['profession'] == 'web developer', query['clients']))
+                elif parsed_query['profession'].replace('+', ' ') == 'web designer':
+                    query['clients'] = list(filter(lambda x: x['profession'] == 'web designer', query['clients']))
+                else:
+                    query['clients'] = list(filter(lambda x: x['profession'] == 'ios developer', query['clients']))
+        else:
+            query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
+            query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
+        return JsonResponse(query, status=200)
