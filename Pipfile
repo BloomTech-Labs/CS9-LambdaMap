@@ -10,6 +10,7 @@ whitenoise = "==4.0"
 passlib = "==1.7.1"
 Django = "==2.1"
 PyJWT = "==1.6.4"
+django-cors-headers = "*"
 
 [dev-packages]
 
