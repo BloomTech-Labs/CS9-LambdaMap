@@ -29,7 +29,7 @@ def register(request):
                 user.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 user.__setattr__(x, request_body[x])
-        if(user.city and user.state):
+        if user.city and user.state:
             response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
             string = response.read().decode('utf-8')
             response = json.loads(string)
