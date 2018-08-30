@@ -25,11 +25,11 @@ class HPMapView extends Component {
   };
 
   onMarkerClick = id => {
-    console.log(this.props)
+    console.log(this.props);
     this.props.clients.clients.filter(c => {
       if (c.ID === id) {
         this.setState({ client: c });
-        console.log(this.state.c)
+        console.log(this.state.c);
       }
     });
   };
@@ -81,7 +81,7 @@ class HPMapView extends Component {
                   style={{ height: "30px", width: "30px" }}
                   name={client.city}
                   title={client.first_name}
-                  position={{ lat: client.city, lng: client.state }}
+                  position={{ lat: client.lat, lng: client.lng }}
                   icon={{
                     scaledSize: new google.maps.Size(20, 20),
                     url:
@@ -129,4 +129,3 @@ export default connect(
     HPMapView
   )
 );
-
