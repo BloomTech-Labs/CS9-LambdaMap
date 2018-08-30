@@ -73,11 +73,6 @@ class HPMapView extends Component {
             onClick={this.onMapClicked}
           >
             {this.props.clients.clients.map((client, i) => (
-              // console.log(client, "client"),
-              // console.log(client.first_name, "client name"),
-              // console.log(client.id, "client id"),
-              // console.log(client.ID, "client ID"),
-
               <Marker
                 key={i}
                 onClick={() => {

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import JSNav from "../../nav/job-seeker/JSnav";
 import "./map.css";
-import { get_clients, get_listings } from "../../../actions";
+import { get_clients } from "../../actions";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 
@@ -12,7 +12,6 @@ class JSMapView extends Component {
     super(props);
     this.state = {
       clients: [],
-      client: {},
       hiring_partners: [],
       showingInfoWindow: false,
       activeMarker: {},
@@ -28,7 +27,6 @@ class JSMapView extends Component {
     this.props.clients.clients.filter(c => {
       if (c.ID === id) {
         this.setState({ client: c });
-        console.log(this.state.client);
       }
     });
   };
@@ -43,7 +41,6 @@ class JSMapView extends Component {
   };
 
   render() {
-    console.log(this.state.client);
     return (
       <div>
         <JSNav />
@@ -73,11 +70,6 @@ class JSMapView extends Component {
             onClick={this.onMapClicked}
           >
             {this.props.clients.clients.map((client, i) => (
-              // console.log(client, "client"),
-              // console.log(client.first_name, "client name"),
-              // console.log(client.id, "client id"),
-              // console.log(client.ID, "client ID"),
-
               <Marker
                 key={i}
                 onClick={() => {
@@ -112,7 +104,6 @@ class JSMapView extends Component {
 const mapStateToProps = state => {
   return {
     clients: state.clients,
-    client: state.client,
     hiring_partners: state.hiring_partners,
     fetchingClients: state.fetchingClients,
     fetchingHPs: state.fetchingHPs,
@@ -122,7 +113,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_clients, get_listings }
+  { get_clients }
 )(
   GoogleApiWrapper({ apiKey: "AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4" })(
     JSMapView

@@ -24,7 +24,7 @@ export default class HPnav extends Component {
           <div className="lambdamap">
             <img src={maplogored} className="logo" alt="Lambda Maps" />
             <div className="lambda">
-              <img src={lambdalogo} className="lambda-logo" alt="Lambda Logo" />{" "}
+              <img src={lambdalogo} className="lambda-logo" alt="Lambda Logo" />
               Lambda Maps
             </div>
             <div className="quote">
@@ -33,15 +33,27 @@ export default class HPnav extends Component {
           </div>
           <hr className="hrLambda" />
 
-          <li>
-            <FaHome className="icons" />
-            Home
-          </li>
+          <Link
+            to="/hplanding/"
+            className="nav-links"
+            style={{ textDecoration: "none" }}
+          >
+            <li>
+              <FaHome className="icons" />
+              Home
+            </li>
+          </Link>
 
-          <li>
-            <FaMap className="icons" />
-            Map
-          </li>
+          <Link
+            to="/hpmap/"
+            className="nav-links"
+            style={{ textDecoration: "none" }}
+          >
+            <li>
+              <FaMap className="icons" />
+              Map
+            </li>
+          </Link>
 
           <Link
             to="/jobseekers/"
