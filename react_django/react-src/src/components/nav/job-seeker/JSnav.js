@@ -23,7 +23,8 @@ export default class JSNav extends Component {
           <div className="lambdamap">
             <img src={maplogored} className="logo" alt="Lambda Maps" />
             <div className="lambda">
-              <img src={lambdalogo} className="lambda-logo" /> Lambda Maps
+              <img src={lambdalogo} className="lambda-logo" alt="Lambda Logo" />
+              Lambda Maps
             </div>
             <div className="quote">
               "Connecting you with the best Hiring Partners"
