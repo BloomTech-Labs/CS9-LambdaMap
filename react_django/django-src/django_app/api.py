@@ -5,6 +5,9 @@ from .security import encrypt_password, verify_password
 from .authentication import create_token, verify_token
 from django.db import IntegrityError
 from django.core import serializers
+from urllib.request import urlopen
+import random
+import json
 import json, re
 
 def str_to_bool(str):
@@ -25,9 +28,19 @@ def register(request):
                 user.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 user.__setattr__(x, request_body[x])
+        if(user.city and user.state):
+            response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
+            string = response.read().decode('utf-8')
+            response = json.loads(string)
+            number = random.uniform(0,0.05)
+            lat = response['results'][0]['geometry']['location']['lat']
+            lng = response['results'][0]['geometry']['location']['lng']
+            lat = str((float(lat) + number))
+            lng = str((float(lng) + number)) 
+            user.lat = lat
+            user.lng = lng
         user.save()
         return JsonResponse({}, status=201)
-
 
 def login(request):
     if request.META['REQUEST_METHOD'] == 'POST':

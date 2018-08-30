@@ -13,6 +13,8 @@ class Users(models.Model):
     phone = models.CharField(max_length=50, blank=True, default='')
     about = models.CharField(max_length=400, blank=True, default='')
     account_type = models.BooleanField(default=False)
+    lat = models.CharField(max_length=50, blank=True, default='')
+    lng = models.CharField(max_length=50, blank=True, default='')
 
 class Clients(Users):
     first_name = models.CharField(max_length=20, default='')
@@ -26,14 +28,13 @@ class Clients(Users):
     portfolio_picture = models.URLField(default='', blank=True)
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name,"remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"portfolio_picture":self.portfolio_picture,"phone":self.phone,"about":self.about,"account_type":self.account_type}
-
+      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name, "profession": self.profession, "remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type}
+      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
 
 
 # Added job listing model

@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import compass from "./compass.png";
 import JSprofile from "./jobseeker-profile/JSprofile";
-import MainLanding from "./landing-page/main-landing/Landing";
+import MainLanding from "./landing-page/main-landing/MainLanding";
 import ClientLanding from "./landing-page/client-landing/ClientLanding";
 import HPlanding from "./landing-page/hp-landing/HPlanding";
 import HPMapView from "./map/hp-map/hpmap";
@@ -12,7 +12,6 @@ import JSMapView from "./map/client-map/jsmap";
 import JSlistView from "./list-views/jobseekers-HPview/JSlistView";
 import HPsettings from "./settings/HP-settings/HPsettings";
 import SignUp from "./landing-page/Sign-up/SignUp";
-import ClientLanding from "./landing-page/client-landing/ClientLanding";
 import studentSettings from "./settings/studentSettings/studentSettings";
 import JobslistView from "./list-views/jobspage-JSview/JobslistView";
 
