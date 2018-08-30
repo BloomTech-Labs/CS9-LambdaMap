@@ -1,24 +1,6 @@
 // Clients Reducers
 
-import {
-  FETCH_CLIENTS,
-  FETCHED_CLIENTS,
-  FETCH_CLIENT,
-  FETCHED_CLIENT,
-  UPDATE_CLIENT,
-  UPDATED_CLIENT,
-  LOGGEDIN_CLIENT,
-  LOGIN,
-  REGISTERED_CLIENT,
-  REGISTER,
-  SIGNOUT,
-  SIGNOUT_ERROR,
-  ERROR_FETCHING,
-  FETCH_CLIENTFAVORITES,
-  FETCHED_CLIENTFAVORITES,
-  ERROR_ATLOGIN,
-  REGISRATION_ERROR
-} from "../actions";
+import * as actions from "../actions/actionTypes";
 
 const initialState = {
   clients: [],
@@ -35,12 +17,12 @@ const initialState = {
 const clients = (state = initialState, action) => {
   switch (action.type) {
     // Fetching all clients
-    case FETCH_CLIENTS:
+    case actions.FETCH_CLIENTS:
       return Object.assign({}, state, {
         fetchingClients: true
       });
 
-    case FETCHED_CLIENTS:
+    case actions.FETCHED_CLIENTS:
       return Object.assign({}, state, {
         clients: [...action.payload],
         fetchingClients: false,
@@ -48,12 +30,12 @@ const clients = (state = initialState, action) => {
       });
 
     // Fetching individual client profile
-    case FETCH_CLIENT:
+    case actions.FETCH_CLIENT:
       return Object.assign({}, state, {
         fetchingClient: true
       });
 
-    case FETCHED_CLIENT:
+    case actions.FETCHED_CLIENT:
       return Object.assign({}, state, {
         client: action.payload,
         fetchingClient: false,
@@ -61,12 +43,12 @@ const clients = (state = initialState, action) => {
       });
 
     // Logging in Clients
-    case LOGIN:
+    case actions.LOGIN:
       return Object.assign({}, state, {
         loggingIn: true
       });
 
-    case LOGGEDIN_CLIENT:
+    case actions.LOGGEDIN_CLIENT:
       return Object.assign({}, state, {
         user: action.payload,
         loggingIn: false,
@@ -74,65 +56,65 @@ const clients = (state = initialState, action) => {
       });
 
     // Registering Clients
-    case REGISTER:
+    case actions.REGISTER:
       return Object.assign({}, state, {
         registering: true
       });
 
-    case REGISTERED_CLIENT:
+    case actions.REGISTERED_CLIENT:
       return Object.assign({}, state, {
         user: action.payload,
         registering: false,
         error: null
       });
 
-    case SIGNOUT:
+    case actions.SIGNOUT:
       return Object.assign({}, state, {
         user: action.payload,
         signout: true,
         error: null
       });
 
-    case SIGNOUT_ERROR:
+    case actions.SIGNOUT_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case ERROR_ATLOGIN:
+    case actions.ERROR_ATLOGIN:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case UPDATE_CLIENT:
+    case actions.UPDATE_CLIENT:
       return Object.assign({}, state, {
         updatingClient: true
       });
 
-    case UPDATED_CLIENT:
+    case actions.UPDATED_CLIENT:
       return Object.assign({}, state, {
         client: action.payload,
         updatingClient: false,
         error: null
       });
 
-    case FETCH_CLIENTFAVORITES:
+    case actions.FETCH_CLIENTFAVORITES:
       return Object.assign({}, state, {
         fetchingClientFavs: true
       });
 
-    case FETCHED_CLIENTFAVORITES:
+    case actions.FETCHED_CLIENTFAVORITES:
       return Object.assign({}, state, {
         client_favorites: [...action.payload],
         fetchingClientFavs: false,
         error: null
       });
 
-    case ERROR_FETCHING:
+    case actions.ERROR_FETCHING:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case REGISRATION_ERROR:
+    case actions.REGISRATION_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });
