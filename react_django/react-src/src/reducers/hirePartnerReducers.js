@@ -1,20 +1,6 @@
 // The reducers for Hiring Partners
 
-import {
-  FETCH_HPS,
-  FETCHED_HPS,
-  LOGGEDIN_HPS,
-  LOGIN,
-  REGISTERED_HPS,
-  REGISTER,
-  FETCH_HPFAVORITES,
-  FETCHED_HPFAVORITES,
-  SIGNOUT,
-  SIGNOUT_ERROR,
-  ERROR_FETCHING,
-  ERROR_ATLOGIN,
-  REGISRATION_ERROR
-} from "../actions";
+import * as actions from "../actions/actionTypes";
 
 const initialState = {
   hiring_partners: [],
@@ -30,12 +16,12 @@ const initialState = {
 const hirePartner = (state = initialState, action) => {
   switch (action.type) {
     // Fetching all hiring partners
-    case FETCH_HPS:
+    case actions.FETCH_HPS:
       return Object.assign({}, state, {
         fetchingHPs: true
       });
 
-    case FETCHED_HPS:
+    case actions.FETCHED_HPS:
       return Object.assign({}, state, {
         hiring_partners: [...action.payload],
         fetchingHPs: false,
@@ -43,65 +29,65 @@ const hirePartner = (state = initialState, action) => {
       });
 
     // Logging in Clients
-    case LOGIN:
+    case actions.LOGIN:
       return Object.assign({}, state, {
         loggingIn: true
       });
 
-    case LOGGEDIN_HPS:
+    case actions.LOGGEDIN_HPS:
       return Object.assign({}, state, {
         user: action.payload,
         loggingIn: false,
         error: null
       });
 
-    case FETCH_HPFAVORITES:
+    case actions.FETCH_HPFAVORITES:
       return Object.assign({}, state, {
         fetchingHPFavs: true
       });
 
-    case FETCHED_HPFAVORITES:
+    case actions.FETCHED_HPFAVORITES:
       return Object.assign({}, state, {
         hp_favorites: [...action.payload],
         fetchingHPFavs: false,
         error: null
       });
 
-    case REGISTER:
+    case actions.REGISTER:
       return Object.assign({}, state, {
         registering: true
       });
 
-    case REGISTERED_HPS:
+    case actions.REGISTERED_HPS:
       return Object.assign({}, state, {
         user: action.payload,
         registering: false,
         error: null
       });
 
-    case SIGNOUT:
+    case actions.SIGNOUT:
       return Object.assign({}, state, {
         user: action.payload,
         signout: true,
         error: null
       });
 
-    case SIGNOUT_ERROR:
+    case actions.SIGNOUT_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case ERROR_ATLOGIN:
+    case actions.ERROR_ATLOGIN:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case ERROR_FETCHING:
+    case actions.ERROR_FETCHING:
       return Object.assign({}, state, {
         error: action.payload
       });
 
-    case REGISRATION_ERROR:
+    case actions.REGISRATION_ERROR:
       return Object.assign({}, state, {
         error: action.payload
       });
