@@ -30,13 +30,13 @@ class Clients(Users):
 
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name, "profession": self.profession, "remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"phone":self.phone,"about":self.about,"account_type":self.account_type}
+        return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name, "profession": self.profession, "remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"phone":self.phone,"about":self.about,"account_type":self.account_type}
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
+        return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
 
 
 # Added job listing model

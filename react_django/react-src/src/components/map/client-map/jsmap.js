@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import JSNav from "../../nav/job-seeker/JSnav";
 import "./map.css";
-import { get_clients } from "../../actions";
+import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 
