@@ -28,12 +28,12 @@ class MainLanding extends Component {
     if (this.state.loggedin) {
       if (this.props.clients.user !== undefined) {
         if (this.props.clients.user.account_type === false) {
-          redirecting = <Redirect to="/jobseekers/" />;
+          redirecting = <Redirect to="/jslanding/" />;
         }
       } else {
         if (this.props.hirePartner.user.account_type) {
           console.log(this.props.hirePartner);
-          redirecting = <Redirect to="/map/" />;
+          redirecting = <Redirect to="/hplanding/" />;
         }
       }
     }
@@ -66,7 +66,7 @@ class MainLanding extends Component {
             });
             setTimeout(() => {
               this.checkAuth();
-            }, 3000);
+            }, 2000);
             this.setState({ email: "", password: "" });
           }}
         >
