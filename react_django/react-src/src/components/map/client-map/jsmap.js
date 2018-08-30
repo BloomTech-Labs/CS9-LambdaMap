@@ -1,9 +1,9 @@
 /*global google*/
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import JSNav from "../nav/job-seeker/JSnav";
+import JSNav from "../../nav/job-seeker/JSnav";
 import "./map.css";
-import { get_clients, get_client } from "../../actions";
+import { get_clients, get_listings } from "../../../actions";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 
@@ -86,7 +86,7 @@ class JSMapView extends Component {
                 style={{ height: "30px", width: "30px" }}
                 name={client.city}
                 title={client.first_name}
-                position={{ lat: client.city, lng: client.state }}
+                position={{ lat: client.lat, lng: client.lng }}
                 icon={{
                   scaledSize: new google.maps.Size(20, 20),
                   url:
@@ -122,7 +122,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_clients, get_client }
+  { get_clients, get_listings }
 )(
   GoogleApiWrapper({ apiKey: "AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4" })(
     JSMapView
