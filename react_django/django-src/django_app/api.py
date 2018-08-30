@@ -7,11 +7,12 @@ from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
 import random
-import json
 import json, re
+
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
+
 
 def register(request):
     if request.META['REQUEST_METHOD'] == 'POST':
@@ -43,37 +44,36 @@ def register(request):
         return JsonResponse({}, status=201)
 
 def login(request):
+    request_body = json.loads(request.body.decode('ascii'))
+
+    def send_user(user):
+        if verify_password(request_body['password'], user.password):
+            token = create_token()
+            session = Session(
+                content_type=ContentType.objects.get_for_model(user.__class__),
+                object_id=user.id,
+                key=token
+            )
+            session.save()
+            del user._state
+            del user.password
+            response = JsonResponse(user.__dict__, status=200)
+            response.__setitem__(header='jwt', value=token)
+            return response
+
     if request.META['REQUEST_METHOD'] == 'POST':
-        request_body = json.loads(request.body.decode('ascii'))
-        def send_user(user):
-            if verify_password(request_body['password'], user.password):
-                token = create_token()
-                session = Session(
-                    content_type=ContentType.objects.get_for_model(user.__class__),
-                    object_id=user.id,
-                    key=token
-                )
-                session.save()
-                del user._state
-                del user.password
-                response = JsonResponse(user.__dict__, status=200)
-                response.__setitem__(header='jwt', value=token)
-                return response
         try:
+            hire_partner = Hire_Partners.objects.get(email=request_body['email'])
+            return send_user(hire_partner)
+        except Hire_Partners.DoesNotExist:
             try:
-                Hire_Partners.objects.get(email=request_body['email'])
-                hire_partner = Hire_Partners.objects.get(email=request_body['email'])
-                return send_user(hire_partner)
-            except Hire_Partners.DoesNotExist:
-                Clients.objects.get(email=request_body['email'])
                 client = Clients.objects.get(email=request_body['email'])
                 return send_user(client)
-            except:
+            except Clients.DoesNotExist:
                 return JsonResponse({"Login failed": "incorrect email or password"}, status=400)
-        except:
-            return JsonResponse({"Error": "Invalid Data Field"}, status=400)
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+
 
 def logout(request):
     if request.META['REQUEST_METHOD'] == 'GET':
@@ -84,21 +84,24 @@ def logout(request):
             return JsonResponse({"Error": "unable to delete record."}, status=400)
 
 
-def update_client(request):
+def update(request):
+    request_body = json.loads(request.body.decode('ascii'))
     if request.META['REQUEST_METHOD'] == 'PUT':
-        request_body = json.loads(request.body.decode('ascii'))
         if verify_token(request.META['HTTP_JWT']):
             session_obj = Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii'))
-            client = Clients.objects.get(id=session_obj.object_id)
+            try:
+                user = Clients.objects.get(id=session_obj.object_id)
+            except Clients.DoesNotExist:
+                user = Hire_Partners.objects.get(id=session_obj.object_id)
             for x in request_body:
                 if x == 'password':
-                    client.__setattr__(x, encrypt_password(request_body[x]))
+                    user.__setattr__(x, encrypt_password(request_body[x]))
                 else:
-                    client.__setattr__(x, request_body[x])
-            client.save()
-            del client._state
-            del client.password
-            return JsonResponse(client.__dict__, status=200)
+                    user.__setattr__(x, request_body[x])
+            user.save()
+            del user._state
+            del user.password
+            return JsonResponse(user.__dict__, status=200)
         else:
             Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii')).delete()
             return JsonResponse({"Error": "Expired Token"})
@@ -106,27 +109,50 @@ def update_client(request):
         return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"}, status=400)
 
 
-def delete_client(request):
+def delete(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
-      try:
           token = request.META['HTTP_JWT']
           if verify_token(token):
             session_obj = Session.objects.get(key=token.encode('ascii'))
-            client = Clients.objects.get(id=session_obj.object_id)
-            if client:
+            try:
+                user = Clients.objects.get(id=session_obj.object_id)
+            except Clients.DoesNotExist:
+                user = Hire_Partners.objects.get(id=session_obj.object_id)
+            if user:
               session_obj.delete()
-              client.delete()
-              del client._state
-              del client.password
-              return JsonResponse({"deleted": client.__dict__}, status=204)
+              user.delete()
+              del user._state
+              del user.password
+              return JsonResponse({"deleted": user.__dict__}, status=204)
             else:
               return JsonResponse({"Delete failed": "email doesn't exit"}, status=400)
           else:
               return JsonResponse({"Error": "Expired JWT Token"}, status=400)
+    else:
+        return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"}, status=400)
+
+
+# create Job Listings
+def create_listing(request):
+    if request.META['REQUEST_METHOD'] == 'POST':
+      try:
+        request_body = json.loads(request.body.decode('ascii'))
+        hp = Hire_Partners.objects.get(pk=request_body['hp_id'])
+        job_listing = Job_Listing()
+        for x in request_body:
+            if x == "hp_id":
+                job_listing.__setattr__(x, hp)
+            else:
+                job_listing.__setattr__(x, request_body[x])
+        try:
+          job_listing.save()
+        except IntegrityError as e:
+          return JsonResponse({"error":e},status=400)
+        return JsonResponse(request_body, status=201)
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)
     else:
-      return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"}, status=400)
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 
 def client_favorites(request):
@@ -157,71 +183,15 @@ def get_hire_partners(request):
       return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
 
-def update_hire_partner(request):
-    if request.META['REQUEST_METHOD'] == 'PUT':
-      request_body = json.loads(request.body.decode('ascii'))
-      token = request.META['HTTP_JWT']
-      try:
-        if verify_token(token):
-            hire_partner = Hire_Partners.objects.get(id=Session.objects.get(key=token.encode('ascii')).object_id)
-            if hire_partner:
-                for x in request_body:
-                    if x == 'password':
-                        hire_partner.__setattr__(x, encrypt_password(request_body[x]))
-                    else:
-                        hire_partner.__setattr__(x, request_body[x])
-                hire_partner.save()
-                del hire_partner._state
-                del hire_partner.password
-                return JsonResponse({"Updated HirePartner": hire_partner.__dict__})
-            else:
-              return JsonResponse({"Error": "Email not found"}, status=400)
-      except KeyError as e:
-        return JsonResponse({"Invalid request": e}, status=400)
-    else:
-      return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"}, status=400)
-
-
-def delete_hire_partner(request):
-    if request.META['REQUEST_METHOD'] == 'DELETE':
-      try:
-        token = request.META['HTTP_JWT']
-        if verify_token(token):
-            session_obj = Session.objects.get(key=token.encode('ascii'))
-            hire_partner = Hire_Partners.objects.get(id=session_obj.object_id)
-            if hire_partner:
-                session_obj.delete()
-                hire_partner.delete()
-                del hire_partner._state
-                return JsonResponse({"deleted": hire_partner.__dict__}, status=204)
-            else:
-              return JsonResponse({"Delete failed": "email doesn't exit"}, status=400)
-      except KeyError as e:
-        return JsonResponse({"Invalid request": e}, status=400)
-    else:
-      return JsonResponse({"Error": "incorrect request method. please make a DELETE request to this end point"}, status=400)
-
-# create Job Listings
-def create_listing(request):
-    if request.META['REQUEST_METHOD'] == 'POST':
-      try:
-        request_body = json.loads(request.body.decode('ascii'))
-        hp = Hire_Partners.objects.get(pk=request_body['hp_id'])
-        job_listing = Job_Listing()
-        for x in request_body:
-            if x == "hp_id":
-                job_listing.__setattr__(x, hp)
-            else:
-                job_listing.__setattr__(x, request_body[x])
+def get_clients(request):
+    if request.META['REQUEST_METHOD'] == 'GET':
         try:
-          job_listing.save()
-        except IntegrityError as e:
-          return JsonResponse({"error":e},status=400)
-        return JsonResponse(request_body, status=201)
-      except KeyError as e:
-        return JsonResponse({"Invalid request": e}, status=400)
+          clients = [obj.to_dict() for obj in Clients.objects.all()]
+          return JsonResponse({"Clients":clients})
+        except Clients.DoesNotExist as e:
+          return JsonResponse({"Error":e})
     else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
 
 # get Job Listings that belong to a hiring partner, gets all hiring partner info with job listings
@@ -241,16 +211,6 @@ def get_listings(request):
     else:
       return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
-# Get all clients
-def get_clients(request):
-    if request.META['REQUEST_METHOD'] == 'GET':
-        try:
-          clients = [obj.to_dict() for obj in Clients.objects.all()]
-          return JsonResponse({"Clients":clients})
-        except Clients.DoesNotExist as e:
-          return JsonResponse({"Error":e})
-    else:
-      return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
 
 # Get an individual Client
 def get_client(request):
@@ -275,7 +235,7 @@ def add_favorite_listing(request):
         try:
           listing.save()
         except IntegrityError as e:
-          return JsonResponse({"error":e},status=400)
+          return JsonResponse({"error":e}, status=400)
         return JsonResponse(request_body, status=201)
       except KeyError as e:
         return JsonResponse({"Invalid request": e}, status=400)

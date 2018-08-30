@@ -24,6 +24,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "postinstall": "npm run build",
-    "postbuild": "rm -r ../django-src/build && mv build ../django-src/"
+    "postbuild": "if [-d ../django-src/build ]; then rm -r ../django-src/build && mv build; else ../django-src/; fi"
   }
 }
