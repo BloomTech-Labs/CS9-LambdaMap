@@ -31,8 +31,7 @@ export const REGISRATION_ERROR = "REGISRATION_ERROR";
 export const SIGNOUT_ERROR = "SIGNOUT_ERROR";
 
 export const login = data => {
-  const token = window.sessionStorage.getItem("token") || null;
-  const config = { headers: { jwt: `${token}` } };
+  const config = { headers: {}}
   const user = axios.post(
     `http://lambda-map.herokuapp/api/login/`,
     data,
