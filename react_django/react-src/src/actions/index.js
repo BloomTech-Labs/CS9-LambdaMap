@@ -5,7 +5,7 @@ import * as actions from "./actionTypes";
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.post(`http://www.lambda-map.herokuapp.com/api/login/`, data, config);
+  const user = axios.post(`https://lambda-map.herokuapp.com/api/login/`, data, config);
   return dispatch => {
     dispatch({
       type: actions.LOGIN
@@ -36,7 +36,7 @@ export const login = data => {
 };
 
 export const register = data => {
-  const user = axios.post(`http://www.lambda-map.herokuapp.com/api/register/`, data);
+  const user = axios.post(`https://lambda-map.herokuapp.com/api/register/`, data);
   return dispatch => {
     dispatch({
       type: actions.REGISTER
@@ -67,7 +67,7 @@ export const register = data => {
 export const signout = () => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.get(`http://www.lambda-map.herokuapp.com/api/log-out/`, config);
+  const user = axios.get(`https://lambda-map.herokuapp.com/api/log-out/`, config);
   return dispatch => {
     dispatch({
       type: actions.SIGNOUT
@@ -90,7 +90,7 @@ export const signout = () => {
 };
 
 export const get_clients = () => {
-  const clients = axios.get(`http://www.lambda-map.herokuapp.com/api/clients/`);
+  const clients = axios.get(`https://lambda-map.herokuapp.com/api/clients/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_CLIENTS });
     clients
@@ -111,7 +111,7 @@ export const get_clients = () => {
 
 export const get_hpFavs = () => {
   const clients = axios.get(
-    `http://www.lambda-map.herokuapp.com/api/hire-partner-favorites/`
+    `https://lambda-map.herokuapp.com/api/hire-partner-favorites/`
   );
   return dispatch => {
     dispatch({ type: actions.FETCH_HPFAVORITES });
@@ -132,7 +132,7 @@ export const get_hpFavs = () => {
 };
 
 export const get_clientFavs = () => {
-  const clientFavs = axios.get(`http://www.lambda-map.herokuapp.com/api/client-favorites/`);
+  const clientFavs = axios.get(`https://lambda-map.herokuapp.com/api/client-favorites/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_CLIENTFAVORITES });
     clientFavs
@@ -152,7 +152,7 @@ export const get_clientFavs = () => {
 };
 
 export const get_hiring_partners = () => {
-  const hiring_partners = axios.get(`http://www.lambda-map.herokuapp.com/api/hire-partners/`);
+  const hiring_partners = axios.get(`https://lambda-map.herokuapp.com/api/hire-partners/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_HPS });
     hiring_partners
@@ -172,7 +172,7 @@ export const get_hiring_partners = () => {
 };
 
 export const get_listings = () => {
-  const job_listing = axios.get(`http://www.lambda-map.herokuapp.com/api/job-listings/`);
+  const job_listing = axios.get(`https://lambda-map.herokuapp.com/api/job-listings/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_LISTINGS });
     job_listing
@@ -192,7 +192,7 @@ export const get_listings = () => {
 };
 
 export const get_client = ID => {
-  const client = axios.get(`http://www.lambda-map.herokuapp.com/api/clients/${ID}/`);
+  const client = axios.get(`https://lambda-map.herokuapp.com/api/clients/${ID}/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_CLIENT });
     client
@@ -214,7 +214,7 @@ export const get_client = ID => {
 // export const update = data => {
 //   const token = window.sessionStorage.getItem("token") || null;
 //   const config = { headers: { jwt: `${token}` } };
-//   const user = axios.post(`http://www.lambda-map.herokuapp.com/api/update/`, data, config);
+//   const user = axios.post(`https://lambda-map.herokuapp.com/api/update/`, data, config);
 //   return dispatch => {
 //     dispatch({
 //       type: actions.UPDATE
