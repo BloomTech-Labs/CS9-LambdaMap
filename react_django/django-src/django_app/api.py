@@ -7,7 +7,6 @@ from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
 import random
-import json
 import json, re
 
 def str_to_bool(str):
