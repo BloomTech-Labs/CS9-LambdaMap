@@ -43,6 +43,22 @@ def register(request):
         return JsonResponse({}, status=201)
 
 def login(request):
+    request_body = json.loads(request.body.decode('ascii'))
+
+    def send_user(user):
+        if verify_password(request_body['password'], user.password):
+            token = create_token()
+            session = Session(
+                content_type=ContentType.objects.get_for_model(user.__class__),
+                object_id=user.id,
+                key=token
+            )
+            session.save()
+            del user._state
+            del user.password
+            response = JsonResponse(user.__dict__, status=200)
+            response.__setitem__(header='jwt', value=token)
+            return response
     if request.META['REQUEST_METHOD'] == 'POST':
         request_body = json.loads(request.body.decode('ascii'))
         def send_user(user):
