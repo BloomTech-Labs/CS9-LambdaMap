@@ -1,8 +1,8 @@
 // still in progress
 import axios from "axios";
 import * as actions from "./actionTypes";
-// const SERVER_URL = "https://lambda-map.herokuapp.com";
-const SERVER_URL = "http://127.0.0.1:8000";
+const SERVER_URL = "https://lambda-map.herokuapp.com";
+// const SERVER_URL = "http://127.0.0.1:8000";
 
 export const login = data => {
   const token = window.sessionStorage.getItem("token") || null;
