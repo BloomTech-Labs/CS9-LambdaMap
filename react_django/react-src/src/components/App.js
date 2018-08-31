@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
-import { Link } from "react-router-dom";
-import compass from "./compass.png";
+import HpProfileView from "./HpProfileView/hpProfileView";
 import JSprofile from "./jobseeker-profile/JSprofile";
 import MainLanding from "./landing-page/main-landing/MainLanding";
 import ClientLanding from "./landing-page/client-landing/ClientLanding";
@@ -14,6 +13,7 @@ import HPsettings from "./settings/HP-settings/HPsettings";
 import SignUp from "./landing-page/Sign-up/SignUp";
 import studentSettings from "./settings/studentSettings/studentSettings";
 import JobslistView from "./list-views/jobspage-JSview/JobslistView";
+import Billing from './billing/billing';
 
 class App extends Component {
   render() {
@@ -28,15 +28,12 @@ class App extends Component {
         <Route path="/jobseekers/" component={JSlistView} />
         <Route path="/jobslist/" component={JobslistView} />
         <Route path="/jsprofile/:id/" component={JSprofile} />
+        <Route path="/hpprofile/" component={HpProfileView} />
         {/* <Route path="/favorites/" component={} /> */}
         {/* <Route path="/messages/" component={} /> */}
         <Route path="/hpsettings/" component={HPsettings} />
         <Route path="/jssettings/" component={studentSettings} />
-        {/* <Route path="/billing" component={} /> */}
-
-        <Link to="/map">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
+        <Route path="/billing" component={Billing} />
       </div>
     );
   }

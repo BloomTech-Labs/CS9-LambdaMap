@@ -3,6 +3,9 @@
 import React, { Component } from 'react';
 import './HPsettings.css';
 import HPnav from '../../nav/company/HPnav';
+import compass from "../../compass.png";
+import { Link } from 'react-router-dom';
+
 
 export default class HPsettings extends Component {
   
@@ -71,6 +74,9 @@ export default class HPsettings extends Component {
             </div>
           </div>
       </div>
+      <Link to="/hpmap">
+          <img src={compass} alt="compass" className="compass" />{" "}
+        </Link>
       </div>
     )
   }

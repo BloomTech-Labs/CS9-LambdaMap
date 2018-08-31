@@ -1,5 +1,5 @@
 // Hiring Partner View for list of job seekers with filter
-
+import compass from "../../compass.png";
 import React, { Component } from "react";
 import "./JobslistView.css";
 import { FaCaretDown, FaStar } from "react-icons/fa";
@@ -92,7 +92,7 @@ class JobslistView extends Component {
               {this.props.jobListing.job_listings.map(job_listing => (
                 <div key={job_listing.ID} className="joblisting-cards">
                   <Link
-                    to={`/hpprofile/${job_listing.ID}`}
+                    to={`/hpprofile/`}
                     className="profile-link"
                   >
                     <div className="card-header">
@@ -128,6 +128,10 @@ class JobslistView extends Component {
             </div>
           </div>
         </div>
+            <Link to="/jsmap">
+          <img src={compass} alt="compass" className="compass" />{" "}
+        </Link>
+        
       </div>
     );
   }

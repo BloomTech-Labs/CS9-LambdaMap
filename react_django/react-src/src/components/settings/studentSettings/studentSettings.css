@@ -261,3 +261,20 @@
   background-color: #125172;
   color: white;
 }
+.compass{
+  margin: 0px 100px 10px 0px;
+  position: fixed;
+  width: 15vh;
+  height: 15vh;
+  bottom: 0;
+  right: 0;
+  animation: App-logo-spin 1.5s;
+}
+.compass:hover{
+  transform: scale(1.1);
+ 
+}
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
