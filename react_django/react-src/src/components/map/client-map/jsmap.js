@@ -116,6 +116,12 @@ class JSMapView extends Component {
               ))}
             </Map>
           </div>
+          <Link
+                    to={`/jsprofile/${this.state.client.ID}`}
+                    key={this.state.client.ID}
+                    className="profile-link"
+                    style={{ textDecoration: "none" }}
+                  >
           <div className="mini-profile">
             <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
             <p>
@@ -129,6 +135,7 @@ class JSMapView extends Component {
             <p>{this.state.client.phone}</p>
             <p>{this.state.client.email}</p>
           </div>
+          </Link>
           <div className="mini-profile2">
             <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
             <p>{this.state.job_listing.company_name}</p>
