@@ -116,6 +116,11 @@ class HPMapView extends Component {
               ))}
             </Map>
           </div>
+          <Link
+                    // to={`/jsprofile/${client.ID}`}
+                    // key={client.ID}
+                    // className="profile-link"
+                  >
           <div className="mini-profile">
             <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
             <p>
@@ -129,6 +134,7 @@ class HPMapView extends Component {
             <p>{this.state.client.phone}</p>
             <p>{this.state.client.email}</p>
           </div>
+          </Link>
           <div className="mini-profile2">
             <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
             <p>{this.state.job_listing.company_name}</p>
