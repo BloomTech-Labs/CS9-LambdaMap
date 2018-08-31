@@ -235,5 +235,23 @@
           .main-jobslist .jobslist-container .joblistingcards-container .cards-main .joblisting-cards .card-info .phonecontact {
             display: inline-flex;
             align-items: center; }
-
+            .compass{
+              margin: 0px 100px 10px 0px;
+              position: fixed;
+              width: 15vh;
+              height: 15vh;
+              bottom: 0;
+              right: 0;
+              animation: App-logo-spin 1.5s;
+              z-index: 4;
+            }
+            .compass:hover{
+              transform: scale(1.1);
+             
+            }
+            @keyframes App-logo-spin {
+              from { transform: rotate(0deg); }
+              to { transform: rotate(360deg); }
+            }
+            
 /*# sourceMappingURL=JobslistView.css.map */

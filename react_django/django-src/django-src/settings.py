@@ -26,7 +26,6 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -117,7 +116,7 @@ CORS_ALLOW_HEADERS = (
     )
 #commented for testing
 #CORS_ORIGIN_ALLOW_ALL = config('DEBUG', cast=bool)
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Internationalization

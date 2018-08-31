@@ -32,11 +32,12 @@ def register(request):
             response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
             string = response.read().decode('utf-8')
             response = json.loads(string)
-            number = random.uniform(0,0.05)
+            numberlat = random.uniform(-0.05,0.05)
+            numberlng = random.uniform(-0.05,0.05)
             lat = response['results'][0]['geometry']['location']['lat']
             lng = response['results'][0]['geometry']['location']['lng']
-            lat = str((float(lat) + number))
-            lng = str((float(lng) + number)) 
+            lat = str((float(lat) + numberlat))
+            lng = str((float(lng) + numberlng)) 
             user.lat = lat
             user.lng = lng
         user.save()
