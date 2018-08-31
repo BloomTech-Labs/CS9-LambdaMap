@@ -27,77 +27,107 @@ class SignUp extends Component {
     if (this.state.account_type === false) {
       client = (
         <div className="client-reg">
-          <input
-            type="text"
-            placeholder="First Name *"
-            name="first_name"
-            className="input"
-            value={this.state.first_name}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="first_name"
+              value={this.state.first_name}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>First Name *</label>
+            <span className="focus-border" />
+          </div>
 
-          <input
-            type="text"
-            placeholder="Last Name *"
-            name="last_name"
-            className="input"
-            value={this.state.last_name}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="last_name"
+              value={this.state.last_name}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>Last Name *</label>
+            <span className="focus-border" />
+          </div>
 
-          <input
-            type="text"
-            placeholder="City *"
-            name="city"
-            className="input"
-            value={this.state.city}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="city"
+              value={this.state.city}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>City *</label>
+            <span className="focus-border" />
+          </div>
 
-          <input
-            type="text"
-            placeholder="State *"
-            name="state"
-            className="input"
-            value={this.state.state}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="state"
+              value={this.state.state}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>State *</label>
+            <span className="focus-border" />
+          </div>
         </div>
       );
     } else if (this.state.account_type === true) {
       employer = (
         <div className="company-reg">
-          <input
-            type="text"
-            placeholder="Company Name *"
-            name="company_name"
-            className="input"
-            value={this.state.company_name}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="first_name"
+              value={this.state.company_name}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>Company Name *</label>
+            <span className="focus-border" />
+          </div>
 
-          <input
-            type="text"
-            placeholder="City *"
-            name="city"
-            className="input"
-            value={this.state.city}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="city"
+              value={this.state.city}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>City *</label>
+            <span className="focus-border" />
+          </div>
 
-          <input
-            type="text"
-            placeholder="State *"
-            name="state"
-            className="input"
-            value={this.state.state}
-            onChange={e => this.setState({ [e.target.name]: e.target.value })}
-          />
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="state"
+              value={this.state.state}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>State *</label>
+            <span className="focus-border" />
+          </div>
         </div>
       );
     }
     return (
       <div className="main-signup">
+        <div className="signup-form">Tell us a little about yourself:</div>
+        <hr />
         <div className="employer-switch">
           <label className="switch">
             <input
@@ -111,56 +141,74 @@ class SignUp extends Component {
             />
             <span className="slider round" />
           </label>
-          <h2>* Are you an Employer?</h2>
+          <h4>* I'm here for the best employees</h4>
+        </div>
+        <div className="register">
+          <div className="register-form input-effect">
+            <input
+              className="emailInput"
+              type="text"
+              placeholder=""
+              name="email"
+              value={this.state.email}
+              onChange={e => this.setState({ [e.target.name]: e.target.value })}
+            />
+            <label>E-mail *</label>
+            <span className="focus-border" />
+          </div>
+
+          <div>
+            <div className="signuppwd-form input-effect">
+              <input
+                className="pwdInput"
+                type="password"
+                placeholder=""
+                name="password"
+                className="input"
+                value={this.state.password}
+                onChange={e =>
+                  this.setState({ [e.target.name]: e.target.value })
+                }
+              />
+              <label>Password *</label>
+              <span className="focus-border" />
+            </div>
+          </div>
         </div>
 
-        <input
-          type="text"
-          placeholder="E-mail *"
-          name="email"
-          className="input"
-          value={this.state.email}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
+        <div className="register">
+          {employer}
+          {client}
+        </div>
 
-        <input
-          type="text"
-          placeholder="Password *"
-          name="password"
-          className="input"
-          value={this.state.password}
-          onChange={e => this.setState({ [e.target.name]: e.target.value })}
-        />
-
-        {employer}
-        {client}
-
-        <Link to="/"><button
-          onClick={() => {
-            this.props.register({
-              email: this.state.email,
-              password: this.state.password,
-              account_type: this.state.account_type.toString(),
-              first_name: this.state.first_name,
-              last_name: this.state.last_name,
-              company_name: this.state.company_name,
-              city: this.state.city,
-              state: this.state.state
-            });
-            this.setState({
-              email: "",
-              password: "",
-              first_name: "",
-              last_name: "",
-              company_name: "",
-              city: "",
-              state: "",
-              account_type: false
-            });
-          }}
-        >
-          Punch it
-        </button></Link>
+        <Link to="/">
+          <button
+            onClick={() => {
+              this.props.register({
+                email: this.state.email,
+                password: this.state.password,
+                account_type: this.state.account_type.toString(),
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                company_name: this.state.company_name,
+                city: this.state.city,
+                state: this.state.state
+              });
+              this.setState({
+                email: "",
+                password: "",
+                first_name: "",
+                last_name: "",
+                company_name: "",
+                city: "",
+                state: "",
+                account_type: false
+              });
+            }}
+          >
+            Register
+          </button>
+        </Link>
         <h5>* required field</h5>
       </div>
     );

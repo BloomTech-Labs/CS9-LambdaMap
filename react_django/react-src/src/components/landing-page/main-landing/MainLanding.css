@@ -1,0 +1,225 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: url("./background.PNG") no-repeat;
+  background-size: cover; }
+  .main img {
+    border-radius: 20px; }
+  .main .map {
+    position: absolute;
+    width: 60%;
+    top: 62%;
+    right: 3%;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    font-size: 24px;
+    line-height: 40px; }
+    .main .map .first {
+      position: absolute;
+      top: -150px;
+      right: 20px; }
+    .main .map .second {
+      position: absolute;
+      top: -85px;
+      right: 50px; }
+  .main .featured {
+    display: flex;
+    flex-direction: column;
+    margin-top: 125px;
+    height: 47.5%; }
+    .main .featured .hr {
+      -webkit-margin-start: 0;
+      width: 20%;
+      border-color: #919191; }
+    .main .featured img {
+      border-radius: 50%; }
+    .main .featured .featuredHP {
+      display: flex; }
+      .main .featured .featuredHP .details {
+        position: absolute;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        left: 280px;
+        bottom: 350px; }
+        .main .featured .featuredHP .details hr {
+          -webkit-margin-start: 0; }
+        .main .featured .featuredHP .details .company {
+          font-size: 35px;
+          font-family: "Roboto", sans-serif; }
+        .main .featured .featuredHP .details .loc {
+          margin-top: 10px;
+          margin-left: 45px;
+          font-family: "Roboto", sans-serif; }
+        .main .featured .featuredHP .details .jobs {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: "Roboto", sans-serif; }
+    .main .featured .featuredJS {
+      display: flex; }
+      .main .featured .featuredJS .details {
+        position: absolute;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        left: 380px;
+        bottom: 80px; }
+        .main .featured .featuredJS .details hr {
+          -webkit-margin-start: 0; }
+        .main .featured .featuredJS .details .client {
+          font-size: 35px;
+          font-family: "Roboto", sans-serif; }
+        .main .featured .featuredJS .details .loc {
+          margin-top: 10px;
+          margin-left: 45px;
+          font-family: "Roboto", sans-serif; }
+        .main .featured .featuredJS .details .job {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: "Roboto", sans-serif; }
+        .main .featured .featuredJS .details .skills {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: "Roboto", sans-serif; }
+    .main .featured .JS {
+      width: 10%;
+      margin-left: 150px;
+      margin-top: 25px; }
+    .main .featured .HP {
+      width: 18%;
+      margin-bottom: 15px; }
+  .main .signin {
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 50px 0px 0px;
+    align-items: center; }
+    .main .signin .signin-form {
+      position: relative; }
+      .main .signin .signin-form :focus {
+        outline: none; }
+      .main .signin .signin-form input[type="text"] {
+        font: 15px/24px "Roboto", sans-serif;
+        color: #333;
+        width: 90%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        display: flex; }
+      .main .signin .signin-form .emailInput {
+        border: 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+        z-index: 2; }
+      .main .signin .signin-form .emailInput ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #125172;
+        transition: 0.4s; }
+      .main .signin .signin-form .emailInput:focus ~ .focus-border,
+      .main .signin .signin-form .has-content.emailInput ~ .focus-border {
+        width: 90%;
+        transition: 0.4s;
+        left: 0; }
+      .main .signin .signin-form .emailInput ~ label {
+        position: absolute;
+        left: 0;
+        top: 13px;
+        color: Black;
+        transition: 0.3s;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 14px; }
+      .main .signin .signin-form .emailInput:focus ~ label,
+      .main .signin .signin-form .has-content.emailInput ~ label {
+        top: -16px;
+        font-size: 12px;
+        color: #A0011E;
+        transition: 0.3s; }
+  .main .signpwd-form {
+    position: relative; }
+    .main .signpwd-form :focus {
+      outline: none; }
+    .main .signpwd-form input[type="password"] {
+      font: 15px/24px "Roboto", sans-serif;
+      color: #333;
+      width: 80%;
+      box-sizing: border-box;
+      letter-spacing: 1px; }
+    .main .signpwd-form input {
+      border: 0;
+      padding: 4px 0;
+      border-bottom: 1px solid #ccc;
+      background-color: transparent;
+      z-index: 2;
+      margin-right: 35px; }
+    .main .signpwd-form input ~ .focus-border {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: #125172;
+      transition: 0.4s; }
+    .main .signpwd-form input:focus ~ .focus-border,
+    .main .signpwd-form .has-contentinput ~ .focus-border {
+      width: 80%;
+      transition: 0.4s;
+      left: 0; }
+    .main .signpwd-form input ~ label {
+      position: absolute;
+      left: 0;
+      top: 13px;
+      color: Black;
+      transition: 0.3s;
+      letter-spacing: 0.5px;
+      text-align: left;
+      font-size: 14px; }
+    .main .signpwd-form input:focus ~ label,
+    .main .signpwd-form .has-contentinput ~ label {
+      top: -16px;
+      font-size: 12px;
+      color: #A0011E;
+      transition: 0.3s; }
+    .main .signpwd-form input:focus::after,
+    .main .signpwd-form .has-contentinput ~ label::after {
+      display: none; }
+  .main button {
+    border: none;
+    cursor: pointer;
+    background-color: #125172;
+    color: white;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80px;
+    height: 80%;
+    outline: none; }
+
+.signup {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 50px; }
+  .signup h5 {
+    margin-right: 30px; }
+  .signup button {
+    border: none;
+    cursor: pointer;
+    background-color: #125172;
+    color: white;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80px;
+    outline: none; }
+
+/*# sourceMappingURL=MainLanding.css.map */

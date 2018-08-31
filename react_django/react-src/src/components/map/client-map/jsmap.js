@@ -53,9 +53,6 @@ class JSMapView extends Component {
     }
   };
   render() {
-    console.log(this.props);
-    console.log(this.state);
-    console.log(this.state.job_listing);
     return (
       <div>
         <JSNav />
