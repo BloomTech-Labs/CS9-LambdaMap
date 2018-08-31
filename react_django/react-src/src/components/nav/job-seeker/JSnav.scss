@@ -1,0 +1,141 @@
+// Job seekers' side nav styling
+
+@import "imports";
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+@mixin linear-gradient($top-color, $bottom-color, $opacity) {
+  background: -moz-linear-gradient(
+    top,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 ); /* IE6-9 */
+}
+
+.jobseekerNav-container {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  box-shadow: 5px 0px 10px #000000a1;
+  transform: translate(-90%, 0);
+  transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 10;
+  background-color: white;
+
+  .lambdamap {
+    padding: 6%;
+  }
+
+  .lambda {
+    font: 24px $lambdafont;
+    font-weight: bolder;
+  }
+
+  .logo {
+    width: 90%;
+  }
+
+  .lambda-logo {
+    width: 6%;
+  }
+
+  .quote {
+    margin: 5px 0px;
+    font: 15px $lambdafont;
+    color: $specialgray;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    font: 1.4em $lambdafont;
+    padding: 6% 0%;
+
+    .icons {
+      margin-right: 10px;
+      color: #125172;
+    }
+  }
+
+  .secondary-container {
+    width: 90%;
+
+    .nav-links {
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  hr {
+    width: 80%;
+  }
+
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    transition: all 1s;
+    font-size: 2em;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.2vh;
+    margin-top: 50px;
+  }
+
+  .footerIcon {
+    margin-right: 2px;
+  }
+
+  .skew {
+    display: flex;
+    position: absolute;
+    top: -10%;
+    width: 100%;
+    height: 20%;
+    z-index: -1;
+    @include transform(skew(0deg, -15deg));
+    @include linear-gradient($specialred, $specialred, 0.5);
+  }
+
+  .skew2 {
+    display: flex;
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 20%;
+    z-index: -1;
+    @include transform(skew(0deg, -15deg));
+    @include linear-gradient($specialred, $specialred, 0.5);
+  }
+}
+
+.jobseekerNav-container:hover {
+  transform: none;
+}
+
+.jobseekerNav-container:hover .arrow {
+  transform: rotate(180deg);
+}
