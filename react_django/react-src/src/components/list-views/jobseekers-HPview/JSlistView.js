@@ -19,6 +19,7 @@ import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
+import compass from "../../compass.png";
 
 class JSlistView extends Component {
   constructor(props) {
@@ -183,6 +184,9 @@ class JSlistView extends Component {
             </div>
           </div>
         </div>
+        <Link to="/hpmap">
+          <img src={compass} alt="compass" className="compass" />{" "}
+        </Link>
       </div>
     );
   }

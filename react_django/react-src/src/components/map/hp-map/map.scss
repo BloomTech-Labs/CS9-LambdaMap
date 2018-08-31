@@ -1,9 +1,7 @@
 @import 'imports';
-
 .main-container {
   display: flex;
   flex-direction: row;
-
   .mini-profile {
     position: absolute;
     left: 70%;
@@ -11,9 +9,20 @@
     border: 1px solid black;
     width: 20%;
     padding: 10px;
-
+    img {
+      width: 25%;
+    }
+  }
+  .mini-profile2 {
+    position: absolute;
+    left: 70%;
+    top: 50.5%;
+    border: 1px solid black;
+    width: 20%;
+    padding: 10px;
     img {
       width: 25%;
     }
   }
 }
+

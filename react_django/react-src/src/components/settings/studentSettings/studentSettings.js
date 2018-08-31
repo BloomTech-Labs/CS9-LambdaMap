@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import './studentSettings.css';
 import JSnav from '../../nav/job-seeker/JSnav';
+import { Link } from "react-router-dom";
+import compass from "../../compass.png";
 
 export default class StudentSettings extends Component {
   
@@ -84,6 +86,9 @@ export default class StudentSettings extends Component {
             </div>
           </div>
       </div>
+      <Link to="/jsmap">
+          <img src={compass} alt="compass" className="compass" />{" "}
+        </Link>
       </div>
     )
   }

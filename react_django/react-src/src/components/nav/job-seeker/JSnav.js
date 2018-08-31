@@ -10,7 +10,8 @@ import {
   FaMap,
   FaBriefcase,
   FaStar,
-  FaEnvelope
+  FaEnvelope,
+  FaUser
 } from "react-icons/fa";
 import { MdSettings, MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -84,11 +85,16 @@ export default class JSNav extends Component {
               Settings
             </li>
           </Link>
-
+          <Link
+            to="/jsprofile/:id/"
+            className="nav-links"
+            style={{ textDecoration: "none" }}
+          >
           <li>
-            <MdAttachMoney className="icons" />
-            Billing
+            <FaUser className="icons" />
+            Profile
           </li>
+          </Link>
 
           <footer>
             <h5 className="footer">

@@ -83,7 +83,7 @@ export default class HPnav extends Component {
           </li>
 
           <Link
-            to="/settings/"
+            to="/hpsettings/"
             className="nav-links"
             style={{ textDecoration: "none" }}
           >
@@ -92,12 +92,17 @@ export default class HPnav extends Component {
               Settings
             </li>
           </Link>
-
+        <Link
+        to="/billing"
+        className="nav-links"
+        style={{ textDecoration: "none" }}
+        >
           <li>
             <MdAttachMoney className="icons" />
             Billing
           </li>
-
+          </Link>
+          
           <footer>
             <h5 className="footer">
               <FaCopyright className="footerIcon" />
