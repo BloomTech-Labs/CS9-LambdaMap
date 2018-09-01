@@ -9,12 +9,170 @@
 .main-signup {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 100%;
+  height: 100vh;
   align-items: center;
   margin: 0 auto;
+  background: url(./signupbackground.PNG);
+  background-size: cover;
+
+  button {
+    border: none;
+    background-color: $specialblue;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: $mapsfont;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80px;
+    height: 80%;
+    outline: none;
+    margin-top: 20px;
+  }
+
+  .register {
+    display: flex;
+    flex-direction: column;
+
+    .register-form {
+      position: relative;
+
+      :focus {
+        outline: none;
+      }
+
+      input[type="text"] {
+        font: 15px/24px $mapsfont;
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        display: flex;
+        z-index: -1;
+      }
+
+      .emailInput {
+        border: 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+      }
+
+      .emailInput ~ .focus-border {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $specialblue;
+        transition: 0.4s;
+      }
+
+      .emailInput:focus ~ .focus-border,
+      .has-content.emailInput ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+        left: 0;
+        bottom: 15px;
+      }
+
+      .emailInput ~ label {
+        position: absolute;
+        left: 0;
+        top: 25px;
+        color: Black;
+        transition: 0.3s;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      .emailInput:focus ~ label,
+      .has-content.emailInput ~ label {
+        top: 5px;
+        font-size: 12px;
+        color: $specialred;
+        transition: 0.3s;
+      }
+    }
+
+    .signuppwd-form {
+      position: relative;
+
+      :focus {
+        outline: none;
+      }
+
+      input[type="password"] {
+        font: 15px/24px $mapsfont;
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+      }
+
+      input {
+        border: 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+        z-index: 2;
+        margin-right: 35px;
+      }
+
+      input ~ .focus-border {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $specialblue;
+        transition: 0.4s;
+      }
+
+      input:focus ~ .focus-border,
+      .has-contentinput ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+        left: 0;
+        bottom: 15px;
+      }
+
+      input ~ label {
+        position: absolute;
+        left: 0;
+        top: 25px;
+        color: Black;
+        transition: 0.3s;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      input:focus ~ label,
+      .has-contentinput ~ label {
+        top: 5px;
+        font-size: 12px;
+        color: $specialred;
+        transition: 0.3s;
+      }
+    }
+  }
+
+  .signup-form {
+    margin-top: 100px;
+    font: 2em $mapsfont;
+    font-weight: bolder;
+  }
+
+  hr {
+    width: 40%;
+    margin-bottom: 20px;
+  }
 
   input {
-    margin: 5px 0;
+    margin: 15px 0;
   }
 
   .client-reg {
@@ -31,6 +189,10 @@
     display: flex;
     align-items: center;
 
+    h4 {
+      font-family: $mapsfont;
+    }
+
     .switch {
       position: relative;
       display: inline-block;
@@ -38,7 +200,7 @@
       height: 15px;
       margin-right: 5px;
       margin-left: 10px;
-      border: 1px solid #125072a4;
+      border: 1px solid $specialgray;
       border-radius: 34px;
     }
 
@@ -61,10 +223,9 @@
     .slider:before {
       position: absolute;
       content: "";
-      height: 10px;
-      width: 10px;
-      left: 4px;
-      bottom: 2.6px;
+      height: 15px;
+      width: 15px;
+      left: 0px;
       background-color: white;
       -webkit-transition: 0.4s;
       transition: 0.4s;
@@ -80,9 +241,9 @@
     }
 
     input:checked + .slider:before {
-      -webkit-transform: translateX(15px);
-      -ms-transform: translateX(15px);
-      transform: translateX(15px);
+      -webkit-transform: translateX(17px);
+      -ms-transform: translateX(17px);
+      transform: translateX(17px);
     }
 
     .slider.round {
