@@ -88,7 +88,7 @@ class SignUp extends Component {
               className="emailInput"
               type="text"
               placeholder=""
-              name="first_name"
+              name="company_name"
               value={this.state.company_name}
               onChange={e => this.setState({ [e.target.name]: e.target.value })}
             />
