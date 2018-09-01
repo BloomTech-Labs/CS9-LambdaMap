@@ -7,6 +7,10 @@ import { connect } from "react-redux";
 import { login } from "../../../actions";
 import logo from "./lambdamainlogo.PNG";
 import "./MainLanding.css";
+// import featJS from "./0.jpg";
+// import featHP from "./amazon-logo.gif";
+// import map from "./bigmapthing.PNG";
+// import { FaBriefcase, FaCode } from "react-icons/fa";
 
 class MainLanding extends Component {
   constructor(props) {
@@ -40,7 +44,7 @@ class MainLanding extends Component {
     }
 
     return (
-      <div className="main">
+      <div className="main-landing">
         <div className="signin">
           <div>
             <div className="signin-form input-effect">
@@ -101,6 +105,39 @@ class MainLanding extends Component {
         <div>
           <img src={logo} className="HP" alt="Hire Partner" />
         </div>
+        {/* <div className="featured">
+          <div className="featuredHP">
+            <img src={featHP} className="HP" alt="Hire Partner" />
+            <div className="details">
+              <div className="company">Amazon</div>
+              <hr />
+              <div className="loc">Seattle, WA</div>
+              <div className="jobs">
+                <FaBriefcase /> Currently 48 job listings
+              </div>
+            </div>
+          </div>
+          <hr className="hr" />
+          <div className="featuredJS">
+            <img src={featJS} className="JS" alt="Job Seeker" />
+            <div className="details">
+              <div className="client">Mark Stesney</div>
+              <hr />
+              <div className="loc">Fayetteville, Arkansas</div>
+              <div className="job">
+                <FaBriefcase /> Software Developer
+              </div>
+              <div className="skills">
+                <FaCode /> React, Python, Django, SQL, SASS
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="map">
+        <div className="first">Use our interactive map to</div>
+        <div className="second">connect with employers or job seekers.</div>
+        <img src={map} className="map" alt="map" />
+        </div> */}
       </div>
     );
   }
