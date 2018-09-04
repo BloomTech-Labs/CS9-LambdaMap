@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
-// import compass from "../../compass.png";
-import { Link } from "react-router-dom";
 import { create_listing, signout } from "../../../actions/index";
 import { connect } from "react-redux";
 
