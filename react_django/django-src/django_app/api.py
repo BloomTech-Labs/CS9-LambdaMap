@@ -8,6 +8,9 @@ from django.core import serializers
 from urllib.request import urlopen
 import random
 import json, re
+import stripe 
+
+stripe.api_key = ''
 
 
 def str_to_bool(str):
@@ -297,3 +300,16 @@ def get_users(request):
             query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
             query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
         return JsonResponse(query, status=200)
+
+
+def subscribe(request):
+    if request.META['REQUEST_METHOD'] == 'POST':
+      charge = stripe.Charge.create(
+        amount=999,
+        currency='usd',
+        description='example charge',
+        source=request.body
+      )
+      return JsonResponse({"successful":'charge'})
+    else:
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
