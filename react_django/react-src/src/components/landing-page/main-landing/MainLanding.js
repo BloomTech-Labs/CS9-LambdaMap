@@ -1,16 +1,11 @@
 // Main landing page for signing in and registering, will redirect to landing page of respective account
 
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../actions";
 import logo from "./mainatlas.PNG";
 import "./MainLanding.css";
 import SignUp from "../Sign-up/SignUp"
-// import featJS from "./0.jpg";
-// import featHP from "./amazon-logo.gif";
-// import map from "./bigmapthing.PNG";
-// import { FaBriefcase, FaCode } from "react-icons/fa";
 
 class MainLanding extends Component {
   constructor(props) {

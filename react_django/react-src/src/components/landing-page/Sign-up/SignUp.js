@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import { register } from "../../../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 class SignUp extends Component {
@@ -164,7 +163,6 @@ class SignUp extends Component {
                 type="password"
                 placeholder=""
                 name="password"
-                className="input"
                 value={this.state.password}
                 onChange={e =>
                   this.setState({ [e.target.name]: e.target.value })

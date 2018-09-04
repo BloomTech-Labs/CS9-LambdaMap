@@ -8,12 +8,12 @@ import { create_listing } from "../../../actions/index";
 import { connect } from "react-redux";
 
 class HPsettings extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   jobListing: []
-    // };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     jobListing: []
+  //   };
+  // }
 
   componentDidMount = id => {
     this.props.create_listing(id);
