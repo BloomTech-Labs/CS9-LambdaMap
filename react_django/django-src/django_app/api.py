@@ -9,6 +9,9 @@ from urllib.request import urlopen
 import random
 import json
 import json, re
+import stripe 
+
+stripe.api_key = 'pk_test_1p5B423kMIc50yASX6BjZtio'
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
@@ -271,3 +274,19 @@ def get_users(request):
             query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
             query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
         return JsonResponse(query, status=200)
+
+
+def subscribe(request):
+    request_body = json.loads(request.body.decode('ascii'))
+    if request.META['REQUEST_METHOD'] == 'POST':
+      print(request_body)
+      charge = stripe.Charge.create(
+        amount=999,
+        currency='usd',
+        description='example charge',
+        source=request_body['id']
+        
+      )
+      return JsonResponse({"token":charge})
+    else:
+        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
