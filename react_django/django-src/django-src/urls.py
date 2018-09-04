@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
 from django_app.api import register, login, logout, update, delete, create_listing, get_listings, get_client, \
-    get_clients, get_hire_partners, add_favorite_listing, client_favorites, get_users, delete_listing, get_hp
+    get_clients, get_hire_partners, add_favorite_listing, client_favorites, get_users, delete_listing, get_hp, subscribe
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/add-favorite-listing/', add_favorite_listing),
     path('api/client-favorites/', client_favorites),
     path('api/users/', get_users),
+    path('api/subscribe', subscribe),
     re_path('delete-listing/\d+/', delete_listing),
     re_path('api/client/\d+/', get_client),
     re_path('hp/\d+/', get_hp)
