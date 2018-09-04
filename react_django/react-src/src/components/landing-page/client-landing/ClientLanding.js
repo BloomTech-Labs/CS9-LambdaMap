@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
-import amazon from "./amazon-logo.gif";
-import mark from "./0.jpg";
 import { MdArrowDropDown } from "react-icons/md";
 import { FaBriefcase } from "react-icons/fa";
 import "./ClientLanding.css";
