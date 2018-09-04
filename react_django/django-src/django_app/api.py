@@ -10,7 +10,7 @@ import random
 import json, re
 import stripe 
 
-stripe.api_key = 'pk_test_1p5B423kMIc50yASX6BjZtio'
+stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
 
 
 def str_to_bool(str):
@@ -303,16 +303,13 @@ def get_users(request):
 
 
 def subscribe(request):
-    request_body = json.loads(request.body.decode('ascii'))
     if request.META['REQUEST_METHOD'] == 'POST':
-      print(request_body)
       charge = stripe.Charge.create(
         amount=999,
         currency='usd',
         description='example charge',
-        source=request_body['id']
-        
+        source=request.body
       )
-      return JsonResponse({"token":charge})
+      return JsonResponse({"successful":'charge'})
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
