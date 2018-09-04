@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
-import HPNav from '../nav/company/HPnav';
-import StripeCheckout from 'react-stripe-checkout';
-import {connect} from 'react-redux';
+import React, {Component} from 'react';
+import {Elements,StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from './checkoutForm';
 
 class Billing extends Component{
-    onToken = (token) =>{
-      fetch('http://localhost:8000/api/subscribe/',{
-        method:'POST',
-        body:JSON.stringify(token),
-      }).then(response=>{
-        response.json().then(data=>{
-          alert(`test ${data.email}`);
-        });
-      });
-    }
-    render() {
+  render(){
     return(
-    <StripeCheckout token={this.onToken} stripeKey='pk_test_1p5B423kMIc50yASX6BjZtio' />
+    <StripeProvider apiKey="pk_test_1p5B423kMIc50yASX6BjZtio">
+      <div className="billing">
+        <h1>billing</h1>
+        <Elements>
+          <CheckoutForm />
+        </Elements>
+      </div>
+    </StripeProvider>
     );
   }
 }
 
-
-const mapStateToProps = state => {
-  return {
-  };
-};
-
-export default connect( mapStateToProps, { })(Billing);
-
+export default Billing;
