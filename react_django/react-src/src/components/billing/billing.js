@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 
 class Billing extends Component{
     onToken = (token) =>{
-      fetch('http://localhost:8000/api/subscribe/',{
+      fetch('https://localhost:8000/api/subscribe/',{
         method:'POST',
         body:JSON.stringify(token),
       }).then(response=>{
