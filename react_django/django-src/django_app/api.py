@@ -10,7 +10,7 @@ import random
 import json, re
 import stripe 
 
-stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
+stripe.api_key = ''
 
 
 def str_to_bool(str):
