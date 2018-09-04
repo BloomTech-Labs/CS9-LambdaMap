@@ -3,8 +3,6 @@ import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
 import "./hpProfileView.css";
 import HPNav from "../nav/company/HPnav";
 import amazon from "./amazon.png";
-import compass from "../compass.png";
-import { Link } from "react-router-dom";
 import { get_hp } from "../../actions";
 import { connect } from "react-redux";
 import { GoClock } from "react-icons/go";
@@ -101,9 +99,6 @@ class HPviewHP extends Component {
             </div>
           </div>
         </div>
-        <Link to="/jsmap">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }
