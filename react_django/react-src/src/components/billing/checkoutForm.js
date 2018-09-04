@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HPNav from '../nav/company/HPnav';
 import {connect} from 'react-redux';
+import {subscribe} from '../../actions';
 import {CardElement,injectStripe} from 'react-stripe-elements';
 
 class CheckoutForm extends Component{
@@ -10,15 +11,14 @@ class CheckoutForm extends Component{
   }
 
   async submit(ev){
-    let {token} = await this.props.stripe.createToken({name:'Name'});
-    let response = await fetch('https://lambda-map.herokuapp.com/api/subscribe',{
-      method:'POST',
-      headers:{'Content-Type':'text/plain'},
-      body:token.id
+    let response = await this.props.stripe.createToken({name:'Name'})
+    .then(res=>{
+      this.props.subscribe(res.token.id)
+    })
+    .catch(err=>{
+      console.log({'error subscribing':err});
     });
-    if(response.ok)  console.log({'Purchase complete!':response})
   }
-
 
   render() {
     return(
@@ -31,11 +31,13 @@ class CheckoutForm extends Component{
   }
 }
 
-
-const mapStateToProps = state => {
+const mapStateToProps = state =>{
   return {
   };
-};
+}
 
-export default injectStripe(CheckoutForm);
+
+
+
+export default injectStripe(connect(mapStateToProps,{subscribe})(CheckoutForm));
 

@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {Elements,StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './checkoutForm';
+import {connect} from 'react-redux';
+import {subscribe} from '../../actions';
 
 class Billing extends Component{
+
   render(){
     return(
     <StripeProvider apiKey="">
@@ -17,4 +20,10 @@ class Billing extends Component{
   }
 }
 
-export default Billing;
+const mapStateToProps = state =>{
+  return{
+    
+  };
+}
+
+export default connect(mapStateToProps, {subscribe})(Billing);

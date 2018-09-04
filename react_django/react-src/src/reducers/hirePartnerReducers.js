@@ -53,7 +53,17 @@ const hirePartner = (state = initialState, action) => {
         fetchingHPFavs: false,
         error: null
       });
+    case actions.FETCH_SUBSCRIBE:
+      return Object.assign({}, state, {
+        fetchingSubscribe: true,
+        error: null
+      });
 
+    case actions.FETCHED_SUBSCRIBE:
+      return Object.assign({}, state, {
+        fetchingSubscribe: false,
+        error: null
+      });
     //Fetching individual HP
     case actions.FETCH_HP:
       return Object.assign({}, state, {
