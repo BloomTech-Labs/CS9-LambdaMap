@@ -1,7 +1,9 @@
+// Still needs work
+
 import React, { Component } from "react";
 import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
 import "./hpProfileView.css";
-import JSNav from "../nav/job-seeker/JSnav";
+import HPNav from "../nav/company/HPnav";
 import amazon from "./amazon.png";
 import compass from "../compass.png";
 import { Link } from "react-router-dom";
@@ -11,7 +13,7 @@ import { GoClock } from "react-icons/go";
 
 const Timestamp = require("react-timestamp");
 
-class HpProfileView extends Component {
+class HPviewHP extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +29,7 @@ class HpProfileView extends Component {
   render() {
     return (
       <div>
-        <JSNav />
+        <HPNav />
         <div className="hp">
           <div className="backgroundskew" />
           <div className="hp-div">
@@ -122,4 +124,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { get_hp }
-)(HpProfileView);
+)(HPviewHP);

@@ -16,9 +16,11 @@ class Users(models.Model):
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
 
+
 class Clients(Users):
     first_name = models.CharField(max_length=20, default='')
     last_name = models.CharField(max_length=20, default='')
+    profession = models.CharField(max_length=100, default='web developer')
     remote = models.BooleanField(default=False, blank=True)
     relocate = models.BooleanField(default=False, blank=True)
     linkedin = models.URLField(default='', blank=True)
@@ -26,18 +28,50 @@ class Clients(Users):
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
     portfolio_picture = models.URLField(default='', blank=True)
-    profession = models.CharField(max_length=100, default='web developer')
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"first_name":self.first_name,"last_name":self.last_name, "profession": self.profession, "remote":self.remote,"relocate":self.relocate,"linkedin":self.linkedin,"github":self.github,"twitter":self.twitter,"codepen":self.codepen,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
+        return {
+            "ID": self.id,
+            "email": self.email,
+            "city": self.city,
+            "state": self.state,
+            "personal_website": self.personal_website,
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            "profession": self.profession,
+            "remote": self.remote,
+            "relocate": self.relocate,
+            "linkedin": self.linkedin,
+            "github": self.github,
+            "twitter": self.twitter,
+            "codepen": self.codepen,
+            "phone": self.phone,
+            "about": self.about,
+            "account_type": self.account_type,
+            "lat": self.lat,
+            "lng": self.lng
+        }
+
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
 
     def to_dict(self):
-      return {"ID":self.id,"email":self.email,"password":self.password,"city":self.city,"state":self.state,"personal_website":self.personal_website,"company_name":self.company_name,"phone":self.phone,"about":self.about,"account_type":self.account_type,"lat":self.lat,"lng":self.lng}
+        return {
+            "ID": self.id,
+            "email": self.email,
+            "city": self.city,
+            "state": self.state,
+            "personal_website": self.personal_website,
+            "company_name": self.company_name,
+            "phone": self.phone,
+            "about": self.about,
+            "account_type": self.account_type,
+            "lat": self.lat,
+            "lng": self.lng
+        }
 
-
+        
 # Added job listing model
 class Job_Listing(models.Model):
     hp_id = models.ForeignKey(Hire_Partners, on_delete=models.DO_NOTHING, default='')
@@ -46,7 +80,7 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-    clients = models.ManyToManyField(Clients)
+    # clients = models.ManyToManyField(Clients) <-- this was causing an issue because it was making it a required field, we can't add a listing unless it's linked to a client with this active
 
 
 class Session(models.Model):

@@ -34,7 +34,7 @@ class JSlistView extends Component {
   };
 
   render() {
-    console.log(this.state.clients)
+    console.log(this.state.clients);
     return (
       <div className="main-JSlist">
         <HPnav />
@@ -200,4 +200,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, { get_clients })(JSlistView);
+export default connect(
+  mapStateToProps,
+  { get_clients }
+)(JSlistView);

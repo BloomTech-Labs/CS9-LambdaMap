@@ -21,7 +21,6 @@ class JobslistView extends Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.get_listings)
     this.props.get_listings();
   };
 
@@ -91,10 +90,7 @@ class JobslistView extends Component {
             <div className="cards-main">
               {this.props.jobListing.job_listings.map(job_listing => (
                 <div key={job_listing.ID} className="joblisting-cards">
-                  <Link
-                    to={`/hpprofile/`}
-                    className="profile-link"
-                  >
+                  <Link to={`/hpprofile/`} className="profile-link">
                     <div className="card-header">
                       <img
                         src={defaultuser}
@@ -128,10 +124,9 @@ class JobslistView extends Component {
             </div>
           </div>
         </div>
-            <Link to="/jsmap">
+        <Link to="/jsmap">
           <img src={compass} alt="compass" className="compass" />{" "}
         </Link>
-        
       </div>
     );
   }
@@ -145,4 +140,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, { get_listings })(JobslistView);
+export default connect(
+  mapStateToProps,
+  { get_listings }
+)(JobslistView);

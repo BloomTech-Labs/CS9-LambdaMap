@@ -54,6 +54,19 @@ const hirePartner = (state = initialState, action) => {
         error: null
       });
 
+    //Fetching individual HP
+    case actions.FETCH_HP:
+      return Object.assign({}, state, {
+        fetchingHp: true
+      });
+
+    case actions.FETCHED_HP:
+      return Object.assign({}, state, {
+        HP: action.payload,
+        fetchingHp: false,
+        error: null
+      });
+
     case actions.REGISTER:
       return Object.assign({}, state, {
         registering: true

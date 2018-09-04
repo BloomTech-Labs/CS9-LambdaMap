@@ -2,50 +2,70 @@
 
 import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
-import { Timeline } from "react-twitter-widgets";
+// import { Timeline } from "react-twitter-widgets";
 import amazon from "./amazon-logo.gif";
 import mark from "./0.jpg";
 import { MdArrowDropDown } from "react-icons/md";
 import { FaBriefcase } from "react-icons/fa";
 import "./ClientLanding.css";
+import { get_listings, signout } from "../../../actions/index";
+import { connect } from "react-redux";
 
 class ClientLanding extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clients: [],
+      jobListing: []
+    };
+  }
+
+  componentDidMount = () => {
+    this.props.get_listings();
+  };
+
   render() {
+    let companyListing = null;
+    var randomCompany = this.props.jobListing.job_listings[
+      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
+    ];
+    if (randomCompany) {
+      companyListing = (
+        <div className="feat-job">
+          <h4>We think you're a great fit for this job:</h4>
+          <img src={amazon} />
+          <p className="jobtitle">{randomCompany.company_name}</p>
+          <p className="job">
+            {randomCompany.jobListings[0].job_title}
+          </p>
+          <p>{randomCompany.jobListings[0].job_desc}</p>
+          <h5>
+            See more <MdArrowDropDown />
+          </h5>
+        </div>
+      );
+      // console.log(randomCompany)
+    }
     return (
       <div className="client">
         <JSnav />
         <div className="signout">
-          <button className="signoutbutton">Sign Out</button>
+            <button className="signoutbutton"  onClick={() => { this.props.signout(this.props.history) }}>Sign Out</button>
         </div>
         <div className="client-container">
           <div className="welcome-container">
             <div className="profile">
               <img src={mark} className="mark" />
-              <h1>Welcome back, Mark.</h1>
+              <h1>Welcome back, {this.props.clients.user.first_name}.</h1>
               <h3>Here's what you missed while you were away:</h3>
               <h4>
                 <FaBriefcase /> There were 16 new jobs posted in your area.
               </h4>
               <h4>Five of your favorited companies posted new jobs.</h4>
             </div>
-            <div className="feat-job">
-              <h4>We think you're a great fit for this job:</h4>
-                <img src={amazon} />
-                <p className="jobtitle">Amazon</p>
-                <p className="job">Software Engineer</p>
-                <p>
-                  Device Ad Products is a business initiative focused on
-                  monetizing Amazon owned and operated devices. To do this, we
-                  are building a premium advertising platform that is unlike any
-                  that exists today. This is a strategic initiative for the
-                  company, and we are growing quickly. Our...
-                </p>
-                <h5>
-                  See more <MdArrowDropDown />
-                </h5>
-            </div>
+            {companyListing}
           </div>
-          <div className="twitter">
+          {/* <div className="twitter">
             <Timeline
               dataSource={{
                 sourceType: "profile",
@@ -57,11 +77,24 @@ class ClientLanding extends Component {
                 width: "400"
               }}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     );
   }
 }
 
-export default ClientLanding;
+const mapStateToProps = state => {
+  // console.log(state, "mapstatetoprops");
+  return {
+    clients: state.clients,
+    jobListing: state.jobListing,
+    fetchingListings: state.fetchingListings,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { get_listings, signout }
+)(ClientLanding);
