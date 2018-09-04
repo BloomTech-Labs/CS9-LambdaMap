@@ -1,8 +1,6 @@
-//  hard coded info going to go back over and make sure it's the logged in user
-
 import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
-// import { Timeline } from "react-twitter-widgets";
+
 import amazon from "./amazon-logo.gif";
 import mark from "./0.jpg";
 import { MdArrowDropDown } from "react-icons/md";
@@ -35,22 +33,26 @@ class ClientLanding extends Component {
           <h4>We think you're a great fit for this job:</h4>
           <img src={amazon} />
           <p className="jobtitle">{randomCompany.company_name}</p>
-          <p className="job">
-            {randomCompany.jobListings[0].job_title}
-          </p>
+          <p className="job">{randomCompany.jobListings[0].job_title}</p>
           <p>{randomCompany.jobListings[0].job_desc}</p>
           <h5>
             See more <MdArrowDropDown />
           </h5>
         </div>
       );
-      // console.log(randomCompany)
     }
     return (
       <div className="client">
         <JSnav />
         <div className="signout">
-            <button className="signoutbutton"  onClick={() => { this.props.signout(this.props.history) }}>Sign Out</button>
+          <button
+            className="signoutbutton"
+            onClick={() => {
+              this.props.signout(this.props.history);
+            }}
+          >
+            Sign Out
+          </button>
         </div>
         <div className="client-container">
           <div className="welcome-container">
@@ -65,19 +67,6 @@ class ClientLanding extends Component {
             </div>
             {companyListing}
           </div>
-          {/* <div className="twitter">
-            <Timeline
-              dataSource={{
-                sourceType: "profile",
-                screenName: "TechCrunch"
-              }}
-              options={{
-                username: "TechCrunch",
-                height: "600",
-                width: "400"
-              }}
-            />
-          </div> */}
         </div>
       </div>
     );
@@ -85,7 +74,6 @@ class ClientLanding extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state, "mapstatetoprops");
   return {
     clients: state.clients,
     jobListing: state.jobListing,

@@ -237,7 +237,6 @@ def get_hp(request):
             return JsonResponse({"Error":e})
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
-        
 
 
 def get_clients(request):
