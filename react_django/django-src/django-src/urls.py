@@ -36,6 +36,7 @@ urlpatterns = [
     path('api/users/', get_users),
     path('api/subscribe', subscribe),
     re_path('delete-listing/\d+/', delete_listing),
+    re_path('api/delete-listing/\d+/', delete_listing),
     re_path('api/client/\d+/', get_client),
-    re_path('hp/\d+/', get_hp)
+    re_path('api/hp/\d+/', get_hp)
 ]
