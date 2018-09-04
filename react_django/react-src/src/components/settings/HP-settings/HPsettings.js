@@ -3,18 +3,17 @@
 import React, { Component } from "react";
 import "./HPsettings.css";
 import HPnav from "../../nav/company/HPnav";
-import compass from "../../compass.png";
 import { Link } from "react-router-dom";
 import { create_listing } from "../../../actions/index";
 import { connect } from "react-redux";
 
 class HPsettings extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   jobListing: []
-    // };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     jobListing: []
+  //   };
+  // }
 
   componentDidMount = id => {
     this.props.create_listing(id);
@@ -76,9 +75,6 @@ class HPsettings extends Component {
             <input placeholder="Company Website" />
           </div>
         </div>
-        <Link to="/hpmap">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }

@@ -1,6 +1,5 @@
 // Hiring Partner View of individual job seeker profile
 import { Link } from "react-router-dom";
-import compass from '../compass.png'
 import React, { Component } from "react";
 import "./JSprofile.css";
 import defaultuser from "./defaultuser.svg";
@@ -121,9 +120,6 @@ class JSprofile extends Component {
             <FaDesktop className="smIcons" />
           </a>
         </div>
-        <Link to="/hpmap">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }
