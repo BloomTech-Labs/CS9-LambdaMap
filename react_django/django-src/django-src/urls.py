@@ -34,7 +34,7 @@ urlpatterns = [
     path('api/add-favorite-listing/', add_favorite_listing),
     path('api/client-favorites/', client_favorites),
     path('api/users/', get_users),
-    re_path('delete-listing/\d+/', delete_listing),
+    re_path('api/delete-listing/\d+/', delete_listing),
     re_path('api/client/\d+/', get_client),
-    re_path('hp/\d+/', get_hp)
+    re_path('api/hp/\d+/', get_hp)
 ]
