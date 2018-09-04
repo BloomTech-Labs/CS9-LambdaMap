@@ -7,7 +7,6 @@ import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
-import compass from "../../compass.png";
 
 class JSMapView extends Component {
   constructor(props) {
@@ -159,9 +158,6 @@ class JSMapView extends Component {
             </div>
           </Link>
         </div>
-        <Link to="/jslanding">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }
