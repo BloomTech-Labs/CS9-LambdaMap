@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
-import { CardElement, injectStripe} from 'react-stripe-elements';
 import HPNav from '../nav/company/HPnav';
-import './billing.css';
+import StripeCheckout from 'react-stripe-checkout';
 
 class Billing extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {complete: false};
-        this.submit = this.submit.bind(this);
-      }
-    
-      async submit(e) {
-        // let {token} = await this.props.stripe.createToken({name: "Name"});
-        let response = await fetch("/charge", {
-          method: "POST",
-          headers: {"Content-Type": "text/plain"},
-        //   body: token.id
+    onToken = (token) =>{
+      fetch('http://localhost:8000/api/subscribe/',{
+        method:'POST',
+        body:JSON.stringify(token),
+      }).then(response=>{
+        response.json().then(data=>{
+          alert(`test ${data.email}`);
         });
-      
-        if (response.ok) console.log("Purchase Complete!")
+      });
     }
     render() {
-        if (this.state.complete) return <h1>Purchase Complete</h1>;
-        return(
-        <div>
-            <HPNav />
-            <div  className="billing">
-            <p>Would you like to complete the purchase?</p>
-            <CardElement />
-            <button onClick={this.submit}>Sumbit Payment</button>
-            </div>
-        </div>
-        )
-    }
+    return(
+    <StripeCheckout token={this.onToken} stripeKey='pk_test_1p5B423kMIc50yASX6BjZtio' />
+    );
+  }
 }
 
-export default injectStripe(Billing);
+export default Billing
