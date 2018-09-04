@@ -30,7 +30,7 @@ class ClientLanding extends Component {
       companyListing = (
         <div className="feat-job">
           <h4>We think you're a great fit for this job:</h4>
-          <img src={amazon} alt="company"/>
+          <img src={amazon} alt="company" />
           <p className="jobtitle">{randomCompany.company_name}</p>
           <p className="job">{randomCompany.jobListings[0].job_title}</p>
           <p>{randomCompany.jobListings[0].job_desc}</p>
@@ -56,7 +56,7 @@ class ClientLanding extends Component {
         <div className="client-container">
           <div className="welcome-container">
             <div className="profile">
-              <img src={mark} className="mark" alt="user"/>
+              <img src={mark} className="mark" alt="user" />
               <h1>Welcome back, {this.props.clients.user.first_name}.</h1>
               <h3>Here's what you missed while you were away:</h3>
               <h4>
