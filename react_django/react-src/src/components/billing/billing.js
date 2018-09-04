@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import HPNav from '../nav/company/HPnav';
 import StripeCheckout from 'react-stripe-checkout';
+import {connect} from 'react-redux';
 
 class Billing extends Component{
     onToken = (token) =>{
-      fetch('https://localhost:8000/api/subscribe/',{
+      fetch('http://localhost:8000/api/subscribe/',{
         method:'POST',
         body:JSON.stringify(token),
       }).then(response=>{
@@ -20,4 +21,11 @@ class Billing extends Component{
   }
 }
 
-export default Billing
+
+const mapStateToProps = state => {
+  return {
+  };
+};
+
+export default connect( mapStateToProps, { })(Billing);
+
