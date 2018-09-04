@@ -16,7 +16,7 @@ class CheckoutForm extends Component{
       this.props.subscribe(res.token.id)
     })
     .catch(err=>{
-      console.log({'error subscribing':err});
+      console.log({'error creating token':err});
     });
   }
 
