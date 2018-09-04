@@ -10,7 +10,7 @@ import random
 import json, re
 import stripe 
 
-stripe.api_key = ''
+stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
 
 
 def str_to_bool(str):
@@ -310,6 +310,6 @@ def subscribe(request):
         description='example charge',
         source=request.body
       )
-      return JsonResponse({"successful":'charge'})
+      return JsonResponse({"successful":charge})
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
