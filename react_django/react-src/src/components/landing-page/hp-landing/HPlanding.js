@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
-import compass from "../../compass.png";
+// import compass from "../../compass.png";
 import { Link } from "react-router-dom";
 import { create_listing, signout } from "../../../actions/index";
 import { connect } from "react-redux";
@@ -109,10 +109,6 @@ class HPLanding extends Component {
         >
           Delete
         </button> */}
-
-        <Link to="/hpmap">
-          <img src={compass} alt="compass" className="compass" />
-        </Link>
       </div>
     );
   }

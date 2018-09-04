@@ -6,7 +6,6 @@ import "./map.css";
 import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
-import compass from "../../compass.png";
 import { Link } from "react-router-dom";
 
 class HPMapView extends Component {
@@ -162,9 +161,6 @@ class HPMapView extends Component {
             </div>
           </Link>
         </div>
-        <Link to="/hplanding">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }
