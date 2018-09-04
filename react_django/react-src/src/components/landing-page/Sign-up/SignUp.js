@@ -88,7 +88,7 @@ class SignUp extends Component {
               className="emailInput"
               type="text"
               placeholder=""
-              name="first_name"
+              name="company_name"
               value={this.state.company_name}
               onChange={e => this.setState({ [e.target.name]: e.target.value })}
             />
@@ -181,34 +181,32 @@ class SignUp extends Component {
           {client}
         </div>
 
-        <Link to="/">
-          <button
-            onClick={() => {
-              this.props.register({
-                email: this.state.email,
-                password: this.state.password,
-                account_type: this.state.account_type.toString(),
-                first_name: this.state.first_name,
-                last_name: this.state.last_name,
-                company_name: this.state.company_name,
-                city: this.state.city,
-                state: this.state.state
-              });
-              this.setState({
-                email: "",
-                password: "",
-                first_name: "",
-                last_name: "",
-                company_name: "",
-                city: "",
-                state: "",
-                account_type: false
-              });
-            }}
-          >
-            Register
-          </button>
-        </Link>
+        <button
+          onClick={() => {
+            this.props.register({
+              email: this.state.email,
+              password: this.state.password,
+              account_type: this.state.account_type.toString(),
+              first_name: this.state.first_name,
+              last_name: this.state.last_name,
+              company_name: this.state.company_name,
+              city: this.state.city,
+              state: this.state.state
+            });
+            this.setState({
+              email: "",
+              password: "",
+              first_name: "",
+              last_name: "",
+              company_name: "",
+              city: "",
+              state: "",
+              account_type: false
+            });
+          }}
+        >
+          Register
+        </button>
         <h5>* required field</h5>
       </div>
     );

@@ -113,36 +113,54 @@ class HPMapView extends Component {
               ))}
             </Map>
           </div>
+          {/* Links to client profile */}
           <Link
-                    to={`/jsprofile/${this.state.client.ID}`}
-                    key={this.state.client.ID}
-                    className="profile-link"
-                    style={{ textDecoration: "none" }}
-                  >
-          <div className="mini-profile">
-            <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
-            <p>
-              {this.state.client.first_name}
-              {this.state.client.last_name}
-            </p>
-            <p>
-              {this.state.client.city}
-              {this.state.client.state}
-            </p>
-            <p>{this.state.client.phone}</p>
-            <p>{this.state.client.email}</p>
-          </div>
+            to={`/jsprofile/${this.state.client.ID}`}
+            key={this.state.client.ID}
+            className="profile-link"
+            style={{ textDecoration: "none" }}
+          >
+            <div className="mini-profile">
+              <img
+                src={defaultuser}
+                className="JSprofilepic"
+                alt="Job Seeker"
+              />
+              <p>
+                {this.state.client.first_name}
+                {this.state.client.last_name}
+              </p>
+              <p>
+                {this.state.client.city}
+                {this.state.client.state}
+              </p>
+              <p>{this.state.client.phone}</p>
+              <p>{this.state.client.email}</p>
+            </div>
           </Link>
-          <div className="mini-profile2">
-            <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
-            <p>{this.state.job_listing.company_name}</p>
-            <p>
-              {this.state.job_listing.city}
-              {this.state.job_listing.state}
-            </p>
-            <p>{this.state.job_listing.phone}</p>
-            <p>{this.state.job_listing.email}</p>
-          </div>
+
+          {/* Links to Hire Partner Profile */}
+          <Link
+            to={`/hpview/${this.state.job_listing.ID}`}
+            key={this.state.job_listing.ID}
+            className="profile-link"
+            style={{ textDecoration: "none" }}
+          >
+            <div className="mini-profile2">
+              <img
+                src={defaultuser}
+                className="JSprofilepic"
+                alt="Job Seeker"
+              />
+              <p>{this.state.job_listing.company_name}</p>
+              <p>
+                {this.state.job_listing.city}
+                {this.state.job_listing.state}
+              </p>
+              <p>{this.state.job_listing.phone}</p>
+              <p>{this.state.job_listing.email}</p>
+            </div>
+          </Link>
         </div>
         <Link to="/hplanding">
           <img src={compass} alt="compass" className="compass" />{" "}

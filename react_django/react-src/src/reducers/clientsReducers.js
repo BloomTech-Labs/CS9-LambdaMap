@@ -89,7 +89,7 @@ const clients = (state = initialState, action) => {
     //   return Object.assign({}, state, {
     //     updatingClient: true
     //   });
-      
+
     // case actions.UPDATE:
     //   return Object.assign({}, state, {
     //     updating: true
