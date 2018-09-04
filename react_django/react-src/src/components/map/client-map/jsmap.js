@@ -6,8 +6,8 @@ import "./map.css";
 import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
-import { Link } from 'react-router-dom';
-import compass from "../../compass.png"
+import { Link } from "react-router-dom";
+import compass from "../../compass.png";
 
 class JSMapView extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class JSMapView extends Component {
     });
   };
 
-  onMapClicked = props => {
+  onMapClicked = () => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -114,35 +114,50 @@ class JSMapView extends Component {
             </Map>
           </div>
           <Link
-                    to={`/jsprofile/${this.state.client.ID}`}
-                    key={this.state.client.ID}
-                    className="profile-link"
-                    style={{ textDecoration: "none" }}
-                  >
-          <div className="mini-profile">
-            <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
-            <p>
-              {this.state.client.first_name}
-              {this.state.client.last_name}
-            </p>
-            <p>
-              {this.state.client.city}
-              {this.state.client.state}
-            </p>
-            <p>{this.state.client.phone}</p>
-            <p>{this.state.client.email}</p>
-          </div>
+            to={`/jsview/${this.state.client.ID}`}
+            key={this.state.client.ID}
+            className="profile-link"
+            style={{ textDecoration: "none" }}
+          >
+            <div className="mini-profile">
+              <img
+                src={defaultuser}
+                className="JSprofilepic"
+                alt="Job Seeker"
+              />
+              <p>
+                {this.state.client.first_name}
+                {this.state.client.last_name}
+              </p>
+              <p>
+                {this.state.client.city}
+                {this.state.client.state}
+              </p>
+              <p>{this.state.client.phone}</p>
+              <p>{this.state.client.email}</p>
+            </div>
           </Link>
-          <div className="mini-profile2">
-            <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
-            <p>{this.state.job_listing.company_name}</p>
-            <p>
-              {this.state.job_listing.city}
-              {this.state.job_listing.state}
-            </p>
-            <p>{this.state.job_listing.phone}</p>
-            <p>{this.state.job_listing.email}</p>
-          </div>
+          <Link
+            to={`/hpprofile/${this.state.job_listing.ID}`}
+            key={this.state.job_listing.ID}
+            className="profile-link"
+            style={{ textDecoration: "none" }}
+          >
+            <div className="mini-profile2">
+              <img
+                src={defaultuser}
+                className="JSprofilepic"
+                alt="Job Seeker"
+              />
+              <p>{this.state.job_listing.company_name}</p>
+              <p>
+                {this.state.job_listing.city}
+                {this.state.job_listing.state}
+              </p>
+              <p>{this.state.job_listing.phone}</p>
+              <p>{this.state.job_listing.email}</p>
+            </div>
+          </Link>
         </div>
         <Link to="/jslanding">
           <img src={compass} alt="compass" className="compass" />{" "}

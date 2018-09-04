@@ -113,9 +113,7 @@ export const get_clients = () => {
 };
 
 export const get_hpFavs = () => {
-  const clients = axios.get(
-    `${SERVER_URL}/api/hire-partner-favorites/`
-  );
+  const clients = axios.get(`${SERVER_URL}/api/hire-partner-favorites/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_HPFAVORITES });
     clients
@@ -195,7 +193,7 @@ export const get_listings = () => {
 };
 
 export const get_client = ID => {
-  const client = axios.get(`${SERVER_URL}/api/clients/${ID}/`);
+  const client = axios.get(`${SERVER_URL}/api/client/${ID}/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_CLIENT });
     client
@@ -211,6 +209,24 @@ export const get_client = ID => {
           payload: "ERROR fetching clients"
         });
       });
+  };
+};
+
+export const get_hp = ID => {
+  const hp = axios.get(`${SERVER_URL}/api/hp/${ID}/`);
+  return dispatch => {
+    dispatch({ type: actions.FETCH_HP });
+    hp.then(response => {
+      dispatch({
+        type: actions.FETCHED_HP,
+        payload: response.data.Hire_Partner
+      });
+    }).catch(err => {
+      dispatch({
+        type: actions.ERROR_FETCHING,
+        payload: "ERROR fetching HP by id"
+      });
+    });
   };
 };
 
