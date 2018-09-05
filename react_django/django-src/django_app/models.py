@@ -1,6 +1,7 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from datetime import date
 
 
 class Users(models.Model):
@@ -55,8 +56,13 @@ class Clients(Users):
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
+    subscription_end_date = models.DateField(default=date.today)
 
     def to_dict(self):
+        if(self.subscription_end_date <= date.today()):
+          subscribed = False
+        else:
+          subscribed = True
         return {
             "ID": self.id,
             "email": self.email,
@@ -68,7 +74,9 @@ class Hire_Partners(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng
+            "lng": self.lng,
+            "subscription_end_date": self.subscription_end_date,
+            "subscribed": subscribed,
         }
 
         
