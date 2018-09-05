@@ -315,8 +315,11 @@ def subscribe(request):
             description='one month subscription',
             source=request_body['stripeToken']
           )
-          #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
-          hire_partner.subscription_end_date = date.today() + timedelta(days=31)
+          if(hire_partner.subscription_end_date < date.today()):
+            #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
+            hire_partner.subscription_end_date = date.today() + timedelta(days=31)
+          else:
+            hire_partner.subscription_end_date += timedelta(days=31)
           try:
             hire_partner.save()
             return JsonResponse({"successful":charge})

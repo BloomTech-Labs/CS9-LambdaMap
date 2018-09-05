@@ -8,10 +8,25 @@ class CheckoutForm extends Component{
   constructor(props){
     super(props);
     this.submit = this.submit.bind(this);
+    this.state={subscribed:false,end_date:undefined}
   }
 
-  componentDidMount(){
-    console.log(this.props);
+  componentWillMount(){
+    let end_date = this.props.hirePartner.user.subscription_end_date;
+    let today = new Date();
+    let year = end_date.slice(0,4)
+    //january starts at 0
+    let month = parseInt(end_date.slice(5,7)) -1
+    let day = end_date.slice(8,10)
+    let end = new Date(year,month,day)
+    // subscription is active
+    if(end >= today){
+      this.setState({subscribed:true,end_date:end.toString()})
+    }
+    //subscription is inactive
+    else{
+      this.setState({subscribed:false})
+    }
   }
 
   async submit(ev){
@@ -25,13 +40,27 @@ class CheckoutForm extends Component{
   }
 
   render() {
-    return(
-    <div className='checkout'>
-      <p>Subscribe?</p>
-      <CardElement/>
-      <button onClick={this.submit}>Subscribe!</button>
-    </div>
-    );
+    console.log(this.state.subscribed,this.state.end_date);
+    if(this.state.subscribed){
+      return(
+          <div className='checkout'>
+            <h1>Your subscription ends on {this.state.end_date}</h1>
+            <p>Add another month?</p>
+            <CardElement/>
+            <button onClick={this.submit}>Subscribe!</button>
+          </div>
+          );
+    }
+    else{
+      return(
+        <div className='checkout'>
+          <h1>Your subscription is inactive</h1>
+          <p>Subscribe?</p>
+          <CardElement/>
+          <button onClick={this.submit}>Subscribe!</button>
+        </div>
+        );
+    }
   }
 }
 
