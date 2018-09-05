@@ -10,10 +10,14 @@ class CheckoutForm extends Component{
     this.submit = this.submit.bind(this);
   }
 
+  componentDidMount(){
+    console.log(this.props);
+  }
+
   async submit(ev){
     let response = await this.props.stripe.createToken({name:'Name'})
     .then(res=>{
-      this.props.subscribe(res.token.id)
+      this.props.subscribe({stripeToken:res.token.id, email:this.props.hirePartner.user.email})
     })
     .catch(err=>{
       console.log({'error creating token':err});
@@ -33,6 +37,7 @@ class CheckoutForm extends Component{
 
 const mapStateToProps = state =>{
   return {
+    hirePartner: state.hirePartner
   };
 }
 
