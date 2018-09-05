@@ -5,6 +5,24 @@ import * as actions from "./actionTypes";
 // const SERVER_URL = "https://lambda-map.herokuapp.com";
 const SERVER_URL = "http://127.0.0.1:8000";
 
+export const subscribe = (data) =>{
+  const response = axios.post(`${SERVER_URL}/api/subscribe`,data);
+  return dispatch => {
+    dispatch({
+      type: actions.FETCH_SUBSCRIBE
+    });
+    response.then(res=>{
+      dispatch({
+        type:actions.FETCHED_SUBSCRIBE,
+        response:res
+      });
+    })
+    .catch(err=>{
+      console.log({'ERROR SUBSCRIBING':err});
+    })
+  }
+}
+
 export const login = (data, history) => {
   const token = window.sessionStorage.getItem("jwt") || null;
   const config = {
