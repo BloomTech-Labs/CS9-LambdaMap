@@ -23,10 +23,6 @@ class CheckoutForm extends Component{
     if(end >= today){
       this.setState({subscribed:true,end_date:end.toString()})
     }
-    //subscription is inactive
-    else{
-      this.setState({subscribed:false})
-    }
   }
 
   async submit(ev){
@@ -55,7 +51,7 @@ class CheckoutForm extends Component{
       return(
         <div className='checkout'>
           <h1>Your subscription is inactive</h1>
-          <p>Subscribe?</p>
+          <p>Subscribe for one month?</p>
           <CardElement/>
           <button onClick={this.submit}>Subscribe!</button>
         </div>
