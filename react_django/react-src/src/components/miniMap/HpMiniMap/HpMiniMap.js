@@ -1,14 +1,12 @@
 /*global google*/
 import React, { Component } from "react";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
-import JSNav from "../../nav/job-seeker/JSnav";
-import "./map.css";
-import { get_clients, get_listings } from "../../../actions/index";
+import { get_clients, get_listings } from "../../../actions";
 import { connect } from "react-redux";
-import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
+import "./minimap.css";
 
-class JSMapView extends Component {
+class HpMiniMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +25,8 @@ class JSMapView extends Component {
     this.props.get_listings();
   };
 
+
+
   onMarkerClick = id => {
     this.props.clients.clients.filter(c => {
       if (c.ID === id) {
@@ -43,7 +43,7 @@ class JSMapView extends Component {
     });
   };
 
-  onMapClicked = () => {
+  onMapClicked = props => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -53,10 +53,8 @@ class JSMapView extends Component {
   };
   render() {
     return (
-      <div>
-        <JSNav />
-        <div className="main-container">
-          <div className="map">
+          <Link to="/hpmap">
+        <div className="mini-map">
             <Map
               className="mapstuff"
               google={this.props.google}
@@ -64,10 +62,11 @@ class JSMapView extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
-              zoom={4}
+              zoom={2}
               style={{
-                width: "100%",
-                height: "100vh",
+                borderRadius: "500px",
+                boxShadow: "0px 0px 10px 0px black",
+                border: "4px solid orange",
               }}
               onClick={this.onMapClicked}
             >
@@ -106,53 +105,7 @@ class JSMapView extends Component {
               ))}
             </Map>
           </div>
-          <Link
-            to={`/jsview/${this.state.client.ID}`}
-            key={this.state.client.ID}
-            className="profile-link"
-            style={{ textDecoration: "none" }}
-          >
-            <div className="mini-profile">
-              <img
-                src={defaultuser}
-                className="JSprofilepic"
-                alt="Job Seeker"
-              />
-              <p>
-                {this.state.client.first_name}
-                {this.state.client.last_name}
-              </p>
-              <p>
-                {this.state.client.city}
-                {this.state.client.state}
-              </p>
-              <p>{this.state.client.phone}</p>
-              <p>{this.state.client.email}</p>
-            </div>
-          </Link>
-          <Link
-            to={`/hpprofile/${this.state.job_listing.ID}`}
-            key={this.state.job_listing.ID}
-            className="profile-link"
-            style={{ textDecoration: "none" }}
-          >
-            <div className="mini-profile2">
-              <img
-                src={defaultuser}
-                className="JSprofilepic"
-                alt="Job Seeker"
-              />
-              <p>{this.state.job_listing.company_name}</p>
-              <p>
-                {this.state.job_listing.city}
-                {this.state.job_listing.state}
-              </p>
-              <p>{this.state.job_listing.phone}</p>
-              <p>{this.state.job_listing.email}</p>
-            </div>
-          </Link>
-        </div>
-      </div>
+      </Link>
     );
   }
 }
@@ -172,6 +125,6 @@ export default connect(
   { get_clients, get_listings }
 )(
   GoogleApiWrapper({ apiKey: "AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4" })(
-    JSMapView
+    HpMiniMap
   )
 );

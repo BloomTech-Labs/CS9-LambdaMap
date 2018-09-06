@@ -66,14 +66,8 @@ class HPMapView extends Component {
               }}
               zoom={4}
               style={{
-                borderRadius: "5px",
-                boxShadow: "0px 0px 5px 0px white",
-                margin: "100px",
-                width: "80%",
-                height: "80%",
-                zIndex: "0",
-                maxWidth: "1200px",
-                maxHeight: "750px"
+                width: "100%",
+                height: "100vh",
               }}
               onClick={this.onMapClicked}
             >
