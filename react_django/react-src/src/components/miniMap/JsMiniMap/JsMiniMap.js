@@ -5,6 +5,8 @@ import { get_clients, get_listings } from "../../../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./minimap.css";
+import blue from "../../map/bluemarker.png";
+import orange from "../../map/orangemarker.png";
 
 class JsMiniMap extends Component {
   constructor(props) {
@@ -79,9 +81,8 @@ class JsMiniMap extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
-                    url:
-                      "https://cdn-images-1.medium.com/fit/c/120/120/1*iTABE417EkZDwRv9Uj91Qg.png"
+                    scaledSize: new google.maps.Size(10, 15),
+                    url: blue
                   }}
                 />
               ))}
@@ -96,8 +97,8 @@ class JsMiniMap extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
-                    url: "https://png.icons8.com/small/1600/filled-building.png"
+                    scaledSize: new google.maps.Size(12, 17),
+                    url: orange
                   }}
                 />
               ))}

@@ -7,6 +7,8 @@ import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
+import orange from "../orangemarker.png";
+import blue from "../bluemarker.png";
 
 class JSMapView extends Component {
   constructor(props) {
@@ -82,9 +84,8 @@ class JSMapView extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
-                    url:
-                      "https://cdn-images-1.medium.com/fit/c/120/120/1*iTABE417EkZDwRv9Uj91Qg.png"
+                    scaledSize: new google.maps.Size(15, 25),
+                    url:blue
                   }}
                 />
               ))}
@@ -99,8 +100,8 @@ class JSMapView extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
-                    url: "https://png.icons8.com/small/1600/filled-building.png"
+                    scaledSize: new google.maps.Size(18, 28),
+                    url:orange
                   }}
                 />
               ))}
