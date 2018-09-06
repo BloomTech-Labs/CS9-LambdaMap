@@ -2,8 +2,8 @@
 import axios from "axios";
 import * as actions from "./actionTypes";
 // import { withRouter } from 'react-router';
-// const SERVER_URL = "https://lambda-map.herokuapp.com";
-const SERVER_URL = "http://127.0.0.1:8000";
+ const SERVER_URL = "https://lambda-map.herokuapp.com";
+//const SERVER_URL = "http://127.0.0.1:8000";
 
 export const subscribe = (data) =>{
   const response = axios.post(`${SERVER_URL}/api/subscribe`,data);
@@ -11,15 +11,18 @@ export const subscribe = (data) =>{
     dispatch({
       type: actions.FETCH_SUBSCRIBE
     });
-    response.then(res=>{
-      dispatch({
-        type:actions.FETCHED_SUBSCRIBE,
-        response:res
+    return new Promise(function(resolve, reject){
+      response.then(res=>{
+        dispatch({
+          type:actions.FETCHED_SUBSCRIBE,
+          response:res
+        });
+        resolve(res.data)
+      })
+      .catch(err=>{
+        reject('error subscribing')
       });
-    })
-    .catch(err=>{
-      console.log({'ERROR SUBSCRIBING':err});
-    })
+    });
   }
 }
 
