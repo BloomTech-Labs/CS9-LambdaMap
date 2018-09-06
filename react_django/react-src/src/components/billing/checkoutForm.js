@@ -8,20 +8,9 @@ class CheckoutForm extends Component{
   constructor(props){
     super(props);
     this.submit = this.submit.bind(this);
-    this.state={subscribed:false,end_date:undefined}
-  }
-
-  componentWillMount(){
-    let end_date = this.props.hirePartner.user.subscription_end_date;
-    let today = new Date();
-    let year = end_date.slice(0,4)
-    //january starts at 0
-    let month = parseInt(end_date.slice(5,7)) -1
-    let day = end_date.slice(8,10)
-    let end = new Date(year,month,day)
-    // subscription is active
-    if(end >= today){
-      this.setState({subscribed:true,end_date:end.toString()})
+    this.state={
+      subscribed:this.props.hirePartner.user.subscribed,
+      end_date:new Date(this.props.hirePartner.user.subscription_end_date)
     }
   }
 
@@ -29,18 +18,25 @@ class CheckoutForm extends Component{
     let response = await this.props.stripe.createToken({name:'Name'})
     .then(res=>{
       this.props.subscribe({stripeToken:res.token.id, email:this.props.hirePartner.user.email})
+      .then(res=>{
+        alert('successfully subscribed!');
+        this.setState({subscribed:true,end_date:new Date(res.successful)});
+      })
+      .catch(err=>{
+        alert('failed to subscribe',err);
+        console.log(err);
+      });
     })
     .catch(err=>{
-      console.log({'error creating token':err});
+      alert("error:",err);
     });
   }
 
   render() {
-    console.log(this.state.subscribed,this.state.end_date);
     if(this.state.subscribed){
       return(
           <div className='checkout'>
-            <h1>Your subscription ends on {this.state.end_date}</h1>
+            <h1>Your subscription ends on {this.state.end_date.toString().slice(0,15)}</h1>
             <p>Add another month?</p>
             <CardElement/>
             <button onClick={this.submit}>Subscribe!</button>
