@@ -1,11 +1,8 @@
-// Still needs work
-
 import React, { Component } from "react";
 import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
 import "./hpProfileView.css";
 import HPNav from "../nav/company/HPnav";
 import amazon from "./amazon.png";
-import { Link } from "react-router-dom";
 import { get_hp } from "../../actions";
 import { connect } from "react-redux";
 import { GoClock } from "react-icons/go";
@@ -22,7 +19,6 @@ class HPviewHP extends Component {
   componentDidMount = () => {
     const id = this.props.match.params.id;
     this.props.get_hp(id);
-    console.log(this.props.get_hp(id));
   };
 
   render() {
@@ -109,7 +105,6 @@ class HPviewHP extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, "mapstatetoprops");
   return {
     hirePartner: state.hirePartner,
     fetchingListings: state.fetchingHp,

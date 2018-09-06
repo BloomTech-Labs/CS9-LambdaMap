@@ -14,13 +14,12 @@ class HpProfileView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hirePartner: []
+      hirePartner: [],
     };
   }
   componentDidMount = () => {
     const id = this.props.match.params.id;
     this.props.get_hp(id);
-    console.log(this.props.get_hp(id));
   };
 
   render() {
@@ -37,7 +36,7 @@ class HpProfileView extends Component {
                   {this.props.hirePartner.HP.company_name}
                 </h1>
                 <h3 className="hp-location">
-                  {this.props.hirePartner.HP.city},{" "}
+                  {this.props.hirePartner.HP.city},
                   {this.props.hirePartner.HP.state}
                 </h3>
               </div>
@@ -72,7 +71,7 @@ class HpProfileView extends Component {
                     {this.props.hirePartner.HP.company_name}
                   </h1>
                   <h3 className="hp-location">
-                    {this.props.hirePartner.HP.city},{" "}
+                    {this.props.hirePartner.HP.city},
                     {this.props.hirePartner.HP.state}
                   </h3>
                 </div>
@@ -82,14 +81,14 @@ class HpProfileView extends Component {
                 <Timestamp time={this} actualSeconds />
               </p>
               <div className="hp-card-title-div">
-                <h5 className="hp-card-title">{}</h5>{" "}
+                <h5 className="hp-card-title">{}</h5>
                 <FaStar className="star-icon" />
               </div>
               <div className="hp-card-title-div">
                 <h5 className="hp-card-title">
-                  {this.props.hirePartner.HP.city},{" "}
+                  {this.props.hirePartner.HP.city},
                   {this.props.hirePartner.HP.state}
-                </h5>{" "}
+                </h5>
                 <FaLink className="link-icon" />
               </div>
             </div>
@@ -107,7 +106,6 @@ class HpProfileView extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, "mapstatetoprops");
   return {
     hirePartner: state.hirePartner,
     fetchingListings: state.fetchingHp,

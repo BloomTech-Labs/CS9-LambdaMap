@@ -89,7 +89,7 @@ class JobslistView extends Component {
             <div className="cards-main">
               {this.props.jobListing.job_listings.map(job_listing => (
                 <div key={job_listing.ID} className="joblisting-cards">
-                  <Link to={`/hpprofile/`} className="profile-link">
+                  <Link to={`/hpprofile/${job_listing.ID}`} className="profile-link">
                     <div className="card-header">
                       <img
                         src={defaultuser}
