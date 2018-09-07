@@ -297,33 +297,33 @@ export const get_hp = id => {
   };
 };
 
-// export const update = data => {
-//   const token = window.sessionStorage.getItem("token") || null;
-//   const config = { headers: { jwt: `${token}` } };
-//   const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
-//   return dispatch => {
-//     dispatch({
-//       type: actions.UPDATE
-//     });
-//     user
-//       .then(response => {
-//         if (response.data.account_type === false) {
-//           dispatch({
-//             type: actions.UPDATED_CLIENT,
-//             payload: response.data
-//           });
-//         } else if (response.data.account_type === true) {
-//           dispatch({
-//             type: actions.UPDATED_HPS,
-//             payload: response.data
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         dispatch({
-//           type: actions.ERROR_UPDATING,
-//           payload: ("ERROR logging in", err)
-//         });
-//       });
-//   };
-// };
+export const update = data => {
+  const token = window.sessionStorage.getItem("token") || null;
+  const config = { headers: { jwt: `${token}` } };
+  const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
+  return dispatch => {
+    dispatch({
+      type: actions.UPDATE
+    });
+    user
+      .then(response => {
+        if (response.data.account_type === false) {
+          dispatch({
+            type: actions.UPDATED_CLIENT,
+            payload: response.data
+          });
+        } else if (response.data.account_type === true) {
+          dispatch({
+            type: actions.UPDATED_HPS,
+            payload: response.data
+          });
+        }
+      })
+      .catch(err => {
+        dispatch({
+          type: actions.ERROR_UPDATING,
+          payload: ("ERROR logging in", err)
+        });
+      });
+  };
+};

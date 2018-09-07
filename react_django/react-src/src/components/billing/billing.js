@@ -8,7 +8,7 @@ class Billing extends Component{
 
   render(){
     return(
-    <StripeProvider apiKey="">
+    <StripeProvider apiKey="null">
       <div className="billing">
         <h1>billing</h1>
         <Elements>

@@ -66,11 +66,94 @@ class JSMapView extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
-              zoom={4}
+              disableDefaultUI={true}
+              zoom={5}
               style={{
                 width: "100%",
                 height: "100vh",
               }}
+              styles= {[
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#454545",
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#E3AE92"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "saturation": -100,
+                            "color": "#125172"
+                        },
+                        {
+                            "lightness": 45
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off",
+                            // "color": "#125172"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#e1f5ff"
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                }
+            ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (
@@ -84,7 +167,7 @@ class JSMapView extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(15, 25),
+                    scaledSize: new google.maps.Size(20, 30),
                     url:blue
                   }}
                 />
@@ -100,7 +183,7 @@ class JSMapView extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(18, 28),
+                    scaledSize: new google.maps.Size(23, 33),
                     url:orange
                   }}
                 />
