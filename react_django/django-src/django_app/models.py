@@ -88,8 +88,6 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-    # clients = models.ManyToManyField(Clients) <-- this was causing an issue because it was making it a required field, we can't add a listing unless it's linked to a client with this active
-
 
 class Session(models.Model):
     key = models.CharField(max_length=100, default='')
