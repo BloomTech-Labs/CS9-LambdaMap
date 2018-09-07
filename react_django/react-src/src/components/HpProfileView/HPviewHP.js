@@ -10,7 +10,7 @@ import { GoClock } from "react-icons/go";
 
 const Timestamp = require("react-timestamp");
 
-class HpProfileView extends Component {
+class HPViewHP extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -123,4 +123,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { get_hp }
-)(HpProfileView);
+)(HPViewHP);
