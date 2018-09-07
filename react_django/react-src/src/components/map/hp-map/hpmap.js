@@ -78,7 +78,7 @@ class HPMapView extends Component {
                     "elementType": "labels.text.fill",
                     "stylers": [
                         {
-                            "color": "#444444"
+                            "color": "#454545"
                         }
                     ]
                 },
@@ -144,7 +144,7 @@ class HPMapView extends Component {
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#46bcec"
+                            "color": "#4D9FCA"
                         },
                         {
                             "visibility": "on"
@@ -165,7 +165,7 @@ class HPMapView extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 30),
+                    scaledSize: new google.maps.Size(25, 35),
                     url: blue
                   }}
                 />
@@ -181,7 +181,7 @@ class HPMapView extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(23, 33),
+                    scaledSize: new google.maps.Size(28, 38),
                     url: orange
                   }}
                 />

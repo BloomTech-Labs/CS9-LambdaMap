@@ -87,7 +87,7 @@ class JSMapView extends Component {
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#E3AE92"
+                            "color": "#f2f2f2"
                         }
                     ]
                 },
@@ -146,7 +146,7 @@ class JSMapView extends Component {
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#e1f5ff"
+                            "color": "#4D9FCA"
                         },
                         {
                             "visibility": "on"
@@ -167,7 +167,7 @@ class JSMapView extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 30),
+                    scaledSize: new google.maps.Size(25, 35),
                     url:blue
                   }}
                 />
@@ -183,7 +183,7 @@ class JSMapView extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(23, 33),
+                    scaledSize: new google.maps.Size(28, 38),
                     url:orange
                   }}
                 />
