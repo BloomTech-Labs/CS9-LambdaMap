@@ -21,6 +21,8 @@ class CheckoutForm extends Component{
       .then(res=>{
         alert('successfully subscribed!');
         this.setState({subscribed:true,end_date:new Date(res.successful)});
+        this.props.hirePartner.user.subscribed = this.state.subscribed;
+        this.props.hirePartner.user.subscription_end_date = this.state.end_date;
       })
       .catch(err=>{
         alert('failed to subscribe',err);
