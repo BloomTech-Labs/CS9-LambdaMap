@@ -28,7 +28,7 @@ class Clients(Users):
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-    portfolio_picture = models.URLField(default='', blank=True)
+    portfolio_picture = models.FileField(upload_to='images/', default='images/defaultuser.svg')
 
     def to_dict(self):
         return {

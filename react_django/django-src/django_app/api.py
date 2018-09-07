@@ -7,18 +7,24 @@ from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
 import random
-import json, re
-import stripe 
-from datetime import timedelta,date
+import json
+import re
+import pprint
+# import stripe
+# from datetime import timedelta,date
 
-stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
+
+# stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
 
 
 def register(request):
+    pretty = pprint.PrettyPrinter(indent=4)
     if request.META['REQUEST_METHOD'] == 'POST':
+        pretty.pprint(request.POST)
+        pretty.pprint(request.FILES)
         request_body = json.loads(request.body.decode('ascii'))
         if str_to_bool(request_body["account_type"]):
             user = Hire_Partners()
@@ -302,32 +308,32 @@ def get_users(request):
         return JsonResponse(query, status=200)
 
 
-def subscribe(request):
-    if request.META['REQUEST_METHOD'] == 'POST':
-      request_body = json.loads(request.body.decode('ascii'))
-      hire_partner = Hire_Partners.objects.get(email=request_body['email'])
-      if(hire_partner):
-        try:
-          charge = stripe.Charge.create(
-            #equivalent to $30
-            amount= 3000,
-            currency='usd',
-            description='one month subscription',
-            source=request_body['stripeToken']
-          )
-          if(hire_partner.subscription_end_date < date.today()):
-            #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
-            hire_partner.subscription_end_date = date.today() + timedelta(days=31)
-          else:
-            hire_partner.subscription_end_date += timedelta(days=31)
-          try:
-            hire_partner.save()
-            return JsonResponse({"successful":charge})
-          except Exception as e:
-            return JsonResponse({"error on saving hiring partner":e})
-        except Exception as e:
-          return JsonResponse({'Stripe charge creation error':e})
-      else:
-        return JsonResponse({"invalid email":"email must be of a hiring partner to subscribe"})
-    else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+# def subscribe(request):
+#     if request.META['REQUEST_METHOD'] == 'POST':
+#       request_body = json.loads(request.body.decode('ascii'))
+#       hire_partner = Hire_Partners.objects.get(email=request_body['email'])
+#       if(hire_partner):
+#         try:
+#           charge = stripe.Charge.create(
+#             #equivalent to $30
+#             amount= 3000,
+#             currency='usd',
+#             description='one month subscription',
+#             source=request_body['stripeToken']
+#           )
+#           if(hire_partner.subscription_end_date < date.today()):
+#             #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
+#             hire_partner.subscription_end_date = date.today() + timedelta(days=31)
+#           else:
+#             hire_partner.subscription_end_date += timedelta(days=31)
+#           try:
+#             hire_partner.save()
+#             return JsonResponse({"successful":charge})
+#           except Exception as e:
+#             return JsonResponse({"error on saving hiring partner":e})
+#         except Exception as e:
+#           return JsonResponse({'Stripe charge creation error':e})
+#       else:
+#         return JsonResponse({"invalid email":"email must be of a hiring partner to subscribe"})
+#     else:
+#         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
