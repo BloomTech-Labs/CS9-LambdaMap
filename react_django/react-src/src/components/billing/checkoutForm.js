@@ -37,6 +37,7 @@ class CheckoutForm extends Component{
       return(
           <div className='checkout'>
             <h1>Your subscription ends on {this.state.end_date.toString().slice(0,15)}</h1>
+
             <p>Add another month?</p>
             <CardElement/>
             <button onClick={this.submit}>Subscribe!</button>
