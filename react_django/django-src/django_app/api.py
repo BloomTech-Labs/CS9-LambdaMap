@@ -77,6 +77,10 @@ def login(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         try:
             hire_partner = Hire_Partners.objects.get(email=request_body['email'])
+
+            #check if subscription expired during login
+            if(hire_partner.subscription_end_date < timezone.now()):
+              hire_partner.subscribed = False
             return send_user(hire_partner)
         except Hire_Partners.DoesNotExist:
             try:
