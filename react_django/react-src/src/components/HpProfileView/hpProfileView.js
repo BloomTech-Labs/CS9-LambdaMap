@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
 import "./hpProfileView.css";
 import JSNav from "../nav/job-seeker/JSnav";
+import JsMiniMap from "../miniMap/JsMiniMap/JsMiniMap";
 import amazon from "./amazon.png";
-import { Link } from "react-router-dom";
-import { get_hp } from "../../actions";
+import { get_hp, signout } from "../../actions";
 import { connect } from "react-redux";
 import { GoClock } from "react-icons/go";
 
@@ -21,11 +21,54 @@ class HpProfileView extends Component {
     const id = this.props.match.params.id;
     this.props.get_hp(id);
   };
-
   render() {
+    var mapListings = null;
+    if (this.props.hirePartner.HP.job_listings !== undefined){
+      mapListings = (
+        <div>
+          <div className="hp-listing-div">
+            <h1 className="hp-listing-title">Recently Posted Jobs</h1>
+          </div>
+        {this.props.hirePartner.HP.job_listings.map(jls => ( 
+          <div key={jls.ID} className="hp-job-card-div">
+            <div className="hp-job-cards">
+                <div className="hp-location-div">
+                  <h1 className="hp-title">
+                    {jls.fields.job_title}  <FaStar className="star-icon" />
+                    </h1>
+                  <h3 className="hp-location">
+                    {this.props.hirePartner.HP.city},
+                    {this.props.hirePartner.HP.state}
+                  </h3>
+                </div>
+              <p className="posted-title">
+                <GoClock className="clock" />
+                <Timestamp time={jls.fields.posted_time} actualSeconds />
+              </p>
+              <div className="hp-card-title-div">
+              <div>
+              <p className="hp-card-text">{jls.fields.job_desc}</p>
+              </div>
+              <div>
+              <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={jls.fields.job_link}
+          >
+            <FaLink className="star-icon" />
+          </a>
+              </div>
+              </div>
+            </div> 
+          </div>
+           ))}
+           </div>
+      )
+    }
     return (
       <div>
         <JSNav />
+        <JsMiniMap />
         <div className="hp">
           <div className="backgroundskew" />
           <div className="hp-div">
@@ -57,50 +100,21 @@ class HpProfileView extends Component {
               <p className="hp-email">{this.props.hirePartner.HP.email}</p>
             </div>
           </div>
-          {/* JOB LISTING*/}
-          <div className="hp-listing-div">
-            <p className="hp-listing-title">Recently Posted Jobs</p>
-          </div>
-          {/* {this.props.hirePartner.HP.job_listings.map(jls => ( */}
-          <div className="hp-job-card-div">
-            <div className="hp-job-cards">
-              <div className="hp-title-div-2">
-                <img className="hp-photo-2" src={amazon} alt="amazon logo" />
-                <div className="hp-location-div">
-                  <h1 className="hp-title">
-                    {this.props.hirePartner.HP.company_name}
-                  </h1>
-                  <h3 className="hp-location">
-                    {this.props.hirePartner.HP.city},
-                    {this.props.hirePartner.HP.state}
-                  </h3>
-                </div>
-              </div>
-              <p className="posted-title">
-                <GoClock className="clock" />
-                <Timestamp time={this} actualSeconds />
-              </p>
-              <div className="hp-card-title-div">
-                <h5 className="hp-card-title">{}</h5>
-                <FaStar className="star-icon" />
-              </div>
-              <div className="hp-card-title-div">
-                <h5 className="hp-card-title">
-                  {this.props.hirePartner.HP.city},
-                  {this.props.hirePartner.HP.state}
-                </h5>
-                <FaLink className="link-icon" />
-              </div>
-            </div>
-          </div>
-          {/* ))} */}
+          {mapListings}
           <div className="hp-header">
-            <div className="signout">
-              <button className="signoutbutton">Sign Out</button>
-            </div>
+          <div className="signout">
+          <button
+            className="signoutbutton"
+            onClick={() => {
+              this.props.signout(this.props.history);
+            }}
+          >
+            Sign Out
+          </button>
+        </div>
           </div>
         </div>
-      </div>
+        </div>
     );
   }
 }
@@ -108,12 +122,12 @@ class HpProfileView extends Component {
 const mapStateToProps = state => {
   return {
     hirePartner: state.hirePartner,
-    fetchingListings: state.fetchingHp,
+    fetchingListings: state.fetchingHp, 
     error: state.error
   };
 };
 
 export default connect(
   mapStateToProps,
-  { get_hp }
+  { get_hp, signout }
 )(HpProfileView);

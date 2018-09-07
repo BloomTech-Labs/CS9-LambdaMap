@@ -8,6 +8,7 @@ import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_listings } from "../../../actions";
 import { connect } from "react-redux";
+import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
 const Timestamp = require("react-timestamp");
 
@@ -27,6 +28,7 @@ class JobslistView extends Component {
     return (
       <div className="main-jobslist">
         <JSnav />
+        <JsMiniMap />
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />
