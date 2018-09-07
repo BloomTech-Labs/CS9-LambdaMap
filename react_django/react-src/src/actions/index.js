@@ -278,12 +278,11 @@ export const delete_listing = id => {
   };
 };
 
-export const get_hp = id => {
-  const hp = axios.get(`${SERVER_URL}/api/hp/${id}/`);
+export const get_hp = ID => {
+  const hp = axios.get(`${SERVER_URL}/api/hp/${ID}/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_HP });
-    hp
-    .then(response => {
+    hp.then(response => {
       dispatch({
         type: actions.FETCHED_HP,
         payload: response.data.Hire_Partner

@@ -3,8 +3,8 @@
 import React, { Component } from "react";
 import "./studentSettings.css";
 import JSnav from "../../nav/job-seeker/JSnav";
+import { Link } from "react-router-dom";
 import DragDrop from "../../Modals/dragDrop";
-import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
 export default class StudentSettings extends Component {
   constructor() {
@@ -30,7 +30,6 @@ export default class StudentSettings extends Component {
     return (
       <div className="settings-nav">
         <JSnav />
-        <JsMiniMap />
         {modal}
         <div className="main-settings">
           <div className="signout">

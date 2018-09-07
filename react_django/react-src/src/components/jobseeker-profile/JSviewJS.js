@@ -1,4 +1,5 @@
 // Hiring Partner View of individual job seeker profile
+import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import "./JSprofile.css";
 import defaultuser from "./defaultuser.svg";
@@ -16,7 +17,6 @@ import {
 import JSnav from "../nav/job-seeker/JSnav";
 import { get_client } from "../../actions";
 import { connect } from "react-redux";
-import JsMiniMap from "../miniMap/JsMiniMap/JsMiniMap"
 
 class JSviewJS extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class JSviewJS extends Component {
     return (
       <div className="main">
         <JSnav />
-        <JsMiniMap />
         <div className="signout">
           <div className="backgroundskew" />
           <button className="signoutbutton">Sign Out</button>

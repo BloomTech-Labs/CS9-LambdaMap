@@ -7,8 +7,6 @@ import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
-import orange from "../orangemarker.png";
-import blue from "../bluemarker.png";
 
 class HPMapView extends Component {
   constructor(props) {
@@ -68,8 +66,14 @@ class HPMapView extends Component {
               }}
               zoom={4}
               style={{
-                width: "100%",
-                height: "100vh",
+                borderRadius: "5px",
+                boxShadow: "0px 0px 5px 0px white",
+                margin: "100px",
+                width: "80%",
+                height: "80%",
+                zIndex: "0",
+                maxWidth: "1200px",
+                maxHeight: "750px"
               }}
               onClick={this.onMapClicked}
             >
@@ -85,7 +89,8 @@ class HPMapView extends Component {
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
                     scaledSize: new google.maps.Size(20, 20),
-                    url: blue
+                    url:
+                      "https://cdn-images-1.medium.com/fit/c/120/120/1*iTABE417EkZDwRv9Uj91Qg.png"
                   }}
                 />
               ))}
@@ -101,7 +106,7 @@ class HPMapView extends Component {
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
                     scaledSize: new google.maps.Size(20, 20),
-                    url: orange
+                    url: "https://png.icons8.com/small/1600/filled-building.png"
                   }}
                 />
               ))}

@@ -7,7 +7,6 @@ import amazon from "./amazon-logo.gif";
 import mark from "./0.jpg";
 import { get_listings, signout } from "../../../actions/index";
 import { connect } from "react-redux";
-import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
 class ClientLanding extends Component {
   constructor(props) {
@@ -44,7 +43,6 @@ class ClientLanding extends Component {
     return (
       <div className="client">
         <JSnav />
-        <JsMiniMap />
         <div className="signout">
           <button
             className="signoutbutton"
