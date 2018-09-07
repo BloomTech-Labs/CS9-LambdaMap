@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
 import { create_listing, signout } from "../../../actions/index";
 import { connect } from "react-redux";
-import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
 
 class HPLanding extends Component {
   constructor(props) {
@@ -23,7 +22,6 @@ class HPLanding extends Component {
     return (
       <div>
         <HPnav />
-        <HpMiniMap />
         <div className="signout">
           <button
             className="signoutbutton"

@@ -3,9 +3,9 @@
 import React, { Component } from "react";
 import "./HPsettings.css";
 import HPnav from "../../nav/company/HPnav";
+import { Link } from "react-router-dom";
 import { create_listing } from "../../../actions/index";
 import { connect } from "react-redux";
-import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
 
 class HPsettings extends Component {
   // constructor(props) {
@@ -23,7 +23,6 @@ class HPsettings extends Component {
     return (
       <div className="settings-nav">
         <HPnav />
-        <HpMiniMap />
         <div className="main-settings">
           <div className="signout">
             <button className="signoutbutton">Sign Out</button>

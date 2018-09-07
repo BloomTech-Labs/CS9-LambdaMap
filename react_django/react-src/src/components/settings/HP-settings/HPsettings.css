@@ -1,7 +1,8 @@
 .main-settings {
   width: 100%;
   height: 100vh;
- }
+  background: url("./redmap.svg") no-repeat;
+  background-size: cover; }
   .main-settings header {
     display: flex;
     justify-content: center;

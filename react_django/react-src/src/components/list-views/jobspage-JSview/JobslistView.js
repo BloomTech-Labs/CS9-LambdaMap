@@ -8,7 +8,6 @@ import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_listings } from "../../../actions";
 import { connect } from "react-redux";
-import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
 const Timestamp = require("react-timestamp");
 
@@ -28,7 +27,6 @@ class JobslistView extends Component {
     return (
       <div className="main-jobslist">
         <JSnav />
-        <JsMiniMap />
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />
@@ -91,7 +89,7 @@ class JobslistView extends Component {
             <div className="cards-main">
               {this.props.jobListing.job_listings.map(job_listing => (
                 <div key={job_listing.ID} className="joblisting-cards">
-                  <Link to={`/hpprofile/${job_listing.ID}`} className="profile-link">
+                  <Link to={`/hpprofile/`} className="profile-link">
                     <div className="card-header">
                       <img
                         src={defaultuser}

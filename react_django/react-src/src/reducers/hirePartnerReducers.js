@@ -5,10 +5,8 @@ import * as actions from "../actions/actionTypes";
 const initialState = {
   hiring_partners: [],
   hp_favorites: [],
-  HP: {},
   fetchingHPfavs: false,
   fetchingHPs: false,
-  fetchingHP: false,
   // updating: false,
   registering: false,
   loggingIn: false,

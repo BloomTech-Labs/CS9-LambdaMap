@@ -17,7 +17,6 @@ class MainLanding extends Component {
       modal: false
     };
   }
-  
   render() {
     let modal = null;
     if (this.state.modal === true) {
@@ -29,15 +28,6 @@ class MainLanding extends Component {
         </div>
       );
     }
-    var inputForm = document.getElementById("pwdInput");
-    if(inputForm){
-    inputForm.addEventListener("keyup", function(e) {
-    e.preventDefault();
-    if (e.keyCode === 13) {
-        document.getElementById("myBtn").click();
-        }
-    });
-    }
     return (
       <div className="main-landing">
         <div className="signin">
@@ -45,7 +35,6 @@ class MainLanding extends Component {
             <div className="signin-form">
               <input
                 className="emailInput"
-                id="emailInput"
                 type="text"
                 placeholder="E-mail"
                 name="email"
@@ -60,7 +49,6 @@ class MainLanding extends Component {
             <div className="signpwd-form">
               <input
                 className="pwdInput"
-                id="pwdInput"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -71,7 +59,7 @@ class MainLanding extends Component {
               />
             </div>
           </div>
-          <button id="myBtn"
+          <button
             onClick={() => {
               this.props.login(
                 {
