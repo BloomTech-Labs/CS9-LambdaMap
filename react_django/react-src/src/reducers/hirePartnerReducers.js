@@ -63,6 +63,7 @@ const hirePartner = (state = initialState, action) => {
 
     case actions.FETCHED_SUBSCRIBE:
       return Object.assign({}, state, {
+        updatedEndDate:action.response.data,
         fetchingSubscribe: false,
         error: null
       });

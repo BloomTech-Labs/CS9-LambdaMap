@@ -10,6 +10,7 @@ import random
 import json, re
 import stripe 
 from datetime import timedelta,date
+from django.utils import timezone
 
 stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
 
@@ -71,6 +72,10 @@ def login(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         try:
             hire_partner = Hire_Partners.objects.get(email=request_body['email'])
+
+            #check if subscription expired during login
+            if(hire_partner.subscription_end_date < timezone.now()):
+              hire_partner.subscribed = False
             return send_user(hire_partner)
         except Hire_Partners.DoesNotExist:
             try:
@@ -315,14 +320,15 @@ def subscribe(request):
             description='one month subscription',
             source=request_body['stripeToken']
           )
-          if(hire_partner.subscription_end_date < date.today()):
+          if(hire_partner.subscription_end_date < timezone.now()):
             #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
-            hire_partner.subscription_end_date = date.today() + timedelta(days=31)
+            hire_partner.subscription_end_date = timezone.now() + timedelta(days=31)
+            hire_partner.subscribed = True
           else:
             hire_partner.subscription_end_date += timedelta(days=31)
           try:
             hire_partner.save()
-            return JsonResponse({"successful":charge})
+            return JsonResponse({"successful":hire_partner.subscription_end_date})
           except Exception as e:
             return JsonResponse({"error on saving hiring partner":e})
         except Exception as e:

@@ -3,19 +3,22 @@ import {Elements,StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './checkoutForm';
 import {connect} from 'react-redux';
 import {subscribe} from '../../actions';
+import HPnav from '../nav/company/HPnav';
 
 class Billing extends Component{
 
   render(){
     return(
-    <StripeProvider apiKey="">
-      <div className="billing">
-        <h1>billing</h1>
-        <Elements>
-          <CheckoutForm />
-        </Elements>
-      </div>
-    </StripeProvider>
+    <div>
+      <HPnav/>
+      <StripeProvider apiKey="pk_test_1p5B423kMIc50yASX6BjZtio">
+        <div className="billing">
+          <Elements>
+            <CheckoutForm />
+          </Elements>
+        </div>
+      </StripeProvider>
+    </div>
     );
   }
 }
