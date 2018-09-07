@@ -26,6 +26,9 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
+#setting time zone to true
+USE_TZ = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -116,7 +119,7 @@ CORS_ALLOW_HEADERS = (
     )
 #commented for testing
 #CORS_ORIGIN_ALLOW_ALL = config('DEBUG', cast=bool)
-# CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Internationalization
