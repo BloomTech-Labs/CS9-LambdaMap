@@ -235,7 +235,7 @@ def get_hp(request):
             regex = re.compile('/api/hp/(\d+)/', re.MULTILINE)
             hp = Hire_Partners.objects.get(id=regex.search(request.META['PATH_INFO']).group(1)).to_dict()
             hp['job_listings'] = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=hp['ID'])))
-            return JsonResponse({"Hire Partner": hp})
+            return JsonResponse({"Hire_Partner": hp})
         except Clients.DoesNotExist as e:
             return JsonResponse({"Error":e})
     else:
