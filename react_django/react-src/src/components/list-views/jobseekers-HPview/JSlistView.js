@@ -19,6 +19,7 @@ import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
+import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
 
 class JSlistView extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class JSlistView extends Component {
     return (
       <div className="main-JSlist">
         <HPnav />
+        <HpMiniMap />
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />

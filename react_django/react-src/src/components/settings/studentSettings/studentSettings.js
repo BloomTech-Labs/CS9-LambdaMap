@@ -1,10 +1,10 @@
 // Student view of settings page
 
-import React, { Component } from 'react';
-import './studentSettings.css';
-import JSnav from '../../nav/job-seeker/JSnav';
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import "./studentSettings.css";
+import JSnav from "../../nav/job-seeker/JSnav";
 import DragDrop from "../../Modals/dragDrop";
+import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
 
 export default class StudentSettings extends Component {
@@ -110,8 +110,9 @@ export default class StudentSettings extends Component {
     //   </Link>
     // </div>
     return (
-      <div className='StudentSettingsContainer'>
-        <JSnav/>
+      <div className="settings-nav">
+        <JSnav />
+        <JsMiniMap />
         {modal}
         <div className='StudentSettingsContainer__SignoutContainer'>
           <button className="signoutbutton">Sign Out</button>

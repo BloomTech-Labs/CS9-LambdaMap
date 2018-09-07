@@ -40,6 +40,7 @@ class CheckoutForm extends Component{
     if(this.state.subscribed){
       return(
           <div className='checkout'>
+          <HPNav />
             <h1>Your subscription ends on {this.state.end_date}</h1>
             <p>Add another month?</p>
             <CardElement/>
