@@ -17,6 +17,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
+    portfolio_picture = models.FileField(upload_to='images/', default='images/defaultuser.svg')
 
 
 class Clients(Users):
@@ -29,7 +30,6 @@ class Clients(Users):
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-    portfolio_picture = models.FileField(upload_to='images/', default='images/defaultuser.svg')
 
     def to_dict(self):
         return {

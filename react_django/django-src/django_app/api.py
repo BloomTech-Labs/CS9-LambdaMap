@@ -21,11 +21,10 @@ def str_to_bool(str):
 
 
 def register(request):
-    pretty = pprint.PrettyPrinter(indent=4)
     if request.META['REQUEST_METHOD'] == 'POST':
-        pretty.pprint(request.POST)
-        pretty.pprint(request.FILES)
-        request_body = json.loads(request.body.decode('ascii'))
+        request_body = request.POST
+        request_pictures = request.FILES
+        request_resume = None
         if str_to_bool(request_body["account_type"]):
             user = Hire_Partners()
         else:
@@ -37,6 +36,8 @@ def register(request):
                 user.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 user.__setattr__(x, request_body[x])
+        if request_pictures:
+            user.__setattr__('portfolio_picture', request_pictures['picture'])
         if user.city and user.state:
             response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
             string = response.read().decode('utf-8')
@@ -228,10 +229,12 @@ def get_listings(request):
 
 # Get an individual Client
 def get_client(request):
+    pretty = pprint.PrettyPrinter(indent=4)
     if request.META['REQUEST_METHOD'] == 'GET':
         try:
             regex = re.compile('/api/client/(\d+)/', re.MULTILINE)
             client = Clients.objects.get(id=regex.search(request.META['PATH_INFO']).group(1))
+            pretty.pprint(client.__dict__)
             return JsonResponse({"Client": client.to_dict()})
         except Clients.DoesNotExist as e:
             return JsonResponse({"Error":e})
