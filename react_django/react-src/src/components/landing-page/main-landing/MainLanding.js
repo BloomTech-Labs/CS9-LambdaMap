@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { login } from "../../../actions";
 import logo from "./mainatlas.PNG";
 import "./MainLanding.css";
-import SignUp from "../Sign-up/SignUp"
+import SignUp from "../Sign-up/SignUp";
+import LandingMap from "../../miniMap/landingMap/LandingMap";
 
 class MainLanding extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class MainLanding extends Component {
         </div>
       );
     }
-    var inputForm = document.getElementById("pwdInput");
+    let inputForm = document.getElementById("pwdInput");
     if(inputForm){
     inputForm.addEventListener("keyup", function(e) {
     e.preventDefault();
@@ -40,6 +41,7 @@ class MainLanding extends Component {
     }
     return (
       <div className="main-landing">
+      <LandingMap />
         <div className="signin">
           <div>
             <div className="signin-form">
@@ -100,7 +102,11 @@ class MainLanding extends Component {
         </div>
         <div className="logo">
           <img src={logo} className="HP" alt="Hire Partner" />
+          <div className="landing-blurb">
+          <h1>Coordinating Developers With The Best Companies And Putting You On The Map</h1>
+          </div>
         </div>
+
         <div>{modal}</div>
       </div>
     );

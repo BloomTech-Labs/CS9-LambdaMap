@@ -4,11 +4,11 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import { get_clients, get_listings } from "../../../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import "./minimap.css";
+import "./landingmap.css";
 import blue from "../../map/bluemarker.png";
 import orange from "../../map/orangemarker.png";
 
-class JsMiniMap extends Component {
+class LandingMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,34 +27,9 @@ class JsMiniMap extends Component {
     this.props.get_listings();
   };
   
-  onMarkerClick = id => {
-    this.props.clients.clients.filter(c => {
-      if (c.ID === id) {
-        this.setState({ client: c });
-      }
-    });
-  };
-  
-  onMarkerClickHp = id => {
-    this.props.jobListing.job_listings.filter(j => {
-      if (j.ID === id) {
-        this.setState({ job_listing: j });
-      }
-    });
-  };
-  
-  onMapClicked = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      });
-    }
-  };
   render() {
     return (
-          <Link to="/jsmap">
-        <div className="mini-map">
+        <div className="landing-map">
             <Map
               className="mapstuff"
               google={this.props.google}
@@ -66,8 +41,7 @@ class JsMiniMap extends Component {
               disableDefaultUI={true}
               style={{
                 borderRadius: "500px",
-                boxShadow: "0px 0px 10px 0px black",
-                border: "4px solid #DC681D",
+                border: "5px solid #DC681D",
               }}
               styles= {[
                 {
@@ -141,7 +115,7 @@ class JsMiniMap extends Component {
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#125172"
+                            "color": "#4D9FCA"
                         },
                         {
                             "visibility": "on"
@@ -149,20 +123,16 @@ class JsMiniMap extends Component {
                     ]
                 }
             ]}
-              onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (
                 <Marker
                   key={i}
-                  onClick={() => {
-                    this.onMarkerClick(client.ID);
-                  }}
                   style={{ height: "30px", width: "30px" }}
                   name={client.city}
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(10, 15),
+                    scaledSize: new google.maps.Size(15, 20),
                     url: blue
                   }}
                 />
@@ -170,22 +140,18 @@ class JsMiniMap extends Component {
               {this.props.jobListing.job_listings.map((job_listing, i) => (
                 <Marker
                   key={i}
-                  onClick={() => {
-                    this.onMarkerClickHp(job_listing.ID);
-                  }}
                   style={{ height: "30px", width: "30px" }}
                   name={job_listing.company_name.city}
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(12, 17),
+                    scaledSize: new google.maps.Size(15, 22),
                     url: orange
                   }}
                 />
               ))}
             </Map>
           </div>
-      </Link>
     );
   }
 }
@@ -205,6 +171,6 @@ export default connect(
   { get_clients, get_listings }
 )(
   GoogleApiWrapper({ apiKey: "AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4" })(
-    JsMiniMap
+    LandingMap
   )
 );

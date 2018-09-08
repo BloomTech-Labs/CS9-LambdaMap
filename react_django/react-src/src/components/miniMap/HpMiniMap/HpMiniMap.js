@@ -62,7 +62,7 @@ class HpMiniMap extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
-              zoom={1}
+              zoom={2}
               disableDefaultUI={true}
               style={{
                 borderRadius: "500px",
