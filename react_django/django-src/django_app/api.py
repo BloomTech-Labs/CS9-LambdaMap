@@ -107,9 +107,9 @@ def update(request):
                 user = Hire_Partners.objects.get(id=session_obj.object_id)
             for x in request_body:
                 if x == 'password':
-                    user.__setattr__(x, encrypt_password(request_body[X]))
+                    user.__setattr__(x, encrypt_password(request_body[x]))
                 else:
-                    user.__setattr__(x, request_body[X])
+                    user.__setattr__(x, request_body[x])
             user.save()
             del user._state
             return JsonResponse(user.__dict__, status=200)
