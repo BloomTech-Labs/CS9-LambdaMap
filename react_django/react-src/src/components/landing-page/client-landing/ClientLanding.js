@@ -45,6 +45,12 @@ class ClientLanding extends Component {
     var randomCompany2 = this.props.jobListing.job_listings[
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
+    var randomCompany3 = this.props.jobListing.job_listings[
+      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
+    ];
+    var randomCompany4 = this.props.jobListing.job_listings[
+      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
+    ];
     if (randomCompany) {
       companyListing = (
         <div className="feat-job">
@@ -71,7 +77,51 @@ class ClientLanding extends Component {
       );
     }
     if (randomCompany2) {
-      favoritesListing = (
+      favoritesListing2 = (
+        <div className="pinned-listing">
+          <img src={amazon} alt="company" />
+          <div className="list-info">
+            <div className="pinit">
+              <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
+              <TiPin className="pin-icon" />
+            </div>
+              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <p>{randomCompany.jobListings[0].job_desc}</p>
+            <p className="post-time">
+              <GoClock className="post-clock" />
+              <Timestamp
+                time={randomCompany.jobListings[0].posted_time}
+                actualSeconds
+              />
+            </p>
+          </div>
+        </div>
+      );
+    }
+    if (randomCompany3) {
+      favoritesListing3 = (
+        <div className="pinned-listing">
+          <img src={amazon} alt="company" />
+          <div className="list-info">
+            <div className="pinit">
+              <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
+              <TiPin className="pin-icon" />
+            </div>
+              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <p>{randomCompany.jobListings[0].job_desc}</p>
+            <p className="post-time">
+              <GoClock className="post-clock" />
+              <Timestamp
+                time={randomCompany.jobListings[0].posted_time}
+                actualSeconds
+              />
+            </p>
+          </div>
+        </div>
+      );
+    }
+    if (randomCompany4) {
+      favoritesListing4 = (
         <div className="pinned-listing">
           <img src={amazon} alt="company" />
           <div className="list-info">
@@ -119,6 +169,9 @@ class ClientLanding extends Component {
           <div className="pinned-jobs">
             <div className="pinned-container">
               {favoritesListing}
+              {favoritesListing2}
+              {favoritesListing3}
+              {favoritesListing4}
             </div>
           </div>
         </div>
