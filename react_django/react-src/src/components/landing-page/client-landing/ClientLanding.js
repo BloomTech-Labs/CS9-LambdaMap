@@ -39,6 +39,9 @@ class ClientLanding extends Component {
     let user = JSON.parse(localStorage.getItem("user"));
     let companyListing = null;
     let favoritesListing = null;
+    let favoritesListing2 = null;
+    let favoritesListing3 = null;
+    let favoritesListing4 = null;
     var randomCompany = this.props.jobListing.job_listings[
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
