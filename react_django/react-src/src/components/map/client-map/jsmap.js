@@ -5,8 +5,11 @@ import JSNav from "../../nav/job-seeker/JSnav";
 import "./map.css";
 import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
-import defaultuser from "./defaultuser.svg";
+import defaultuser from "./default-user.png";
+import worldlogo from "./atlascardlogo.png";
 import { Link } from "react-router-dom";
+import { FaPhone, FaEnvelope, FaBriefcase } from "react-icons/fa";
+import { TiPin } from "react-icons/ti";
 import orange from "../orangemarker.png";
 import blue from "../bluemarker.png";
 
@@ -20,9 +23,22 @@ class JSMapView extends Component {
       job_listing: {},
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      jsModal: false,
+      hpModal: false,
+      color: "black",
+      showPhone: "contact-icons",
+      showEmail: "contact-icons1"
     };
   }
+
+  favorited = () => {
+    if (this.state.color === "black") {
+      this.setState({ color: "orange" });
+    } else {
+      this.setState({ color: "black" });
+    }
+  };
 
   componentDidMount = () => {
     this.props.get_clients();
@@ -53,7 +69,183 @@ class JSMapView extends Component {
       });
     }
   };
+
+  onPhoneClick = () => {
+    if (this.state.showPhone === "contact-icons") {
+      this.setState({
+        showPhone: "show"
+      });
+    } else {
+      this.setState({
+        showPhone: "contact-icons"
+      });
+    }
+  };
+
+  onEmailClick = () => {
+    if (this.state.showEmail === "contact-icons1") {
+      this.setState({
+        showEmail: "show1"
+      });
+    } else {
+      this.setState({
+        showEmail: "contact-icons1"
+      });
+    }
+  };
+
   render() {
+    let jsModal = null;
+    let hpModal = null;
+    if (this.state.jsModal === true) {
+      jsModal = (
+        <div
+          className="js-modal"
+          onClick={() => {
+            this.setState({
+              jsModal: false,
+              hpModal: false
+            });
+          }}
+        >
+          <div
+            className="jsmodal-cont"
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
+            <div className="jsmodal-header">
+              <img src={defaultuser} />
+              <div className="info-container">
+                <div className="modal-name">
+                  <h2>
+                    {this.state.client.first_name} {this.state.client.last_name}
+                  </h2>
+                  <TiPin
+                    className={this.state.color}
+                    onClick={this.favorited}
+                  />
+                </div>
+                <div className="job-loc">
+                  <h4 className="prof">{this.state.client.profession}</h4>
+                  <h4>
+                    {this.state.client.city}, {this.state.client.state}
+                  </h4>
+                  <hr align="left" className="modal-hr" />
+                </div>
+              </div>
+            </div>
+            <div className="jsmodal-body">
+              <p>{this.state.client.about}</p>
+            </div>
+            <div className="jsmodal-footer">
+              <FaEnvelope
+                className={this.state.showEmail}
+                onClick={() => {
+                  this.setState({
+                    showEmail: "show1"
+                  });
+                }}
+              />
+              <FaPhone
+                className={this.state.showPhone}
+                onClick={() => {
+                  this.setState({
+                    showPhone: "show"
+                  });
+                }}
+              />
+              {showPhone}
+              {showEmail}
+              <img src={worldlogo} alt="worldlogo" />
+              <Link
+                to={`/jsview/${this.state.client.ID}`}
+                key={this.state.client.ID}
+                className="profile-link"
+              >
+                Profile
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (this.state.hpModal === true) {
+      hpModal = (
+        <div
+          className="js-modal"
+          onClick={() => {
+            this.setState({
+              jsModal: false,
+              hpModal: false
+            });
+          }}
+        >
+          <div
+            className="jsmodal-cont"
+            onClick={event => {
+              event.preventDefault();
+              event.stopPropagation();
+            }}
+          >
+            <div className="jsmodal-header">
+              <img src={defaultuser} />
+              <div className="info-container">
+                <div className="modal-name">
+                  <h2>{this.state.job_listing.company_name}</h2>
+                  <TiPin
+                    className={this.state.color}
+                    onClick={this.favorited}
+                  />
+                </div>
+                <div className="job-loc">
+                  <h4 className="prof">
+                    {this.state.job_listing.city}, {this.state.job_listing.state}
+                  </h4>
+                  <h5>
+                    <FaBriefcase className="listing-icon" />
+                    {this.state.job_listing.jobListings.length} Job Listings
+                  </h5>
+                  <hr align="left" className="modal-hr" />
+                </div>
+              </div>
+            </div>
+            <div className="jsmodal-body">
+              <p>{this.state.job_listing.about}</p>
+            </div>
+            <div className="jsmodal-footer">
+              <FaEnvelope className={this.state.showEmail} />
+              <FaPhone className={this.state.showPhone} />
+              {showPhone} {showEmail}
+              <img src={worldlogo} alt="worldlogo" />
+              <Link
+                to={`/hpprofile/${this.state.job_listing.ID}`}
+                key={this.state.job_listing.ID}
+                className="profile-link"
+              >
+                Profile
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    let showPhone = null;
+    let showEmail = null;
+    if (this.state.showPhone === "show") {
+      showPhone = (
+        <div>
+          {this.state.client.phone}
+        </div>
+      );
+    } else if (this.state.showEmail === "show1") {
+      showEmail = (
+        <div>
+          {this.state.client.email}
+        </div>
+      );
+    }
     return (
       <div>
         <JSNav />
@@ -70,7 +262,7 @@ class JSMapView extends Component {
               zoom={5}
               style={{
                 width: "100%",
-                height: "100vh",
+                height: "100vh"
               }}
               styles= {[
                 {
@@ -161,14 +353,17 @@ class JSMapView extends Component {
                   key={i}
                   onClick={() => {
                     this.onMarkerClick(client.ID);
+                    this.setState({
+                      jsModal: !this.state.jsModal
+                    });
                   }}
                   style={{ height: "30px", width: "30px" }}
                   name={client.city}
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 30),
-                    url:blue
+                    scaledSize: new google.maps.Size(15, 25),
+                    url: blue
                   }}
                 />
               ))}
@@ -177,64 +372,24 @@ class JSMapView extends Component {
                   key={i}
                   onClick={() => {
                     this.onMarkerClickHp(job_listing.ID);
+                    this.setState({
+                      hpModal: !this.state.hpModal
+                    });
                   }}
                   style={{ height: "30px", width: "30px" }}
                   name={job_listing.company_name.city}
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(27, 37),
-                    url:orange
+                    scaledSize: new google.maps.Size(18, 28),
+                    url: orange
                   }}
                 />
               ))}
             </Map>
+            {jsModal}
+            {hpModal}
           </div>
-          <Link
-            to={`/jsview/${this.state.client.ID}`}
-            key={this.state.client.ID}
-            className="profile-link"
-            style={{ textDecoration: "none" }}
-          >
-            <div className="mini-profile">
-              <img
-                src={defaultuser}
-                className="JSprofilepic"
-                alt="Job Seeker"
-              />
-              <p>
-                {this.state.client.first_name}
-                {this.state.client.last_name}
-              </p>
-              <p>
-                {this.state.client.city}
-                {this.state.client.state}
-              </p>
-              <p>{this.state.client.phone}</p>
-              <p>{this.state.client.email}</p>
-            </div>
-          </Link>
-          <Link
-            to={`/hpprofile/${this.state.job_listing.ID}`}
-            key={this.state.job_listing.ID}
-            className="profile-link"
-            style={{ textDecoration: "none" }}
-          >
-            <div className="mini-profile2">
-              <img
-                src={defaultuser}
-                className="JSprofilepic"
-                alt="Job Seeker"
-              />
-              <p>{this.state.job_listing.company_name}</p>
-              <p>
-                {this.state.job_listing.city}
-                {this.state.job_listing.state}
-              </p>
-              <p>{this.state.job_listing.phone}</p>
-              <p>{this.state.job_listing.email}</p>
-            </div>
-          </Link>
         </div>
       </div>
     );
