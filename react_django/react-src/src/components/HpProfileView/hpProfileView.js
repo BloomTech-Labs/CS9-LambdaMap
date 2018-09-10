@@ -14,7 +14,7 @@ class HpProfileView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hirePartner: []
+      hirePartner: [],
     };
   }
   componentDidMount = () => {
