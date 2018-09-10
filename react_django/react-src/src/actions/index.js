@@ -2,8 +2,8 @@
 import axios from "axios";
 import * as actions from "./actionTypes";
 // import { withRouter } from 'react-router';
- const SERVER_URL = "https://lambda-map.herokuapp.com";
-//const SERVER_URL = "http://127.0.0.1:8000";
+//  const SERVER_URL = "https://lambda-map.herokuapp.com";
+const SERVER_URL = "http://127.0.0.1:8000";
 
 export const subscribe = (data) =>{
   const response = axios.post(`${SERVER_URL}/api/subscribe`,data);
@@ -300,33 +300,33 @@ export const get_hp = id => {
   };
 };
 
-// export const update = data => {
-//   const token = window.sessionStorage.getItem("token") || null;
-//   const config = { headers: { jwt: `${token}` } };
-//   const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
-//   return dispatch => {
-//     dispatch({
-//       type: actions.UPDATE
-//     });
-//     user
-//       .then(response => {
-//         if (response.data.account_type === false) {
-//           dispatch({
-//             type: actions.UPDATED_CLIENT,
-//             payload: response.data
-//           });
-//         } else if (response.data.account_type === true) {
-//           dispatch({
-//             type: actions.UPDATED_HPS,
-//             payload: response.data
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         dispatch({
-//           type: actions.ERROR_UPDATING,
-//           payload: ("ERROR logging in", err)
-//         });
-//       });
-//   };
-// };
+export const update = data => {
+  const token = window.sessionStorage.getItem("token") || null;
+  const config = { headers: { jwt: `${token}` } };
+  const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
+  return dispatch => {
+    dispatch({
+      type: actions.UPDATE
+    });
+    user
+      .then(response => {
+        if (response.data.account_type === false) {
+          dispatch({
+            type: actions.UPDATED_CLIENT,
+            payload: response.data
+          });
+        } else if (response.data.account_type === true) {
+          dispatch({
+            type: actions.UPDATED_HPS,
+            payload: response.data
+          });
+        }
+      })
+      .catch(err => {
+        dispatch({
+          type: actions.ERROR_UPDATING,
+          payload: ("ERROR logging in", err)
+        });
+      });
+  };
+};
