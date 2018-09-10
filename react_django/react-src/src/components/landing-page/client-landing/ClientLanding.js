@@ -88,12 +88,12 @@ class ClientLanding extends Component {
               <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
               <TiPin className="pin-icon" />
             </div>
-              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
-            <p>{randomCompany.jobListings[0].job_desc}</p>
+              <h5 className="job">{randomCompany.jobListings[1].job_title}</h5>
+            <p>{randomCompany.jobListings[1].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />
               <Timestamp
-                time={randomCompany.jobListings[0].posted_time}
+                time={randomCompany.jobListings[1].posted_time}
                 actualSeconds
               />
             </p>
@@ -110,12 +110,12 @@ class ClientLanding extends Component {
               <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
               <TiPin className="pin-icon" />
             </div>
-              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
-            <p>{randomCompany.jobListings[0].job_desc}</p>
+              <h5 className="job">{randomCompany.jobListings[2].job_title}</h5>
+            <p>{randomCompany.jobListings[2].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />
               <Timestamp
-                time={randomCompany.jobListings[0].posted_time}
+                time={randomCompany.jobListings[2].posted_time}
                 actualSeconds
               />
             </p>
@@ -132,12 +132,12 @@ class ClientLanding extends Component {
               <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
               <TiPin className="pin-icon" />
             </div>
-              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
-            <p>{randomCompany.jobListings[0].job_desc}</p>
+              <h5 className="job">{randomCompany.jobListings[3].job_title}</h5>
+            <p>{randomCompany.jobListings[3].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />
               <Timestamp
-                time={randomCompany.jobListings[0].posted_time}
+                time={randomCompany.jobListings[3].posted_time}
                 actualSeconds
               />
             </p>
