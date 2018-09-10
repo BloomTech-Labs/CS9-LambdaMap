@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
-import { create_listing, signout } from "../../../actions/index";
+import { create_listing, signout, get_hp } from "../../../actions/index";
 import { connect } from "react-redux";
-import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
+import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
+import { GoClock } from "react-icons/go";
+import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
+import Messenger from "../../messenger/Messenger";
+import "./HPlanding.css";
+import amazon from "./amazon-logo.png";
+import marker from "./marker_icon.png";
+
+const Timestamp = require("react-timestamp");
 
 class HPLanding extends Component {
   constructor(props) {
@@ -10,20 +18,53 @@ class HPLanding extends Component {
     this.state = {
       job_title: "",
       job_desc: "",
-      job_link: ""
+      job_link: "",
+      remote_job: false
     };
   }
 
-  componentDidMount = () => {
-    // this.props.get_listings();
+  componentDidMount = id => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    this.props.get_hp(user.id);
   };
 
   render() {
-    console.log(this.props);
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    var mappedListings = null;
+    if (this.props.hirePartner.HP.job_listings !== undefined) {
+      mappedListings = (
+        <div className="posted-container">
+        <h3 className="pinned-title">Your Posted Jobs:</h3>
+          {this.props.hirePartner.HP.job_listings.map(jls => (
+            <div key={jls.ID} className="posted-listing">
+              <div className="list-info">
+                <h4 className="job">{jls.fields.job_title}</h4>
+                <p>{jls.fields.job_desc}</p>
+                <p className="post-time">
+                  <GoClock className="post-clock" />
+                  <Timestamp time={jls.posted_time} actualSeconds />
+                </p>
+                <div className="delete">
+                  <button
+                    onClick={() => {
+                      this.props.delete_listing(jls.pk);
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
     return (
-      <div>
+      <div className="hp-landing">
         <HPnav />
         <HpMiniMap />
+        <Messenger />
         <div className="signout">
           <button
             className="signoutbutton"
@@ -34,14 +75,31 @@ class HPLanding extends Component {
             Sign Out
           </button>
         </div>
-        <div>
-          <div>
-            <h1>HP LANDING PAGE</h1>
+        <div className="main-hplanding">
+          <div className="welcome-container">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img src={amazon} className="profile-pic" alt="user" />
+            <h1>Welcome back, {user.company_name}.</h1>
           </div>
           <div className="new-joblisting">
             <h2>Add New Job Listing</h2>
-            <hr />
             <div className="listing-input">
+              <div className="remote-switch">
+                <label className="switch">
+                  <input
+                    type="checkbox"
+                    name="remote_job"
+                    className="input"
+                    checked={this.state.remote_job}
+                    onChange={e =>
+                      this.setState({ [e.target.name]: e.target.checked })
+                    }
+                  />
+                  <span className="slider round" />
+                </label>
+                <h4>* Remote Job</h4>
+              </div>
+
               <input
                 type="text"
                 placeholder="Job Title"
@@ -52,16 +110,7 @@ class HPLanding extends Component {
                   this.setState({ [e.target.name]: e.target.value })
                 }
               />
-              <input
-                type="text"
-                placeholder="Job Description"
-                name="job_desc"
-                className="input"
-                value={this.state.job_desc}
-                onChange={e =>
-                  this.setState({ [e.target.name]: e.target.value })
-                }
-              />
+
               <input
                 type="url"
                 placeholder="Job Link"
@@ -72,13 +121,18 @@ class HPLanding extends Component {
                   this.setState({ [e.target.name]: e.target.value })
                 }
               />
-              <div className="remote-switch">
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <a className="remote-pos">Remote Postition</a>
-              </div>
+
+              <textarea
+                type="text"
+                placeholder="Job Description"
+                name="job_desc"
+                className="input"
+                value={this.state.job_desc}
+                onChange={e =>
+                  this.setState({ [e.target.name]: e.target.value })
+                }
+              />
+
             </div>
             <button
               onClick={() => {
@@ -86,29 +140,22 @@ class HPLanding extends Component {
                   hp_id: this.props.hirePartner.user.id,
                   job_title: this.state.job_title,
                   job_desc: this.state.job_desc,
-                  job_link: this.state.job_link
+                  job_link: this.state.job_link,
+                  remote_job: this.state.remote_job
                 });
                 this.setState({
                   job_title: "",
                   job_desc: "",
-                  job_link: ""
+                  job_link: "",
+                  remote_job: false
                 });
               }}
             >
               Post
             </button>
           </div>
+          {mappedListings}
         </div>
-        
-        {/* Delete listing Functionality */}
-        {/* <button
-          onClick={() => {
-            this.props.delete_listing(jls.pk);
-            console.log(jls);
-          }}
-        >
-          Delete
-        </button> */}
       </div>
     );
   }
@@ -119,12 +166,11 @@ const mapStateToProps = state => {
   return {
     jobListing: state.jobListing,
     hirePartner: state.hirePartner,
-    // fetchingListings: state.fetchingListings,
     error: state.error
   };
 };
 
 export default connect(
   mapStateToProps,
-  { create_listing, signout }
+  { create_listing, signout, get_hp }
 )(HPLanding);
