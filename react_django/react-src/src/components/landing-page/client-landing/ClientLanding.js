@@ -1,43 +1,93 @@
 import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
-import { MdArrowDropDown } from "react-icons/md";
-import { FaBriefcase } from "react-icons/fa";
+import Messenger from "../../messenger/Messenger";
 import "./ClientLanding.css";
-import amazon from "./amazon-logo.gif";
-import mark from "./0.jpg";
+import amazon from "./amazon-logo.png";
+import mark from "./0.png";
+import marker from "./marker_icon.png";
 import { get_listings, signout } from "../../../actions/index";
 import { connect } from "react-redux";
+import { GoClock } from "react-icons/go";
+import { TiPin } from "react-icons/ti";
 import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
+
+const Timestamp = require("react-timestamp");
 
 class ClientLanding extends Component {
   constructor(props) {
     super(props);
     this.state = {
       clients: [],
-      jobListing: []
+      jobListing: [],
+      color: "black"
     };
   }
+
+  favorited = () => {
+    if (this.state.color === "black") {
+      this.setState({ color: "orange" });
+    } else {
+      this.setState({ color: "black" });
+    }
+  };
 
   componentDidMount = () => {
     this.props.get_listings();
   };
 
   render() {
+    let user = JSON.parse(localStorage.getItem("user"));
     let companyListing = null;
+    let favoritesListing = null;
     var randomCompany = this.props.jobListing.job_listings[
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
     if (randomCompany) {
       companyListing = (
         <div className="feat-job">
-          <h4>We think you're a great fit for this job:</h4>
           <img src={amazon} alt="company" />
-          <p className="jobtitle">{randomCompany.company_name}</p>
-          <p className="job">{randomCompany.jobListings[0].job_title}</p>
-          <p>{randomCompany.jobListings[0].job_desc}</p>
-          <h5>
-            See more <MdArrowDropDown />
-          </h5>
+          <div className="list-info">
+            <div className="pinit">
+              {/* <h3 className="jobloc">{randomCompany.company_name}</h3> */}
+              <h3 className="jobloc">
+                {randomCompany.city}, {randomCompany.state}
+              </h3>{" "}
+              <TiPin className={this.state.color} onClick={this.favorited} />
+            </div>
+            <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <p>{randomCompany.jobListings[0].job_desc}</p>
+            <p className="post-time">
+              <GoClock className="post-clock" />{" "}
+              <Timestamp
+                time={randomCompany.jobListings[0].posted_time}
+                actualSeconds
+              />
+            </p>
+          </div>
+        </div>
+      );
+    }
+    if (randomCompany) {
+      favoritesListing = (
+        <div className="pinned-listing">
+          <img src={amazon} alt="company" />
+          <div className="list-info">
+            <div className="pinit">
+              <h3 className="jobloc">
+                {randomCompany.city}, {randomCompany.state}
+              </h3>
+              <TiPin className="pin-icon" />
+            </div>
+            <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <p>{randomCompany.jobListings[0].job_desc}</p>
+            <p className="post-time">
+              <GoClock className="post-clock" />
+              <Timestamp
+                time={randomCompany.jobListings[0].posted_time}
+                actualSeconds
+              />
+            </p>
+          </div>
         </div>
       );
     }
@@ -45,28 +95,28 @@ class ClientLanding extends Component {
       <div className="client">
         <JSnav />
         <JsMiniMap />
-        <div className="signout">
-          <button
-            className="signoutbutton"
-            onClick={() => {
-              this.props.signout(this.props.history);
-            }}
-          >
-            Sign Out
-          </button>
-        </div>
-        <div className="client-container">
+        <Messenger />
+        <div className="landing-container">
+          <div className="signout">
+            <button
+              className="signoutbutton"
+              onClick={() => {
+                this.props.signout(this.props.history);
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
+
           <div className="welcome-container">
-            <div className="profile">
-              <img src={mark} className="mark" alt="user" />
-              <h1>Welcome back, {this.props.clients.user.first_name}.</h1>
-              <h3>Here's what you missed while you were away:</h3>
-              <h4>
-                <FaBriefcase /> There were 16 new jobs posted in your area.
-              </h4>
-              <h4>Five of your favorited companies posted new jobs.</h4>
-            </div>
-            {companyListing}
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img src={mark} className="mark" alt="user" />
+            <h1>Welcome back, {user.first_name}.</h1>
+          </div>
+          {companyListing}
+          <h3 className="pinned-title">Pinned Jobs:</h3>
+          <div className="pinned-jobs">
+            <div className="pinned-container">{favoritesListing}</div>
           </div>
         </div>
       </div>
