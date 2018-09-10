@@ -305,7 +305,7 @@ export const get_hp = id => {
 export const update = data => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
+  const user = axios.put(`${SERVER_URL}/api/update/`, data, config);
   return dispatch => {
     dispatch({
       type: actions.UPDATE
