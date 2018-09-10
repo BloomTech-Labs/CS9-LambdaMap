@@ -67,7 +67,7 @@ class JsMiniMap extends Component {
               style={{
                 borderRadius: "500px",
                 boxShadow: "0px 0px 10px 0px black",
-                border: "4px solid #DC681D",
+                border: "4px solid #db5e3c",
               }}
               styles= {[
                 {
@@ -141,7 +141,7 @@ class JsMiniMap extends Component {
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#125172"
+                            "color": "#46bcec"
                         },
                         {
                             "visibility": "on"

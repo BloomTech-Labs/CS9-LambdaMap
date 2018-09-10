@@ -4,6 +4,8 @@ import CheckoutForm from './checkoutForm';
 import {connect} from 'react-redux';
 import {subscribe} from '../../actions';
 import HPnav from '../nav/company/HPnav';
+import "./billing.css";
+import HpMiniMap from "../miniMap/HpMiniMap/HpMiniMap";
 
 class Billing extends Component{
 
@@ -13,6 +15,7 @@ class Billing extends Component{
       <HPnav/>
       <StripeProvider apiKey="pk_test_1p5B423kMIc50yASX6BjZtio">
         <div className="billing">
+        <HpMiniMap />
           <Elements>
             <CheckoutForm />
           </Elements>

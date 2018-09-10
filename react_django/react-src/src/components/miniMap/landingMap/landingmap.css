@@ -1,14 +1,13 @@
 .landing-map {
-  position: fixed;
+  position: absolute;
   margin: 0px 0px 0px 0px;
   bottom: 22%;
   right: 0;
   left: 42%;
-  width: 17%;
-  max-width: 17%;
-  min-width: 17%;
-  height: 33vh;
-  max-height:33vh;
-  min-height:33vh;
+  width: 350px;
+
+  height:350px;
+
+  z-index: 0;
 }
 /*# sourceMappingURL=map.css.map */

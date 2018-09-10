@@ -41,7 +41,9 @@ class LandingMap extends Component {
               disableDefaultUI={true}
               style={{
                 borderRadius: "500px",
-                border: "5px solid #DC681D",
+                border: "5px solid #db5e3c",
+                width: "300px",
+                height: "300px"
               }}
               styles= {[
                 {

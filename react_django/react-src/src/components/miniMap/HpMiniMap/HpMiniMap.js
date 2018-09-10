@@ -67,7 +67,7 @@ class HpMiniMap extends Component {
               style={{
                 borderRadius: "500px",
                 boxShadow: "0px 0px 10px 0px black",
-                border: "4px solid orange",
+                border: "4px solid #db5e3c",
               }}
               styles= {[
                 {

@@ -3,6 +3,7 @@ import HPNav from '../nav/company/HPnav';
 import {connect} from 'react-redux';
 import {subscribe} from '../../actions';
 import {CardElement,injectStripe} from 'react-stripe-elements';
+import "./billing.css";
 
 class CheckoutForm extends Component{
   constructor(props){
@@ -19,11 +20,11 @@ class CheckoutForm extends Component{
     .then(res=>{
       this.props.subscribe({stripeToken:res.token.id, email:this.props.hirePartner.user.email})
       .then(res=>{
-        alert('successfully subscribed!');
+        alert('Successfully Subscribed!');
         this.setState({subscribed:true,end_date:new Date(res.successful)});
       })
       .catch(err=>{
-        alert('failed to subscribe',err);
+        alert('Failed to Subscribe',err);
         console.log(err);
       });
     })
@@ -36,21 +37,21 @@ class CheckoutForm extends Component{
     if(this.state.subscribed){
       return(
           <div className='checkout'>
-            <h1>Your subscription ends on {this.state.end_date.toString().slice(0,15)}</h1>
+            <h3>Your subscription ends on {this.state.end_date.toString().slice(0,15)}</h3>
 
             <p>Add another month?</p>
             <CardElement/>
-            <button onClick={this.submit}>Subscribe!</button>
+            <button className="button"  onClick={this.submit}>Subscribe!</button>
           </div>
           );
     }
     else{
       return(
         <div className='checkout'>
-          <h1>Your subscription is inactive</h1>
-          <p>Subscribe for one month?</p>
+          <h3>Your Subscription is Currently Inactive</h3>
+          <p>Subscribe for one month for $30.00</p>
           <CardElement/>
-          <button onClick={this.submit}>Subscribe!</button>
+          <button className="button" onClick={this.submit}>Subscribe!</button>
         </div>
         );
     }
