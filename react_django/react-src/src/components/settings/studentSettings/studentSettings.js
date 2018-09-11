@@ -12,20 +12,40 @@ class StudentSettings extends Component {
   constructor() {
     super();
     this.state = {
-      clients: [],
+      profession: "",
       city: "",
       state: "",
+      codepen: "",
       twitter:"",
       linkedin:"",
       github:"",
+      phone: "",
+      website: "",
+      about: "",
       dragDrop: false,
-      User: {
-        picture: null,
-      }
-    }
+      picture: ""
+    };
   }
 
-  renderDragDrop = (e) => {
+  submit = e => {
+  	e.preventDefault();
+  	const { profession, city, state, codepen, twitter, linkedin, github, phone, website, about  } = this.state;
+  	this.props.update({
+			profession: profession !== "" ? profession : profession,
+      state: state !== "" ? state : state,
+      city: city !== "" ? city : city,
+			codepen: codepen !== "" ? codepen : codepen,
+      linkedin:linkedin !== "" ?linkedin :linkedin,
+      github: github !== "" ? github : github,
+      phone: phone !== "" ? phone : phone,
+      personal_website: website !== "" ? website :website,
+      about: about !== "" ? about : about,
+      twitter: twitter !== "" ? twitter : twitter,
+    });
+  	this.props.history.push('/jssettings');
+	}
+
+  renderDragDrop = e => {
     e.stopPropagation();
     this.setState({'dragDrop': !this.state.dragDrop})
   }
@@ -134,14 +154,14 @@ class StudentSettings extends Component {
                 <h3>
                   E-mail: <input 
                   type="text"
-                  placeholder={this.props.clients.user.email}
+                  placeholder= "Email"
                   value={this.state.email}
                   />
                 </h3>
                 <h3 className="phone-input">
                   Phone: <input
                      type="text"
-                     placeholder={this.props.clients.user.phone}
+                     placeholder= "Phone"
                      value={this.state.phone}
                   />
                 </h3>
@@ -174,20 +194,60 @@ class StudentSettings extends Component {
               <h2>Profile Information</h2>
               <hr />
               <div className="listing-input">
-                <input placeholder="City" />
-                <input placeholder="State" />
-                <h3>
-                  Job Title: <span></span>
-                  <select className="select-box">
-                    <option value="Web Developer">Web Developer</option>
-                    <option value="UX Designer">UX Designer</option>
-                    <option value="iOS Designer">iOS Designer</option>
-                  </select>
-                </h3>
-                <input placeholder="LinkedIn Profile Link" />
-                <input placeholder="GitHub Profile Link" />
-                <input placeholder="Portfolio Website Link" />
-                <input placeholder="Twitter Link" />
+                <input 
+                 name= "city"
+                 type="text"
+                 value={this.state.city}
+                 onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                 placeholder="City" />
+                <input 
+                  name= "state"
+                  type="text"
+                  value={this.state.state}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                placeholder="State" />
+                <input 
+                  name= "profession"
+                  type="text"
+                  value={this.state.profession}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                placeholder="Job Title" />
+                <input 
+                  name= "about"
+                  type="text"
+                  value={this.state.about}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                placeholder="BIO" />
+                <input 
+                  name= "linkedin"
+                  type="text"
+                  value={this.state.linkedin}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                  placeholder="LinkedIn Profile Link" />
+                <input 
+                  name= "codepen"
+                  type="text"
+                  value={this.state.codepen}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                  placeholder="Codepen Profile Link" />
+                <input
+                  name= "github"
+                  type="text"
+                  value={this.state.github}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                  placeholder="GitHub Profile Link" />
+                <input
+                  name= "website"
+                  type="text"
+                  value={this.state.website}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}                
+                placeholder="Portfolio Website Link" />
+                <input 
+                  name= "twitter"
+                  type="text"
+                  value={this.state.twitter}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                placeholder="Twitter Link" />
                 <button className="post-button-2">Upload Resume PDF</button>
                 <button
                   className="post-button-2"
@@ -198,7 +258,7 @@ class StudentSettings extends Component {
                   Upload Profile Picutre
                 </button>
               </div>
-              <button className="post-button">Post</button>
+              <button onClick={this.submit} className="post-button">Post</button>
             </div>
           </div>
         </div>

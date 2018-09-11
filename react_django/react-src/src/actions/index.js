@@ -41,6 +41,7 @@ export const login = (data, history) => {
       .then(response => {
         if (response.data.account_type === false) {
           window.sessionStorage.setItem("jwt", response.headers.jwt);
+          window.localStorage.setItem("user",  JSON.stringify(response.data));
           dispatch({
             type: actions.LOGGEDIN_CLIENT,
             payload: response.data
@@ -48,6 +49,7 @@ export const login = (data, history) => {
           history.push("/jslanding/");
         } else if (response.data.account_type === true) {
           window.sessionStorage.setItem("jwt", response.headers.jwt);
+          window.localStorage.setItem("jwt", JSON.stringify(response.data));
           dispatch({
             type: actions.LOGGEDIN_HPS,
             payload: response.data
@@ -303,7 +305,7 @@ export const get_hp = id => {
 export const update = data => {
   const token = window.sessionStorage.getItem("token") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
+  const user = axios.put(`${SERVER_URL}/api/update/`, data, config);
   return dispatch => {
     dispatch({
       type: actions.UPDATE
