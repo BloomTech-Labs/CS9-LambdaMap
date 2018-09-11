@@ -85,29 +85,29 @@ const clients = (state = initialState, action) => {
         error: action.payload
       });
 
-    case actions.UPDATE_CLIENT:
-      return Object.assign({}, state, {
-        updatingClient: true
-      });
+    // case actions.UPDATE_CLIENT:
+    //   return Object.assign({}, state, {
+    //     updatingClient: true
+    //   });
+      
+    // case actions.UPDATE:
+    //   return Object.assign({}, state, {
+    //     updating: true
+    //   });
 
-    case actions.UPDATE:
-      return Object.assign({}, state, {
-        updating: true
-      });
+    // case actions.UPDATED_HPS:
+    //   return Object.assign({}, state, {
+    //     user: action.payload,
+    //     updating: false,
+    //     error: null
+    //   });
 
-    case actions.UPDATED_HPS:
-      return Object.assign({}, state, {
-        user: action.payload,
-        updating: false,
-        error: null
-      });
-
-    case actions.UPDATED_CLIENT:
-      return Object.assign({}, state, {
-        client: action.payload,
-        updatingClient: false,
-        error: null
-      });
+    // case actions.UPDATED_CLIENT:
+    //   return Object.assign({}, state, {
+    //     client: action.payload,
+    //     updatingClient: false,
+    //     error: null
+    //   });
 
     case actions.FETCH_CLIENTFAVORITES:
       return Object.assign({}, state, {

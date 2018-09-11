@@ -8,10 +8,28 @@
   transform: $property;
 }
 
+@mixin linear-gradient($top-color, $bottom-color, $opacity) {
+  background: -moz-linear-gradient(
+    top,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba($top-color, $opacity) 0%,
+    rgba($bottom-color, $opacity) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 ); /* IE6-9 */
+}
+
 .jobseekerNav-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   width: 20%;
   height: 100%;
   position: fixed;
@@ -20,14 +38,22 @@
   transition: transform 1s cubic-bezier(0.77, 0.2, 0.05, 1);
   z-index: 10;
   background-color: white;
-  background-color: #125172;
 
   .lambdamap {
     padding: 6%;
   }
 
+  .lambda {
+    font: 24px $lambdafont;
+    font-weight: bolder;
+  }
+
   .logo {
     width: 90%;
+  }
+
+  .lambda-logo {
+    width: 6%;
   }
 
   .quote {
@@ -38,14 +64,14 @@
 
   li {
     display: flex;
-    margin-left: 10%;
+    align-items: center;
+    margin-left: 50px;
     font: 1.4em $lambdafont;
-    font-weight: bold;
     padding: 6% 0%;
 
     .icons {
-      margin-right: 5%;
-      color: white;
+      margin-right: 10px;
+      color: #125172;
     }
   }
 
@@ -60,7 +86,6 @@
 
   hr {
     width: 80%;
-    margin-bottom: 5%;
   }
 
   .arrow {
@@ -70,7 +95,6 @@
     width: 10%;
     transition: all 1s;
     font-size: 2em;
-    color: black;
   }
 
   .footer {
@@ -88,12 +112,23 @@
   .skew {
     display: flex;
     position: absolute;
-    top: -15%;
+    top: -10%;
     width: 100%;
-    height: 30%;
+    height: 20%;
     z-index: -1;
-    background-color: white;
     @include transform(skew(0deg, -15deg));
+    @include linear-gradient($specialred, $specialred, 0.5);
+  }
+
+  .skew2 {
+    display: flex;
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    height: 20%;
+    z-index: -1;
+    @include transform(skew(0deg, -15deg));
+    @include linear-gradient($specialred, $specialred, 0.5);
   }
 }
 

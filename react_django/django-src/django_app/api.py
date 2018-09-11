@@ -1,3 +1,6 @@
+import random
+import json
+import re
 from django.http import JsonResponse
 from .models import Users, Clients, Hire_Partners, Job_Listing, Session
 from django.contrib.contenttypes.models import ContentType
@@ -6,15 +9,7 @@ from .authentication import create_token, verify_token
 from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
-import random
-import json
-import re
-import pprint
-# import stripe
-# from datetime import timedelta,date
 
-
-# stripe.api_key = 'sk_test_IvmmEC1fei3DMdLjZlDfuLee'
 
 def str_to_bool(str):
     return str[0] == 'T' or str[0] == 't'
@@ -22,9 +17,7 @@ def str_to_bool(str):
 
 def register(request):
     if request.META['REQUEST_METHOD'] == 'POST':
-        request_body = request.POST
-        request_pictures = request.FILES
-        request_resume = None
+        request_body = json.loads(request.body.decode('ascii'))
         if str_to_bool(request_body["account_type"]):
             user = Hire_Partners()
         else:
@@ -36,8 +29,6 @@ def register(request):
                 user.__setattr__(x, encrypt_password(request_body[x]))
             else:
                 user.__setattr__(x, request_body[x])
-        if request_pictures:
-            user.__setattr__('portfolio_picture', request_pictures['picture'])
         if user.city and user.state:
             response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
             string = response.read().decode('utf-8')
@@ -78,10 +69,6 @@ def login(request):
     if request.META['REQUEST_METHOD'] == 'POST':
         try:
             hire_partner = Hire_Partners.objects.get(email=request_body['email'])
-
-            #check if subscription expired during login
-            if(hire_partner.subscription_end_date < timezone.now()):
-              hire_partner.subscribed = False
             return send_user(hire_partner)
         except Hire_Partners.DoesNotExist:
             try:
@@ -97,7 +84,7 @@ def logout(request):
     if request.META['REQUEST_METHOD'] == 'GET':
         try:
             Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii')).delete()
-            return JsonResponse({"User":"logged out"}, status=200)
+            return JsonResponse({"User": "logged out"}, status=200)
         except:
             return JsonResponse({"Error": "unable to delete record."}, status=400)
 
@@ -118,6 +105,7 @@ def update(request):
                     user.__setattr__(x, request_body[x])
             user.save()
             del user._state
+            del user.password
             return JsonResponse(user.__dict__, status=200)
         else:
             Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii')).delete()
@@ -139,6 +127,7 @@ def delete(request):
                 session_obj.delete()
                 user.delete()
                 del user._state
+                del user.password
                 return JsonResponse({"deleted": user.__dict__}, status=204)
             else:
                 return JsonResponse({"Delete failed": "email doesn't exit"}, status=400)
@@ -169,16 +158,6 @@ def create_listing(request):
             return JsonResponse({"Invalid request": e}, status=400)
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
-
-def delete_listing(request):
-    if request.META['REQUEST_METHOD'] == 'DELETE':
-        regex = re.compile('/api/delete-listing/(\d+)/', re.MULTILINE)
-        job_listing = Job_Listing.objects.get(id=regex.search(request.META['PATH_INFO']).group(1))
-        try:
-            job_listing.delete()
-            return get_listings()
-        except:
-            return JsonResponse({"Job listing does not exist"})
 
 
 def client_favorites(request):
@@ -217,9 +196,9 @@ def get_listings(request):
             for HPs in hire_partners:
                 job_listings = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=HPs['ID'])))
                 for x in range(len(job_listings)):
-                    job_listings[x] = {**job_listings[x]['fields'], 'pk': job_listings[x]['pk']}                                       
+                    job_listings[x] = job_listings[x]['fields']
                 HPs['jobListings']=job_listings
-            hire_partners = list(filter(lambda HP: len(HP['jobListings']) > 0, hire_partners))
+                del HPs['password']
             return JsonResponse({"HPjobListings": hire_partners})
         except Job_Listing.DoesNotExist as e:
             return JsonResponse({"Error":e})
@@ -229,12 +208,10 @@ def get_listings(request):
 
 # Get an individual Client
 def get_client(request):
-    pretty = pprint.PrettyPrinter(indent=4)
     if request.META['REQUEST_METHOD'] == 'GET':
         try:
             regex = re.compile('/api/client/(\d+)/', re.MULTILINE)
             client = Clients.objects.get(id=regex.search(request.META['PATH_INFO']).group(1))
-            pretty.pprint(client.__dict__)
             return JsonResponse({"Client": client.to_dict()})
         except Clients.DoesNotExist as e:
             return JsonResponse({"Error":e})
@@ -313,34 +290,3 @@ def get_users(request):
             query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
             query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
         return JsonResponse(query, status=200)
-
-
-# def subscribe(request):
-#     if request.META['REQUEST_METHOD'] == 'POST':
-#       request_body = json.loads(request.body.decode('ascii'))
-#       hire_partner = Hire_Partners.objects.get(email=request_body['email'])
-#       if(hire_partner):
-#         try:
-#           charge = stripe.Charge.create(
-#             #equivalent to $30
-#             amount= 3000,
-#             currency='usd',
-#             description='one month subscription',
-#             source=request_body['stripeToken']
-#           )
-#           if(hire_partner.subscription_end_date < date.today()):
-#             #have to do 31 days due to the way comparison is done for subscribed boolean in hiring_partner model
-#             hire_partner.subscription_end_date = date.today() + timedelta(days=31)
-#           else:
-#             hire_partner.subscription_end_date += timedelta(days=31)
-#           try:
-#             hire_partner.save()
-#             return JsonResponse({"successful":charge})
-#           except Exception as e:
-#             return JsonResponse({"error on saving hiring partner":e})
-#         except Exception as e:
-#           return JsonResponse({'Stripe charge creation error':e})
-#       else:
-#         return JsonResponse({"invalid email":"email must be of a hiring partner to subscribe"})
-#     else:
-#         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)

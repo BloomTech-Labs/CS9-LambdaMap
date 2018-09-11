@@ -9,7 +9,12 @@
 .main-signup {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100vh;
   align-items: center;
+  margin: 0 auto;
+  background: url(./signupbackground.PNG);
+  background-size: cover;
 
   button {
     border: none;
@@ -31,6 +36,21 @@
     flex-direction: column;
 
     .register-form {
+      position: relative;
+
+      :focus {
+        outline: none;
+      }
+
+      input[type="text"] {
+        font: 15px/24px $mapsfont;
+        color: #333;
+        width: 100%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        display: flex;
+        z-index: -1;
+      }
 
       .emailInput {
         border: 0;
@@ -39,6 +59,42 @@
         background-color: transparent;
       }
 
+      .emailInput ~ .focus-border {
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $specialblue;
+        transition: 0.4s;
+      }
+
+      .emailInput:focus ~ .focus-border,
+      .has-content.emailInput ~ .focus-border {
+        width: 100%;
+        transition: 0.4s;
+        left: 0;
+        bottom: 15px;
+      }
+
+      .emailInput ~ label {
+        position: absolute;
+        left: 0;
+        top: 25px;
+        color: Black;
+        transition: 0.3s;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      .emailInput:focus ~ label,
+      .has-content.emailInput ~ label {
+        top: 5px;
+        font-size: 12px;
+        color: $specialred;
+        transition: 0.3s;
+      }
     }
 
     .signuppwd-form {
@@ -105,6 +161,7 @@
   }
 
   .signup-form {
+    margin-top: 100px;
     font: 2em $mapsfont;
     font-weight: bolder;
   }
@@ -158,7 +215,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.562);
+      background-color: $specialgray;
       -webkit-transition: 0.4s;
       transition: 0.4s;
     }

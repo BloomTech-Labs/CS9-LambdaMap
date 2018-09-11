@@ -2,7 +2,8 @@
 
 import React, { Component } from "react";
 import "./HPnav.css";
-import navlogo from "./logoatlas.PNG";
+import maplogored from "./maplogored.svg";
+import lambdalogo from "./lambdalogo.png";
 import {
   FaHome,
   FaCopyright,
@@ -19,12 +20,12 @@ export default class HPnav extends Component {
   render() {
     return (
       <div className="companyNav-container">
-       <div className="skew"></div>
         <div className="secondary-container">
           <div className="lambdamap">
-          <img src={navlogo} className="logo" alt="Atlas" />
+            <img src={maplogored} className="logo" alt="Lambda Maps" />
             <div className="lambda">
-             Atlas
+              <img src={lambdalogo} className="lambda-logo" alt="Lambda Logo" />
+              Lambda Maps
             </div>
             <div className="quote">
               "Connecting you with Lambda School's best"
@@ -65,16 +66,16 @@ export default class HPnav extends Component {
             </li>
           </Link>
 
-          {/* <Link
+          <Link
             to="/favorites/"
             className="nav-links"
             style={{ textDecoration: "none" }}
-          > */}
+          >
             <li>
               <FaStar className="icons" />
               Favorites
             </li>
-          {/* </Link> */}
+          </Link>
 
           <li>
             <FaEnvelope className="icons" />

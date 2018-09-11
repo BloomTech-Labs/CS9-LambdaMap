@@ -1,6 +1,12 @@
+//  hard coded info going to go back over and make sure it's the logged in user
+
 import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
-import Messenger from "../../messenger/Messenger";
+import { Timeline } from "react-twitter-widgets";
+import amazon from "./amazon-logo.gif";
+import mark from "./0.jpg";
+import { MdArrowDropDown } from "react-icons/md";
+import { FaBriefcase } from "react-icons/fa";
 import "./ClientLanding.css";
 import amazon from "./amazon-logo.png";
 import mark from "./0.png";
@@ -14,27 +20,6 @@ import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 const Timestamp = require("react-timestamp");
 
 class ClientLanding extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      clients: [],
-      jobListing: [],
-      color: "black"
-    };
-  }
-
-  favorited = () => {
-    if (this.state.color === "black") {
-      this.setState({ color: "orange" });
-    } else {
-      this.setState({ color: "black" });
-    }
-  };
-
-  componentDidMount = () => {
-    this.props.get_listings();
-  };
-
   render() {
     let user = JSON.parse(localStorage.getItem("user"));
     let companyListing = null;
@@ -148,24 +133,36 @@ class ClientLanding extends Component {
     return (
       <div className="client">
         <JSnav />
-        <JsMiniMap />
-        <Messenger />
-        <div className="landing-container">
-          <div className="signout">
-            <button
-              className="signoutbutton"
-              onClick={() => {
-                this.props.signout(this.props.history);
-              }}
-            >
-              Sign Out
-            </button>
-          </div>
-
+        <div className="signout">
+          <button className="signoutbutton">Sign Out</button>
+        </div>
+        <div className="client-container">
           <div className="welcome-container">
-            <img src={marker} className="profile-marker" alt="marker" />
-            <img src={mark} className="mark" alt="user" />
-            <h1>Welcome back, {user.first_name}.</h1>
+            <div className="profile">
+              <img src={mark} className="mark" />
+              <h1>Welcome back, Mark.</h1>
+              <h3>Here's what you missed while you were away:</h3>
+              <h4>
+                <FaBriefcase /> There were 16 new jobs posted in your area.
+              </h4>
+              <h4>Five of your favorited companies posted new jobs.</h4>
+            </div>
+            <div className="feat-job">
+              <h4>We think you're a great fit for this job:</h4>
+                <img src={amazon} />
+                <p className="jobtitle">Amazon</p>
+                <p className="job">Software Engineer</p>
+                <p>
+                  Device Ad Products is a business initiative focused on
+                  monetizing Amazon owned and operated devices. To do this, we
+                  are building a premium advertising platform that is unlike any
+                  that exists today. This is a strategic initiative for the
+                  company, and we are growing quickly. Our...
+                </p>
+                <h5>
+                  See more <MdArrowDropDown />
+                </h5>
+            </div>
           </div>
           {companyListing}
           <h3 className="pinned-title">Pinned Jobs:</h3>
@@ -183,16 +180,4 @@ class ClientLanding extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    clients: state.clients,
-    jobListing: state.jobListing,
-    fetchingListings: state.fetchingListings,
-    error: state.error
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { get_listings, signout }
-)(ClientLanding);
+export default ClientLanding;

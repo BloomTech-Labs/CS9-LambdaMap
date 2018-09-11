@@ -1,9 +1,20 @@
-@import "imports";
+@import 'imports';
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+      -ms-transform: $property;
+          transform: $property;
+}
+
+@mixin linear-gradient($top-color, $bottom-color, $opacity) {
+  background: -moz-linear-gradient(top, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%);
+  background: -webkit-linear-gradient(top, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%);
+  background: linear-gradient(to bottom, rgba($top-color, $opacity) 0%, rgba($bottom-color, $opacity) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{ie-hex-str(rgba($top-color, $opacity))}', endColorstr='#{ie-hex-str(rgba($bottom-color, $opacity))}',GradientType=0 );
+}
 
 .main {
   width: 100%;
-  background-color: #e1f5ff;
-  height: 100vh;
 
   .signout {
     display: flex;
@@ -16,115 +27,147 @@
       outline: none;
       border: none;
       background: none;
-      font: 0.8em $lambdafont;
-      font-weight: bold;
-      letter-spacing: 1px;
+      font: .8em $lambdafont;
+      font-weight: bolder;
+      color: white;
+      letter-spacing: 2.5px;
+    }
+
+    button:active {
+      color: black;
     }
   }
 
-  .main-container {
+  hr {
+    width: 30%;
+  }
+
+  .backgroundskew {  
+    display: flex;
+    position: absolute;
+    top: -46.5%;
+    width: 100%;
+    height: 54%;
+    z-index: -1;
+    @include transform(skew(0deg, 20deg));
+    @include linear-gradient($specialred, $specialred, .5);
+  }
+
+.jsprofile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 75px auto 0;
+  align-items: center;
+  width: 50%;
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      font: 1em $lambdafont;
+
+      .contactIcons {
+        font-size: 1em;
+        color: $specialblue;
+        margin-right: 5px;
+      }
+
+      .emailcontact {
+        display: flex;
+        align-items: center;
+      }
+      
+      .phonecontact {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .JSinfo {
+      p {
+        margin: 0;
+      }
+      
+      .JSname {
+        font: 2em $lambdafont;
+      }
+
+      .JSlocation {
+        font: 1em $lambdafont;
+        color: $specialgray;
+      }
+    }
+
+    .JSprofilepic {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .JSoptions {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 75px;
+    margin: 40px auto 20px;
+    padding-left: 12px;
+    width: 8%;
+    
+    .optionbox {
+      color: $specialblue;
+      opacity: .8;
+      display: flex;
+      margin-right: 7.5px;
+    }
 
-    .sidebyside {
-      width: 800px;
+    .optionbox2 {
+      color: $specialgray;
+      display: flex;
+      margin-right: 7.5px;
+    }
+
+    p {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 75px;
-      border-top: 2px dashed #707070;
-      border-bottom: 2px dashed #707070;
-      padding: 75px;
-
-      .jsprofile-container {
-        margin-right: 100px;
-
-        .pic-bg {
-          width: 325px;
-          height: 325px;
-          border-radius: 10px;
-          background-color: $specialblue;
-
-          h1 {
-            color: white;
-            font-family: $landingfont;
-            margin-bottom: 0;
-          }
-
-          h3 {
-            margin-top: 0;
-            color: #919191;
-            font-family: $landingfont;
-          }
-
-          img {
-            width: 200px;
-            height: 200px;
-            border: 3px solid #db5e3c;
-            border-radius: 100%;
-            margin-top: 20px;
-          }
-        }
-      }
-
-      .info-container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        .jsprofile-contact {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-bottom: 10px;
-          
-          h2 {
-            margin: 10px 0px 0px 0px;
-          }
-
-          p {
-            display: flex;
-            align-items: center;
-            margin: 2.5px;
-            font: 1.25em $landingfont;
-
-
-            .contactIcons {
-              margin-right: 10px;
-            }
-          }
-        }
-        .jsprofile-about {
-          width: 400px;
-
-          p {
-            text-align: start;
-            margin: 2.5px;
-            font: 1.25em $landingfont;
-            text-indent: 20px;
-          }
-
-        }
-      }
+      margin: 0;
+      font-family: $JStext;
+      font-size: .7em
     }
-    .socialmedia {
-      width: 25%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      margin-top: 75px;
 
-      .smIcons {
-        font-size: 2.5em;
-        color: $specialblue;
-      }
-
-      .smIcons:hover {
-        color: black;
-      }
+    .remote {
+      margin-bottom: 5px;
+      color: $specialgray;
+      opacity: .5;
     }
+
+    .relocate {
+      font-weight: bolder;
+    }
+  }
+
+  .JSbio {
+    width: 25%;
+    display: flex;
+    margin: 0 auto;
+    font: 1em $JStext;
+  }
+
+  .socialmedia {
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 75px;
+  }
+
+  .smIcons {
+    font-size: 2.5em;
+    color: $specialblue;
+  }
+
+  .smIcons:hover {
+    color: black;
   }
 }

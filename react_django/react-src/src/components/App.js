@@ -10,40 +10,30 @@ import HPMapView from "./map/hp-map/hpmap";
 import JSMapView from "./map/client-map/jsmap";
 import JSlistView from "./list-views/jobseekers-HPview/JSlistView";
 import HPsettings from "./settings/HP-settings/HPsettings";
+import SignUp from "./landing-page/Sign-up/SignUp";
 import studentSettings from "./settings/studentSettings/studentSettings";
 import JobslistView from "./list-views/jobspage-JSview/JobslistView";
-import Billing from "./billing/billing";
-import JSviewJS from "./jobseeker-profile/JSviewJS";
-import HPviewHP from "./HpProfileView/HPviewHP";
+import Billing from './billing/billing';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-
-        {/* Sign in and register page */}
         <Route exact path="/" component={MainLanding} />
-        
-        {/* Job Seeker routes, will start getting private routing implemented */}
+        <Route path="/signup/" component={SignUp} />
         <Route path="/jslanding/" component={ClientLanding} />
+        <Route path="/hplanding/" component={HPlanding}/>
         <Route path="/jsmap/" component={JSMapView} />
-        <Route path="/jobslist/" component={JobslistView} />
-        <Route path="/jsview/:id/" component={JSviewJS} />  {/* <--- allows js to view other js profiles */}
-        <Route path="/hpprofile/:id/" component={HpProfileView} />
-        <Route path="/jssettings/" component={studentSettings} />
-        {/* <Route path="/jsfavorites/" component={} /> */}
-        {/* <Route path="/jsmessages/" component={} /> */}
-        
-        {/* Hire Partner routes */}
-        <Route path="/hplanding/" component={HPlanding} />
         <Route path="/hpmap/" component={HPMapView} />
         <Route path="/jobseekers/" component={JSlistView} />
+        <Route path="/jobslist/" component={JobslistView} />
         <Route path="/jsprofile/:id/" component={JSprofile} />
-        <Route path="/hpview/:id/" component={HPviewHP} />  {/* <--- allows hp to view other hp profiles */}
+        <Route path="/hpprofile/" component={HpProfileView} />
+        {/* <Route path="/favorites/" component={} /> */}
+        {/* <Route path="/messages/" component={} /> */}
         <Route path="/hpsettings/" component={HPsettings} />
+        <Route path="/jssettings/" component={studentSettings} />
         <Route path="/billing" component={Billing} />
-        {/* <Route path="/hpfavorites/" component={} /> */}
-        {/* <Route path="/hpmessages/" component={} /> */}
       </div>
     );
   }

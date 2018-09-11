@@ -1,7 +1,8 @@
 // Job Seekers' side nav
 import React, { Component } from "react";
 import "./JSnav.css";
-import navlogo from "./logoatlas.PNG";
+import maplogored from "./maplogored.svg";
+import lambdalogo from "./lambdalogo.png";
 import {
   FaHome,
   FaCopyright,
@@ -12,17 +13,19 @@ import {
   FaEnvelope,
   FaUser
 } from "react-icons/fa";
-import { MdSettings } from "react-icons/md";
+import { MdSettings, MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export default class JSNav extends Component {
   render() {
     return (
       <div className="jobseekerNav-container">
-        <div className="skew"></div>
         <div className="secondary-container">
           <div className="lambdamap">
-            <img src={navlogo} className="logo" alt="Atlas" />
+            <img src={maplogored} className="logo" alt="Lambda Maps" />
+            <div className="lambda">
+              <img src={lambdalogo} className="lambda-logo" /> Lambda Maps
+            </div>
             <div className="quote">
               "Connecting you with the best Hiring Partners"
             </div>
@@ -83,7 +86,7 @@ export default class JSNav extends Component {
             </li>
           </Link>
           <Link
-            to="/jsview/:id/"
+            to="/jsprofile/:id/"
             className="nav-links"
             style={{ textDecoration: "none" }}
           >

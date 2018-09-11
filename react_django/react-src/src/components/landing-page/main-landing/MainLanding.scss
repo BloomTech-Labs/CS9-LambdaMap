@@ -6,103 +6,336 @@
   transform: $property;
 }
 
-.main-landing {
+.main {
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  background: url("./atlasbackground.png") no-repeat;
-  background-size: 100% 100%;
-  background-attachment: fixed;
+  background: url("./background.PNG") no-repeat;
+  background-size: cover;
 
-  .logo {
-    img {
-      border-radius: 20px;
+  img {
+    border-radius: 20px;
+  }
+
+  .map {
+    position: absolute;
+    width: 60%;
+    top: 62%;
+    right: 3%;
+    font-family: $mapsfont;
+    color: white;
+    font-size: 24px;
+    line-height: 40px;
+
+    .first {
+      position: absolute;
+      top: -150px;
+      right: 20px;
+
+    }
+    .second {
+      position: absolute;
+      top: -85px;
+      right: 50px;
     }
   }
 
+  .featured {
+    display: flex;
+    flex-direction: column;
+    margin-top: 125px;
+    height: 47.5%;
+
+    .hr {
+      -webkit-margin-start: 0;
+      width: 20%;
+      border-color: $specialgray;
+    }
+
+    img {
+      border-radius: 50%;
+    }
+
+    .featuredHP {
+      display: flex;
+
+      .details {
+        position: absolute;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        left: 280px;
+        bottom: 350px;
+        hr {
+          -webkit-margin-start: 0;
+        }
+        .company {
+          font-size: 35px;
+          font-family: $mapsfont;
+        }
+        .loc {
+          margin-top: 10px;
+          margin-left: 45px;
+          font-family: $mapsfont;
+        }
+        .jobs {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: $mapsfont;
+        }
+      }
+    }
+    .featuredJS {
+      display: flex;
+
+      .details {
+        position: absolute;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        left: 380px;
+        bottom: 80px;
+        hr {
+          -webkit-margin-start: 0;
+        }
+        .client {
+          font-size: 35px;
+          font-family: $mapsfont;
+        }
+        .loc {
+          margin-top: 10px;
+          margin-left: 45px;
+          font-family: $mapsfont;
+        }
+        .job {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: $mapsfont;
+        }
+        .skills {
+          margin-top: 15px;
+          margin-left: 45px;
+          font-family: $mapsfont;
+        }
+      }
+    }
+
+    .JS {
+      width: 10%;
+      margin-left: 150px;
+      margin-top: 25px;
+    }
+    .HP {
+      width: 18%;
+      margin-bottom: 15px;
+    }
+  }
   .signin {
     display: flex;
     justify-content: flex-end;
-    margin: 40px 50px 0px 0px;
+    margin: 30px 50px 0px 0px;
+    align-items: center;
+
+    .signin-form {
+      position: relative;
+
+      :focus {
+        outline: none;
+      }
+
+      input[type="text"] {
+        font: 15px/24px $mapsfont;
+        color: #333;
+        width: 90%;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        display: flex;
+      }
+
+      .emailInput {
+        border: 0;
+        padding: 4px 0;
+        border-bottom: 1px solid #ccc;
+        background-color: transparent;
+        z-index: 2;
+      }
+
+      .emailInput ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: $specialblue;
+        transition: 0.4s;
+      }
+
+      .emailInput:focus ~ .focus-border,
+      .has-content.emailInput ~ .focus-border {
+        width: 90%;
+        transition: 0.4s;
+        left: 0;
+      }
+
+      .emailInput ~ label {
+        position: absolute;
+        left: 0;
+        top: 13px;
+        color: Black;
+        transition: 0.3s;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      .emailInput:focus ~ label,
+      .has-content.emailInput ~ label {
+        top: -16px;
+        font-size: 12px;
+        color: $specialred;
+        transition: 0.3s;
+      }
+    }
   }
 
-  input {
-    font: 14px/20px $mapsfont;
-    width: 150px;
+  .signpwd-form {
+    position: relative;
+
+    :focus {
+      outline: none;
+    }
+
+    input[type="password"] {
+      font: 15px/24px $mapsfont;
+      color: #333;
+      width: 80%;
+      box-sizing: border-box;
+      letter-spacing: 1px;
+    }
+
+    input {
+      border: 0;
+      padding: 4px 0;
+      border-bottom: 1px solid #ccc;
+      background-color: transparent;
+      z-index: 2;
+      margin-right: 35px;
+    }
+
+    input ~ .focus-border {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: $specialblue;
+      transition: 0.4s;
+    }
+
+    input:focus ~ .focus-border,
+    .has-contentinput ~ .focus-border {
+      width: 80%;
+      transition: 0.4s;
+      left: 0;
+    }
+
+    input ~ label {
+      position: absolute;
+      left: 0;
+      top: 13px;
+      color: Black;
+      transition: 0.3s;
+      letter-spacing: 0.5px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    input:focus ~ label,
+    .has-contentinput ~ label {
+      top: -16px;
+      font-size: 12px;
+      color: $specialred;
+      transition: 0.3s;
+    }
+    input:focus::after,
+    .has-contentinput ~ label::after {
+      display: none;
+    }
+  }
+  // input {
+  //   border: none;
+  //   outline: none;
+  //   background: none;
+  //   border-bottom: 1px solid $specialgray;
+  //   width: 125px;
+  //   margin-right: 30px;
+  // }
+
+  // input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  //   color: black;
+  //   font-size: 11px;
+  //   font-family: $mapsfont;
+
+  // }
+  // input::-moz-placeholder { /* Firefox 19+ */
+  //   color: black;
+  //   font-size: 11px;
+  //   font-family: $mapsfont;
+
+  // }
+  // input:-ms-input-placeholder { /* IE 10+ */
+  //   color: black;
+  //   font-size: 11px;
+  //   font-family: $mapsfont;
+
+  // }
+  // input:-moz-placeholder { /* Firefox 18- */
+  //   color: black;
+  //   font-size: 11px;
+  //   font-family: $mapsfont;
+
+  // }
+
+  button {
+    border: none;
+    cursor: pointer;
+    background-color: $specialblue;
     color: white;
-    border: 0;
-    border-bottom: 2px solid white;
-    background-color: transparent;
-    margin-right: 35px;
-  }
-
-  :focus {
+    // font-weight: bold;
+    font-size: 14px;
+    font-family: $mapsfont;
+    padding: 5px;
+    border-radius: 5px;
+    width: 80px;
+    height: 80%;
     outline: none;
-    border-bottom: 2px solid black;
   }
+}
 
-  input::-webkit-input-placeholder {
-    color: white;
-  }
-  input::-moz-placeholder {
-    color: white;
-  }
-  input:-ms-input-placeholder {
-    color: white;
-  }
-  input:-moz-placeholder {
-    color: white;
-  }
+.signup {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 50px;
 
-  input:focus::-webkit-input-placeholder {
-    color: black;
-  }
-  input:focus::-moz-placeholder {
-    color: black;
-  }
-  input:focus:-ms-input-placeholder {
-    color: black;
-  }
-  input:focus:-moz-placeholder {
-    color: black;
+  h5 {
+    margin-right: 30px;
   }
 
   button {
     border: none;
     cursor: pointer;
-    color: black;
-    font-weight: bold;
+    background-color: $specialblue;
+    color: white;
+    // font-weight: bold;
     font-size: 14px;
-    padding: 5px;
     font-family: $mapsfont;
+    padding: 5px;
     border-radius: 5px;
     width: 80px;
-    outline-color: #db5f3c;
-    text-align: center;
-  }
-
-  .signup {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: 50px;
-    color: white;
-
-    h5 {
-      margin-right: 30px;
-    }
-  }
-
-  .signup-modal {
-    margin: 0 auto;
-    width: 25%;
-    z-index: 3;
-    box-shadow: 0px 2px 5px 2px #3f3f3f;
-
-    .signup-container {
-      background: $specialgray;
-      padding: 10px;
-    }
+    outline: none;
   }
 }

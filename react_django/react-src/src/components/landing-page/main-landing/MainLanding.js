@@ -1,12 +1,12 @@
 // Main landing page for signing in and registering, will redirect to landing page of respective account
 
 import React, { Component } from "react";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../../actions";
-import logo from "./mainatlas.PNG";
+import logo from "./lambdamainlogo.PNG";
 import "./MainLanding.css";
-import SignUp from "../Sign-up/SignUp";
-import LandingMap from "../../miniMap/landingMap/LandingMap";
 
 class MainLanding extends Component {
   constructor(props) {
@@ -14,88 +14,93 @@ class MainLanding extends Component {
     this.state = {
       email: "",
       password: "",
-      loggedin: false,
-      modal: false
+      loggedin: false
     };
   }
-  
-  render() {
-    let modal = null;
-    if (this.state.modal === true) {
-      modal = (
-        <div className="signup-modal">
-          <div className="signup-container">
-            <SignUp/>
-          </div>
-        </div>
-      );
+
+  checkAuth = () => {
+    let jwt = sessionStorage.getItem("jwt");
+    if (jwt.length > 0) {
+      this.setState({ loggedin: true });
     }
+  };
+
+  render() {
+    let redirecting = null;
+    if (this.state.loggedin) {
+      if (this.props.clients.user !== undefined) {
+        if (this.props.clients.user.account_type === false) {
+          redirecting = <Redirect to="/jslanding/" />;
+        }
+      } else {
+        if (this.props.hirePartner.user.account_type) {
+          redirecting = <Redirect to="/hplanding/" />;
+        }
+      }
+    }
+
     return (
-      <div className="main-landing">
-      <LandingMap />
+      <div className="main">
         <div className="signin">
           <div>
-            <div className="signin-form">
+            <div className="signin-form input-effect">
               <input
                 className="emailInput"
-                id="emailInput"
                 type="text"
-                placeholder="E-mail"
+                placeholder=""
                 name="email"
                 value={this.state.email}
                 onChange={e =>
                   this.setState({ [e.target.name]: e.target.value })
                 }
               />
+              <label>E-mail</label>
+              <span className="focus-border" />
             </div>
           </div>
           <div>
-            <div className="signpwd-form">
+            <div className="signpwd-form input-effect">
               <input
                 className="pwdInput"
-                id="pwdInput"
                 type="password"
-                placeholder="Password"
+                placeholder=""
                 name="password"
+                className="input"
                 value={this.state.password}
                 onChange={e =>
                   this.setState({ [e.target.name]: e.target.value })
                 }
               />
+              <label>Password</label>
+              <span className="focus-border" />
             </div>
           </div>
-          <button id="myBtn"
+          <button
             onClick={() => {
-              this.props.login(
-                {
-                  email: this.state.email,
-                  password: this.state.password
-                },
-                this.props.history
-              );
-
+              this.props.login({
+                email: this.state.email,
+                password: this.state.password
+              });
+              setTimeout(() => {
+                this.checkAuth();
+              }, 2000);
               this.setState({ email: "", password: "" });
             }}
           >
             Sign In
           </button>
         </div>
+
+        {redirecting}
         <div className="signup">
           <h5>Not a member?</h5>
-
-          <button
-            onClick={() => {
-              this.setState({ modal: !this.state.modal });
-            }}
-          >
-            Sign Up
-          </button>
+          <Link to="/signup/">
+            <button>Sign Up</button>
+          </Link>
         </div>
-        <div className="logo">
+        <div>
           <img src={logo} className="HP" alt="Hire Partner" />
         </div>
-
-        <div>{modal}</div>
       </div>
     );
   }

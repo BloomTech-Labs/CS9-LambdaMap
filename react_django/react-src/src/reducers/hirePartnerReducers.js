@@ -5,10 +5,8 @@ import * as actions from "../actions/actionTypes";
 const initialState = {
   hiring_partners: [],
   hp_favorites: [],
-  HP: {},
   fetchingHPfavs: false,
   fetchingHPs: false,
-  fetchingHP: false,
   // updating: false,
   registering: false,
   loggingIn: false,
@@ -53,30 +51,6 @@ const hirePartner = (state = initialState, action) => {
       return Object.assign({}, state, {
         hp_favorites: [...action.payload],
         fetchingHPFavs: false,
-        error: null
-      });
-    case actions.FETCH_SUBSCRIBE:
-      return Object.assign({}, state, {
-        fetchingSubscribe: true,
-        error: null
-      });
-
-    case actions.FETCHED_SUBSCRIBE:
-      return Object.assign({}, state, {
-        updatedEndDate:action.response.data,
-        fetchingSubscribe: false,
-        error: null
-      });
-    //Fetching individual HP
-    case actions.FETCH_HP:
-      return Object.assign({}, state, {
-        fetchingHp: true
-      });
-
-    case actions.FETCHED_HP:
-      return Object.assign({}, state, {
-        HP: action.payload,
-        fetchingHp: false,
         error: null
       });
 
