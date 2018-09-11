@@ -1,9 +1,7 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from datetime import date
-from django.utils import timezone
-from django_mysql.models import ListTextField
+
 
 
 class Users(models.Model):
@@ -18,7 +16,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
-    portfolio_picture = models.URLField(default='', blank=True)
+    portfolio_picture = models.ImageField(default='/media/images/defaultuser.png', upload_to='media/images/', blank=True)
 
 
 class Clients(Users):
@@ -31,11 +29,6 @@ class Clients(Users):
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-    portfolio_picture = models.URLField(default='', blank=True)
-    favorites = ListTextField(
-      base_field=models.CharField(max_length=20,blank=True),
-      default=list,
-    )
 
 
     def to_dict(self):
