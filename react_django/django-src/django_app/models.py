@@ -3,6 +3,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from datetime import date
 from django.utils import timezone
+from django_mysql.models import ListTextField
 
 
 class Users(models.Model):
@@ -30,6 +31,10 @@ class Clients(Users):
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
     portfolio_picture = models.URLField(default='', blank=True)
+    favorites = ListTextField(
+      base_field=models.CharField(max_length=20,blank=True),
+      default=list,
+    )
 
     def to_dict(self):
         return {
@@ -51,7 +56,8 @@ class Clients(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng
+            "lng": self.lng,
+            "favorites": self.favorites
         }
 
 
@@ -87,7 +93,17 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-    # clients = models.ManyToManyField(Clients) <-- this was causing an issue because it was making it a required field, we can't add a listing unless it's linked to a client with this active
+
+    def to_dict(self):
+        return {
+            "ID": self.id,
+            "hp_id":self.hp_id.to_dict(),
+            "job_title":self.job_title,
+            "job_desc":self.job_desc,
+            "job_link":self.job_link,
+            "remote_job":self.remote_job,
+            "posted_time":self.posted_time
+        }
 
 
 class Session(models.Model):
