@@ -70,7 +70,7 @@ export default class StudentSettings extends Component {
             <hr></hr>
               <div className="update-contact">
                 <h3>
-                  E-mail: <input 
+                  E-mail: <input
                   type="text"
                   placeholder= "Email"
                   value={this.state.email}
@@ -113,37 +113,37 @@ export default class StudentSettings extends Component {
               <h2>Profile Information</h2>
               <hr></hr>
               <div className="listing-input">
-                <input 
+                <input
                  name= "city"
                  type="text"
                  value={this.state.city}
                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
                  placeholder="City" />
-                <input 
+                <input
                   name= "state"
                   type="text"
                   value={this.state.state}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="State" />
-                <input 
+                <input
                   name= "profession"
                   type="text"
                   value={this.state.profession}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Job Title" />
-                <input 
+                <input
                   name= "about"
                   type="text"
                   value={this.state.about}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="BIO" />
-                <input 
+                <input
                   name= "linkedin"
                   type="text"
                   value={this.state.linkedin}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                   placeholder="LinkedIn Profile Link" />
-                <input 
+                <input
                   name= "codepen"
                   type="text"
                   value={this.state.codepen}
@@ -159,9 +159,9 @@ export default class StudentSettings extends Component {
                   name= "website"
                   type="text"
                   value={this.state.website}
-                  onChange={e => this.setState({ [e.target.name]: e.target.value })}                
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Portfolio Website Link" />
-                <input 
+                <input
                   name= "twitter"
                   type="text"
                   value={this.state.twitter}
@@ -173,10 +173,6 @@ export default class StudentSettings extends Component {
               <button onClick={this.submit} className="post-button">Post</button>
             </div>
           </div>
-      </div>
-      <Link to="/jsmap">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     )
   }
