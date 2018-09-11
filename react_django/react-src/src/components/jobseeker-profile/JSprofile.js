@@ -1,10 +1,13 @@
 // Hiring Partner View of individual job seeker profile
-import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import "./JSprofile.css";
-import defaultuser from "./defaultuser.svg";
+import defaultuser from "./default-user.png";
+import HPnav from "../nav/company/HPnav";
+import Messenger from "../messenger/Messenger";
+import HpMiniMap from "../miniMap/HpMiniMap/HpMiniMap";
+import { get_client, signout } from "../../actions";
+import { connect } from "react-redux";
 import {
-  FaSquare,
   FaTwitter,
   FaLinkedin,
   FaGithub,
@@ -12,11 +15,9 @@ import {
   FaFile,
   FaDesktop,
   FaEnvelope,
-  FaPhoneSquare
+  FaPhoneSquare,
+  FaCheckSquare
 } from "react-icons/fa";
-import HPnav from "../nav/company/HPnav";
-import { get_client } from "../../actions";
-import { connect } from "react-redux";
 
 class JSprofile extends Component {
   constructor(props) {
@@ -32,93 +33,111 @@ class JSprofile extends Component {
   };
 
   render() {
+    let remoteWork = null
+    let relocating = null
+    if (this.props.clients.client.remote === true) {
+      remoteWork = ( 
+      
+         <p><FaCheckSquare className="contactIcons" />Open to remote work</p>
+        
+      )
+    } else if (this.props.clients.client.relocate === true) {
+      relocating = ( 
+        
+          <p><FaCheckSquare className="contactIcons"/>Open to relocating</p>
+      )
+    }
     return (
       <div className="main">
         <HPnav />
+        <HpMiniMap />
+        <Messenger />
         <div className="signout">
-          <div className="backgroundskew" />
-          <button className="signoutbutton">Sign Out</button>
-        </div>
-        <div className="jsprofile-container">
-          <div className="contact">
-            <a className="emailcontact">
-              <FaEnvelope className="contactIcons" />
-              {this.props.clients.client.email}
+            <button
+              className="signoutbutton"
+              onClick={() => {
+                this.props.signout(this.props.history);
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
+        <div className="main-container">
+          <div className="sidebyside">
+            <div className="jsprofile-container">
+              <div className="pic-bg">
+                <img src={defaultuser} alt="jspic" />
+                <h1>
+                  {this.props.clients.client.first_name} {this.props.clients.client.last_name}
+                </h1>
+                <h3>
+                  {this.props.clients.client.city}, {this.props.clients.client.state}
+                </h3>
+              </div>
+            </div>
+            <div className="info-container">
+              <div className="jsprofile-contact">
+                <p>
+                  <FaEnvelope className="contactIcons" />
+                  {this.props.clients.client.email}
+                </p>
+                <p>
+                  <FaPhoneSquare className="contactIcons" />
+                  {this.props.clients.client.phone}
+                </p>
+                {remoteWork}
+                {relocating}
+                <h2>{this.props.clients.client.profession}</h2>
+              </div>
+              <div className="jsprofile-about">
+                <p>{this.props.clients.client.about}</p>
+              </div>
+            </div>
+          </div>
+          <div className="socialmedia">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={this.props.clients.client.twitter}
+            >
+              <FaTwitter className="smIcons" />
             </a>
-            <a className="phonecontact">
-              <FaPhoneSquare className="contactIcons" />
-              {this.props.clients.client.phone}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={this.props.clients.client.linkedin}
+            >
+              <FaLinkedin className="smIcons" />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={this.props.clients.client.github}
+            >
+              <FaGithub className="smIcons" />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={this.props.clients.client.codepen}
+            >
+              <FaCodepen className="smIcons" />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.google.com"
+            >
+              <FaFile className="smIcons" />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.google.com"
+            >
+              <FaDesktop className="smIcons" />
             </a>
           </div>
-          <div className="JSinfo">
-            <p className="JSname">
-              {this.props.clients.client.first_name}
-              {this.props.clients.client.last_name}
-            </p>
-            <p className="JSlocation">
-              {this.props.clients.client.city}
-              {this.props.clients.client.state}
-            </p>
-          </div>
-          <div className="profilepic">
-            <img src={defaultuser} className="JSprofilepic" alt="Job Seeker" />
-          </div>
-        </div>
-        <hr />
-        <div className="JSoptions">
-          <p className="remote">
-            <FaSquare className="optionbox2" /> Open to remote
-          </p>
-          <p className="relocate">
-            <FaSquare className="optionbox" /> Open to relocate
-          </p>
-        </div>
-        <div className="JSbio">
-          <p>{this.props.clients.client.about}</p>
-        </div>
-        <div className="socialmedia">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={this.props.clients.client.twitter}
-          >
-            <FaTwitter className="smIcons" />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={this.props.clients.client.linkedin}
-          >
-            <FaLinkedin className="smIcons" />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={this.props.clients.client.github}
-          >
-            <FaGithub className="smIcons" />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={this.props.clients.client.codepen}
-          >
-            <FaCodepen className="smIcons" />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.google.com"
-          >
-            <FaFile className="smIcons" />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.google.com"
-          >
-            <FaDesktop className="smIcons" />
-          </a>
         </div>
       </div>
     );
@@ -135,4 +154,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, { get_client })(JSprofile);
+export default connect(
+  mapStateToProps,
+  { get_client, signout }
+)(JSprofile);

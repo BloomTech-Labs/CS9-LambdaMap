@@ -108,9 +108,9 @@ def update(request):
                 user = Hire_Partners.objects.get(id=session_obj.object_id)
             for x in request_body:
                 if x == 'password':
-                    user.__setattr__(x, encrypt_password(request_body[X]))
+                    user.__setattr__(x, encrypt_password(request_body[x]))
                 else:
-                    user.__setattr__(x, request_body[X])
+                    user.__setattr__(x, request_body[x])
             user.save()
             del user._state
             return JsonResponse(user.__dict__, status=200)
@@ -224,7 +224,7 @@ def get_hp(request):
             regex = re.compile('/api/hp/(\d+)/', re.MULTILINE)
             hp = Hire_Partners.objects.get(id=regex.search(request.META['PATH_INFO']).group(1)).to_dict()
             hp['job_listings'] = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=hp['ID'])))
-            return JsonResponse({"Hire Partner": hp})
+            return JsonResponse({"Hire_Partner": hp})
         except Clients.DoesNotExist as e:
             return JsonResponse({"Error":e})
     else:

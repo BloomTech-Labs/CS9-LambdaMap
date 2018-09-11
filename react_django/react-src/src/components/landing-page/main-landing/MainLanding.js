@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { login } from "../../../actions";
 import logo from "./mainatlas.PNG";
 import "./MainLanding.css";
-import SignUp from "../Sign-up/SignUp"
+import SignUp from "../Sign-up/SignUp";
+import LandingMap from "../../miniMap/landingMap/LandingMap";
 
 class MainLanding extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class MainLanding extends Component {
       modal: false
     };
   }
+  
   render() {
     let modal = null;
     if (this.state.modal === true) {
@@ -30,11 +32,13 @@ class MainLanding extends Component {
     }
     return (
       <div className="main-landing">
+      <LandingMap />
         <div className="signin">
           <div>
             <div className="signin-form">
               <input
                 className="emailInput"
+                id="emailInput"
                 type="text"
                 placeholder="E-mail"
                 name="email"
@@ -49,6 +53,7 @@ class MainLanding extends Component {
             <div className="signpwd-form">
               <input
                 className="pwdInput"
+                id="pwdInput"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -59,7 +64,7 @@ class MainLanding extends Component {
               />
             </div>
           </div>
-          <button
+          <button id="myBtn"
             onClick={() => {
               this.props.login(
                 {
@@ -89,6 +94,7 @@ class MainLanding extends Component {
         <div className="logo">
           <img src={logo} className="HP" alt="Hire Partner" />
         </div>
+
         <div>{modal}</div>
       </div>
     );
