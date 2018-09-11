@@ -1,13 +1,36 @@
-// still in progress
 import axios from "axios";
 import * as actions from "./actionTypes";
-// const SERVER_URL = "https://lambda-map.herokuapp.com";
+// import { withRouter } from 'react-router';
+//  const SERVER_URL = "https://lambda-map.herokuapp.com";
 const SERVER_URL = "http://127.0.0.1:8000";
 
-export const login = data => {
-  const token = window.sessionStorage.getItem("token") || null;
-  const config = { headers: { jwt: `${token}`, 'access-control-allow-origin': '*' } };
-  console.log("About to make a login request to this domain: ", SERVER_URL);
+export const subscribe = (data) =>{
+  const response = axios.post(`${SERVER_URL}/api/subscribe`,data);
+  return dispatch => {
+    dispatch({
+      type: actions.FETCH_SUBSCRIBE
+    });
+    return new Promise(function(resolve, reject){
+      response.then(res=>{
+        dispatch({
+          type:actions.FETCHED_SUBSCRIBE,
+          response:res
+        });
+        resolve(res.data)
+      })
+      .catch(err=>{
+        reject('error subscribing')
+      });
+    });
+  }
+}
+
+export const login = (data, history) => {
+  const token = window.sessionStorage.getItem("jwt") || null;
+  const config = {
+    headers: { jwt: `${token}`, "Access-Control-Allow-Origin": "*" }
+  };
+  // console.log("About to make a login request to this domain: ", SERVER_URL);
   const user = axios.post(`${SERVER_URL}/api/login/`, data, config);
   return dispatch => {
     dispatch({
@@ -22,6 +45,7 @@ export const login = data => {
             type: actions.LOGGEDIN_CLIENT,
             payload: response.data
           });
+          history.push("/jslanding/");
         } else if (response.data.account_type === true) {
           window.sessionStorage.setItem("jwt", response.headers.jwt);
           window.localStorage.setItem("jwt", JSON.stringify(response.data));
@@ -29,6 +53,7 @@ export const login = data => {
             type: actions.LOGGEDIN_HPS,
             payload: response.data
           });
+          history.push("/hplanding/");
         }
       })
       .catch(err => {
@@ -41,7 +66,7 @@ export const login = data => {
 };
 
 export const register = data => {
-  const config = {headers: {'Access-Control-Allow-Origin': '*'}}
+  const config = { headers: { "Access-Control-Allow-Origin": "*" } };
   const user = axios.post(`${SERVER_URL}/api/register/`, data, config);
   return dispatch => {
     dispatch({
@@ -70,20 +95,18 @@ export const register = data => {
   };
 };
 
-export const signout = () => {
-  const token = window.sessionStorage.getItem("token") || null;
+export const signout = history => {
+  const token = window.sessionStorage.getItem("jwt") || null;
   const config = { headers: { jwt: `${token}` } };
-  const user = axios.get(`${SERVER_URL}/api/log-out/`, config);
+  const user = axios.get(`${SERVER_URL}/api/logout/`, config);
   return dispatch => {
-    dispatch({
-      type: actions.SIGNOUT
-    });
     user
       .then(response => {
-        window.sessionStorage.removeItem("token");
+        window.sessionStorage.removeItem("jwt");
+        history.push("/");
         dispatch({
           type: actions.SIGNOUT,
-          payload: response.data
+          payload: ("User signed out", response.data)
         });
       })
       .catch(err => {
@@ -116,9 +139,7 @@ export const get_clients = () => {
 };
 
 export const get_hpFavs = () => {
-  const clients = axios.get(
-    `${SERVER_URL}/api/hire-partner-favorites/`
-  );
+  const clients = axios.get(`${SERVER_URL}/api/hire-partner-favorites/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_HPFAVORITES });
     clients
@@ -198,7 +219,7 @@ export const get_listings = () => {
 };
 
 export const get_client = ID => {
-  const client = axios.get(`${SERVER_URL}/api/clients/${ID}/`);
+  const client = axios.get(`${SERVER_URL}/api/client/${ID}/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_CLIENT });
     client
@@ -217,36 +238,27 @@ export const get_client = ID => {
   };
 };
 
-// export const update = data => {
-//   const token = window.sessionStorage.getItem("token") || null;
-//   const config = { headers: { jwt: `${token}` } };
-//   const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
-//   return dispatch => {
-//     dispatch({
-//       type: actions.UPDATE
-//     });
-//     user
-//       .then(response => {
-//         if (response.data.account_type === false) {
-//           dispatch({
-//             type: actions.UPDATED_CLIENT,
-//             payload: response.data
-//           });
-//         } else if (response.data.account_type === true) {
-//           dispatch({
-//             type: actions.UPDATED_HPS,
-//             payload: response.data
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         dispatch({
-//           type: actions.ERROR_UPDATING,
-//           payload: ("ERROR logging in", err)
-//         });
-//       });
-//   };
-// };
+export const create_listing = id => {
+  const job_listing = axios.post(`${SERVER_URL}/api/create-listing/`, id);
+  return dispatch => {
+    dispatch({
+      type: actions.CREATE_LISTING
+    });
+    job_listing
+      .then(response => {
+        dispatch({
+          type: actions.CREATED_LISTING,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch({
+          type: actions.ERROR_CREATINGJOB,
+          payload: ("ERROR creating job listing", err)
+        });
+      });
+  };
+};
 
 export const delete_listing = id => {
   const job_listing = axios.delete(`${SERVER_URL}/api/delete-listing/${id}`);

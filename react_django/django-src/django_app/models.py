@@ -7,7 +7,7 @@ from django.db import models
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=20, default='')
+    password = models.CharField(max_length=100, default='')
     city = models.CharField(max_length=50, blank=True, default='')
     state = models.CharField(max_length=50, blank=True, default='')
     personal_website = models.URLField(blank=True, default='')
@@ -16,7 +16,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
-    portfolio_picture = models.ImageField(default='/media/images/defaultuser.png', upload_to='media/images/', blank=True)
+    portfolio_picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
 
 
 class Clients(Users):

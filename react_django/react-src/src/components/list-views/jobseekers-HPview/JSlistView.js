@@ -19,7 +19,7 @@ import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
-import compass from "../../compass.png";
+import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
 
 class JSlistView extends Component {
   constructor(props) {
@@ -34,10 +34,11 @@ class JSlistView extends Component {
   };
 
   render() {
-    console.log(this.state.clients)
+    console.log(this.state.clients);
     return (
       <div className="main-JSlist">
         <HPnav />
+        <HpMiniMap />
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />
@@ -184,9 +185,6 @@ class JSlistView extends Component {
             </div>
           </div>
         </div>
-        <Link to="/hpmap">
-          <img src={compass} alt="compass" className="compass" />{" "}
-        </Link>
       </div>
     );
   }
@@ -200,4 +198,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect( mapStateToProps, { get_clients })(JSlistView);
+export default connect(
+  mapStateToProps,
+  { get_clients }
+)(JSlistView);

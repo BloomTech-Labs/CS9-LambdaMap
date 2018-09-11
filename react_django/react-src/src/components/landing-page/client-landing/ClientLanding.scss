@@ -1,70 +1,218 @@
 @import "imports";
 
 .client {
+  background: #e1f5ff;
+  height: 100vh;
+  font-family: $landingfont;
 
-  .signout {
-    display: flex;
-    justify-content: flex-end;
+  .landing-container {
+    .signout {
+      display: flex;
+      justify-content: flex-end;
 
-    button {
-      margin-right: 100px;
-      margin-top: 50px;
-      cursor: pointer;
-      outline: none;
-      border: none;
-      background: none;
-      font: 0.8em $lambdafont;
-      font-weight: bolder;
-      color: $specialred;
-      letter-spacing: 2.5px;
+      button {
+        margin-right: 100px;
+        margin-top: 50px;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: none;
+        font: 0.8em $lambdafont;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
     }
-
-    button:active {
-      color: black;
-    }
-  }
-
-  .client-container {
-    display: flex;
-    margin: 0 auto;
 
     .welcome-container {
       display: flex;
-      flex-direction: column;
-      width: 50%;
-      margin: 0 auto;
 
-      .feat-job {
-        background-color: #81a3b4;
-        margin: 0 auto;
-        width: 50%;
-        padding: 15px;
-
-        p {
-          margin: 5px auto;
-          // width: 30%;
-        }
-        .jobtitle {
-          font: 2em $mapsfont;
-        }
-        .job {
-          font: .8em $mapsfont;
-        }
-        img {
-          height: 100px;
-        }
+      .profile-marker {
+        position: absolute;
+        width: 100px;
+        left: 8%;
+        -webkit-filter: drop-shadow(5px 1px 2px #3a3a3a);
+        filter: drop-shadow(6px 1px 2px #3a3a3a);
       }
 
       .mark {
-        border-radius: 50%;
-        height: 100px;
-        width: 100px;
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        top: 75px;
+        left: 8.5%;
+        z-index: 1;
+        border: 0.5px solid #db5f3c;
+        border-radius: 100%;
+        background-color: #db5f3c;
+      }
+
+      h1 {
+        position: absolute;
+        left: 14%;
+        top: 150px;
+        font-size: 1.5em;
       }
     }
-  }
 
-  .twitter {
-    margin-top: 125px;
-    margin-right: 75px;
+    .feat-job {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 275px auto 145px;
+      width: 400px;
+
+      .list-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .pinit {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .orange {
+          font-size: 2em;
+          color: #db5f3c;
+          cursor: pointer;
+        }
+
+        .black {
+          font-size: 2em;
+          cursor: pointer;
+        }
+
+        h3 {
+          margin: 0px 50px 0px 0px;
+        }
+
+        h5 {
+          margin: 0px 5px 0px 5px;
+          font-weight: bold;
+        }
+
+        p {
+          text-align: start;
+          margin: 5px 0px 0px 0px;
+          font-size: 12px;
+          white-space: nowrap;
+          width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .post-time {
+          display: flex;
+          align-items: center;
+          font-size: 11px;
+
+          .post-clock {
+            margin-right: 3px;
+          }
+        }
+      }
+    }
+
+    .corner-map {
+      position: absolute;
+      width: 12.5%;
+      right: 100px;
+      bottom: 80px;
+    }
+
+    .pinned-jobs::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .pinned-jobs::-webkit-scrollbar-thumb:horizontal {
+      border-radius: 10px;
+      height: 10px;
+      background-color: #707070;
+      box-shadow: inset 0 0 5px black;
+    }
+
+    .pinned-jobs {
+      width: 50%;
+      background-color: #d4d4d4;
+      margin-left: 150px;
+      display: flex;
+      padding: 50px 0;
+      overflow: auto;
+      border-radius: 10px;
+
+      .pinned-container {
+        display: flex;
+        flex-direction: row;
+
+        .pinned-listing {
+          display: flex;
+          align-items: center;
+          width: 410px;
+          margin-right: 10px;
+
+          .list-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .pinit {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+            }
+
+            .pin-icon {
+              font-size: 2em;
+              color: #db5f3c;
+              cursor: pointer;
+            }
+
+            h3 {
+              margin: 0px 50px 0px 0px;
+            }
+
+            h5 {
+              margin: 0px 5px 0px 5px;
+              font-weight: bold;
+            }
+
+            p {
+              text-align: start;
+              margin: 5px 0px 0px 0px;
+              font-size: 12px;
+              white-space: nowrap;
+              width: 200px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .post-time {
+              display: flex;
+              align-items: center;
+              margin-top: 10px;
+              font-size: 11px;
+
+              .post-clock {
+                margin-right: 3px;
+              }
+            }
+          }
+        }
+
+        .pinned-listing:after {
+          content: "";
+          display: block;
+          margin: auto 0;
+          height: 100%;
+          border-right: 1px solid black;
+        }
+      }
+    }
+    .pinned-title {
+      text-align: start;
+      margin-left: 160px;
+      margin-bottom: 0px;
+    }
   }
 }

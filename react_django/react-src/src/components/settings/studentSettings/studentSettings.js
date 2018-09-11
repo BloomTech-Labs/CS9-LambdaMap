@@ -1,15 +1,15 @@
 // Student view of settings page
 
-import React, { Component } from 'react';
-import './studentSettings.css';
-import JSnav from '../../nav/job-seeker/JSnav';
-import { Link } from "react-router-dom";
-import compass from "../../compass.png";
+import { signout, update } from "../../../actions/index";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./studentSettings.css";
+import JSnav from "../../nav/job-seeker/JSnav";
 import DragDrop from "../../Modals/dragDrop";
+import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 
-
-export default class StudentSettings extends Component {
-  constructor(){
+class StudentSettings extends Component {
+  constructor() {
     super();
     this.state = {
       profession: "",
@@ -47,30 +47,31 @@ export default class StudentSettings extends Component {
 
   renderDragDrop = e => {
     e.stopPropagation();
-    this.setState({'dragDrop': !this.state.dragDrop})
-  }
+    this.setState({ dragDrop: !this.state.dragDrop });
+  };
 
   render() {
     let modal;
-    if(this.state.dragDrop) {
-      modal = <DragDrop renderDragDrop={this.renderDragDrop}/>
+    if (this.state.dragDrop) {
+      modal = <DragDrop renderDragDrop={this.renderDragDrop} />;
     }
     return (
       <div className="settings-nav">
-      <JSnav />
-      {modal}
-      <div className="main-settings">
-        <div className="signout">
-          <button className="signoutbutton">Sign Out</button>
-        </div>
-        <header>Settings</header>
+        <JSnav />
+        <JsMiniMap />
+        {modal}
+        <div className="main-settings">
+          <div className="signout">
+            <button className="signoutbutton">Sign Out</button>
+          </div>
+          <header>Settings</header>
           <div className="settings-container">
-            <div className="info-update">
-            <h2>Update Contact Information</h2>
-            <hr></hr>
+            {/* <div className="info-update">
+              <h2>Update Contact Information</h2>
+              <hr />
               <div className="update-contact">
                 <h3>
-                  E-mail: <input
+                  E-mail: <input 
                   type="text"
                   placeholder= "Email"
                   value={this.state.email}
@@ -85,65 +86,64 @@ export default class StudentSettings extends Component {
                 </h3>
               </div>
 
-                  <label className="switch">
-                  <input type="checkbox"></input>
-                  <span className="slider round"></span>
-                  </label>
-                  <a className="opt-email">E-mail</a>
-
-                  <label className="switch">
-                  <input type="checkbox"></input>
-                  <span className="slider round"></span>
-                  </label>
-                  <a className="opt-text">Text</a>
-                  </div>
-
               <div className="update-password">
                 <h2>Update Password</h2>
-                <hr></hr>
+                <hr />
                 <div className="update-pswd">
-                <h3>Old Password: <input></input></h3>
-                <h3 className="new-pswd">New Password: <input></input></h3>
+                  <h3>
+                    Old Password: <input
+                       type="text"
+                       placeholder="Password"
+                       value={this.state.oldpassword}
+                    />
+                  </h3>
+                  <h3 className="new-pswd">
+                    New Password: <input 
+                       type="text"
+                       placeholder="New Password"
+                       value={this.state.newpassword}
+                    />
+                  </h3>
                 </div>
               </div>
               <button className="save-button">Save</button>
-            </div>
+            </div> */}
 
             <div className="new-joblisting">
               <h2>Profile Information</h2>
-              <hr></hr>
+              <hr />
               <div className="listing-input">
-                <input
+                <input 
                  name= "city"
                  type="text"
                  value={this.state.city}
                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
                  placeholder="City" />
-                <input
+                <input 
                   name= "state"
                   type="text"
                   value={this.state.state}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="State" />
-                <input
+                <input 
                   name= "profession"
                   type="text"
                   value={this.state.profession}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Job Title" />
-                <input
+                <input 
                   name= "about"
                   type="text"
                   value={this.state.about}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="BIO" />
-                <input
+                <input 
                   name= "linkedin"
                   type="text"
                   value={this.state.linkedin}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                   placeholder="LinkedIn Profile Link" />
-                <input
+                <input 
                   name= "codepen"
                   type="text"
                   value={this.state.codepen}
@@ -159,21 +159,41 @@ export default class StudentSettings extends Component {
                   name= "website"
                   type="text"
                   value={this.state.website}
-                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}                
                 placeholder="Portfolio Website Link" />
-                <input
+                <input 
                   name= "twitter"
                   type="text"
                   value={this.state.twitter}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Twitter Link" />
                 <button className="post-button-2">Upload Resume PDF</button>
-                <button className="post-button-2" onClick={(e) => {this.renderDragDrop(e)}}>Upload Profile Picutre</button>
+                <button
+                  className="post-button-2"
+                  onClick={e => {
+                    this.renderDragDrop(e);
+                  }}
+                >
+                  Upload Profile Picutre
+                </button>
               </div>
               <button onClick={this.submit} className="post-button">Post</button>
             </div>
           </div>
+        </div>
       </div>
-    )
+    );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    clients: state.clients,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { signout, update }
+)(StudentSettings);
