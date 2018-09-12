@@ -39,21 +39,13 @@ class ClientLanding extends Component {
     let user = JSON.parse(localStorage.getItem("user"));
     let companyListing = null;
     let favoritesListing = null;
-    let favoritesListing2 = null;
-    let favoritesListing3 = null;
-    let favoritesListing4 = null;
     var randomCompany = this.props.jobListing.job_listings[
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
     var randomCompany2 = this.props.jobListing.job_listings[
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
-    var randomCompany3 = this.props.jobListing.job_listings[
-      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
-    ];
-    var randomCompany4 = this.props.jobListing.job_listings[
-      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
-    ];
+
     if (randomCompany) {
       companyListing = (
         <div className="feat-job">
@@ -67,7 +59,7 @@ class ClientLanding extends Component {
               <TiPin className={this.state.color} onClick={this.favorited} />
             </div>
             <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
-            <p>{randomCompany.jobListings[0].job_desc}</p>
+            <p className="job-desc">{randomCompany.jobListings[0].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />{" "}
               <Timestamp
@@ -80,7 +72,7 @@ class ClientLanding extends Component {
       );
     }
     if (randomCompany2) {
-      favoritesListing2 = (
+      favoritesListing = (
         <div className="pinned-listing">
           <img src={amazon} alt="company" />
           <div className="list-info">
@@ -88,12 +80,12 @@ class ClientLanding extends Component {
               <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
               <TiPin className="pin-icon" />
             </div>
-              <h5 className="job">{randomCompany.jobListings[1].job_title}</h5>
-            <p>{randomCompany.jobListings[1].job_desc}</p>
+              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <p>{randomCompany.jobListings[0].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />
               <Timestamp
-                time={randomCompany.jobListings[1].posted_time}
+                time={randomCompany.jobListings[0].posted_time}
                 actualSeconds
               />
             </p>
@@ -101,50 +93,7 @@ class ClientLanding extends Component {
         </div>
       );
     }
-    if (randomCompany3) {
-      favoritesListing3 = (
-        <div className="pinned-listing">
-          <img src={amazon} alt="company" />
-          <div className="list-info">
-            <div className="pinit">
-              <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
-              <TiPin className="pin-icon" />
-            </div>
-              <h5 className="job">{randomCompany.jobListings[2].job_title}</h5>
-            <p>{randomCompany.jobListings[2].job_desc}</p>
-            <p className="post-time">
-              <GoClock className="post-clock" />
-              <Timestamp
-                time={randomCompany.jobListings[2].posted_time}
-                actualSeconds
-              />
-            </p>
-          </div>
-        </div>
-      );
-    }
-    if (randomCompany4) {
-      favoritesListing4 = (
-        <div className="pinned-listing">
-          <img src={amazon} alt="company" />
-          <div className="list-info">
-            <div className="pinit">
-              <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
-              <TiPin className="pin-icon" />
-            </div>
-              <h5 className="job">{randomCompany.jobListings[3].job_title}</h5>
-            <p>{randomCompany.jobListings[3].job_desc}</p>
-            <p className="post-time">
-              <GoClock className="post-clock" />
-              <Timestamp
-                time={randomCompany.jobListings[3].posted_time}
-                actualSeconds
-              />
-            </p>
-          </div>
-        </div>
-      );
-    }
+
     return (
       <div className="client">
         <JSnav />
@@ -172,9 +121,6 @@ class ClientLanding extends Component {
           <div className="pinned-jobs">
             <div className="pinned-container">
               {favoritesListing}
-              {favoritesListing2}
-              {favoritesListing3}
-              {favoritesListing4}
             </div>
           </div>
         </div>

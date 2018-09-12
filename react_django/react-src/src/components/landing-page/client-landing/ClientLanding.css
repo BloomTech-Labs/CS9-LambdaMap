@@ -65,15 +65,16 @@
         margin: 0px 5px 0px 5px;
         font-weight: bold; }
       .client .landing-container .feat-job .list-info p {
-        display: flex;
         text-align: start;
-        margin: 0px;
-        text-indent: 5%;
-        font-size: 12px; }
+        margin: 5px 0px 0px 0px;
+        font-size: 12px;
+        white-space: nowrap;
+        width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis; }
       .client .landing-container .feat-job .list-info .post-time {
         display: flex;
         align-items: center;
-        margin-top: 10px;
         font-size: 11px; }
         .client .landing-container .feat-job .list-info .post-time .post-clock {
           margin-right: 3px; }
@@ -123,11 +124,13 @@
             margin: 0px 5px 0px 5px;
             font-weight: bold; }
           .client .landing-container .pinned-jobs .pinned-container .pinned-listing .list-info p {
-            display: flex;
             text-align: start;
-            margin: 0px;
-            text-indent: 5%;
-            font-size: 12px; }
+            margin: 5px 0px 0px 0px;
+            font-size: 12px;
+            white-space: nowrap;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis; }
           .client .landing-container .pinned-jobs .pinned-container .pinned-listing .list-info .post-time {
             display: flex;
             align-items: center;

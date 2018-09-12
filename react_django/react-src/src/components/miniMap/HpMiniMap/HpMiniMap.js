@@ -26,7 +26,9 @@ class HpMiniMap extends Component {
     this.props.get_clients();
     this.props.get_listings();
   };
-  
+
+
+
   onMarkerClick = id => {
     this.props.clients.clients.filter(c => {
       if (c.ID === id) {
@@ -63,92 +65,11 @@ class HpMiniMap extends Component {
                 lng: -96.3301
               }}
               zoom={2}
-              disableDefaultUI={true}
               style={{
                 borderRadius: "500px",
                 boxShadow: "0px 0px 10px 0px black",
-                border: "4px solid #db5e3c",
+                border: "4px solid orange",
               }}
-              styles= {[
-                {
-                    "featureType": "administrative",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#444444"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 45
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#46bcec"
-                        },
-                        {
-                            "visibility": "on"
-                        }
-                    ]
-                }
-            ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (
@@ -162,7 +83,7 @@ class HpMiniMap extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(10, 15),
+                    scaledSize: new google.maps.Size(20, 20),
                     url: blue
                   }}
                 />
@@ -178,7 +99,7 @@ class HpMiniMap extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(12, 17),
+                    scaledSize: new google.maps.Size(20, 20),
                     url: orange
                   }}
                 />

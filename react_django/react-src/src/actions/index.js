@@ -1,8 +1,7 @@
-// still in progress
 import axios from "axios";
 import * as actions from "./actionTypes";
 // import { withRouter } from 'react-router';
-// const SERVER_URL = "https://lambda-map.herokuapp.com";
+//  const SERVER_URL = "https://lambda-map.herokuapp.com";
 const SERVER_URL = "http://127.0.0.1:8000";
 
 export const subscribe = (data) =>{

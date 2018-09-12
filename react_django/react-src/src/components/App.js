@@ -29,7 +29,7 @@ class App extends Component {
         <Route path="/jsmap/" component={JSMapView} />
         <Route path="/jobslist/" component={JobslistView} />
         <Route path="/jsview/:id/" component={JSviewJS} />  {/* <--- allows js to view other js profiles */}
-        <Route path="/hpprofile/:id/" component={HpProfileView} />
+        <Route path="/hpprofile/:id" component={HpProfileView} />
         <Route path="/jssettings/" component={studentSettings} />
         {/* <Route path="/jsfavorites/" component={} /> */}
         {/* <Route path="/jsmessages/" component={} /> */}
@@ -39,7 +39,7 @@ class App extends Component {
         <Route path="/hpmap/" component={HPMapView} />
         <Route path="/jobseekers/" component={JSlistView} />
         <Route path="/jsprofile/:id/" component={JSprofile} />
-        <Route path="/hpview/:id/" component={HPviewHP} />  {/* <--- allows hp to view other hp profiles */}
+        <Route path="/hpview/:id" component={HPviewHP} />  {/* <--- allows hp to view other hp profiles */}
         <Route path="/hpsettings/" component={HPsettings} />
         <Route path="/billing" component={Billing} />
         {/* <Route path="/hpfavorites/" component={} /> */}

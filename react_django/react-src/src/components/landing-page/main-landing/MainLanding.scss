@@ -35,11 +35,7 @@
     border-bottom: 2px solid white;
     background-color: transparent;
     margin-right: 35px;
-  }
-
-  :focus {
     outline: none;
-    border-bottom: 2px solid black;
   }
 
   input::-webkit-input-placeholder {
@@ -101,7 +97,7 @@
     box-shadow: 0px 2px 5px 2px #3f3f3f;
 
     .signup-container {
-      background: $specialgray;
+      background: #919191;
       padding: 10px;
     }
   }
