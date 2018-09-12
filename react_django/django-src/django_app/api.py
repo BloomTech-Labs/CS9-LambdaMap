@@ -7,7 +7,9 @@ from django.db import IntegrityError
 from django.core import serializers
 from urllib.request import urlopen
 import random
-import json, re
+import json
+import re
+import ssl
 
 
 def str_to_bool(str):
@@ -29,7 +31,7 @@ def register(request):
             else:
                 user.__setattr__(x, request_body[x])
         if user.city and user.state:
-            response = urlopen('https://maps.googleapis.com/maps/api/geocode/json?address='+user.city+','+user.state+'&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4')
+            response = urlopen(f'https://maps.googleapis.com/maps/api/geocode/json?address={user.city},{user.state}&key=AIzaSyAgToUna43JuFhMerOH1DO1kzgCOR7VWm4', context=ssl.SSLContext(ssl.PROTOCOL_TLSv1))
             string = response.read().decode('utf-8')
             response = json.loads(string)
             numberlat = random.uniform(-0.05, 0.05)
@@ -42,8 +44,8 @@ def register(request):
             user.lng = lng
         try:
             user.save()
-        except user.FieldError as err:
-            return JsonResponse({"Error": "Unable to register user."}, status=400)
+        except user.FieldError:
+            return JsonResponse({"Error": "incorrect data was added to one of the fields"}, status=400)
         return JsonResponse({}, status=201)
 
 
@@ -59,9 +61,7 @@ def login(request):
                 key=token
             )
             session.save()
-            del user._state
-            del user.password
-            response = JsonResponse(user.__dict__, status=200)
+            response = JsonResponse(user.to_dict(), status=200)
             response.__setitem__(header='jwt', value=token)
             return response
 
@@ -103,8 +103,7 @@ def update(request):
                 else:
                     user.__setattr__(x, request_body[x])
             user.save()
-            del user._state
-            return JsonResponse(user.__dict__, status=200)
+            return JsonResponse(user.to_dict(), status=200)
         else:
             Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii')).delete()
             return JsonResponse({"Error": "Expired Token"})
