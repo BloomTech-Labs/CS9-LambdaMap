@@ -83,6 +83,17 @@ class Job_Listing(models.Model):
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
 
+    def to_dict(self):
+        return {
+            "ID": self.id,
+            "hp_id":self.hp_id.to_dict(),
+            "job_title":self.job_title,
+            "job_desc":self.job_desc,
+            "job_link":self.job_link,
+            "remote_job":self.remote_job,
+            "posted_time":self.posted_time
+        }
+
 
 class Session(models.Model):
     key = models.CharField(max_length=100, default='')

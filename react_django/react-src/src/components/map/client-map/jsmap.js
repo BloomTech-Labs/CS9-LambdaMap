@@ -258,6 +258,7 @@ class JSMapView extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
+              disableDefaultUI={true}
               zoom={4}
               style={{
                 width: "100%",
