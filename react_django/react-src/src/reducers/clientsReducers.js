@@ -9,7 +9,7 @@ const initialState = {
   fetchingClientFavs: false,
   fetchingClients: false,
   fetchingClient: false,
-  // updatingClient: false,
+  updatingClient: false,
   loggingIn: false,
   error: null
 };
