@@ -12,7 +12,6 @@ export const REGISTERED_CLIENT = "REGISTERED_CLIENT";
 export const REGISTERED_HPS = "REGISTERED_HPS";
 export const UPDATE = "UPDATE";
 export const ERROR_UPDATING = "ERROR_UPDATING";
-// export const UPDATED_CLIENT = "UPDATED_CLIENT";
 export const UPDATED_HPS = "UPDATED_HPS";
 export const SIGNOUT = "SIGNOUT";
 export const UPDATE_HP = "UPDATE_HP";
