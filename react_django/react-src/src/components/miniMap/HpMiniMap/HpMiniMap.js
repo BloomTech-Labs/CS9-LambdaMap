@@ -163,7 +163,7 @@ class HpMiniMap extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
+                    scaledSize: new google.maps.Size(10, 15),
                     url: blue
                   }}
                 />

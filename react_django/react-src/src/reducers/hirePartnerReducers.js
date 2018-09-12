@@ -5,8 +5,10 @@ import * as actions from "../actions/actionTypes";
 const initialState = {
   hiring_partners: [],
   hp_favorites: [],
+  HP: {},
   fetchingHPfavs: false,
   fetchingHPs: false,
+  fetchingHP: false,
   // updating: false,
   registering: false,
   loggingIn: false,
@@ -54,6 +56,18 @@ const hirePartner = (state = initialState, action) => {
         error: null
       });
 
+    case actions.FETCH_HP:
+      return Object.assign({}, state, {
+        fetchingHp: true
+      });
+
+    case actions.FETCHED_HP:
+      return Object.assign({}, state, {
+        HP: action.payload,
+        fetchingHp: false,
+        error: null
+      });
+
     case actions.REGISTER:
       return Object.assign({}, state, {
         registering: true
@@ -66,17 +80,17 @@ const hirePartner = (state = initialState, action) => {
         error: null
       });
 
-    // case actions.UPDATE:
-    //   return Object.assign({}, state, {
-    //     updating: true
-    //   });
+    case actions.UPDATE:
+      return Object.assign({}, state, {
+        updating: true
+      });
 
-    // case actions.UPDATED_HPS:
-    //   return Object.assign({}, state, {
-    //     user: action.payload,
-    //     updating: false,
-    //     error: null
-    //   });
+    case actions.UPDATED_HPS:
+      return Object.assign({}, state, {
+        user: action.payload,
+        updating: false,
+        error: null
+      });
 
     case actions.SIGNOUT:
       return Object.assign({}, state, {

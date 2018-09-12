@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
 import { create_listing, signout, get_hp } from "../../../actions/index";
 import { connect } from "react-redux";
-import { FaEnvelope, FaCheck, FaLink, FaStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
 import Messenger from "../../messenger/Messenger";
