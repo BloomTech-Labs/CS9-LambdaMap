@@ -6,7 +6,7 @@ from django.db import models
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100, default='')
+    password = models.CharField(max_length=20, default='')
     city = models.CharField(max_length=50, blank=True, default='')
     state = models.CharField(max_length=50, blank=True, default='')
     personal_website = models.URLField(blank=True, default='')
@@ -15,7 +15,6 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
-    picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
 
 
 class Clients(Users):
@@ -28,7 +27,7 @@ class Clients(Users):
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-
+    portfolio_picture = models.URLField(default='', blank=True)
 
     def to_dict(self):
         return {
@@ -50,8 +49,7 @@ class Clients(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng,
-            "picture": self.picture
+            "lng": self.lng
         }
 
 
@@ -70,8 +68,7 @@ class Hire_Partners(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng,
-            "picture": self.picture
+            "lng": self.lng
         }
 
 
@@ -83,11 +80,10 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-
+    
 
 class Session(models.Model):
     key = models.CharField(max_length=100, default='')
     content_type = models.ForeignKey(ContentType, on_delete=models.DO_NOTHING)
     object_id = models.PositiveIntegerField(default='')
     content_object = GenericForeignKey('content_type', 'object_id')
-
