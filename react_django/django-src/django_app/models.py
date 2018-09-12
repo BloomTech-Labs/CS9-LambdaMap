@@ -3,7 +3,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
-
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
@@ -16,7 +15,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
-    portfolio_picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
+    picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
 
 
 class Clients(Users):
@@ -52,6 +51,7 @@ class Clients(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
+            "picture": self.picture
         }
 
 
@@ -70,7 +70,8 @@ class Hire_Partners(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng
+            "lng": self.lng,
+            "picture": self.picture
         }
 
 
@@ -82,17 +83,6 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-
-    def to_dict(self):
-        return {
-            "ID": self.id,
-            "hp_id":self.hp_id.to_dict(),
-            "job_title":self.job_title,
-            "job_desc":self.job_desc,
-            "job_link":self.job_link,
-            "remote_job":self.remote_job,
-            "posted_time":self.posted_time
-        }
 
 
 class Session(models.Model):
