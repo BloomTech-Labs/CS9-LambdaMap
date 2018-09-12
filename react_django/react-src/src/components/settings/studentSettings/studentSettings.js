@@ -27,23 +27,23 @@ class StudentSettings extends Component {
     };
   }
 
-  submit = e => {
-  	e.preventDefault();
-  	const { profession, city, state, codepen, twitter, linkedin, github, phone, website, about  } = this.state;
-  	this.props.update({
-			profession: profession !== "" ? profession : profession,
-      state: state !== "" ? state : state,
-      city: city !== "" ? city : city,
-			codepen: codepen !== "" ? codepen : codepen,
-      linkedin:linkedin !== "" ?linkedin :linkedin,
-      github: github !== "" ? github : github,
-      phone: phone !== "" ? phone : phone,
-      personal_website: website !== "" ? website :website,
-      about: about !== "" ? about : about,
-      twitter: twitter !== "" ? twitter : twitter,
-    });
-  	this.props.history.push('/jssettings');
-	}
+  // submit = e => {
+  // 	e.preventDefault();
+  // 	const { profession, city, state, codepen, twitter, linkedin, github, phone, website, about  } = this.state;
+  // 	this.props.update({
+	// 		profession: profession !== "" ? profession : profession,
+  //     state: state !== "" ? state : state,
+  //     city: city !== "" ? city : city,
+	// 		codepen: codepen !== "" ? codepen : codepen,
+  //     linkedin:linkedin !== "" ?linkedin :linkedin,
+  //     github: github !== "" ? github : github,
+  //     phone: phone !== "" ? phone : phone,
+  //     personal_website: website !== "" ? website :website,
+  //     about: about !== "" ? about : about,
+  //     twitter: twitter !== "" ? twitter : twitter,
+  //   });
+  // 	this.props.history.push('/jssettings');
+	// }
 
   renderDragDrop = e => {
     e.stopPropagation();
@@ -126,6 +126,12 @@ class StudentSettings extends Component {
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="State" />
                 <input 
+                  name= "phone"
+                  type="text"
+                  value={this.state.phone}
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
+                  placeholder="Phone Number" />
+                <input 
                   name= "profession"
                   type="text"
                   value={this.state.profession}
@@ -177,7 +183,32 @@ class StudentSettings extends Component {
                   Upload Profile Picutre
                 </button>
               </div>
-              <button onClick={this.submit} className="post-button">Post</button>
+              <button onClick={() => {
+                this.props.update({
+                  profession: this.state.profession !== "" ? this.state.profession : this.state.profession,
+                  state: this.state.state !== "" ? this.state.state : this.state.state,
+                  city: this.state.city !== "" ? this.state.city : this.state.city,
+                  codepen: this.state.codepen !== "" ? this.state.codepen : this.state.codepen,
+                  linkedin: this.state.linkedin !== "" ? this.state.linkedin : this.state.linkedin,
+                  github: this.state.github !== "" ? this.state.github : this.state.github,
+                  phone: this.state.phone !== "" ? this.state.phone : this.state.phone,
+                  personal_website: this.state.website !== "" ? this.state.website : this.state.website,
+                  about: this.state.about !== "" ? this.state.about : this.state.about,
+                  twitter: this.state.twitter !== "" ? this.state.twitter : this.state.twitter,
+                });
+                this.setState({
+                  profession: "",
+                  city: "",
+                  state: "",
+                  codepen: "",
+                  twitter:"",
+                  linkedin:"",
+                  github:"",
+                  phone: "",
+                  website: "",
+                  about: "",
+                });
+              }} className="post-button">Post</button>
             </div>
           </div>
         </div>
