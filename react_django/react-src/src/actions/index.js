@@ -48,7 +48,7 @@ export const login = (data, history) => {
           history.push("/jslanding/");
         } else if (response.data.account_type === true) {
           window.sessionStorage.setItem("jwt", response.headers.jwt);
-          window.localStorage.setItem("jwt", JSON.stringify(response.data));
+          window.localStorage.setItem("user", JSON.stringify(response.data));
           dispatch({
             type: actions.LOGGEDIN_HPS,
             payload: response.data
@@ -103,6 +103,7 @@ export const signout = history => {
     user
       .then(response => {
         window.sessionStorage.removeItem("jwt");
+        window.localStorage.removeItem("user");
         history.push("/");
         dispatch({
           type: actions.SIGNOUT,
