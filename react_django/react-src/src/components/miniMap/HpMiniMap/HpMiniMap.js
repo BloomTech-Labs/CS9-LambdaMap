@@ -179,7 +179,7 @@ class HpMiniMap extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(20, 20),
+                    scaledSize: new google.maps.Size(12, 17),
                     url: orange
                   }}
                 />
