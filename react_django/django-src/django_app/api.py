@@ -37,7 +37,7 @@ def register(request):
             lat = response['results'][0]['geometry']['location']['lat']
             lng = response['results'][0]['geometry']['location']['lng']
             lat = str((float(lat) + numberlat))
-            lng = str((float(lng) + numberlng)) 
+            lng = str((float(lng) + numberlng))
             user.lat = lat
             user.lng = lng
         try:
@@ -155,6 +155,17 @@ def create_listing(request):
             return JsonResponse({"Invalid request": e}, status=400)
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+
+def delete_listing(request):
+    if request.META['REQUEST_METHOD'] == 'DELETE':
+        regex = re.compile('/api/delete-listing/(\d+)/', re.MULTILINE)
+        job_listing = Job_Listing.objects.get(id=regex.search(request.META['PATH_INFO']).group(1))
+        try:
+            job_listing.delete()
+            return get_listings()
+        except:
+            return JsonResponse({"Job listing does not exist"})
+
 
 def delete_listing(request):
     if request.META['REQUEST_METHOD'] == 'DELETE':
