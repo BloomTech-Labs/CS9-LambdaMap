@@ -10,3 +10,4 @@ urlpatterns = [
     re_path('^(?!api/|media/|admin)(\w+\/)*', TemplateView.as_view(template_name='index.html')),
     path('api/', include('django_app.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

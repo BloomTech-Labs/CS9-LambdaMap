@@ -3,7 +3,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
-
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
@@ -84,17 +83,6 @@ class Job_Listing(models.Model):
     job_link = models.URLField(blank=True, default='')
     remote_job = models.BooleanField(default=False)
     posted_time = models.DateTimeField(auto_now_add=True)
-
-    def to_dict(self):
-        return {
-            "ID": self.id,
-            "hp_id":self.hp_id.to_dict(),
-            "job_title":self.job_title,
-            "job_desc":self.job_desc,
-            "job_link":self.job_link,
-            "remote_job":self.remote_job,
-            "posted_time":self.posted_time
-        }
 
 
 class Session(models.Model):
