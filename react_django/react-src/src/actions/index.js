@@ -261,8 +261,8 @@ export const create_listing = id => {
   };
 };
 
-export const delete_listing = id => {
-  const job_listing = axios.delete(`${SERVER_URL}/api/delete-listing/${id}`);
+export const delete_listing = pk => {
+  const job_listing = axios.delete(`${SERVER_URL}/api/delete-listing/${pk}`);
   return dispatch => {
     dispatch({
       type: actions.DELETE_LISTING

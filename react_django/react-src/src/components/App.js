@@ -15,6 +15,7 @@ import JobslistView from "./list-views/jobspage-JSview/JobslistView";
 import Billing from "./billing/billing";
 import JSviewJS from "./jobseeker-profile/JSviewJS";
 import HPviewHP from "./HpProfileView/HPviewHP";
+import UserProfile from "./jobseeker-profile/UserProfile";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
         <Route path="/jsmap/" component={JSMapView} />
         <Route path="/jobslist/" component={JobslistView} />
         <Route path="/jsview/:id/" component={JSviewJS} />  {/* <--- allows js to view other js profiles */}
+        <Route path="/userprofile/" component={UserProfile} />
         <Route path="/hpprofile/:id" component={HpProfileView} />
         <Route path="/jssettings/" component={studentSettings} />
         {/* <Route path="/jsfavorites/" component={} /> */}

@@ -83,7 +83,7 @@ export default class JSNav extends Component {
             </li>
           </Link>
           <Link
-            to="/jsview/:id/"
+            to="/userprofile/"
             className="nav-links"
             style={{ textDecoration: "none" }}
           >

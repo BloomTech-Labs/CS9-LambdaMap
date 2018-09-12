@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import HPnav from "../../nav/company/HPnav";
-import { delete_listing, create_listing, signout, get_hp } from "../../../actions/index";
+import {
+  create_listing,
+  signout,
+  get_hp,
+  delete_listing
+} from "../../../actions/index";
 import { connect } from "react-redux";
 import { GoClock } from "react-icons/go";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
@@ -34,7 +39,7 @@ class HPLanding extends Component {
     if (this.props.hirePartner.HP.job_listings !== undefined) {
       mappedListings = (
         <div className="posted-container">
-        <h3 className="pinned-title">Your Posted Jobs:</h3>
+          <h3 className="pinned-title">Your Posted Jobs:</h3>
           {this.props.hirePartner.HP.job_listings.map(jls => (
             <div key={jls.ID} className="posted-listing">
               <div className="list-info">
@@ -131,7 +136,6 @@ class HPLanding extends Component {
                   this.setState({ [e.target.name]: e.target.value })
                 }
               />
-
             </div>
             <button
               onClick={() => {
