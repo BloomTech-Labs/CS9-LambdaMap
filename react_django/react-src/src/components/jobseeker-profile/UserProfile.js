@@ -18,24 +18,22 @@ import {
 } from "react-icons/fa";
 
 export default class UserProfile extends Component {
+
   render() {
     let user = JSON.parse(localStorage.getItem("user"));
-    let remoteWork = null;
-    let relocating = null;
+    let remoteWork = null
+    let relocating = null
     if (user.remote === true) {
-      remoteWork = (
-        <p>
-          <FaCheckSquare className="contactIcons" />
-          Open to remote work
-        </p>
-      );
+      remoteWork = ( 
+      
+         <p><FaCheckSquare className="contactIcons" />Open to remote work</p>
+        
+      )
     } else if (user.relocate === true) {
-      relocating = (
-        <p>
-          <FaCheckSquare className="contactIcons" />
-          Open to relocating
-        </p>
-      );
+      relocating = ( 
+        
+          <p><FaCheckSquare className="contactIcons"/>Open to relocating</p>
+      )
     }
     return (
       <div className="main">
@@ -43,15 +41,15 @@ export default class UserProfile extends Component {
         <HpMiniMap />
         <Messenger />
         <div className="signout">
-          <button
-            className="signoutbutton"
-            onClick={() => {
-              signout(this.props.history);
-            }}
-          >
-            Sign Out
-          </button>
-        </div>
+            <button
+              className="signoutbutton"
+              onClick={() => {
+                signout(this.props.history);
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
         <div className="main-container">
           <div className="sidebyside">
             <div className="jsprofile-container">
@@ -85,16 +83,32 @@ export default class UserProfile extends Component {
             </div>
           </div>
           <div className="socialmedia">
-            <a target="_blank" rel="noopener noreferrer" href={user.twitter}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={user.twitter}
+            >
               <FaTwitter className="smIcons" />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href={user.linkedin}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={user.linkedin}
+            >
               <FaLinkedin className="smIcons" />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href={user.github}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={user.github}
+            >
               <FaGithub className="smIcons" />
             </a>
-            <a target="_blank" rel="noopener noreferrer" href={user.codepen}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={user.codepen}
+            >
               <FaCodepen className="smIcons" />
             </a>
             <a
