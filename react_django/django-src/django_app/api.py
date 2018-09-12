@@ -196,15 +196,15 @@ def get_listings(request):
             for HPs in hire_partners:
                 job_listings = json.loads(serializers.serialize('json', Job_Listing.objects.filter(hp_id=HPs['ID'])))
                 for x in range(len(job_listings)):
-                    job_listings[x] = job_listings[x]['fields']
+                    job_listings[x] = {**job_listings[x]['fields'], 'pk': job_listings[x]['pk']}
                 HPs['jobListings']=job_listings
-                del HPs['password']
+            hire_partners = list(filter(lambda HP: len(HP['jobListings']) > 0, hire_partners))
+                # del HPs['password']
             return JsonResponse({"HPjobListings": hire_partners})
         except Job_Listing.DoesNotExist as e:
             return JsonResponse({"Error":e})
     else:
         return JsonResponse({"Error": "incorrect request method. please make a GET request to this end point"}, status=400)
-
 
 # Get an individual Client
 def get_client(request):

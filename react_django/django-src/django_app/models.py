@@ -52,7 +52,6 @@ class Clients(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
-            "favorites": self.favorites
         }
 
 
