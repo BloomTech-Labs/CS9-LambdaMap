@@ -16,7 +16,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
-    portfolio_picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
+    picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
 
 
 class Clients(Users):
@@ -52,6 +52,7 @@ class Clients(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
+            "picture": self.picture
         }
 
 
@@ -70,7 +71,8 @@ class Hire_Partners(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng
+            "lng": self.lng,
+            "picture": self.picture
         }
 
 
