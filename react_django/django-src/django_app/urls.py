@@ -11,7 +11,7 @@ urlpatterns=[
     path('logout/', logout),
     path('hire-partners/', get_hire_partners),
     path('create-job-listings/', create_listing),
-    re_path('job-listings/(\d+\/)?', get_listings),
+    path('job-listings/', get_listings),
     path('client-favorites/', client_favorites),
     path('users/', get_users),
     re_path('hp/\d+/', get_hp),
