@@ -6,11 +6,7 @@ import Messenger from "../messenger/Messenger";
 import JSMiniMap from "../miniMap/JsMiniMap/JsMiniMap";
 import { get_hp, signout } from "../../actions";
 import { connect } from "react-redux";
-import {
-  FaLink,
-  FaEnvelope,
-  FaPhoneSquare
-} from "react-icons/fa";
+import { FaLink, FaEnvelope, FaPhoneSquare } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 
 const Timestamp = require("react-timestamp");
@@ -32,10 +28,11 @@ class HpProfileView extends Component {
       mappedListings = (
         <div className="posted-container">
           {this.props.hirePartner.HP.job_listings.map(jls => (
-            <div key={jls.ID} className="hpposted-listing">
+            <div key={jls.id} className="hpposted-listing">
               <div className="list-info">
                 <h4 className="job">{jls.fields.job_title}</h4>
-                <p>{jls.fields.job_desc}</p><FaLink className="joblink-url" />
+                <p>{jls.fields.job_desc}</p>
+                <FaLink className="joblink-url" />
               </div>
               <div className="posted-time">
                 <GoClock className="clock" />
@@ -89,7 +86,7 @@ class HpProfileView extends Component {
               </div>
             </div>
           </div>
-          <hr></hr>
+          <hr />
           <div className="hps-listings">
             <h3 className="pinned-title">
               {this.props.hirePartner.HP.company_name}
