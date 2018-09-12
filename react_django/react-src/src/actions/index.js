@@ -303,7 +303,7 @@ export const get_hp = id => {
 };
 
 export const update = data => {
-  const token = window.sessionStorage.getItem("token") || null;
+  const token = window.sessionStorage.getItem("jwt") || null;
   const config = { headers: { jwt: `${token}` } };
   const user = axios.put(`${SERVER_URL}/api/update/`, data, config);
   return dispatch => {

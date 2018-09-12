@@ -1,8 +1,13 @@
 {
   "main.css": "css/main.6b9affb0.css",
   "main.css.map": "css/main.6b9affb0.css.map",
+<<<<<<< HEAD
   "main.js": "js/main.d1dee40e.js",
   "main.js.map": "js/main.d1dee40e.js.map",
+=======
+  "main.js": "js/main.abf57dde.js",
+  "main.js.map": "js/main.abf57dde.js.map",
+>>>>>>> master
   "media/0.png": "media/0.25ccda47.png",
   "media/Boxing.svg": "media/Boxing.c9641f11.svg",
   "media/Weight.svg": "media/Weight.274fa48e.svg",
