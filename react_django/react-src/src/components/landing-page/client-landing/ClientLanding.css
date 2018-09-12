@@ -141,7 +141,7 @@
       .client .landing-container .pinned-jobs .pinned-container .pinned-listing:after {
         content: "";
         display: block;
-        margin: auto 0;
+        margin: auto 0px auto 30px;
         height: 100%;
         border-right: 1px solid black; }
   .client .landing-container .pinned-title {
