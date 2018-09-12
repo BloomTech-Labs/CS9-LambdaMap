@@ -9,8 +9,8 @@ import { get_listings, signout } from "../../../actions/index";
 import { connect } from "react-redux";
 import { GoClock } from "react-icons/go";
 import { TiPin } from "react-icons/ti";
-
 import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
+
 const Timestamp = require("react-timestamp");
 
 class ClientLanding extends Component {
@@ -77,10 +77,12 @@ class ClientLanding extends Component {
           <img src={amazon} alt="company" />
           <div className="list-info">
             <div className="pinit">
-              <h3 className="jobloc">{randomCompany.city}, {randomCompany.state}</h3>
+              <h3 className="jobloc">
+                {randomCompany.city}, {randomCompany.state}
+              </h3>
               <TiPin className="pin-icon" />
             </div>
-              <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
+            <h5 className="job">{randomCompany.jobListings[0].job_title}</h5>
             <p>{randomCompany.jobListings[0].job_desc}</p>
             <p className="post-time">
               <GoClock className="post-clock" />
@@ -120,6 +122,8 @@ class ClientLanding extends Component {
           <h3 className="pinned-title">Pinned Jobs:</h3>
           <div className="pinned-jobs">
             <div className="pinned-container">
+              {favoritesListing}
+              {favoritesListing}
               {favoritesListing}
             </div>
           </div>
