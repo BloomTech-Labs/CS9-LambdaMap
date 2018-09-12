@@ -258,94 +258,11 @@ class JSMapView extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
-              disableDefaultUI={true}
-              zoom={5}
+              zoom={4}
               style={{
                 width: "100%",
                 height: "100vh"
               }}
-              styles= {[
-                {
-                    "featureType": "administrative",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#454545",
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "saturation": -100,
-                            "color": "#125172"
-                        },
-                        {
-                            "lightness": 45
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off",
-                            // "color": "#125172"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#4D9FCA"
-                        },
-                        {
-                            "visibility": "on"
-                        }
-                    ]
-                }
-            ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (

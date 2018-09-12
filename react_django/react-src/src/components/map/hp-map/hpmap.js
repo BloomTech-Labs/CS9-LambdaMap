@@ -142,23 +142,23 @@ class HPMapView extends Component {
             </div>
             <div className="jsmodal-footer">
               <FaEnvelope
-                className={this.state.showEmail}
-                onClick={() => {
-                  this.setState({
-                    showEmail: "show1"
-                  });
-                }}
+                // className={this.state.showEmail}
+                // onClick={() => {
+                //   this.setState({
+                //     showEmail: "show1"
+                //   });
+                // }}
               />
               <FaPhone
-                className={this.state.showPhone}
-                onClick={() => {
-                  this.setState({
-                    showPhone: "show"
-                  });
-                }}
+                // className={this.state.showPhone}
+                // onClick={() => {
+                //   this.setState({
+                //     showPhone: "show"
+                //   });
+                // }}
               />
-              {showPhone}
-              {showEmail}
+              {/* {showPhone}
+              {showEmail} */}
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/jsprofile/${this.state.client.ID}`}
@@ -215,9 +215,9 @@ class HPMapView extends Component {
               <p>{this.state.job_listing.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope className={this.state.showEmail} />
-              <FaPhone className={this.state.showPhone} />
-              {showPhone} {showEmail}
+              {/* <FaEnvelope className={this.state.showEmail} />
+              <FaPhone className={this.state.showPhone} /> */}
+              {/* {showPhone} {showEmail} */}
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/hpview/${this.state.job_listing.ID}`}
@@ -232,21 +232,21 @@ class HPMapView extends Component {
       );
     }
 
-    let showPhone = null;
-    let showEmail = null;
-    if (this.state.showPhone === "show") {
-      showPhone = (
-        <div>
-          {this.state.client.phone}
-        </div>
-      );
-    } else if (this.state.showEmail === "show1") {
-      showEmail = (
-        <div>
-          {this.state.client.email}
-        </div>
-      );
-    }
+    // let showPhone = null;
+    // let showEmail = null;
+    // if (this.state.showPhone === "show") {
+    //   showPhone = (
+    //     <div>
+    //       {this.state.client.phone}
+    //     </div>
+    //   );
+    // } else if (this.state.showEmail === "show1") {
+    //   showEmail = (
+    //     <div>
+    //       {this.state.client.email}
+    //     </div>
+    //   );
+    // }
     return (
       <div>
         <HPNav />
@@ -259,92 +259,11 @@ class HPMapView extends Component {
                 lat: 38.6872,
                 lng: -96.3301
               }}
-              disableDefaultUI={true}
-              zoom={5}
+              zoom={4}
               style={{
                 width: "100%",
                 height: "100vh",
               }}
-              styles= {[
-                {
-                    "featureType": "administrative",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#454545"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "poi",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 45
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "transit",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#4D9FCA"
-                        },
-                        {
-                            "visibility": "on"
-                        }
-                    ]
-                }
-            ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (

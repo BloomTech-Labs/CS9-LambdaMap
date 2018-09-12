@@ -30,8 +30,6 @@ class JobslistView extends Component {
         <JSnav />
         <JsMiniMap />
         <div className="signout">
-          <div className="backgroundskew" />
-          <div className="backgroundskew2" />
           <button className="signoutbutton">Sign Out</button>
         </div>
         <div className="jobslist-container">
@@ -91,7 +89,10 @@ class JobslistView extends Component {
             <div className="cards-main">
               {this.props.jobListing.job_listings.map(job_listing => (
                 <div key={job_listing.ID} className="joblisting-cards">
-                  <Link to={`/hpprofile/${job_listing.ID}`} className="profile-link">
+                  <Link
+                    to={`/hpprofile/${job_listing.ID}`}
+                    className="profile-link"
+                  >
                     <div className="card-header">
                       <img
                         src={defaultuser}

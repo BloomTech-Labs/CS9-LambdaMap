@@ -14,7 +14,7 @@
   .jobseekerNav-container .lambdamap {
     padding: 6%; }
   .jobseekerNav-container .logo {
-    width: 90%; }
+    width: 100%; }
   .jobseekerNav-container .quote {
     margin: 5px 0px;
     font: 15px "Roboto Condensed", sans-serif;
@@ -43,7 +43,7 @@
     width: 10%;
     transition: all 1s;
     font-size: 2em;
-    color: black; }
+    color: white; }
   .jobseekerNav-container .footer {
     display: flex;
     justify-content: center;
@@ -55,14 +55,14 @@
   .jobseekerNav-container .skew {
     display: flex;
     position: absolute;
-    top: -15%;
+    top: -150px;
     width: 100%;
     height: 30%;
     z-index: -1;
     background-color: white;
-    -webkit-transform: skew(0deg, -15deg);
-    -ms-transform: skew(0deg, -15deg);
-    transform: skew(0deg, -15deg); }
+    -webkit-transform: skew(0deg, -10deg);
+    -ms-transform: skew(0deg, -10deg);
+    transform: skew(0deg, -10deg); }
 
 .jobseekerNav-container:hover {
   transform: none; }
@@ -70,4 +70,4 @@
 .jobseekerNav-container:hover .arrow {
   transform: rotate(180deg); }
 
-/*# sourceMappingURL=JSnav.css.map */
+/*# sourceMappingURL=jsnav.css.map */

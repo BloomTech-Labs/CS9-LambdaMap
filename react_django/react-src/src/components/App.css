@@ -1,8 +1,6 @@
 .App {
   text-align: center;
-  overflow-x: hidden;
-  height: 100vh;
-  width: 100%;
+  overflow: hidden;
 }
 
 .StripeElement {
@@ -27,3 +25,5 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
+

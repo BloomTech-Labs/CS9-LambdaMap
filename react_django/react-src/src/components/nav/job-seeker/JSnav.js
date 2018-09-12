@@ -1,7 +1,7 @@
 // Job Seekers' side nav
 import React, { Component } from "react";
 import "./JSnav.css";
-import navlogo from "./logoatlas.PNG";
+import navlogo from "./logoatlas654.png";
 import {
   FaHome,
   FaCopyright,

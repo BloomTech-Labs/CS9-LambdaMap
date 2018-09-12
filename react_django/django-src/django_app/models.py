@@ -1,15 +1,13 @@
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from datetime import date
-from django.utils import timezone
-from django_mysql.models import ListTextField
+
 
 
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=20, default='')
+    password = models.CharField(max_length=100, default='')
     city = models.CharField(max_length=50, blank=True, default='')
     state = models.CharField(max_length=50, blank=True, default='')
     personal_website = models.URLField(blank=True, default='')
@@ -18,6 +16,7 @@ class Users(models.Model):
     account_type = models.BooleanField(default=False)
     lat = models.CharField(max_length=50, blank=True, default='')
     lng = models.CharField(max_length=50, blank=True, default='')
+    portfolio_picture = models.ImageField(default='images/d-user.png', upload_to='images/', blank=True)
 
 
 class Clients(Users):
@@ -30,11 +29,7 @@ class Clients(Users):
     github = models.URLField(default='', blank=True)
     twitter = models.URLField(default='', blank=True)
     codepen = models.URLField(default='', blank=True)
-    portfolio_picture = models.URLField(default='', blank=True)
-    favorites = ListTextField(
-      base_field=models.CharField(max_length=20,blank=True),
-      default=list,
-    )
+
 
     def to_dict(self):
         return {
@@ -63,9 +58,6 @@ class Clients(Users):
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
-    subscription_end_date = models.DateTimeField(default=timezone.now)
-    subscribed = models.BooleanField(default=False)
-
 
     def to_dict(self):
         return {
@@ -79,12 +71,10 @@ class Hire_Partners(Users):
             "about": self.about,
             "account_type": self.account_type,
             "lat": self.lat,
-            "lng": self.lng,
-            "subscription_end_date": self.subscription_end_date,
-            "subscribed": self.subscribed,
+            "lng": self.lng
         }
 
-        
+
 # Added job listing model
 class Job_Listing(models.Model):
     hp_id = models.ForeignKey(Hire_Partners, on_delete=models.DO_NOTHING, default='')

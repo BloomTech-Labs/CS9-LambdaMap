@@ -6,7 +6,10 @@ import { login } from "../../../actions";
 import logo from "./mainatlas.PNG";
 import "./MainLanding.css";
 import SignUp from "../Sign-up/SignUp";
-import LandingMap from "../../miniMap/landingMap/LandingMap";
+// import featJS from "./0.jpg";
+// import featHP from "./amazon-logo.gif";
+// import map from "./bigmapthing.PNG";
+// import { FaBriefcase, FaCode } from "react-icons/fa";
 
 class MainLanding extends Component {
   constructor(props) {
@@ -18,27 +21,24 @@ class MainLanding extends Component {
       modal: false
     };
   }
-  
   render() {
     let modal = null;
     if (this.state.modal === true) {
       modal = (
         <div className="signup-modal">
           <div className="signup-container">
-            <SignUp/>
+            <SignUp />
           </div>
         </div>
       );
     }
     return (
       <div className="main-landing">
-      <LandingMap />
         <div className="signin">
           <div>
             <div className="signin-form">
               <input
                 className="emailInput"
-                id="emailInput"
                 type="text"
                 placeholder="E-mail"
                 name="email"
@@ -53,7 +53,6 @@ class MainLanding extends Component {
             <div className="signpwd-form">
               <input
                 className="pwdInput"
-                id="pwdInput"
                 type="password"
                 placeholder="Password"
                 name="password"
@@ -64,7 +63,7 @@ class MainLanding extends Component {
               />
             </div>
           </div>
-          <button id="myBtn"
+          <button
             onClick={() => {
               this.props.login(
                 {
@@ -94,7 +93,6 @@ class MainLanding extends Component {
         <div className="logo">
           <img src={logo} className="HP" alt="Hire Partner" />
         </div>
-
         <div>{modal}</div>
       </div>
     );
