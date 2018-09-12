@@ -51,7 +51,7 @@ class Clients(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
-            "picture": self.picture
+            "picture": self.picture.name
         }
 
 
@@ -71,7 +71,7 @@ class Hire_Partners(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
-            "picture": self.picture
+            "picture": self.picture.name
         }
 
 

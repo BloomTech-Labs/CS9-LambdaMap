@@ -43,7 +43,7 @@ def register(request):
         try:
             user.save()
         except user.FieldError as err:
-            return JsonResponse({"Error": json.loads(err)}, status=400)
+            return JsonResponse({"Error": "Unable to register user."}, status=400)
         return JsonResponse({}, status=201)
 
 
