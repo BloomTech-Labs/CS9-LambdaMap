@@ -120,7 +120,7 @@ class ClientLanding extends Component {
             <img src={marker} className="profile-marker" alt="marker" />
             <img
               src={`http://127.0.0.1:8000/media/${user.picture}`}
-              className="mark"
+              className="user-pic"
               alt="user"
             />
             <h1>Welcome back, {user.first_name}.</h1>

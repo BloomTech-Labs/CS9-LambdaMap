@@ -23,16 +23,15 @@
       left: 8%;
       -webkit-filter: drop-shadow(5px 1px 2px #3a3a3a);
       filter: drop-shadow(6px 1px 2px #3a3a3a); }
-    .client .landing-container .welcome-container .mark {
+    .client .landing-container .welcome-container .user-pic {
       position: absolute;
       width: 80px;
       height: 80px;
       top: 75px;
       left: 8.5%;
       z-index: 1;
-      border: 0.5px solid #db5f3c;
-      border-radius: 100%;
-      background-color: #db5f3c; }
+      border: 2px solid #db5f3c;
+      border-radius: 100%; }
     .client .landing-container .welcome-container h1 {
       position: absolute;
       left: 14%;
@@ -44,6 +43,11 @@
     align-items: center;
     margin: 275px auto 145px;
     width: 400px; }
+    .client .landing-container .feat-job img {
+      width: 125px;
+      height: 125px;
+      border-radius: 100%;
+      margin-right: 10px; }
     .client .landing-container .feat-job .list-info {
       display: flex;
       flex-direction: column;
@@ -105,7 +109,12 @@
         display: flex;
         align-items: center;
         width: 410px;
-        margin-right: 10px; }
+        margin-left: 20px; }
+        .client .landing-container .pinned-jobs .pinned-container .pinned-listing img {
+          width: 125px;
+          height: 125px;
+          border-radius: 100%;
+          margin-right: 10px; }
         .client .landing-container .pinned-jobs .pinned-container .pinned-listing .list-info {
           display: flex;
           flex-direction: column;

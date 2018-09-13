@@ -115,16 +115,15 @@
         filter: drop-shadow(6px 1px 2px #3a3a3a);
       }
 
-      .profile-pic {
+      .user-pic {
         position: absolute;
         width: 80px;
         height: 80px;
         top: 75px;
         left: 8.5%;
         z-index: 1;
-        border: 0.5px solid #db5f3c;
+        border: 2px solid #db5f3c;
         border-radius: 100%;
-        background-color: #db5f3c;
       }
 
       h1 {
