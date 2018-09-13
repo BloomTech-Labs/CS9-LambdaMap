@@ -1,7 +1,7 @@
 // Student view of settings page
 
 import React, { Component } from "react";
-import { signout, update } from "../../../actions/index";
+import { signout, update } from "../../../actions";
 import { connect } from "react-redux";
 import "./studentSettings.css";
 import JSnav from "../../nav/job-seeker/JSnav";

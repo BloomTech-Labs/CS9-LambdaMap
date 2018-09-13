@@ -34,6 +34,7 @@ class HpMiniMap extends Component {
       if (c.ID === id) {
         this.setState({ client: c });
       }
+      return console.log("listing");
     });
   };
 
@@ -42,6 +43,7 @@ class HpMiniMap extends Component {
       if (j.ID === id) {
         this.setState({ job_listing: j });
       }
+      return console.log("listing");
     });
   };
 
