@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import HPNav from "../nav/company/HPnav";
 import { connect } from "react-redux";
 import { subscribe } from "../../actions";
 import { CardElement, injectStripe } from "react-stripe-elements";

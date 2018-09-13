@@ -15,7 +15,6 @@ import {
   FaPhoneSquare
 } from "react-icons/fa";
 import HPnav from "../../nav/company/HPnav";
-import defaultuser from "./defaultuser.svg";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
