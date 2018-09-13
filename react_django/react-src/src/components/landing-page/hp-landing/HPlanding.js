@@ -82,7 +82,7 @@ class HPLanding extends Component {
             <img src={marker} className="profile-marker" alt="marker" />
             <img
               src={`http://127.0.0.1:8000/media/${user.picture}`}
-              className="profile-pic"
+              className="user-pic"
               alt="user"
             />
             <h1>Welcome back, {user.company_name}.</h1>
