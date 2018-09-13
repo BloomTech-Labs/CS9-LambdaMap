@@ -6,7 +6,7 @@ from django.db import models
 class Users(models.Model):
     id = models.AutoField(primary_key=True) 
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=20, default='')
+    password = models.CharField(max_length=100, default='')
     city = models.CharField(max_length=50, blank=True, default='')
     state = models.CharField(max_length=50, blank=True, default='')
     personal_website = models.URLField(blank=True, default='')
@@ -70,6 +70,7 @@ class Hire_Partners(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
+            "picture": self.picture.name
         }
 
 

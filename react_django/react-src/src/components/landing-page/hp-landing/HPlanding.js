@@ -82,7 +82,7 @@ class HPLanding extends Component {
         <div className="main-hplanding">
           <div className="welcome-container">
             <img src={marker} className="profile-marker" alt="marker" />
-            <img src={amazon} className="profile-pic" alt="user" />
+            <img src={`http://127.0.0.1:8000/media/${user.picture}`} className="profile-pic" alt="user" />
             <h1>Welcome back, {user.company_name}.</h1>
           </div>
           <div className="new-joblisting">

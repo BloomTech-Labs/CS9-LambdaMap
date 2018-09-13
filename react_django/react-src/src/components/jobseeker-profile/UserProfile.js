@@ -24,14 +24,14 @@ export default class UserProfile extends Component {
     let remoteWork = null
     let relocating = null
     if (user.remote === true) {
-      remoteWork = ( 
-      
+      remoteWork = (
+
          <p><FaCheckSquare className="contactIcons" />Open to remote work</p>
-        
+
       )
     } else if (user.relocate === true) {
-      relocating = ( 
-        
+      relocating = (
+
           <p><FaCheckSquare className="contactIcons"/>Open to relocating</p>
       )
     }
@@ -54,7 +54,7 @@ export default class UserProfile extends Component {
           <div className="sidebyside">
             <div className="jsprofile-container">
               <div className="pic-bg">
-                <img src={defaultuser} alt="jspic" />
+                <img src={`http://127.0.0.1:8000/media/${user.picture}`} alt="jspic" />
                 <h1>
                   {user.first_name} {user.last_name}
                 </h1>

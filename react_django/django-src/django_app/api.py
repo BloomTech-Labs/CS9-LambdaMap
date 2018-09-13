@@ -89,8 +89,8 @@ def logout(request):
 
 
 def update(request):
-    request_body = json.loads(request.body.decode('ascii'))
-    if request.META['REQUEST_METHOD'] == 'PUT':
+    request_body = request.POST.dict()
+    if request.META['REQUEST_METHOD'] == 'POST':
         if verify_token(request.META['HTTP_JWT']):
             session_obj = Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii'))
             try:
@@ -102,11 +102,14 @@ def update(request):
                     user.__setattr__(x, encrypt_password(request_body[x]))
                 else:
                     user.__setattr__(x, request_body[x])
+            if request.FILES:
+                user.__setattr__('picture', request.FILES['file'])
             user.save()
             return JsonResponse(user.to_dict(), status=200)
         else:
             Session.objects.get(key=request.META['HTTP_JWT'].encode('ascii')).delete()
             return JsonResponse({"Error": "Expired Token"})
+
     else:
         return JsonResponse({"Error": "incorrect request method. please make a PUT request to this end point"}, status=400)
 
@@ -266,11 +269,15 @@ def add_favorite_listing(request):
     else:
         return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
-
+# query by: profession\, location?, remote\, relocate, company name, remote jobs, possibly by job title.
 def get_users(request):
     regex = re.compile(
         'table=(?P<table>(client\+hp|client|hp))'
-        '(&profession=(?P<profession>(web\+developer|web\+designer|ios\+developer)))?',
+        '(&profession=(?P<profession>(web\+developer|web\+designer|ios\+developer)))?'
+        '(&remote=(?P<remote>(True|False)))?'
+        '(&relocate=(?P<relocate>(True|False)))?'
+        '(&company=(?P<company>([\w\-\.]+)))?'
+        '(&job+remote=(?P<job_remote>(True|False)))?',
         re.MULTILINE+re.IGNORECASE
     )
     query = {}
@@ -285,13 +292,42 @@ def get_users(request):
                     query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
                 else:
                     query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))
-            if parsed_query['profession']:
-                if parsed_query['profession'].replace('+', ' ') == 'web developer':
-                    query['clients'] = list(filter(lambda x: x['profession'] == 'web developer', query['clients']))
-                elif parsed_query['profession'].replace('+', ' ') == 'web designer':
-                    query['clients'] = list(filter(lambda x: x['profession'] == 'web designer', query['clients']))
-                else:
-                    query['clients'] = list(filter(lambda x: x['profession'] == 'ios developer', query['clients']))
+            """
+                client querys start
+            """
+            if 'clients' in query:
+                if parsed_query['profession']:
+                    if parsed_query['profession'].replace('+', ' ') == 'web developer':
+                        query['clients'] = list(filter(lambda x: x['profession'] == 'web developer', query['clients']))
+                    elif parsed_query['profession'].replace('+', ' ') == 'web designer':
+                        query['clients'] = list(filter(lambda x: x['profession'] == 'web designer', query['clients']))
+                    else:
+                        query['clients'] = list(filter(lambda x: x['profession'] == 'ios developer', query['clients']))
+                if parsed_query['remote'] is not None:
+                    if parsed_query['remote'] == 'True':
+                        query['clients'] = list(filter(lambda x: x['remote'] is True, query['clients']))
+                    elif parsed_query['remote'] == 'False':
+                        query['clients'] = list(filter(lambda x: x['remote'] is False, query['clients']))
+                if parsed_query['relocate'] is not None:
+                    if parsed_query['relocate'] == 'True':
+                        query['clients'] = list(filter(lambda x: x['relocate'] is True, query['clients']))
+                    else:
+                        query['clients'] = list(filter(lambda x: x['relocate'] is False, query['clients']))
+            if 'hire-partners' in query:
+                # hire partners query by company name
+                if parsed_query['company'] is not None:
+                    query['hire-partners'] = list(filter(lambda x: x['company_name'] == parsed_query['company'].replace('+', ' '), query['hire-partners']))
+                # get all job listings
+                job_listings = json.loads(serializers.serialize('json', Job_Listing.objects.all()))
+                for x in range(len(job_listings)):
+                    job_listings[x] = {**job_listings[x]['fields'], 'pk': job_listings[x]['pk']}
+                if parsed_query['job_remote'] is not None:
+                    if parsed_query['job_remote'] == 'True':
+                        job_listings = list(filter(lambda x: x['remote_job'] is True, job_listings))
+                    else:
+                        job_listings = list(filter(lambda x: x['remote_job'] is False, job_listings))
+                for hp in query['hire-partners']:
+                    hp['jobListings'] = list(filter(lambda x: x['hp_id'] == hp['ID'], job_listings))
         else:
             query['clients'] = list(map(lambda x: x.to_dict(), list(Clients.objects.all())))
             query['hire-partners'] = list(map(lambda x: x.to_dict(), list(Hire_Partners.objects.all())))

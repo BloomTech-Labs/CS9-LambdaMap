@@ -62,7 +62,7 @@ class HPview extends Component {
           <div className="hpsidebyside">
             <div className="hpprofile-container">
               <div className="pic-bg">
-                <img src={amazon} alt="hppic" />
+                <img src={`http://127.0.0.1:8000/media/${this.props.hirePartner.HP.picture}`} alt="hppic" />
                 <h1>{this.props.hirePartner.HP.company_name}</h1>
                 <h3>
                   {this.props.hirePartner.HP.city},{" "}
