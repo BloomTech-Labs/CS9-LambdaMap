@@ -95,7 +95,7 @@ class ClientLanding extends Component {
         </div>
       );
     }
-
+    // <img src={mark} className="mark" alt="user" />
     return (
       <div className="client">
         <JSnav />
@@ -115,7 +115,10 @@ class ClientLanding extends Component {
 
           <div className="welcome-container">
             <img src={marker} className="profile-marker" alt="marker" />
-            <img src={mark} className="mark" alt="user" />
+
+
+
+            <img src={`http://127.0.0.1:8000/media/${user.picture}`} className='mark' alt=''/>
             <h1>Welcome back, {user.first_name}.</h1>
           </div>
           {companyListing}

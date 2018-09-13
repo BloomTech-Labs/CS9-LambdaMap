@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as actions from "./actionTypes";
+import FormData from 'form-data';
 // import { withRouter } from 'react-router';
 //  const SERVER_URL = "https://lambda-map.herokuapp.com";
 const SERVER_URL = "http://127.0.0.1:8000";
@@ -302,10 +303,25 @@ export const get_hp = id => {
   };
 };
 
-export const update = data => {
+export const update = obj => {
   const token = window.sessionStorage.getItem("jwt") || null;
-  const config = { headers: { jwt: `${token}` } };
-  const user = axios.put(`${SERVER_URL}/api/update/`, data, config);
+  const config = { headers: {
+    jwt: `${token}`,
+    "accept": "application/json",
+    "enctype": "multipart/form-data"
+  }};
+  const data = new FormData();
+  const keys = Object.keys(obj);
+  for (let i = 0; i < keys.length; i++) {
+    if (obj[keys[i]]) {
+      if (keys[i] === 'picture'){
+        data.append('file', obj[keys[i]])
+      } else {
+        data.append(keys[i], obj[keys[i]])
+      }
+    }
+  }
+  const user = axios.post(`${SERVER_URL}/api/update/`, data, config);
   return dispatch => {
     dispatch({
       type: actions.UPDATE

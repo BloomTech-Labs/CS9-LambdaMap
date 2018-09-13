@@ -2,3 +2,4 @@
 yarn.lock
 Pipfile
 node_modules/
+/django-src/db.sqlite3

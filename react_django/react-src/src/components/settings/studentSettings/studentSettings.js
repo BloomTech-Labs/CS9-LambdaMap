@@ -50,10 +50,14 @@ class StudentSettings extends Component {
     this.setState({ dragDrop: !this.state.dragDrop });
   };
 
+  submitFile = file => {
+    this.setState({'picture': file, 'dragDrop': false});
+  }
+
   render() {
     let modal;
     if (this.state.dragDrop) {
-      modal = <DragDrop renderDragDrop={this.renderDragDrop} />;
+      modal = <DragDrop renderDragDrop={this.renderDragDrop} submitFile={this.submitFile}/>;
     }
     return (
       <div className="settings-nav">
@@ -71,7 +75,7 @@ class StudentSettings extends Component {
               <hr />
               <div className="update-contact">
                 <h3>
-                  E-mail: <input 
+                  E-mail: <input
                   type="text"
                   placeholder= "Email"
                   value={this.state.email}
@@ -98,7 +102,7 @@ class StudentSettings extends Component {
                     />
                   </h3>
                   <h3 className="new-pswd">
-                    New Password: <input 
+                    New Password: <input
                        type="text"
                        placeholder="New Password"
                        value={this.state.newpassword}
@@ -113,43 +117,43 @@ class StudentSettings extends Component {
               <h2>Profile Information</h2>
               <hr />
               <div className="listing-input">
-                <input 
+                <input
                  name= "city"
                  type="text"
                  value={this.state.city}
                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
                  placeholder="City" />
-                <input 
+                <input
                   name= "state"
                   type="text"
                   value={this.state.state}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="State" />
-                <input 
+                <input
                   name= "phone"
                   type="text"
                   value={this.state.phone}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                   placeholder="Phone Number" />
-                <input 
+                <input
                   name= "profession"
                   type="text"
                   value={this.state.profession}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Job Title" />
-                <input 
+                <input
                   name= "about"
                   type="text"
                   value={this.state.about}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="BIO" />
-                <input 
+                <input
                   name= "linkedin"
                   type="text"
                   value={this.state.linkedin}
                   onChange={e => this.setState({ [e.target.name]: e.target.value })}
                   placeholder="LinkedIn Profile Link" />
-                <input 
+                <input
                   name= "codepen"
                   type="text"
                   value={this.state.codepen}
@@ -165,9 +169,9 @@ class StudentSettings extends Component {
                   name= "website"
                   type="text"
                   value={this.state.website}
-                  onChange={e => this.setState({ [e.target.name]: e.target.value })}                
+                  onChange={e => this.setState({ [e.target.name]: e.target.value })}
                 placeholder="Portfolio Website Link" />
-                <input 
+                <input
                   name= "twitter"
                   type="text"
                   value={this.state.twitter}
@@ -195,6 +199,7 @@ class StudentSettings extends Component {
                   personal_website: this.state.website !== "" ? this.state.website : this.state.website,
                   about: this.state.about !== "" ? this.state.about : this.state.about,
                   twitter: this.state.twitter !== "" ? this.state.twitter : this.state.twitter,
+                  picture: this.state.picture !== "" ? this.state.picture : this.state.picture,
                 });
                 this.setState({
                   profession: "",
