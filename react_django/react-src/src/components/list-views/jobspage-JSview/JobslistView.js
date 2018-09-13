@@ -5,8 +5,7 @@ import { FaLink, FaAngleDoubleLeft, FaBriefcase } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 import JSnav from "../../nav/job-seeker/JSnav";
 import defaultuser from "./default-user.png";
-// import { Link } from "react-router-dom";
-import { get_listings } from "../../../actions";
+import { get_listings, signout } from "../../../actions";
 import { connect } from "react-redux";
 import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
 import Messenger from "../../messenger/Messenger";
@@ -164,5 +163,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_listings }
+  { get_listings, signout }
 )(JobslistView);

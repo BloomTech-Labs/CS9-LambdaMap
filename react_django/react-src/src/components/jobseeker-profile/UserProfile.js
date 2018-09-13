@@ -4,6 +4,7 @@ import JSnav from "../nav/job-seeker/JSnav";
 import Messenger from "../messenger/Messenger";
 import HpMiniMap from "../miniMap/HpMiniMap/HpMiniMap";
 import { signout } from "../../actions";
+import { connect } from "react-redux";
 import {
   FaTwitter,
   FaLinkedin,
@@ -16,7 +17,7 @@ import {
   FaCheckSquare
 } from "react-icons/fa";
 
-export default class UserProfile extends Component {
+class UserProfile extends Component {
 
   render() {
     let user = JSON.parse(localStorage.getItem("user"));
@@ -43,7 +44,7 @@ export default class UserProfile extends Component {
             <button
               className="signoutbutton"
               onClick={() => {
-                signout(this.props.history);
+                this.props.signout(this.props.history);
               }}
             >
               Sign Out
@@ -130,3 +131,14 @@ export default class UserProfile extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { signout }
+)(UserProfile);
