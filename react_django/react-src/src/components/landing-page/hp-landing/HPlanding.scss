@@ -34,21 +34,22 @@
       box-shadow: inset 0 0 5px black;
     }
 
+    .pinned-title {
+      display: flex;
+      margin: 100px 0px 0px 155px;
+    }
+
     .posted-container {
       width: 50%;
       background-color: #d4d4d4;
       overflow: auto;
       margin-left: 150px;
       border-radius: 10px;
-      margin-top: 100px;
-
-      h3 {
-        margin: 10px 0px;
-      }
+      display: flex;
+      padding: 20px;
 
       .posted-listing {
         display: flex;
-        flex-direction: column;
         align-items: center;
         padding: 0px 0px 20px 0px;
         width: 200px;
