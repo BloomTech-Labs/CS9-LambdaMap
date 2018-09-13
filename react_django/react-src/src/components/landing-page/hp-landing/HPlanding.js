@@ -37,7 +37,7 @@ class HPLanding extends Component {
     if (this.props.hirePartner.HP.job_listings !== undefined) {
       mappedListings = (
         <div className="posted-container">
-          <h3 className="pinned-title">Your Posted Jobs:</h3>
+
           {this.props.hirePartner.HP.job_listings.map(jls => (
             <div key={jls.ID} className="posted-listing">
               <div className="list-info">
@@ -159,6 +159,7 @@ class HPLanding extends Component {
               Post
             </button>
           </div>
+          <h3 className="pinned-title">Your Posted Jobs:</h3>
           {mappedListings}
         </div>
       </div>
