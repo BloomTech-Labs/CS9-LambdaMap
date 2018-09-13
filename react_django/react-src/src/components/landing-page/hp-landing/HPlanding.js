@@ -14,6 +14,7 @@ import "./HPlanding.css";
 import marker from "./marker_icon.png";
 
 const Timestamp = require("react-timestamp");
+let user = JSON.parse(localStorage.getItem("user"));
 
 class HPLanding extends Component {
   constructor(props) {
@@ -26,14 +27,12 @@ class HPLanding extends Component {
     };
   }
 
-  componentDidMount = id => {
-    let user = JSON.parse(localStorage.getItem("user"));
-    this.props.get_hp(user.id);
+  componentDidMount = () => {
+  
+    this.props.get_hp(user.ID);
   };
 
   render() {
-    let user = JSON.parse(localStorage.getItem("user"));
-
     var mappedListings = null;
     if (this.props.hirePartner.HP.job_listings !== undefined) {
       mappedListings = (
@@ -51,7 +50,7 @@ class HPLanding extends Component {
                 <div className="delete">
                   <button
                     onClick={() => {
-                      this.props.delete_listing(jls.pk);
+                      this.props.delete_listing(jls.ID);
                     }}
                   >
                     Delete
@@ -143,7 +142,7 @@ class HPLanding extends Component {
             <button
               onClick={() => {
                 this.props.create_listing({
-                  hp_id: this.props.hirePartner.user.id,
+                  hp_id: user.ID,
                   job_title: this.state.job_title,
                   job_desc: this.state.job_desc,
                   job_link: this.state.job_link,

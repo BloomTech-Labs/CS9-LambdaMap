@@ -240,8 +240,8 @@ export const get_client = ID => {
   };
 };
 
-export const create_listing = id => {
-  const job_listing = axios.post(`${SERVER_URL}/api/create-listing/`, id);
+export const create_listing = ID => {
+  const job_listing = axios.post(`${SERVER_URL}/api/create-listing/`, ID);
   return dispatch => {
     dispatch({
       type: actions.CREATE_LISTING
