@@ -29,6 +29,8 @@
 .main-container .map .js-modal .jsmodal-cont .jsmodal-header img {
   width: 125px;
   height: 125px;
+  border-radius: 100%;
+  border: 2px solid #db5f3c;
 }
 .main-container .map .js-modal .jsmodal-cont .jsmodal-header .info-container {
   width: 75%;
@@ -182,6 +184,7 @@
   width: 50px;
   height: auto;
   margin: 0px 70px;
+  border-radius: 100%;
 }
 .main-container
   .map

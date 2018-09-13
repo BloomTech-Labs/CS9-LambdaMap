@@ -25,7 +25,9 @@
       display: flex; }
       .main-container .map .js-modal .jsmodal-cont .jsmodal-header img {
         width: 125px;
-        height: 125px; }
+        height: 125px;
+        border-radius: 100%;
+        border: 2px solid #db5f3c; }
       .main-container .map .js-modal .jsmodal-cont .jsmodal-header .info-container {
         width: 75%;
         margin-left: 30px; }
@@ -91,7 +93,8 @@
       .main-container .map .js-modal .jsmodal-cont .jsmodal-footer img {
         width: 50px;
         height: auto;
-        margin: 0px 70px; }
+        margin: 0px 70px;
+        border-radius: 100%; }
       .main-container .map .js-modal .jsmodal-cont .jsmodal-footer a:-webkit-any-link {
         border: none;
         cursor: pointer;
