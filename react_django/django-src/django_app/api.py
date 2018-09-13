@@ -69,7 +69,7 @@ def login(request):
             response.__setitem__(header='jwt', value=token)
             return response
 
-if request.META['REQUEST_METHOD'] == 'POST':
+    if request.META['REQUEST_METHOD'] == 'POST':
         try:
             hire_partner = Hire_Partners.objects.get(email=request_body['email'])
 
@@ -83,8 +83,8 @@ if request.META['REQUEST_METHOD'] == 'POST':
                 return send_user(client)
             except Clients.DoesNotExist:
                 return JsonResponse({"Login failed": "incorrect email or password"}, status=400)
-    else:
-        return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
+        else:
+            return JsonResponse({"Error": "incorrect request method. please make a POST request to this end point"}, status=400)
 
 
 def logout(request):

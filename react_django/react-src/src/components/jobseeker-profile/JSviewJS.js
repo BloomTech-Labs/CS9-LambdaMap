@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Messenger from "../messenger/Messenger";
 import JsMiniMap from "../miniMap/JsMiniMap/JsMiniMap";
 import "./JSprofile.css";
-import defaultuser from "./default-user.png";
 import {
   FaTwitter,
   FaLinkedin,
@@ -66,7 +65,7 @@ class JSviewJS extends Component {
         <div className="sidebyside">
           <div className="jsprofile-container">
             <div className="pic-bg">
-              <img src={defaultuser} alt="jspic" />
+              <img src={`http://127.0.0.1:8000/media/${this.props.clients.client.picture}`} alt="jspic" />
               <h1>
                 {this.props.clients.client.first_name} {this.props.clients.client.last_name}
               </h1>
