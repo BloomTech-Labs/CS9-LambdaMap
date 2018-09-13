@@ -119,8 +119,8 @@ class JSMapView extends Component {
               <p>{this.state.client.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope className={this.state.showEmail} />
-              <FaPhone className={this.state.showPhone} />
+              <FaEnvelope className="contact-icons" />
+              <FaPhone className="contact-icons1" />
 
               <img src={worldlogo} alt="worldlogo" />
               <Link
@@ -154,7 +154,9 @@ class JSMapView extends Component {
           >
             <div className="jsmodal-header">
               <img
-                src={`http://127.0.0.1:8000/media/${this.state.job_listing.picture}`}
+                src={`http://127.0.0.1:8000/media/${
+                  this.state.job_listing.picture
+                }`}
                 alt="user"
               />
               <div className="info-container">
