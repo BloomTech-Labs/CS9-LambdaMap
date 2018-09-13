@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import HPnav from "../../nav/company/HPnav";
 import { Link } from "react-router-dom";
-import { get_clients } from "../../../actions";
+import { get_clients, signout } from "../../../actions";
 import { connect } from "react-redux";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
 
@@ -41,7 +41,16 @@ class JSlistView extends Component {
         <div className="signout">
           <div className="backgroundskew" />
           <div className="backgroundskew2" />
-          <button className="signoutbutton">Sign Out</button>
+          <div className="signout">
+            <button
+              className="signoutbutton"
+              onClick={() => {
+                this.props.signout(this.props.history);
+              }}
+            >
+              Sign Out
+            </button>
+          </div>
         </div>
         <div className="jslist-container">
           <div className="filter-main">
@@ -199,5 +208,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_clients }
+  { get_clients, signout }
 )(JSlistView);
