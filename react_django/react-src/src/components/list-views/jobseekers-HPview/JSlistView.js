@@ -108,7 +108,7 @@ class JSlistView extends Component {
                   >
                     <div className="card-header">
                       <img
-                        src={`http://127.0.0.1:8000/media/${clients.picture}`}
+                        src={defaultuser}
                         className="JScardpic"
                         alt="Job Seeker"
                       />

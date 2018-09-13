@@ -1,38 +1,32 @@
-import React, { Component } from 'react';
-import { CardElement, injectStripe} from 'react-stripe-elements';
-import HPNav from '../nav/company/HPnav';
-import './billing.css';
+import React, { Component } from "react";
+import { Elements, StripeProvider } from "react-stripe-elements";
+import CheckoutForm from "./checkoutForm";
+import { connect } from "react-redux";
+import { subscribe } from "../../actions";
+import HPnav from "../nav/company/HPnav";
 
-class Billing extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {complete: false};
-        this.submit = this.submit.bind(this);
-      }
-    
-      async submit(e) {
-        // let {token} = await this.props.stripe.createToken({name: "Name"});
-        let response = await fetch("/charge", {
-          method: "POST",
-          headers: {"Content-Type": "text/plain"},
-        //   body: token.id
-        });
-      
-        if (response.ok) console.log("Purchase Complete!")
-    }
-    render() {
-        if (this.state.complete) return <h1>Purchase Complete</h1>;
-        return(
-        <div>
-            <HPNav />
-            <div  className="billing">
-            <p>Would you like to complete the purchase?</p>
-            <CardElement />
-            <button onClick={this.submit}>Sumbit Payment</button>
-            </div>
-        </div>
-        )
-    }
+class Billing extends Component {
+  render() {
+    return (
+      <div>
+        <HPnav />
+        <StripeProvider apiKey="pk_test_1p5B423kMIc50yASX6BjZtio">
+          <div className="billing">
+            <Elements>
+              <CheckoutForm />
+            </Elements>
+          </div>
+        </StripeProvider>
+      </div>
+    );
+  }
 }
 
-export default injectStripe(Billing);
+const mapStateToProps = state => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  { subscribe }
+)(Billing);

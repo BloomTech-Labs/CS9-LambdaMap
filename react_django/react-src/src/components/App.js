@@ -9,8 +9,8 @@ import HPlanding from "./landing-page/hp-landing/HPlanding";
 import HPMapView from "./map/hp-map/hpmap";
 import JSMapView from "./map/client-map/jsmap";
 import JSlistView from "./list-views/jobseekers-HPview/JSlistView";
-import HPsettings from "./settings/HP-settings/HPsettings";
-import studentSettings from "./settings/studentSettings/studentSettings";
+import CompanySettings from "./settings/HP-settings/CompanySettings";
+import StudentSettings from "./settings/studentSettings/StudentSettings";
 import JobslistView from "./list-views/jobspage-JSview/JobslistView";
 import Billing from "./billing/billing";
 import JSviewJS from "./jobseeker-profile/JSviewJS";
@@ -32,7 +32,7 @@ class App extends Component {
         <Route path="/jsview/:id/" component={JSviewJS} />  {/* <--- allows js to view other js profiles */}
         <Route path="/userprofile/" component={UserProfile} />
         <Route path="/hpprofile/:id" component={HpProfileView} />
-        <Route path="/jssettings/" component={studentSettings} />
+        <Route path="/jssettings/" component={StudentSettings} />
         {/* <Route path="/jsfavorites/" component={} /> */}
         {/* <Route path="/jsmessages/" component={} /> */}
         
@@ -42,7 +42,7 @@ class App extends Component {
         <Route path="/jobseekers/" component={JSlistView} />
         <Route path="/jsprofile/:id/" component={JSprofile} />
         <Route path="/hpview/:id" component={HPviewHP} />  {/* <--- allows hp to view other hp profiles */}
-        <Route path="/hpsettings/" component={HPsettings} />
+        <Route path="/settings/" component={CompanySettings} />
         <Route path="/billing" component={Billing} />
         {/* <Route path="/hpfavorites/" component={} /> */}
         {/* <Route path="/hpmessages/" component={} /> */}
