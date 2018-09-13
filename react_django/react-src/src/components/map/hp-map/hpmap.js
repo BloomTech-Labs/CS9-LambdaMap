@@ -5,7 +5,6 @@ import HPNav from "../../nav/company/HPnav";
 import "./map.css";
 import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
-import defaultuser from "./default-user.png";
 import worldlogo from "./atlascardlogo.png";
 import { Link } from "react-router-dom";
 import { FaPhone, FaEnvelope, FaBriefcase } from "react-icons/fa";

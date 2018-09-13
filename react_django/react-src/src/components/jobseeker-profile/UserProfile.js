@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./JSprofile.css";
-import defaultuser from "./default-user.png";
 import JSnav from "../nav/job-seeker/JSnav";
 import Messenger from "../messenger/Messenger";
 import HpMiniMap from "../miniMap/HpMiniMap/HpMiniMap";

@@ -16,7 +16,7 @@ class CompanySettings extends Component {
   constructor() {
     super();
     this.state = {
-      company_name: user.company_name,
+      // company_name: user.company_name,
       city: user.city,
       state: user.state,
       phone: user.phone,
@@ -89,7 +89,7 @@ class CompanySettings extends Component {
               </div>
               <div className="about-input">
                 <div>
-                  Company Name:
+                  {/* Company Name:
                   <input
                     name="companyName"
                     type="text"
@@ -98,7 +98,7 @@ class CompanySettings extends Component {
                       this.setState({ [e.target.name]: e.target.value })
                     }
                     placeholder="Company Name"
-                  />
+                  /> */}
                 </div>
                 <div>
                   City:
@@ -154,10 +154,10 @@ class CompanySettings extends Component {
               className="update-button"
               onClick={() => {
                 this.props.update({
-                  company_name:
-                    this.state.company_name !== ""
-                      ? this.state.company_name
-                      : this.state.company_name,
+                  // company_name:
+                  //   this.state.company_name !== ""
+                  //     ? this.state.company_name
+                  //     : this.state.company_name,
                   state:
                     this.state.state !== ""
                       ? this.state.state
@@ -186,7 +186,7 @@ class CompanySettings extends Component {
                       : this.state.picture
                 });
                 this.setState({
-                  company_name: user.company_name,
+                  // company_name: user.company_name,
                   city: user.city,
                   state: user.state,
                   phone: user.phone,
