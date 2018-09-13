@@ -14,6 +14,9 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
+#setting time zone to true
+USE_TZ = True
+
 # Application definition
 
 INSTALLED_APPS = [
