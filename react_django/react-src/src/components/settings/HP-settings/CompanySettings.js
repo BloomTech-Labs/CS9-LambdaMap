@@ -9,7 +9,6 @@ import DragDrop from "../../Modals/dragDrop";
 import HPMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
 import Messenger from "../../messenger/Messenger";
 
-// const imageUrl = require(`./default-user.png`);
 const user = JSON.parse(localStorage.getItem("user"));
 
 class CompanySettings extends Component {
@@ -196,6 +195,7 @@ class CompanySettings extends Component {
                   dragDrop: false,
                   picture: user.picture
                 });
+                this.props.history.push(`/hpview/${user.id}`)
               }}
             >
               Update
