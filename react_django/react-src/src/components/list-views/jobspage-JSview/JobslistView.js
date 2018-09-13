@@ -5,7 +5,7 @@ import { FaLink, FaAngleDoubleLeft, FaBriefcase } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 import JSnav from "../../nav/job-seeker/JSnav";
 import defaultuser from "./default-user.png";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { get_listings } from "../../../actions";
 import { connect } from "react-redux";
 import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
@@ -32,8 +32,8 @@ class JobslistView extends Component {
     this.props.jobListing.job_listings.filter(j => {
       if (j.ID === id) {
         this.setState({ job_listing: j });
-        console.log(this.state.job_listing);
       }
+      return console.log("listing")
     });
   };
 
@@ -119,11 +119,10 @@ class JobslistView extends Component {
                   }}
                 >
                   <div className="card-header">
-                    <img
-                      src={defaultuser}
-                      className="Joblistcardpic"
-                      alt="Job Seeker"
-                    />
+                  <img
+              src={`http://127.0.0.1:8000/media/${job_listing.picture}`}
+              alt="listing"
+            />
                     <div className="jobscard-name">
                       <h3>{job_listing.company_name}</h3>
                       <h5>

@@ -6,6 +6,8 @@ const initialState = {
   hiring_partners: [],
   hp_favorites: [],
   HP: {},
+  updatedEndDate: {},
+  fetchingSubscribe: false,
   fetchingHPfavs: false,
   fetchingHPs: false,
   fetchingHP: false,
@@ -53,6 +55,19 @@ const hirePartner = (state = initialState, action) => {
       return Object.assign({}, state, {
         hp_favorites: [...action.payload],
         fetchingHPFavs: false,
+        error: null
+      });
+
+      case actions.FETCH_SUBSCRIBE:
+      return Object.assign({}, state, {
+        fetchingSubscribe: true,
+        error: null
+      });
+
+    case actions.FETCHED_SUBSCRIBE:
+      return Object.assign({}, state, {
+        updatedEndDate:action.response.data,
+        fetchingSubscribe: false,
         error: null
       });
 

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import JSnav from "../../nav/job-seeker/JSnav";
 import Messenger from "../../messenger/Messenger";
 import "./ClientLanding.css";
-import amazon from "./amazon-logo.png";
-import mark from "./0.png";
 import marker from "./marker_icon.png";
 import { get_listings, signout } from "../../../actions/index";
 import { connect } from "react-redux";
@@ -49,10 +47,12 @@ class ClientLanding extends Component {
     if (randomCompany) {
       companyListing = (
         <div className="feat-job">
-          <img src={amazon} alt="company" />
+          <img
+            src={`http://127.0.0.1:8000/media/${randomCompany.picture}`}
+            alt="user"
+          />
           <div className="list-info">
             <div className="pinit">
-              {/* <h3 className="jobloc">{randomCompany.company_name}</h3> */}
               <h3 className="jobloc">
                 {randomCompany.city}, {randomCompany.state}
               </h3>{" "}
@@ -74,7 +74,10 @@ class ClientLanding extends Component {
     if (randomCompany2) {
       favoritesListing = (
         <div className="pinned-listing">
-          <img src={amazon} alt="company" />
+          <img
+            src={`http://127.0.0.1:8000/media/${randomCompany.picture}`}
+            alt="user"
+          />
           <div className="list-info">
             <div className="pinit">
               <h3 className="jobloc">
@@ -95,7 +98,7 @@ class ClientLanding extends Component {
         </div>
       );
     }
-    // <img src={mark} className="mark" alt="user" />
+
     return (
       <div className="client">
         <JSnav />
@@ -115,10 +118,11 @@ class ClientLanding extends Component {
 
           <div className="welcome-container">
             <img src={marker} className="profile-marker" alt="marker" />
-
-
-
-            <img src={`http://127.0.0.1:8000/media/${user.picture}`} className='mark' alt=''/>
+            <img
+              src={`http://127.0.0.1:8000/media/${user.picture}`}
+              className="mark"
+              alt="user"
+            />
             <h1>Welcome back, {user.first_name}.</h1>
           </div>
           {companyListing}

@@ -26,9 +26,7 @@ class JSMapView extends Component {
       selectedPlace: {},
       jsModal: false,
       hpModal: false,
-      color: "black",
-      showPhone: "contact-icons",
-      showEmail: "contact-icons1"
+      color: "black"
     };
   }
 
@@ -50,6 +48,7 @@ class JSMapView extends Component {
       if (c.ID === id) {
         this.setState({ client: c });
       }
+      return console.log("listing");
     });
   };
 
@@ -58,6 +57,7 @@ class JSMapView extends Component {
       if (j.ID === id) {
         this.setState({ job_listing: j });
       }
+      return console.log("listing");
     });
   };
 
@@ -66,30 +66,6 @@ class JSMapView extends Component {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      });
-    }
-  };
-
-  onPhoneClick = () => {
-    if (this.state.showPhone === "contact-icons") {
-      this.setState({
-        showPhone: "show"
-      });
-    } else {
-      this.setState({
-        showPhone: "contact-icons"
-      });
-    }
-  };
-
-  onEmailClick = () => {
-    if (this.state.showEmail === "contact-icons1") {
-      this.setState({
-        showEmail: "show1"
-      });
-    } else {
-      this.setState({
-        showEmail: "contact-icons1"
       });
     }
   };
@@ -116,7 +92,10 @@ class JSMapView extends Component {
             }}
           >
             <div className="jsmodal-header">
-              <img src={defaultuser} />
+              <img
+                src={`http://127.0.0.1:8000/media/${this.state.client.picture}`}
+                alt="user"
+              />
               <div className="info-container">
                 <div className="modal-name">
                   <h2>
@@ -140,24 +119,9 @@ class JSMapView extends Component {
               <p>{this.state.client.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope
-                className={this.state.showEmail}
-                onClick={() => {
-                  this.setState({
-                    showEmail: "show1"
-                  });
-                }}
-              />
-              <FaPhone
-                className={this.state.showPhone}
-                onClick={() => {
-                  this.setState({
-                    showPhone: "show"
-                  });
-                }}
-              />
-              {showPhone}
-              {showEmail}
+              <FaEnvelope className="contact-icons" />
+              <FaPhone className="contact-icons1" />
+
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/jsview/${this.state.client.ID}`}
@@ -189,7 +153,12 @@ class JSMapView extends Component {
             }}
           >
             <div className="jsmodal-header">
-              <img src={defaultuser} />
+              <img
+                src={`http://127.0.0.1:8000/media/${
+                  this.state.job_listing.picture
+                }`}
+                alt="user"
+              />
               <div className="info-container">
                 <div className="modal-name">
                   <h2>{this.state.job_listing.company_name}</h2>
@@ -200,7 +169,8 @@ class JSMapView extends Component {
                 </div>
                 <div className="job-loc">
                   <h4 className="prof">
-                    {this.state.job_listing.city}, {this.state.job_listing.state}
+                    {this.state.job_listing.city},{" "}
+                    {this.state.job_listing.state}
                   </h4>
                   <h5>
                     <FaBriefcase className="listing-icon" />
@@ -214,9 +184,9 @@ class JSMapView extends Component {
               <p>{this.state.job_listing.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope className={this.state.showEmail} />
-              <FaPhone className={this.state.showPhone} />
-              {showPhone} {showEmail}
+              <FaEnvelope className="contact-icons" />
+              <FaPhone className="contact-icons1" />
+
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/hpprofile/${this.state.job_listing.ID}`}
@@ -231,21 +201,6 @@ class JSMapView extends Component {
       );
     }
 
-    let showPhone = null;
-    let showEmail = null;
-    if (this.state.showPhone === "show") {
-      showPhone = (
-        <div>
-          {this.state.client.phone}
-        </div>
-      );
-    } else if (this.state.showEmail === "show1") {
-      showEmail = (
-        <div>
-          {this.state.client.email}
-        </div>
-      );
-    }
     return (
       <div>
         <JSNav />
@@ -262,88 +217,88 @@ class JSMapView extends Component {
               zoom={4}
               style={{
                 width: "100%",
-                height: "100vh",
+                height: "100vh"
               }}
-              styles= {[
+              styles={[
                 {
-                    "featureType": "administrative",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#444444"
-                        }
-                    ]
+                  featureType: "administrative",
+                  elementType: "labels.text.fill",
+                  stylers: [
+                    {
+                      color: "#444444"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "landscape",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        }
-                    ]
+                  featureType: "landscape",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      color: "#f2f2f2"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "poi",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "poi",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 45
-                        }
-                    ]
+                  featureType: "road",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      saturation: -100
+                    },
+                    {
+                      lightness: 45
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
+                  featureType: "road.highway",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "simplified"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "road.arterial",
+                  elementType: "labels.icon",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "transit",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "transit",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#4D9FCA"
-                        },
-                        {
-                            "visibility": "on"
-                        }
-                    ]
+                  featureType: "water",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      color: "#4D9FCA"
+                    },
+                    {
+                      visibility: "on"
+                    }
+                  ]
                 }
-            ]}
+              ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (

@@ -11,7 +11,6 @@ import { GoClock } from "react-icons/go";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
 import Messenger from "../../messenger/Messenger";
 import "./HPlanding.css";
-import amazon from "./amazon-logo.png";
 import marker from "./marker_icon.png";
 
 const Timestamp = require("react-timestamp");
@@ -82,7 +81,11 @@ class HPLanding extends Component {
         <div className="main-hplanding">
           <div className="welcome-container">
             <img src={marker} className="profile-marker" alt="marker" />
-            <img src={`http://127.0.0.1:8000/media/${user.picture}`} className="profile-pic" alt="user" />
+            <img
+              src={`http://127.0.0.1:8000/media/${user.picture}`}
+              className="profile-pic"
+              alt="user"
+            />
             <h1>Welcome back, {user.company_name}.</h1>
           </div>
           <div className="new-joblisting">
@@ -165,7 +168,6 @@ class HPLanding extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state, "mapstatetoprops");
   return {
     jobListing: state.jobListing,
     hirePartner: state.hirePartner,

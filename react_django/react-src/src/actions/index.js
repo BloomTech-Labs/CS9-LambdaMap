@@ -1,37 +1,37 @@
 import axios from "axios";
 import * as actions from "./actionTypes";
-import FormData from 'form-data';
+import FormData from "form-data";
 // import { withRouter } from 'react-router';
 //  const SERVER_URL = "https://lambda-map.herokuapp.com";
 const SERVER_URL = "http://127.0.0.1:8000";
 
-export const subscribe = (data) =>{
-  const response = axios.post(`${SERVER_URL}/api/subscribe`,data);
+export const subscribe = data => {
+  const response = axios.post(`${SERVER_URL}/api/subscribe`, data);
   return dispatch => {
     dispatch({
       type: actions.FETCH_SUBSCRIBE
     });
-    return new Promise(function(resolve, reject){
-      response.then(res=>{
-        dispatch({
-          type:actions.FETCHED_SUBSCRIBE,
-          response:res
+    return new Promise(function(resolve, reject) {
+      response
+        .then(res => {
+          dispatch({
+            type: actions.FETCHED_SUBSCRIBE,
+            response: res
+          });
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject("error subscribing");
         });
-        resolve(res.data)
-      })
-      .catch(err=>{
-        reject('error subscribing')
-      });
     });
-  }
-}
+  };
+};
 
 export const login = (data, history) => {
   const token = window.sessionStorage.getItem("jwt") || null;
   const config = {
     headers: { jwt: `${token}`, "Access-Control-Allow-Origin": "*" }
   };
-  // console.log("About to make a login request to this domain: ", SERVER_URL);
   const user = axios.post(`${SERVER_URL}/api/login/`, data, config);
   return dispatch => {
     dispatch({
@@ -41,7 +41,7 @@ export const login = (data, history) => {
       .then(response => {
         if (response.data.account_type === false) {
           window.sessionStorage.setItem("jwt", response.headers.jwt);
-          window.localStorage.setItem("user",  JSON.stringify(response.data));
+          window.localStorage.setItem("user", JSON.stringify(response.data));
           dispatch({
             type: actions.LOGGEDIN_CLIENT,
             payload: response.data
@@ -288,8 +288,7 @@ export const get_hp = id => {
   const hp = axios.get(`${SERVER_URL}/api/hp/${id}/`);
   return dispatch => {
     dispatch({ type: actions.FETCH_HP });
-    hp
-    .then(response => {
+    hp.then(response => {
       dispatch({
         type: actions.FETCHED_HP,
         payload: response.data.Hire_Partner
@@ -305,19 +304,21 @@ export const get_hp = id => {
 
 export const update = obj => {
   const token = window.sessionStorage.getItem("jwt") || null;
-  const config = { headers: {
-    jwt: `${token}`,
-    "accept": "application/json",
-    "enctype": "multipart/form-data"
-  }};
+  const config = {
+    headers: {
+      jwt: `${token}`,
+      accept: "application/json",
+      enctype: "multipart/form-data"
+    }
+  };
   const data = new FormData();
   const keys = Object.keys(obj);
   for (let i = 0; i < keys.length; i++) {
     if (obj[keys[i]]) {
-      if (keys[i] === 'picture'){
-        data.append('file', obj[keys[i]])
+      if (keys[i] === "picture") {
+        data.append("file", obj[keys[i]]);
       } else {
-        data.append(keys[i], obj[keys[i]])
+        data.append(keys[i], obj[keys[i]]);
       }
     }
   }

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./HPprofile.css";
-import amazon from "./amazon-logo.png";
 import JSnav from "../nav/job-seeker/JSnav";
 import Messenger from "../messenger/Messenger";
 import JSMiniMap from "../miniMap/JsMiniMap/JsMiniMap";

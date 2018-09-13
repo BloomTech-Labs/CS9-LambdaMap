@@ -1,7 +1,6 @@
 // Hiring Partner View of individual job seeker profile
 import React, { Component } from "react";
 import "./JSprofile.css";
-import defaultuser from "./default-user.png";
 import HPnav from "../nav/company/HPnav";
 import Messenger from "../messenger/Messenger";
 import HpMiniMap from "../miniMap/HpMiniMap/HpMiniMap";
@@ -145,7 +144,6 @@ class JSprofile extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state, "mapstatetoprops");
   return {
     clients: state.clients,
     client: state.client,

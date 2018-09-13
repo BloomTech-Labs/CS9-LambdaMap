@@ -56,6 +56,8 @@ class Clients(Users):
 
 class Hire_Partners(Users):
     company_name = models.CharField(max_length=50, blank=True, default='')
+    subscription_end_date = models.DateTimeField(default=timezone.now)
+    subscribed = models.BooleanField(default=False)
 
     def to_dict(self):
         return {
@@ -70,7 +72,8 @@ class Hire_Partners(Users):
             "account_type": self.account_type,
             "lat": self.lat,
             "lng": self.lng,
-            "picture": self.picture.name
+            "picture": self.picture.name,
+            "subscribed": self.subscribed,
         }
 
 

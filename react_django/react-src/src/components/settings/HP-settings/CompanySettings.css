@@ -73,31 +73,31 @@
     border-left: 1px solid black; }
   .settings .setting-forms .profile-update :focus {
     outline: none; }
-  .settings .setting-forms .profile-update .update-input {
+  .settings .setting-forms .profile-update .hpupdate-input {
     width: 800px;
     display: flex;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 50px;
     margin-bottom: 20px;
     padding: 50px;
     background: url(./austin.png);
     background-size: cover;
     border-radius: 20px; }
-    .settings .setting-forms .profile-update .update-input .about-input {
+    .settings .setting-forms .profile-update .hpupdate-input .about-input {
       display: flex;
       flex-direction: column; }
-    .settings .setting-forms .profile-update .update-input .link-inputs {
+    .settings .setting-forms .profile-update .hpupdate-input .link-inputs {
       display: flex;
       flex-direction: column; }
-    .settings .setting-forms .profile-update .update-input .pic-div {
+    .settings .setting-forms .profile-update .hpupdate-input .pic-div {
       background: url("./default-user.png");
       background-repeat: no-repeat;
       background-size: 100px 100px;
       width: 100px;
       height: 100px;
       border-radius: 100%; }
-      .settings .setting-forms .profile-update .update-input .pic-div .post-button-2 {
+      .settings .setting-forms .profile-update .hpupdate-input .pic-div .post-button-2 {
         width: 100px;
         height: 100px;
         border-radius: 100%;
@@ -106,7 +106,7 @@
         overflow: hidden;
         padding: 0;
         cursor: pointer; }
-        .settings .setting-forms .profile-update .update-input .pic-div .post-button-2 .upload {
+        .settings .setting-forms .profile-update .hpupdate-input .pic-div .post-button-2 .upload {
           height: 50px;
           width: 100px;
           margin-top: 50px;
@@ -114,7 +114,7 @@
           color: white;
           transform: translate(0, 50px);
           transition: transform 1s cubic-bezier(0.2, 0.2, 0.05, 1); }
-      .settings .setting-forms .profile-update .update-input .pic-div .post-button-2:hover .upload {
+      .settings .setting-forms .profile-update .hpupdate-input .pic-div .post-button-2:hover .upload {
         transform: none; }
   .settings .setting-forms .profile-update button {
     border: none;
@@ -143,4 +143,4 @@
       color: black;
       letter-spacing: 1px; }
 
-/*# sourceMappingURL=studentSettings.css.map */
+/*# sourceMappingURL=CompanySettings.css.map */

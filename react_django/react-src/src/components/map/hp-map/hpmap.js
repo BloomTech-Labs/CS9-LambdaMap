@@ -26,9 +26,7 @@ class HPMapView extends Component {
       selectedPlace: {},
       jsModal: false,
       hpModal: false,
-      color: "black",
-      showPhone: "contact-icons",
-      showEmail: "contact-icons1"
+      color: "black"
     };
   }
 
@@ -50,6 +48,7 @@ class HPMapView extends Component {
       if (c.ID === id) {
         this.setState({ client: c });
       }
+      return console.log("listing");
     });
   };
 
@@ -58,6 +57,7 @@ class HPMapView extends Component {
       if (j.ID === id) {
         this.setState({ job_listing: j });
       }
+      return console.log("listing");
     });
   };
 
@@ -70,32 +70,7 @@ class HPMapView extends Component {
     }
   };
 
-  onPhoneClick = () => {
-    if (this.state.showPhone === "contact-icons") {
-      this.setState({
-        showPhone: "show"
-      });
-    } else {
-      this.setState({
-        showPhone: "contact-icons"
-      });
-    }
-  };
-
-  onEmailClick = () => {
-    if (this.state.showEmail === "contact-icons1") {
-      this.setState({
-        showEmail: "show1"
-      });
-    } else {
-      this.setState({
-        showEmail: "contact-icons1"
-      });
-    }
-  };
-
   render() {
-    console.log(this.state.jsModal)
     let jsModal = null;
     let hpModal = null;
     if (this.state.jsModal === true) {
@@ -117,7 +92,10 @@ class HPMapView extends Component {
             }}
           >
             <div className="jsmodal-header">
-              <img src={defaultuser} />
+              <img
+                src={`http://127.0.0.1:8000/media/${this.state.client.picture}`}
+                alt="user"
+              />
               <div className="info-container">
                 <div className="modal-name">
                   <h2>
@@ -141,24 +119,8 @@ class HPMapView extends Component {
               <p>{this.state.client.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope
-                // className={this.state.showEmail}
-                // onClick={() => {
-                //   this.setState({
-                //     showEmail: "show1"
-                //   });
-                // }}
-              />
-              <FaPhone
-                // className={this.state.showPhone}
-                // onClick={() => {
-                //   this.setState({
-                //     showPhone: "show"
-                //   });
-                // }}
-              />
-              {/* {showPhone}
-              {showEmail} */}
+              <FaEnvelope />
+              <FaPhone />
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/jsprofile/${this.state.client.ID}`}
@@ -190,7 +152,10 @@ class HPMapView extends Component {
             }}
           >
             <div className="jsmodal-header">
-              <img src={defaultuser} />
+              <img
+                src={`http://127.0.0.1:8000/media/${this.state.job_listing.picture}`}
+                alt="user"
+              />
               <div className="info-container">
                 <div className="modal-name">
                   <h2>{this.state.job_listing.company_name}</h2>
@@ -201,7 +166,8 @@ class HPMapView extends Component {
                 </div>
                 <div className="job-loc">
                   <h4 className="prof">
-                    {this.state.job_listing.city}, {this.state.job_listing.state}
+                    {this.state.job_listing.city},{" "}
+                    {this.state.job_listing.state}
                   </h4>
                   <h5>
                     <FaBriefcase className="listing-icon" />
@@ -215,9 +181,8 @@ class HPMapView extends Component {
               <p>{this.state.job_listing.about}</p>
             </div>
             <div className="jsmodal-footer">
-              {/* <FaEnvelope className={this.state.showEmail} />
-              <FaPhone className={this.state.showPhone} /> */}
-              {/* {showPhone} {showEmail} */}
+              <FaEnvelope />
+              <FaPhone />
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/hpview/${this.state.job_listing.ID}`}
@@ -231,22 +196,6 @@ class HPMapView extends Component {
         </div>
       );
     }
-
-    // let showPhone = null;
-    // let showEmail = null;
-    // if (this.state.showPhone === "show") {
-    //   showPhone = (
-    //     <div>
-    //       {this.state.client.phone}
-    //     </div>
-    //   );
-    // } else if (this.state.showEmail === "show1") {
-    //   showEmail = (
-    //     <div>
-    //       {this.state.client.email}
-    //     </div>
-    //   );
-    // }
     return (
       <div>
         <HPNav />
@@ -263,88 +212,88 @@ class HPMapView extends Component {
               zoom={4}
               style={{
                 width: "100%",
-                height: "100vh",
+                height: "100vh"
               }}
-              styles= {[
+              styles={[
                 {
-                    "featureType": "administrative",
-                    "elementType": "labels.text.fill",
-                    "stylers": [
-                        {
-                            "color": "#454545"
-                        }
-                    ]
+                  featureType: "administrative",
+                  elementType: "labels.text.fill",
+                  stylers: [
+                    {
+                      color: "#454545"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "landscape",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#f2f2f2"
-                        }
-                    ]
+                  featureType: "landscape",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      color: "#f2f2f2"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "poi",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "poi",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 45
-                        }
-                    ]
+                  featureType: "road",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      saturation: -100
+                    },
+                    {
+                      lightness: 45
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
+                  featureType: "road.highway",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "simplified"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "road.arterial",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "road.arterial",
+                  elementType: "labels.icon",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "transit",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
+                  featureType: "transit",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      visibility: "off"
+                    }
+                  ]
                 },
                 {
-                    "featureType": "water",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "color": "#4D9FCA"
-                        },
-                        {
-                            "visibility": "on"
-                        }
-                    ]
+                  featureType: "water",
+                  elementType: "all",
+                  stylers: [
+                    {
+                      color: "#4D9FCA"
+                    },
+                    {
+                      visibility: "on"
+                    }
+                  ]
                 }
-            ]}
+              ]}
               onClick={this.onMapClicked}
             >
               {this.props.clients.clients.map((client, i) => (
@@ -368,22 +317,22 @@ class HPMapView extends Component {
               ))}
               {this.props.jobListing.job_listings.map((job_listing, i) => (
                 <Marker
-                key={i}
-                onClick={() => {
-                  this.onMarkerClickHp(job_listing.ID);
-                  this.setState({
-                    hpModal: !this.state.hpModal
-                  });
-                }}
-                style={{ height: "30px", width: "30px" }}
-                name={job_listing.company_name.city}
-                title={job_listing.company_name}
-                position={{ lat: job_listing.lat, lng: job_listing.lng }}
-                icon={{
-                  scaledSize: new google.maps.Size(18, 28),
-                  url: orange
-                }}
-              />
+                  key={i}
+                  onClick={() => {
+                    this.onMarkerClickHp(job_listing.ID);
+                    this.setState({
+                      hpModal: !this.state.hpModal
+                    });
+                  }}
+                  style={{ height: "30px", width: "30px" }}
+                  name={job_listing.company_name.city}
+                  title={job_listing.company_name}
+                  position={{ lat: job_listing.lat, lng: job_listing.lng }}
+                  icon={{
+                    scaledSize: new google.maps.Size(18, 28),
+                    url: orange
+                  }}
+                />
               ))}
             </Map>
             {jsModal}

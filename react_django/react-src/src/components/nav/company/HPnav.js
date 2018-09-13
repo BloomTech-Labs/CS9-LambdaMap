@@ -82,7 +82,7 @@ export default class HPnav extends Component {
           </li>
 
           <Link
-            to="/hpsettings/"
+            to="/settings/"
             className="nav-links"
             style={{ textDecoration: "none" }}
           >
