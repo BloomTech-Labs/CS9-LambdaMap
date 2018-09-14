@@ -45,16 +45,16 @@
           .main .hpprof-container .hps-listings .posted-container .hpposted-listing .list-info {
             display: flex;
             align-items: center;
-            padding: 0px 25px; }
+            width: 80%; }
             .main .hpprof-container .hps-listings .posted-container .hpposted-listing .list-info .joblink-url {
               font-size: 1em; }
             .main .hpprof-container .hps-listings .posted-container .hpposted-listing .list-info h4 {
               text-align: start;
               font-weight: bold;
               font-size: .8em;
-              margin: 0 auto;
-              width: 15%;
-              border-right: 1px dashed #919191; }
+              margin: 5px auto 0px;
+              border-right: 1px dashed #919191;
+              width: 100px; }
             .main .hpprof-container .hps-listings .posted-container .hpposted-listing .list-info p {
               text-align: start;
               margin: auto 15px;
