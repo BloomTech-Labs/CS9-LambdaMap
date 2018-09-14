@@ -3,34 +3,15 @@
 // Hiring Partner View for list of job seekers with filter
 import React, { Component } from "react";
 import "./JSlistView.css";
-import {
-  FaCaretDown,
-  FaStar,
-  FaTwitter,
-  FaLinkedin,
-  FaGithub,
-  FaCodepen,
-  FaFile,
-  FaDesktop,
-  FaEnvelope,
-  FaPhoneSquare,
-  FaLink,
-  FaBriefcase,
-  FaAngleDoubleLeft
-} from "react-icons/fa";
+import { FaLink, FaAngleDoubleLeft } from "react-icons/fa";
 import HPnav from "../../nav/company/HPnav";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
-import { GoClock } from "react-icons/go";
 import defaultuser from "./default-user.png";
-// import { Link } from "react-router-dom";
-
 import Messenger from "../../messenger/Messenger";
 import marker from "./marker_icon.png";
-
-const Timestamp = require("react-timestamp");
 
 class JSlistView extends Component {
   constructor(props) {
@@ -93,7 +74,11 @@ class JSlistView extends Component {
         <div className="feat-hp">
           <div className="hp-info">
             <img src={marker} className="profile-marker" alt="marker" />
-            <img src={defaultuser} className="featured" alt="default" />
+            <img
+              src={`http://127.0.0.1:8000/media/${randomClient.picture}`}
+              alt="listing"
+              className="featured"
+            />
             <h1>
               {randomClient.first_name}, {randomClient.last_name}
             </h1>
