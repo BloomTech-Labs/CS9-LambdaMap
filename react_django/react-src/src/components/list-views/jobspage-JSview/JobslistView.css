@@ -2,6 +2,32 @@
   background: #e1f5ff;
   height: 100vh;
   font-family: "Trebuchet MS", sans-serif; }
+  .main-jobslist .jobslist-container .featured-hps a:-webkit-any-link {
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #8a8a8a;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+    font-family: "Trebuchet MS", sans-serif;
+    border-radius: 8px;
+    width: 50px;
+    outline-color: #db5f3c;
+    text-align: center;
+    -webkit-filter: drop-shadow(2px 1px 2px black);
+    filter: drop-shadow(2px 1px 2px black);
+    bottom: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    position: absolute; }
+  .main-jobslist .jobslist-container .featured-hps a:-webkit-any-link:active {
+    transform: translate(1px, 2px);
+    -webkit-filter: drop-shadow(0px 0px 0px black);
+    filter: drop-shadow(0px 0px 0px black); }
   .main-jobslist .jobslist-container .featured-hps .profile-marker {
     position: absolute;
     width: 80px;
@@ -26,7 +52,6 @@
     border-radius: 20px;
     background-color: #125172;
     color: white;
-    cursor: pointer;
     padding: 10px; }
     .main-jobslist .jobslist-container .featured-hps .featured-profile .feat-hp .hp-info h1 {
       margin: 0; }
@@ -66,7 +91,6 @@
     border-radius: 20px;
     background-color: #125172;
     color: white;
-    cursor: pointer;
     padding: 10px; }
   .main-jobslist .jobslist-container .featured-hps .feat-hp .profile-marker {
     position: absolute;
@@ -94,7 +118,6 @@
     border-radius: 20px;
     background-color: #125172;
     color: white;
-    cursor: pointer;
     padding: 10px; }
   .main-jobslist .jobslist-container .featured-hps .feat-hp .hp-info h1 {
     margin: 0; }
@@ -134,7 +157,6 @@
     border-radius: 20px;
     background-color: #125172;
     color: white;
-    cursor: pointer;
     padding: 10px; }
     .main-jobslist .jobslist-container .featured-hps .featured-profile3 .feat-hp .hp-info h1 {
       margin: 0; }
@@ -275,4 +297,4 @@
         width: 80%;
         border-bottom: 1px solid #707070; }
 
-/*# sourceMappingURL=JobsListView.css.map */
+/*# sourceMappingURL=Jobslistview.css.map */
