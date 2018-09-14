@@ -7,7 +7,7 @@ import { get_clients, get_listings } from "../../../actions/index";
 import { connect } from "react-redux";
 import worldlogo from "./atlascardlogo.png";
 import { Link } from "react-router-dom";
-import { FaPhone, FaEnvelope, FaBriefcase } from "react-icons/fa";
+import { FaBriefcase } from "react-icons/fa";
 import { TiPin } from "react-icons/ti";
 import orange from "../orangemarker.png";
 import blue from "../bluemarker.png";
@@ -118,9 +118,6 @@ class JSMapView extends Component {
               <p>{this.state.client.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope className="contact-icons" />
-              <FaPhone className="contact-icons1" />
-
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/jsview/${this.state.client.ID}`}
@@ -183,9 +180,6 @@ class JSMapView extends Component {
               <p>{this.state.job_listing.about}</p>
             </div>
             <div className="jsmodal-footer">
-              <FaEnvelope className="contact-icons" />
-              <FaPhone className="contact-icons1" />
-
               <img src={worldlogo} alt="worldlogo" />
               <Link
                 to={`/hpprofile/${this.state.job_listing.ID}`}
@@ -213,7 +207,7 @@ class JSMapView extends Component {
                 lng: -96.3301
               }}
               disableDefaultUI={true}
-              zoom={4}
+              zoom={5}
               style={{
                 width: "100%",
                 height: "100vh"
@@ -314,7 +308,7 @@ class JSMapView extends Component {
                   title={client.first_name}
                   position={{ lat: client.lat, lng: client.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(15, 25),
+                    scaledSize: new google.maps.Size(20, 30),
                     url: blue
                   }}
                 />
@@ -333,7 +327,7 @@ class JSMapView extends Component {
                   title={job_listing.company_name}
                   position={{ lat: job_listing.lat, lng: job_listing.lng }}
                   icon={{
-                    scaledSize: new google.maps.Size(18, 28),
+                    scaledSize: new google.maps.Size(23, 33),
                     url: orange
                   }}
                 />

@@ -53,7 +53,7 @@ class DragDrop extends Component {
     e.target.style.background = "";
     const FILES = e.dataTransfer.items;
     for (let i = 0; i < FILES.length; i++) {
-      if (FILES[i].type.match(/^image\/(?:jpeg|png)$/)) {
+      if (FILES[i].type.match(/^image\/(?:jpeg|png|gif)$/)) {
         if (FILES[i].getAsFile().size < 8000000) {
           this.props.submitFile(FILES[i].getAsFile());
         } else {
