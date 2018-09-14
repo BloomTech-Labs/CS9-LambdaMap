@@ -63,7 +63,7 @@
           .list-info {
             display: flex;
             align-items: center;
-            padding: 0px 25px;
+            width: 80%;
 
             .joblink-url {
               font-size: 1em;
@@ -73,9 +73,9 @@
               text-align: start;
               font-weight: bold;
               font-size: .8em;
-              margin: 0 auto;
-              width: 15%;
+              margin: 5px auto 0px;
               border-right: 1px dashed $specialgray;
+              width: 100px;
             }
 
             p {
