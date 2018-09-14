@@ -124,6 +124,12 @@ class ClientLanding extends Component {
               alt="user"
             />
             <h1>Welcome back, {user.first_name}.</h1>
+            <hr className="hr1"></hr>
+            <hr className="hr2"></hr>
+            <hr className="hr3"></hr>
+            <hr className="hr4"></hr>
+            <hr className="hr5"></hr>
+            <hr className="hr6"></hr>
           </div>
           {companyListing}
           <h3 className="pinned-title">Pinned Jobs:</h3>
