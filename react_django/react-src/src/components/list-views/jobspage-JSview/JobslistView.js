@@ -32,7 +32,7 @@ class JobslistView extends Component {
       if (j.ID === id) {
         this.setState({ job_listing: j });
       }
-      return console.log("listing")
+      return console.log("listing");
     });
   };
 
@@ -77,13 +77,21 @@ class JobslistView extends Component {
     if (randomCompany) {
       companyListing = (
         <div className="feat-hp">
+        <img src={marker} className="profile-marker" alt="marker" />
+        <img
+          src={`http://127.0.0.1:8000/media/${randomCompany.picture}`}
+          alt="listing"
+          className="featured"
+        />
           <div className="hp-info">
             <h1>{randomCompany.company_name}</h1>
             <h3 className="jobloc">
               {randomCompany.city}, {randomCompany.state}
             </h3>
             <p>{randomCompany.about}</p>
-            <h4><FaBriefcase /> {randomCompany.jobListings.length} Job Listing(s)</h4>
+            <h4>
+              <FaBriefcase /> {randomCompany.jobListings.length} Job Listing(s)
+            </h4>
           </div>
         </div>
       );
@@ -118,10 +126,10 @@ class JobslistView extends Component {
                   }}
                 >
                   <div className="card-header">
-                  <img
-              src={`http://127.0.0.1:8000/media/${job_listing.picture}`}
-              alt="listing"
-            />
+                    <img
+                      src={`http://127.0.0.1:8000/media/${job_listing.picture}`}
+                      alt="listing"
+                    />
                     <div className="jobscard-name">
                       <h3>{job_listing.company_name}</h3>
                       <h5>
@@ -137,14 +145,8 @@ class JobslistView extends Component {
             {notDisplayed}
           </div>
           <div className="featured-hps">
-            <img src={marker} className="profile-marker" alt="marker" />
-            <img src={defaultuser} className="featured" alt="default" />
             <div className="featured-profile">{companyListing}</div>
-            <img src={marker} className="profile-marker2" alt="marker" />
-            <img src={defaultuser} className="featured2" alt="default" />
             <div className="featured-profile2">{companyListing}</div>
-            <img src={marker} className="profile-marker3" alt="marker" />
-            <img src={defaultuser} className="featured3" alt="default" />
             <div className="featured-profile3">{companyListing}</div>
           </div>
         </div>
