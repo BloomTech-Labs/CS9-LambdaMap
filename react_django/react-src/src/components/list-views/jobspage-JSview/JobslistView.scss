@@ -13,7 +13,6 @@
 
   .jobslist-container {
     .featured-hps {
-
       .profile-marker {
         position: absolute;
         width: 80px;
@@ -26,9 +25,9 @@
         position: absolute;
         width: 70px;
         top: 70px;
-        left: 15.8%;
+        left: 15.75%;
         z-index: 1;
-        border: 0.5px solid #db5f3c;
+        border: 2px solid #db5f3c;
         border-radius: 100%;
         background-color: #db5f3c;
       }
@@ -84,9 +83,9 @@
         position: absolute;
         width: 70px;
         top: 70px;
-        left: 45.8%;
+        left: 45.75%;
         z-index: 1;
-        border: 0.5px solid #db5f3c;
+        border: 2px solid #db5f3c;
         border-radius: 100%;
         background-color: #db5f3c;
       }
@@ -102,30 +101,65 @@
         color: white;
         cursor: pointer;
         padding: 10px;
+      }
+      .feat-hp {
 
-        .feat-hp {
-          .hp-info {
-            h1 {
-              margin: 0;
-            }
+        .profile-marker {
+          position: absolute;
+          width: 80px;
+          left: 35.5%;
+          top: -180px;
+          -webkit-filter: drop-shadow(5px 1px 2px #3a3a3a);
+          filter: drop-shadow(6px 1px 2px #3a3a3a);
+        }
 
-            h3 {
-              margin: 0;
-              font-size: 0.9em;
-              color: $specialgray;
-            }
+        .featured {
+          position: absolute;
+          width: 70px;
+          height: 70px;
+          left: 36.85%;
+          top: -176px;
+          z-index: 1;
+          border: 2px solid #db5f3c;
+          border-radius: 100%;
+          background-color: #db5f3c;
+        }
 
-            h4 {
-              margin: 0;
-              font-size: 0.9em;
-            }
+        .featured-profile {
+          position: absolute;
+          width: 300px;
+          height: 200px;
+          top: 250px;
+          left: 9.3%;
+          border-radius: 20px;
+          background-color: $specialblue;
+          color: white;
+          cursor: pointer;
+          padding: 10px;
+        }
 
-            p {
-              margin: 0 10px;
-              font-size: 0.8em;
-              text-align: start;
-              text-indent: 15px;
-            }
+
+        .hp-info {
+          h1 {
+            margin: 0;
+          }
+
+          h3 {
+            margin: 0;
+            font-size: 0.9em;
+            color: $specialgray;
+          }
+
+          h4 {
+            margin: 0;
+            font-size: 0.9em;
+          }
+
+          p {
+            margin: 0 10px;
+            font-size: 0.8em;
+            text-align: start;
+            text-indent: 15px;
           }
         }
       }
@@ -142,9 +176,9 @@
         position: absolute;
         width: 70px;
         top: 70px;
-        left: 75.8%;
+        left: 75.75%;
         z-index: 1;
-        border: 0.5px solid #db5f3c;
+        border: 2px solid #db5f3c;
         border-radius: 100%;
         background-color: #db5f3c;
       }
@@ -331,6 +365,8 @@
               width: 80px;
               height: 80px;
               margin: 0px 10px;
+              border-radius: 100%;
+              border: 2px solid #db5f3c;
             }
 
             .jobscard-name {

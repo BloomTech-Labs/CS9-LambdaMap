@@ -1,5 +1,6 @@
 // Hiring Partner View for list of job seekers with filter
 
+// Hiring Partner View for list of job seekers with filter
 import React, { Component } from "react";
 import "./JSlistView.css";
 import {
@@ -12,19 +13,31 @@ import {
   FaFile,
   FaDesktop,
   FaEnvelope,
-  FaPhoneSquare
+  FaPhoneSquare,
+  FaLink,
+  FaBriefcase,
+  FaAngleDoubleLeft
 } from "react-icons/fa";
 import HPnav from "../../nav/company/HPnav";
 import { Link } from "react-router-dom";
-import { get_clients, signout } from "../../../actions";
+import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
-import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap"
+import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
+import { GoClock } from "react-icons/go";
+import defaultuser from "./default-user.png";
+// import { Link } from "react-router-dom";
+
+import Messenger from "../../messenger/Messenger";
+import marker from "./marker_icon.png";
+
+const Timestamp = require("react-timestamp");
 
 class JSlistView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clients: []
+      clients: [],
+      client: {}
     };
   }
 
@@ -32,15 +45,72 @@ class JSlistView extends Component {
     this.props.get_clients();
   };
 
+  onTabClick = id => {
+    this.props.clients.clients.filter(c => {
+      if (c.ID === id) {
+        this.setState({ client: c });
+      }
+      return console.log("client");
+    });
+  };
+
   render() {
-    console.log(this.state.clients);
+    let displayClient = null;
+    let notDisplayed = null;
+    if (this.state.display === true) {
+      displayClient = (
+        <div className="listing-cards">
+          <h1>
+            {this.state.client.first_name}, {this.state.client.last_name}
+          </h1>
+          <h4>
+            {this.state.client.city}, {this.state.client.state}
+          </h4>
+          <div className="card-info">
+            <p className="card-title">
+              {this.state.client.profession} <FaLink />
+            </p>
+            <p className="card-desc">{this.state.client.about}</p>
+          </div>
+        </div>
+      );
+    } else {
+      notDisplayed = (
+        <div className="nolisting-cards">
+          <h4>
+            <FaAngleDoubleLeft /> Select a company on the left to begin browsing
+            job listings
+          </h4>
+        </div>
+      );
+    }
+    let featClient = null;
+    var randomClient = this.props.clients.clients[
+      Math.floor(Math.random() * this.props.clients.clients.length)
+    ];
+    if (randomClient) {
+      featClient = (
+        <div className="feat-hp">
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img src={defaultuser} className="featured" alt="default" />
+            <h1>
+              {randomClient.first_name}, {randomClient.last_name}
+            </h1>
+            <h3 className="jobloc">
+              {randomClient.city}, {randomClient.state}
+            </h3>
+            <p>{randomClient.about}</p>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div className="main-JSlist">
+      <div className="main-jobslist">
         <HPnav />
         <HpMiniMap />
-        <div className="signout">
-          <div className="backgroundskew" />
-          <div className="backgroundskew2" />
+        <Messenger />
+        <div className="jobslist-container">
           <div className="signout">
             <button
               className="signoutbutton"
@@ -51,146 +121,43 @@ class JSlistView extends Component {
               Sign Out
             </button>
           </div>
-        </div>
-        <div className="jslist-container">
-          <div className="filter-main">
-            <header className="header">Prospective Candidates</header>
-            <div className="filter-display">
-              <input type="checkbox" />
-              <button>Filter</button>
-              <FaCaretDown className="filter-icon" />
-              <div className="filter-options">
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>Software Engineer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>Full Stack Developer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>Front-end Developer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>Back-end Developer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>UI/UX Developer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>iOS Developer</h4>
-
-                <label className="switch">
-                  <input type="checkbox" />
-                  <span className="slider round" />
-                </label>
-                <h4>Android Developer</h4>
-              </div>
-            </div>
-          </div>
-          <hr className="cards-hr" />
-          <div className="jobseekercards-container">
-            <div className="cards-main">
-              {this.props.clients.clients.map(clients => (
-                <div className="jobseeker-cards">
-                  <Link
-                    to={`/jsprofile/${clients.ID}`}
-                    key={clients.ID}
-                    className="profile-link"
-                  >
-                    <div className="card-header">
-                      <img
-                        src={`http://127.0.0.1:8000/media/${clients.picture}`}
-                        className="JScardpic"
-                        alt="Job Seeker"
-                      />
-                      <div className="jscard-name">
-                        <h3>
-                          {clients.first_name}
-                          {clients.last_name}
-                        </h3>
-                        <h5>
-                          {clients.city}
-                          {clients.state}
-                        </h5>
-                      </div>
-                      <FaStar className="card-favIcon" />
+          <div className="mapped-jobs">
+            <div className="mappedjobs-container">
+              {this.props.clients.clients.map((client, i) => (
+                <div
+                  key={i}
+                  className="joblist-display"
+                  onClick={() => {
+                    this.onTabClick(client.ID);
+                    this.setState({
+                      display: !this.state.display
+                    });
+                  }}
+                >
+                  <div className="card-header">
+                    <img
+                      src={`http://127.0.0.1:8000/media/${client.picture}`}
+                      alt="listing"
+                    />
+                    <div className="jobscard-name">
+                      <h3>
+                        {client.first_name}, {client.last_name}
+                      </h3>
+                      <h5>
+                        {client.city}, {client.state}
+                      </h5>
                     </div>
-                    <div className="card-info">
-                      <p className="card-bio">{clients.about}</p>
-                      <a className="emailcontact">
-                        <FaEnvelope className="contactIcons" />
-                        {clients.email}
-                      </a>
-                      <a className="phonecontact">
-                        <FaPhoneSquare className="contactIcons" />
-                        {clients.phone}
-                      </a>
-                    </div>
-                    <div className="card-socialmedia">
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={clients.twitter}
-                      >
-                        <FaTwitter className="card-smIcons" />
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={clients.linkedin}
-                      >
-                        <FaLinkedin className="card-smIcons" />
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={clients.github}
-                      >
-                        <FaGithub className="card-smIcons" />
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={clients.codepen}
-                      >
-                        <FaCodepen className="card-smIcons" />
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://www.google.com"
-                      >
-                        <FaFile className="card-smIcons" />
-                      </a>
-                      <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href={clients.personalWebsite}
-                      >
-                        <FaDesktop className="card-smIcons" />
-                      </a>
-                    </div>
-                  </Link>
+                  </div>
                 </div>
               ))}
             </div>
+            {displayClient}
+            {notDisplayed}
+          </div>
+          <div className="featured-hps">
+            <div className="featured-profile">{featClient}</div>
+            <div className="featured-profile2">{featClient}</div>
+            <div className="featured-profile3">{featClient}</div>
           </div>
         </div>
       </div>
@@ -201,6 +168,7 @@ class JSlistView extends Component {
 const mapStateToProps = state => {
   return {
     clients: state.clients,
+    client: state.client,
     fetchingClients: state.fetchingClients,
     error: state.error
   };
@@ -208,5 +176,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_clients, signout }
+  { get_clients }
 )(JSlistView);
