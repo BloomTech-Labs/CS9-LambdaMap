@@ -163,7 +163,7 @@
 }
 .main-container .map .js-modal .jsmodal-cont .jsmodal-footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .main-container .map .js-modal .jsmodal-cont .jsmodal-footer .contact-icons1 {
@@ -183,7 +183,6 @@
 .main-container .map .js-modal .jsmodal-cont .jsmodal-footer img {
   width: 50px;
   height: auto;
-  margin: 0px 70px;
   border-radius: 100%;
 }
 .main-container

@@ -113,31 +113,13 @@
 
         .jsmodal-footer {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
 
-          .contact-icons1 {
-            margin-right: 32px;
-            cursor: pointer;
-          }
-          
-          .show1 {
-            margin-right: 32px;
-            cursor: pointer;
-          }
-
-          .contact-icons {
-            cursor: pointer;
-          }
-          
-          .show {
-            cursor: pointer;
-          }
 
           img {
             width: 50px;
             height: auto;
-            margin: 0px 70px;
             border-radius: 100%;
           }
 
