@@ -92,6 +92,8 @@ class StudentSettings extends Component {
                 />
               </div>
               <div className="about-input">
+              <div className="input-divs">
+              Title:
                 <input
                   name="profession"
                   type="text"
@@ -100,7 +102,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="Job Title"
-                />
+                /></div>
+                <div className="input-divs">City:
                 <input
                   name="city"
                   type="text"
@@ -109,7 +112,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="City"
-                />
+                /></div>
+                <div className="input-divs">State:
                 <input
                   name="state"
                   type="text"
@@ -118,7 +122,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="State"
-                />
+                /></div>
+                  <div className="input-divs">Email:
                 <input
                   name="email"
                   type="email"
@@ -127,7 +132,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="E-mail"
-                />
+                /></div>  
+                <div className="input-divs"> Phone:
                 <input
                   name="phone"
                   type="tel"
@@ -136,9 +142,10 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="Phone Number"
-                />
+                /></div>
               </div>
               <div className="link-inputs">
+              <div className="input-divs">LinkedIn:
                 <input
                   name="linkedin"
                   type="url"
@@ -147,7 +154,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="LinkedIn"
-                />
+                /></div>
+                  <div className="input-divs">Codepen:
                 <input
                   name="codepen"
                   type="url"
@@ -156,7 +164,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="Codepen"
-                />
+                /></div>
+                  <div className="input-divs">GitHub:
                 <input
                   name="github"
                   type="url"
@@ -165,7 +174,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="GitHub"
-                />
+                /></div>
+                  <div className="input-divs">Website:
                 <input
                   name="website"
                   type="url"
@@ -174,7 +184,8 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="Portfolio Website"
-                />
+                /></div>
+                  <div className="input-divs">Twitter:
                 <input
                   name="twitter"
                   type="url"
@@ -183,7 +194,7 @@ class StudentSettings extends Component {
                     this.setState({ [e.target.name]: e.target.value })
                   }
                   placeholder="Twitter"
-                />
+                /></div>
               </div>
             </div>
             <button
