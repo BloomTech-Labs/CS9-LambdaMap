@@ -37,6 +37,7 @@ class JobslistView extends Component {
   };
 
   render() {
+    console.log(this.props)
     let displayListing = null;
     let notDisplayed = null;
     if (this.state.display === true) {
@@ -70,36 +71,89 @@ class JobslistView extends Component {
         </div>
       );
     }
-    let companyListing = null;
-    var randomCompany = this.props.jobListing.job_listings[
-      Math.floor(Math.random() * this.props.jobListing.job_listings.length)
-    ];
-    if (randomCompany) {
-      console.log(this.state)
-      companyListing = (
+    let featCompany = null;
+    let featCompany2 = null;
+    let featCompany3 = null;
+    if (this.props.jobListing.job_listings[0]) {
+      featCompany = (
         <div className="feat-hp">
-        <img src={marker} className="profile-marker" alt="marker" />
-        <img
-          src={`http://127.0.0.1:8000/media/${randomCompany.picture}`}
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img
+          src={`http://127.0.0.1:8000/media/${this.props.jobListing.job_listings[0].picture}`}
           alt="listing"
           className="featured"
         />
-          <div className="hp-info">
-            <h1>{randomCompany.company_name}</h1>
+            <h1>
+              {this.props.jobListing.job_listings[0].first_name}, {this.props.jobListing.job_listings[0].last_name}
+            </h1>
             <h3 className="jobloc">
-              {randomCompany.city}, {randomCompany.state}
+              {this.props.jobListing.job_listings[0].city}, {this.props.jobListing.job_listings[0].state}
             </h3>
-            <p>{randomCompany.about}</p>
-            <h4>
-              <FaBriefcase /> {randomCompany.jobListings.length} Job Listing(s)
-            </h4>
+            <p>{this.props.jobListing.job_listings[0].about}</p>
             <Link
-                to={`/hpprofile/${randomCompany.ID}`}
-                key={this.state.job_listing.ID}
-                className="profile-link"
-              >
-                Profile
-              </Link>
+              to={`/hpprofile/${this.props.jobListing.job_listings[0].ID}`}
+              key={this.props.jobListing.job_listings.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
+          </div>
+        </div>
+      );
+    }
+    if (this.props.jobListing.job_listings[1]) {
+      featCompany2 = (
+        <div className="feat-hp">
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img
+          src={`http://127.0.0.1:8000/media/${this.props.jobListing.job_listings[1].picture}`}
+          alt="listing"
+          className="featured"
+        />
+            <h1>
+              {this.props.jobListing.job_listings[1].first_name}, {this.props.jobListing.job_listings[1].last_name}
+            </h1>
+            <h3 className="jobloc">
+              {this.props.jobListing.job_listings[1].city}, {this.props.jobListing.job_listings[1].state}
+            </h3>
+            <p>{this.props.jobListing.job_listings[1].about}</p>
+            <Link
+              to={`/hpprofile/${this.props.jobListing.job_listings[1].ID}`}
+              key={this.props.jobListing.job_listings.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
+          </div>
+        </div>
+      );
+    }
+    if (this.props.jobListing.job_listings[2]) {
+      featCompany3 = (
+        <div className="feat-hp">
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img
+          src={`http://127.0.0.1:8000/media/${this.props.jobListing.job_listings[2].picture}`}
+          alt="listing"
+          className="featured"
+        />
+            <h1>
+              {this.props.jobListing.job_listings[2].first_name}, {this.props.jobListing.job_listings[2].last_name}
+            </h1>
+            <h2 className="jobloc">
+              {this.props.jobListing.job_listings[2].city}, {this.props.jobListing.job_listings[2].state}
+            </h2>
+            <p>{this.props.jobListing.job_listings[2].about}</p>
+            <Link
+              to={`/hpprofile/${this.props.jobListing.job_listings[2].ID}`}
+              key={this.props.jobListing.job_listings.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
           </div>
         </div>
       );
@@ -153,9 +207,9 @@ class JobslistView extends Component {
             {notDisplayed}
           </div>
           <div className="featured-hps">
-            <div className="featured-profile">{companyListing}</div>
-            <div className="featured-profile2">{companyListing}</div>
-            <div className="featured-profile3">{companyListing}</div>
+            <div className="featured-profile">{featCompany}</div>
+            <div className="featured-profile2">{featCompany2}</div>
+            <div className="featured-profile3">{featCompany3}</div>
           </div>
         </div>
       </div>

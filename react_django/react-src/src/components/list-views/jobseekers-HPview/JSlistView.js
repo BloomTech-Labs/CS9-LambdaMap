@@ -3,15 +3,34 @@
 // Hiring Partner View for list of job seekers with filter
 import React, { Component } from "react";
 import "./JSlistView.css";
-import { FaLink, FaAngleDoubleLeft } from "react-icons/fa";
+import {
+  FaCaretDown,
+  FaStar,
+  FaTwitter,
+  FaLinkedin,
+  FaGithub,
+  FaCodepen,
+  FaFile,
+  FaDesktop,
+  FaEnvelope,
+  FaPhoneSquare,
+  FaLink,
+  FaBriefcase,
+  FaAngleDoubleLeft
+} from "react-icons/fa";
 import HPnav from "../../nav/company/HPnav";
 import { Link } from "react-router-dom";
 import { get_clients } from "../../../actions";
 import { connect } from "react-redux";
 import HpMiniMap from "../../miniMap/HpMiniMap/HpMiniMap";
+import { GoClock } from "react-icons/go";
 import defaultuser from "./default-user.png";
+// import { Link } from "react-router-dom";
+
 import Messenger from "../../messenger/Messenger";
 import marker from "./marker_icon.png";
+
+const Timestamp = require("react-timestamp");
 
 class JSlistView extends Component {
   constructor(props) {
@@ -36,6 +55,7 @@ class JSlistView extends Component {
   };
 
   render() {
+    console.log(this.props)
     let displayClient = null;
     let notDisplayed = null;
     if (this.state.display === true) {
@@ -66,28 +86,83 @@ class JSlistView extends Component {
       );
     }
     let featClient = null;
-    var randomClient = this.props.clients.clients[
-      Math.floor(Math.random() * this.props.clients.clients.length)
-    ];
-    if (randomClient) {
+    let featClient2 = null;
+    let featClient3 = null;
+    if (this.props.clients.clients[0]) {
       featClient = (
         <div className="feat-hp">
           <div className="hp-info">
             <img src={marker} className="profile-marker" alt="marker" />
             <img
-              src={`http://127.0.0.1:8000/media/${randomClient.picture}`}
-              alt="listing"
-              className="featured"
-            />
+          src={`http://127.0.0.1:8000/media/${this.props.clients.clients[0].picture}`}
+          alt="listing"
+          className="featured"
+        />
             <h1>
-              {randomClient.first_name}, {randomClient.last_name}
+              {this.props.clients.clients[0].first_name}, {this.props.clients.clients[0].last_name}
             </h1>
             <h3 className="jobloc">
-              {randomClient.city}, {randomClient.state}
+              {this.props.clients.clients[0].city}, {this.props.clients.clients[0].state}
             </h3>
-            <p>{randomClient.about}</p>
+            <p>{this.props.clients.clients[0].about}</p>
             <Link
-              to={`/jsprofile/${randomClient.ID}`}
+              to={`/jsprofile/${this.props.clients.clients[0].ID}`}
+              key={this.state.client.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
+          </div>
+        </div>
+      );
+    }
+    if (this.props.clients.clients[1]) {
+      featClient2 = (
+        <div className="feat-hp">
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img
+          src={`http://127.0.0.1:8000/media/${this.props.clients.clients[1].picture}`}
+          alt="listing"
+          className="featured"
+        />
+            <h1>
+              {this.props.clients.clients[1].first_name}, {this.props.clients.clients[1].last_name}
+            </h1>
+            <h3 className="jobloc">
+              {this.props.clients.clients[1].city}, {this.props.clients.clients[1].state}
+            </h3>
+            <p>{this.props.clients.clients[1].about}</p>
+            <Link
+              to={`/jsprofile/${this.props.clients.clients[1].ID}`}
+              key={this.state.client.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
+          </div>
+        </div>
+      );
+    }
+    if (this.props.clients.clients[2]) {
+      featClient3 = (
+        <div className="feat-hp">
+          <div className="hp-info">
+            <img src={marker} className="profile-marker" alt="marker" />
+            <img
+          src={`http://127.0.0.1:8000/media/${this.props.clients.clients[2].picture}`}
+          alt="listing"
+          className="featured"
+        />
+            <h1>
+              {this.props.clients.clients[2].first_name}, {this.props.clients.clients[2].last_name}
+            </h1>
+            <h2 className="jobloc">
+              {this.props.clients.clients[2].city}, {this.props.clients.clients[2].state}
+            </h2>
+            <p>{this.props.clients.clients[2].about}</p>
+            <Link
+              to={`/jsprofile/${this.props.clients.clients[2].ID}`}
               key={this.state.client.ID}
               className="profile-link"
             >
@@ -148,8 +223,8 @@ class JSlistView extends Component {
           </div>
           <div className="featured-hps">
             <div className="featured-profile">{featClient}</div>
-            <div className="featured-profile2">{featClient}</div>
-            <div className="featured-profile3">{featClient}</div>
+            <div className="featured-profile2">{featClient2}</div>
+            <div className="featured-profile3">{featClient3}</div>
           </div>
         </div>
       </div>
