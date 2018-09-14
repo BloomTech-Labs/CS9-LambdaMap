@@ -36,7 +36,7 @@ class HPLanding extends Component {
     var mappedListings = null;
     if (this.props.hirePartner.HP.job_listings !== undefined) {
       mappedListings = (
-        <div className="posted-container">
+        <div className="posted-container1">
 
           {this.props.hirePartner.HP.job_listings.map(jls => (
             <div key={jls.ID} className="posted-listing">
