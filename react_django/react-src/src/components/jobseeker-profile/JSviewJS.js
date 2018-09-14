@@ -15,7 +15,7 @@ import {
   FaCheckSquare
 } from "react-icons/fa";
 import JSnav from "../nav/job-seeker/JSnav";
-import { get_client } from "../../actions";
+import { get_client, signout } from "../../actions";
 import { connect } from "react-redux";
 
 class JSviewJS extends Component {
@@ -155,5 +155,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { get_client }
+  { get_client, signout }
 )(JSviewJS);

@@ -195,7 +195,7 @@ class CompanySettings extends Component {
                   dragDrop: false,
                   picture: user.picture
                 });
-                this.props.history.push(`/hpview/${user.id}`)
+                this.props.history.push(`/hpview/${user.ID}`)
               }}
             >
               Update
