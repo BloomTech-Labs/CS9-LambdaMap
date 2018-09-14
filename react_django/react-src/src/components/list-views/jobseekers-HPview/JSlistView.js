@@ -101,6 +101,13 @@ class JSlistView extends Component {
               {randomClient.city}, {randomClient.state}
             </h3>
             <p>{randomClient.about}</p>
+            <Link
+              to={`/jsprofile/${randomClient.ID}`}
+              key={this.state.client.ID}
+              className="profile-link"
+            >
+              Profile
+            </Link>
           </div>
         </div>
       );

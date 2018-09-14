@@ -4,7 +4,7 @@ import "./JobslistView.css";
 import { FaLink, FaAngleDoubleLeft, FaBriefcase } from "react-icons/fa";
 import { GoClock } from "react-icons/go";
 import JSnav from "../../nav/job-seeker/JSnav";
-import defaultuser from "./default-user.png";
+import {Link} from "react-router-dom";
 import { get_listings, signout } from "../../../actions";
 import { connect } from "react-redux";
 import JsMiniMap from "../../miniMap/JsMiniMap/JsMiniMap";
@@ -75,6 +75,7 @@ class JobslistView extends Component {
       Math.floor(Math.random() * this.props.jobListing.job_listings.length)
     ];
     if (randomCompany) {
+      console.log(this.state)
       companyListing = (
         <div className="feat-hp">
         <img src={marker} className="profile-marker" alt="marker" />
@@ -92,6 +93,13 @@ class JobslistView extends Component {
             <h4>
               <FaBriefcase /> {randomCompany.jobListings.length} Job Listing(s)
             </h4>
+            <Link
+                to={`/hpprofile/${randomCompany.ID}`}
+                key={this.state.job_listing.ID}
+                className="profile-link"
+              >
+                Profile
+              </Link>
           </div>
         </div>
       );

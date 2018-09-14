@@ -13,6 +13,34 @@
 
   .jobslist-container {
     .featured-hps {
+      a:-webkit-any-link {
+        border: none;
+        cursor: pointer;
+        color: white;
+        background-color: #8a8a8a;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 5px;
+        font-family: $landingfont;
+        border-radius: 8px;
+        width: 50px;
+        outline-color: #db5f3c;
+        text-align: center;
+        -webkit-filter: drop-shadow(2px 1px 2px black);
+        filter: drop-shadow(2px 1px 2px black);
+        bottom: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        left: 0;
+        right: 0;
+        position: absolute;
+      }
+      a:-webkit-any-link:active {
+        transform: translate(1px, 2px);
+        -webkit-filter: drop-shadow(0px 0px 0px black);
+        filter: drop-shadow(0px 0px 0px black);
+      }
       .profile-marker {
         position: absolute;
         width: 80px;
@@ -41,11 +69,12 @@
         border-radius: 20px;
         background-color: $specialblue;
         color: white;
-        cursor: pointer;
+        
         padding: 10px;
 
         .feat-hp {
           .hp-info {
+          
             h1 {
               margin: 0;
             }
@@ -99,11 +128,10 @@
         border-radius: 20px;
         background-color: $specialblue;
         color: white;
-        cursor: pointer;
+        
         padding: 10px;
       }
       .feat-hp {
-
         .profile-marker {
           position: absolute;
           width: 80px;
@@ -134,12 +162,12 @@
           border-radius: 20px;
           background-color: $specialblue;
           color: white;
-          cursor: pointer;
+          
           padding: 10px;
         }
 
-
         .hp-info {
+
           h1 {
             margin: 0;
           }
@@ -192,11 +220,12 @@
         border-radius: 20px;
         background-color: $specialblue;
         color: white;
-        cursor: pointer;
+        
         padding: 10px;
 
         .feat-hp {
           .hp-info {
+           
             h1 {
               margin: 0;
             }
