@@ -251,7 +251,7 @@ class StudentSettings extends Component {
                   about: user.about,
                   picture: user.picture
                 });
-                this.props.history.push(`/jsview/${user.id}`);
+                this.props.history.push(`/jsview/${user.ID}`);
               }}
             >
               Update
