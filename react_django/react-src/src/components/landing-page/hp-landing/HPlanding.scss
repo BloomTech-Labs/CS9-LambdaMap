@@ -108,6 +108,48 @@
     .welcome-container {
       display: flex;
 
+      hr {
+        border-top: 2px dashed $specialgray;
+      }
+
+      .hr1 {
+        width: 39%;
+        position: absolute;
+        top: 225px;
+        left: 10.6%;
+      }
+
+      .hr2 {
+        width: 25px;
+        position: absolute;
+        top: 241px;
+        left: 49%;
+        transform: rotate(90deg);
+      }
+
+      .hr3 {
+        width: 200px;
+        position: absolute;
+        top: 425px;
+        left: 32%;
+      }
+
+      .hr4 {
+        width: 225px;
+        position: absolute;
+        top: 540px;
+        left: 26%;
+        transform: rotate(90deg);
+      }
+
+      .hr5 {
+        width: 650px;
+        position: absolute;
+        top: 750px;
+        left: 51%;
+      }
+
+
       .profile-marker {
         position: absolute;
         width: 100px;

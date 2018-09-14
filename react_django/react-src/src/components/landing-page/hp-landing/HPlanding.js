@@ -86,6 +86,12 @@ class HPLanding extends Component {
               alt="user"
             />
             <h1>Welcome back, {user.company_name}.</h1>
+            <hr className="hr1"></hr>
+            <hr className="hr2"></hr>
+            <hr className="hr3"></hr>
+            <hr className="hr4"></hr>
+            <hr className="hr5"></hr>
+            <hr className="hr6"></hr>
           </div>
           <div className="new-joblisting">
             <h2>Add New Job Listing</h2>
