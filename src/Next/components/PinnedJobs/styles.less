@@ -3,49 +3,60 @@
   width:100%;
   border-radius: 5px;
   border: 1px solid lightgray;
-  overflow-y: scroll;
   display: flex;
   flex-direction: row;
+  font-family: 'Poppins', sans-serif;
+  background: white;
   &__Item {
     display: flex;
     align-items: stretch;
     justify-content: space-around;
     width: 33%;
     margin-right: 1rem;
-    border: 1px solid lightgray;
-    border-radius: 5px;
     cursor: pointer;
+    background: #E6493D;
+    border-radius: 5px;
+    color: white;
+    position: relative;
   }
   &__ImageContainer {
+    position: absolute;
+    top: -2rem;
+    right: -1rem;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid lightgray;
     overflow: hidden;
-    width: 50%;
-    img {
-      background-position: center;
-      background-size: 50%;
-    }
+    z-index: 2;
+    height: 7rem;
+    width: 7rem;
+    background-image: url("/static/images/google.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   &__Content {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    width: 50%;
+    flex-grow: 1;
     pointer-events: none;
-    h1 {
+    h2 {
       font-size: 2rem;
+    }
+    h4 {
+      font-size: 1.6rem;
       margin-bottom: 1rem;
     }
     p {
       font-size: 1.4rem;
-      max-height: 5rem;
+      max-height: 4rem;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
   }
   &__CityAndTimeStamp {
-    p:not(:last-child) {
-      margin-bottom: 1rem;
-    }
     margin-top: auto;
   }
 }
