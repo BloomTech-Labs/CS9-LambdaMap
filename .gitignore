@@ -14,3 +14,5 @@ Pipfile
 react_django/django-src/build
 react_django/django-src/staticfiles
 
+
+src/Next/\.next/

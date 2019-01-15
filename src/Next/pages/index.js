@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Signin from '../components/Signin/';
 import Layout from '../components/Layout/';
+import PinnedJobs from '../components/PinnedJobs/';
 
 class Index extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <p>Hello world</p>
+        <PinnedJobs/>
       </Layout>
     )
   }
