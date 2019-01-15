@@ -10,7 +10,9 @@ class Layout extends Component {
     return (
       <div className={css.Container}>
         <header>
-          <img src="./helloworld.png" alt="user thumbnail"/>
+          <div className={css.Container__ImageContainer}>
+            <img src="/static/images/controller_sm.png" alt="user thumbnail"/>
+          </div>
           <h1>Welcome back, Username</h1>
           <div className={css.Container__OptionsContainer}>
             <div className={css.OptionsContainer__Button}>
