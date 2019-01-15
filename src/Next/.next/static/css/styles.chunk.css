@@ -1,0 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #F3F8FB;
+}
+:root {
+  font-size: 62.5%;
+}
+h2 {
+  font-size: 4rem;
+}
+h3 {
+  font-size: 3rem;
+}
+p {
+  font-size: 1.6rem;
+}
+div {
+  font-size: 1.6rem;
+}
+span {
+  font-size: 1.6rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #F3F8FB;
+}
+.Container__2GiWT {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.Container__Inner__1sDb5 {
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  min-width: 450px;
+  position: relative;
+}
+.Container__Inner__1sDb5 header {
+  padding: 40px;
+  background: #44566E;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.Container__Inner__1sDb5 header h3 {
+  font-size: 40px;
+  font-family: 'bariolregular';
+  font-weight: bold;
+}
+.Container__Inner__1sDb5 .error__1cMpF {
+  width: 100%;
+  background: #DC3253;
+  color: white;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+  position: absolute;
+  top: 94px;
+  transition: all 0.3s ease 0s;
+}
+.Container__Inner__1sDb5 .activeError__1LFFd {
+  transform: translateY(33px);
+}
+.Container__Inner__1sDb5 form {
+  padding: 50px 30px;
+  font-family: 'Linotte-SemiBold';
+}
+.Container__Inner__1sDb5 form .marginBottom__1MlBN {
+  margin-bottom: 40px;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer {
+  position: relative;
+  box-sizing: border-box;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer label {
+  color: lightgray;
+  position: absolute;
+  top: 8px;
+  left: 0.3rem;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid lightgray;
+  padding: 5px 0 5px 5px;
+  font-size: 16px;
+  transition: all 0.3s ease 0s;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer .Container__StrengthMeterContainer__2tav_ {
+  width: 100%;
+  height: 4px;
+  box-sizing: border-box;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer .Container__StrengthMeterContainer__2tav_ .StrengthMeter__9tLn3 {
+  height: 100%;
+  transition: all 0.3s ease 0s;
+}
+.Container__Inner__1sDb5 form .Container__InputContainer__3Qoer p {
+  margin: 5px 0 0;
+  color: gray;
+}
+.Container__Inner__1sDb5 form .inputActive__Cw74N label {
+  top: -15px;
+  color: #44566E;
+}
+.Container__Inner__1sDb5 form .inputActive__Cw74N input {
+  border-bottom: 1px solid black;
+}
+.Container__Inner__1sDb5 form input[type="checkbox"] {
+  margin: 10px 0 50px;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  background: #fff;
+  color: #585b5f;
+  border-radius: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-size: 12px;
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.07);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw button:hover {
+  background: #44566E;
+  color: white;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W {
+  margin-top: 20px;
+  display: flex;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W .Container__OtherButton__1lb70 {
+  width: 50%;
+  padding: 10px;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W .Container__OtherButton__1lb70 .blue__pXKZ- {
+  background: #59819E;
+  color: white;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W .Container__OtherButton__1lb70 .blue__pXKZ-:hover {
+  box-shadow: 3px 3px 10px #235172;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W .Container__OtherButton__1lb70 .orange__yi2nW {
+  color: white;
+  background: #fb5757;
+}
+.Container__Inner__1sDb5 form .Container__Submit__KfhXw .Container__OtherLogin__3qW6W .Container__OtherButton__1lb70 .orange__yi2nW:hover {
+  box-shadow: 3px 3px 10px #fb5757;
+}
+.Container__Inner__1sDb5 form .Container__Footer__2m_RX {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.Container__Inner__1sDb5 form .Container__Footer__2m_RX a {
+  text-decoration: none;
+  color: #44566E;
+}
+
+.Container__2VxM0 {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+.Container__2VxM0 header {
+  display: flex;
+  align-items: baseline;
+  padding: 2rem 1rem;
+}
+.Container__2VxM0 header .Container__OptionsContainer__3ak-u {
+  margin-left: auto;
+}
+.Container__2VxM0 header .Container__OptionsContainer__3ak-u .OptionsContainer__Button__1uKNV {
+  padding: 1rem;
+  cursor: pointer;
+}
+.Container__2VxM0 header .Container__OptionsContainer__3ak-u .OptionsContainer__Button__1uKNV p {
+  pointer-events: none;
+}
+
+
+/*# sourceMappingURL=styles.chunk.css.map*/
