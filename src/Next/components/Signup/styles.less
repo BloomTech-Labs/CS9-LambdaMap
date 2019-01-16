@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #F3F8FB;
+}
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  &__Inner {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    min-width: 450px;
+    position: relative;
+    header {
+      padding: 40px;
+      background: #44566E;
+      color: white;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      h3 {
+        font-size: 40px;
+        font-family: 'bariolregular';
+        font-weight: bold;
+      }
+    }
+    .error {
+      width: 100%;
+      background: #DC3253;
+      color: white;
+      padding: 5px;
+      font-size: 20px;
+      text-align: center;
+      z-index: 1;
+      position: absolute;
+      top: 94px;
+      transition: all 0.3s ease 0s;
+    }
+    .activeError {
+      transform: translateY(33px);
+    }
+    form {
+      padding: 30px;
+      font-family: 'Linotte-SemiBold';
+      .Container__InputContainer {
+        position: relative;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+        label {
+          color: lightgray;
+          position: absolute;
+          top: 8px;
+          left: 0.3rem;
+          pointer-events: none;
+          transition: all 0.3s ease 0s;
+        }
+        input {
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 0;
+          border: 0;
+          border-bottom: 1px solid lightgray;
+          padding: 5px 0 5px 5px;
+          font-size: 16px;
+          transition: all 0.3s ease 0s;
+        }
+        .Container__StrengthMeterContainer {
+          width: 100%;
+          height: 4px;
+          box-sizing: border-box;
+          .StrengthMeter {
+            height: 100%;
+            transition: all 0.3s ease 0s;
+          }
+        }
+        p {
+          margin: 5px 0 0;
+          color: gray;
+        }
+
+      }
+      .inputActive {
+        label {
+          top: -15px;
+          color: #44566E;
+        }
+        input {
+          border-bottom: 1px solid black;
+        }
+      }
+      input[type="checkbox"] {
+        margin: 10px 0 30px;
+      }
+      .Container__Submit {
+        button {
+          width: 100%;
+          height: 50px;
+          border: none;
+          background: #fff;
+          color: #585b5f;
+          border-radius: 40px;
+          text-transform: uppercase;
+          letter-spacing: 0;
+          font-weight: 600;
+          font-size: 12px;
+          box-shadow: 0 0 22px rgba(0, 0, 0, 0.07);
+          -webkit-transition: all 0.3s ease 0s;
+          transition: all 0.3s ease 0s;
+          cursor: pointer;
+        }
+        button:hover {
+          background: #44566E;
+          color: white;
+        }
+        .Container__OtherLogin {
+          margin-top: 20px;
+          display: flex;
+          .Container__OtherButton {
+            width: 50%;
+            padding: 10px;
+            .blue {
+              background: #59819E;
+              color: white;
+            }
+            .blue:hover {
+              box-shadow: 3px 3px 10px #235172;
+            }
+            .orange {
+              color: white;
+              background: #fb5757;
+            }
+            .orange:hover {
+              box-shadow: 3px 3px 10px #fb5757;
+            }
+          }
+        }
+      }
+      .Container__Footer {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        a {
+          text-decoration: none;
+          color: #44566E;
+        }
+      }
+    }
+  }
+}
