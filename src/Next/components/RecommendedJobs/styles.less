@@ -1,0 +1,86 @@
+.Container {
+  width: 100%;
+  background: white;
+  &__Item:hover {
+    background-color: #E6E6E6;
+    cursor: pointer;
+    .Container__ButtonContainer {
+      .Container__Button {
+        opacity: 1;
+      }
+    }
+  }
+  &__Item {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    border-top: 1px solid lightgray;
+  }
+  &__Item:last-child {
+    border-bottom: 1px solid lightgray;
+  }
+  &__ImageContainer {
+    background-image: url("/static/images/google.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20rem;
+  }
+  &__Content {
+    width: 100%;
+    max-width: 40rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    h3 {
+      font-size: 2rem;
+      font-family: 'Nunito', sans-serif;
+    }
+    h4 {
+      font-size: 1.6rem;
+    }
+  }
+  &__Tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    p {
+      margin-right: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+      border: 1px solid black;
+      border-radius: 3px;
+    }
+    p:hover {
+      color: white;
+      background: black;
+    }
+  }
+  &__TimeStamp {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+  }
+  &__ButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 15rem;
+    padding: 0.2rem;
+    .Container__Button {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: linear-gradient(to right, #E6493D 60%, #E66D3D);
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}

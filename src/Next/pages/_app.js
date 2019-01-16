@@ -43,7 +43,7 @@ class MyApp extends App {
           <html>
             <head>
               <title>Lambda Map</title>
-              <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+              <link href="https://fonts.googleapis.com/css?family=Poppins+Nunito" rel="stylesheet" />
             </head>
             <body>
               <Container>
